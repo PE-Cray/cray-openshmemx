@@ -1,0 +1,7 @@
+title: Cray OpenSHMEMX
+description: Cray OpenSHMEMX is a proprietary SHMEM library implementation from Cray Inc. 
+show_downloads: false
+theme: jekyll-theme-minimal
+
+gems:
+- jekyll-mentions
