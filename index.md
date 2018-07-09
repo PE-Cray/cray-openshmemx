@@ -24,38 +24,38 @@ Version 8.0.0 is the first official release of the Cray OpenSHMEMX library.
 
 The following features were available in Cray OpenSHMEMX 8.0.0:
 
-    - Cray OpenSHMEMX is OpenSHMEM 1.4 compliant with support for Communication
-    contexts and sync operations, extended typed interface for RMA and AMO
-    operations, bitwise AMOs, shmem_calloc, and shmem_test
+1. Cray OpenSHMEMX is OpenSHMEM 1.4 compliant with support for Communication
+contexts and sync operations, extended typed interface for RMA and AMO
+operations, bitwise AMOs, shmem_calloc, and shmem_test
 
-    - Initial support for XC50 with Cavium ThunderX2 Arm blades (AARCH64)
+2. Initial support for XC50 with Cavium ThunderX2 Arm blades (AARCH64)
 
-    - To provide complete functional backward compatibility, the following
-    Cray specific flagship features are imported from Cray SHMEM and
-    supported as part of the Cray OpenSHMEMX library.
+3. To provide complete functional backward compatibility, the following
+Cray specific flagship features are imported from Cray SHMEM and supported as
+part of the Cray OpenSHMEMX library.
 
-        * Support for Teams and Team based collectives
+    * Support for Teams and Team based collectives
 
-        * Support for Thread-hot features along with thread-based memory
-        ordering operations
+    * Support for Thread-hot features along with thread-based memory
+    ordering operations
 
-        * Support for non-blocking atomic memory operations
+    * Support for non-blocking atomic memory operations
 
-        * Support for optimized put with signal RMA operation
+    * Support for optimized put with signal RMA operation
 
-        * Support for Cray specific Generic RMA and AMO routines
+    * Support for Cray specific Generic RMA and AMO routines
 
-        * Support for local node queries
+    * Support for local node queries
 
-        * Support for alltoallv and alltoallv packed collectives
+    * Support for alltoallv and alltoallv packed collectives
 
-    - Cray OpenSHMEMX supports the OpenSHMEM deprecated Fortran Interface,
-    using shmem.fh and shmemx.fh.
+4. Cray OpenSHMEMX supports the OpenSHMEM deprecated Fortran Interface, using
+shmem.fh and shmemx.fh header files.
 
-    - See "[Introducing Cray OpenSHMEMX](https://pe-cray.github.io/whitepapers/)"
-    white paper for more information on the new Cray OpenSHMEMX software product
-    from Cray Inc.
+5.  See "[Introducing Cray OpenSHMEMX](https://pe-cray.github.io/whitepapers/)"
+white paper for more information on the new Cray OpenSHMEMX software product
+from Cray Inc.
 
-    - Initial support for Cray OpenSHMEMX man pages are derived from OpenSHMEM
-    standards specification document
+6. Initial support for Cray OpenSHMEMX man pages are derived from OpenSHMEM
+standards specification document
 
