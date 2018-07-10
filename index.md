@@ -11,8 +11,8 @@ Cray Inc., which is OpenSHMEM standards compliant.
 The next evolution of OpenSHMEM implementation for current and future generation Cray
 systems is called Cray OpenSHMEMX.
 
-This repository contains public announcement information about Cray OpenSHMEMX
-software stack including topics like release information, performance optimization
+This repository contains public announcement information about the Cray OpenSHMEMX
+software stack including release information, performance optimization
 and tuning parameters, supported environments and systems, and general backward
 compatibility details.
 
@@ -22,7 +22,7 @@ compatibility details.
 ### Version 8.0.0
 Version 8.0.0 is the first official release of the Cray OpenSHMEMX library.
 
-The following features were available in Cray OpenSHMEMX 8.0.0:
+The following features are released with Cray OpenSHMEMX 8.0.0:
 
 1. Cray OpenSHMEMX is OpenSHMEM 1.4 compliant with support for Communication
 contexts and sync operations, extended typed interface for RMA and AMO
@@ -31,7 +31,7 @@ operations, bitwise AMOs, shmem_calloc, and shmem_test
 2. Initial support for XC50 with Cavium ThunderX2 Arm blades (AARCH64)
 
 3. To provide complete functional backward compatibility, the following
-Cray specific flagship features are imported from Cray SHMEM and supported as
+Cray-specific flagship features are imported from Cray SHMEM and supported as
 part of the Cray OpenSHMEMX library.
 
     * Support for Teams and Team based collectives
@@ -43,7 +43,7 @@ part of the Cray OpenSHMEMX library.
 
     * Support for optimized put with signal RMA operation
 
-    * Support for Cray specific Generic RMA and AMO routines
+    * Support for Cray-specific Generic RMA and AMO routines
 
     * Support for local node queries
 
@@ -53,8 +53,7 @@ part of the Cray OpenSHMEMX library.
 shmem.fh and shmemx.fh header files.
 
 5.  See "[Introducing Cray OpenSHMEMX](https://pe-cray.github.io/whitepapers/)"
-white paper for more information on the new Cray OpenSHMEMX software product
-from Cray Inc.
+for more information on the new Cray OpenSHMEMX software product from Cray Inc.
 
 6. Initial support for Cray OpenSHMEMX man pages are derived from OpenSHMEM
 standards specification document
@@ -62,22 +61,22 @@ standards specification document
 ### Version 8.0.1
 Cray OpenSHMEMX version 8.0.1 is released on July 2018.
 
-The following features are available in Cray OpenSHMEMX 8.0.1:
+The following features are released with Cray OpenSHMEMX 8.0.1:
 
 1. Support for Cray Thread-hot (THS) and OpenSHMEM communication contexts
 (CTX). In Cray OpenSHMEMX version 8.0.0, THS and CTX are two mutually
 exclusive features. From 8.0.1 THS and CTX can be used together in the same 
 OpenSHMEM application. Please refer to "[Updating Cray Thread-Hot Semantics 
-for OpenSHMEM v1.4](https://pe-cray.github.io/whitepapers/)" whitepaper for 
+for OpenSHMEM v1.4](https://pe-cray.github.io/whitepapers/)" for 
 more information on using THS and CTX features together.
 
 2. Support for different CLE operating system releases. By default, Cray
 OpenSHMEMX is supported in CLE 6.0 UP05 and above systems. To use Cray
 OpenSHMEMX on older CLE systems adding -cray-openshmemx-ctx compiler flag
-will automatically select the appropriate library. See intro_shmem(3)
-man page for more information and the "[Cray OpenSHMEMX (SMP-DMAPP) on 
-Different CLE Versions](https://pe-cray.github.io/whitepapers/)" whitepaper
-for more information on the usage details.
+will automatically select the appropriate library. See the intro_shmem(3)
+man page and "[Cray OpenSHMEMX (SMP-DMAPP) on Different CLE 
+Versions](https://pe-cray.github.io/whitepapers/)" whitepaper for more 
+information on usage details.
 
 3. Multiple performance issues are fixed in 8.0.1 from version 8.0.0
 
