@@ -11,6 +11,7 @@ Cray Inc., which is OpenSHMEM standards compliant.
 The next evolution of OpenSHMEM implementation for current and future generation Cray
 systems is called Cray OpenSHMEMX.
 
+
 This repository contains public announcement information about the Cray OpenSHMEMX
 software stack including release information, performance optimization
 and tuning parameters, supported environments and systems, and general backward
@@ -18,6 +19,17 @@ compatibility details.
 
 
 ## Release Information
+
+**Cray OpenSHMEMX is supported on both X86_64 and AARCH64 based Cray XC systems.**
+
+**On X86_64 systems, Cray SHMEM is still the production-ready implementation 
+Cray OpenSHMEMX is released as a separate product from Cray SHMEM with plans 
+to supersede the existing Cray SHMEM library in near future. Early access to 
+Cray OpenSHMEMX library is provided for users to start migrating their existing 
+applications to the new library.**
+
+**On AARCH64 systems, Cray OpenSHMEMX is the only available and supported
+SHMEM implementation by Cray Inc.**
 
 ### Version 8.0.0
 Version 8.0.0 is the first official release of the Cray OpenSHMEMX library.
