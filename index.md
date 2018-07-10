@@ -20,16 +20,15 @@ compatibility details.
 
 ## Release Information
 
-**NOTE: 
-Cray OpenSHMEMX is supported on both X86_64 and AARCH64 based Cray XC systems.
+**Cray OpenSHMEMX is supported on both X86_64 and AARCH64 based Cray XC systems.**
 
-On X86_64 systems, Cray SHMEM is still the production-ready implementation 
+**On X86_64 systems, Cray SHMEM is still the production-ready implementation 
 Cray OpenSHMEMX is released as a separate product from Cray SHMEM with plans 
 to supersede the existing Cray SHMEM library in near future. Early access to 
 Cray OpenSHMEMX library is provided for users to start migrating their existing 
-applications to the new library. 
+applications to the new library.**
 
-On AARCH64 systems, Cray OpenSHMEMX is the only available and supported
+**On AARCH64 systems, Cray OpenSHMEMX is the only available and supported
 SHMEM implementation by Cray Inc.**
 
 ### Version 8.0.0
