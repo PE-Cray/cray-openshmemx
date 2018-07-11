@@ -18,8 +18,6 @@ and tuning parameters, supported environments and systems, and general backward
 compatibility details.
 
 
-## Release Information
-
 **Cray OpenSHMEMX is supported on both X86_64 and AARCH64 based Cray XC systems.**
 
 **On X86_64 systems, Cray SHMEM is still the production-ready implementation 
@@ -30,6 +28,9 @@ applications to the new library.**
 
 **On AARCH64 systems, Cray OpenSHMEMX is the only available and supported
 SHMEM implementation by Cray Inc.**
+
+
+## Release Information
 
 ### Version 8.0.0
 Version 8.0.0 is the first official release of the Cray OpenSHMEMX library.
