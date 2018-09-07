@@ -39,7 +39,7 @@ and supported SHMEM implementation by Cray Inc.
 ## Manpage
 <p align="justify">
 Recent updated manpage corresponding to the latest released
-version (version-8.0.0) can be accessed [here](/man/main.html).
+version (version-8.0.0) can be accessed [here](man/main.html).
 </p>
 
 ## Release Information
