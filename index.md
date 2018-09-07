@@ -22,31 +22,28 @@ optimization and tuning parameters, supported environments and systems, and gene
 backward compatibility details.
 </p>
 
-**Cray OpenSHMEMX is supported on both X86_64 and AARCH64 based Cray XC systems.**
+## Supported Platforms
+Cray OpenSHMEMX is supported on both X86_64 and AARCH64 based Cray XC systems.
 
-<p align="justify">
-1. On X86_64 systems, Cray SHMEM is still the production-ready implementation 
+1. On X86_64 systems, Cray SHMEM is still the production-ready 
+implementation 
 Cray OpenSHMEMX is released as a separate product from Cray SHMEM with plans 
 to supersede the existing Cray SHMEM library in near future. Early access to 
 Cray OpenSHMEMX library is provided for users to start migrating their existing 
 applications to the new library.
-</p>
 
-<p align="justify">
-2. On AARCH64 systems, Cray OpenSHMEMX is the only available and supported
-SHMEM implementation by Cray Inc.
-</p>
+2. On AARCH64 systems, Cray OpenSHMEMX is the only available 
+and supported SHMEM implementation by Cray Inc.
 
 
 ## Release Information
 1. [Cray OpenSHMEMX - version 8.0.0](#version-8.0.0)
 2. [Cray OpenSHMEMX - version 8.0.1](#version-8.0.1)
 
-### [Version 8.0.0]
+### <h4 id="version-8.0.0" >Version 8.0.0</h4>
 Version 8.0.0 is the first official release of the Cray OpenSHMEMX library.
 
 The following features are released with Cray OpenSHMEMX 8.0.0:
-
 1. Cray OpenSHMEMX is OpenSHMEM 1.4 compliant with support for Communication
 contexts and sync operations, extended typed interface for RMA and AMO
 operations, bitwise AMOs, shmem_calloc, and shmem_test
@@ -56,7 +53,6 @@ operations, bitwise AMOs, shmem_calloc, and shmem_test
 3. To provide complete functional backward compatibility, the following
 Cray-specific flagship features are imported from Cray SHMEM and supported as
 part of the Cray OpenSHMEMX library.
-
     * Support for Teams and Team based collectives
 
     * Support for Thread-hot features along with thread-based memory
@@ -81,7 +77,7 @@ for more information on the new Cray OpenSHMEMX software product from Cray Inc.
 6. Initial support for Cray OpenSHMEMX man pages are derived from OpenSHMEM
 standards specification document
 
-### [Version 8.0.1]
+### <h4 id="version-8.0.1" >Version 8.0.1</h4>
 Cray OpenSHMEMX version 8.0.1 is released on July 2018.
 
 The following features are released with Cray OpenSHMEMX 8.0.1:
