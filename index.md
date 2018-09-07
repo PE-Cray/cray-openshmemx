@@ -40,7 +40,7 @@ and supported SHMEM implementation by Cray Inc.
 1. [Cray OpenSHMEMX - version 8.0.0](#version-8.0.0)
 2. [Cray OpenSHMEMX - version 8.0.1](#version-8.0.1)
 
-### <h3 id="version-8.0.0" >Version 8.0.0</h3>
+### #Version 8.0.0
 Version 8.0.0 is the first official release of the Cray OpenSHMEMX library.
 
 The following features are released with Cray OpenSHMEMX 8.0.0:
@@ -77,7 +77,7 @@ for more information on the new Cray OpenSHMEMX software product from Cray Inc.
 6. Initial support for Cray OpenSHMEMX man pages are derived from OpenSHMEM
 standards specification document
 
-### <h3 id="version-8.0.1" >Version 8.0.1</h3>
+### #Version 8.0.1
 Cray OpenSHMEMX version 8.0.1 is released on July 2018.
 
 The following features are released with Cray OpenSHMEMX 8.0.1:
