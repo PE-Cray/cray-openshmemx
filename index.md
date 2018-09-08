@@ -36,6 +36,10 @@ applications to the new library.
 and supported SHMEM implementation by Cray Inc.
 
 
+## Manpage
+Recent updated manpage corresponding to the latest released
+version (version-8.0.0) can be accessed [here](man/main.html).
+
 ## Release Information
 1. [Cray OpenSHMEMX - version 8.0.0](#version-8.0.0)
 2. [Cray OpenSHMEMX - version 8.0.1](#version-8.0.1)
