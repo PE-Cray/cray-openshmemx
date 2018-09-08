@@ -80,7 +80,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
-<body>
+<body><h1><a href="../main.html">Index</a></h1>
 <h1 id="name">Name</h1>
 <pre><code> intro_shmem - Introduces logically shared distributed memory access
  routines</code></pre>
@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code> For dynamic building, users are expected to explicitly load the location
  of the Cray OpenSHMEMX in the LD_LIBRARY_PATH as shown in the example below:</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" data-line-number="1">     <span class="ex">module</span> load cray-openshmemx/<span class="op">&lt;</span>version<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2">     <span class="bu">export</span> <span class="va">LD_LIBRARY_PATH=$CRAY_OPENSHMEMX_DIR</span>/lib64:<span class="va">$LD_LIBRARY_PATH</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">     <span class="bu">export</span> <span class="va">LD_LIBRARY_PATH=$CRAY_LD_LIBRARY_PATH</span>:<span class="va">$LD_LIBRARY_PATH</span></a>
 <a class="sourceLine" id="cb17-3" data-line-number="3">     <span class="fu">cc</span> -o test_shmem test_shmem.c</a></code></pre></div>
 <h2 id="support-on-different-versions-of-cray-linux-environment-cle">Support on different versions of Cray Linux Environment (CLE)</h2>
 <pre><code> By default, Cray OpenSHMEMX with SMP-DMAPP transport layer is supported from
@@ -935,5 +935,5 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
            SHMEM user processes.
 
            Default: not enabled</code></pre>
-</body>
+<h1><a href="../main.html">Index</a></h1></body>
 </html>
