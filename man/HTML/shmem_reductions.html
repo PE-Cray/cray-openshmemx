@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>shmem_reductions</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body><h1><a href="../main.html">Index</a></h1>
+<h1 id="summary">Summary</h1>
+<pre><code>The following functions perform reduction operations across all
+PEs in a set of PEs.</code></pre>
+<h1 id="definitions">Definitions</h1>
+<p>Performs a bitwise AND reduction across a set of PEs. ## C/C++ Synopsis</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="ex">void</span> shmem_short_and_to_all(short *dest, const short *source, int nreduce,</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">                            <span class="ex">short</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="ex">void</span> shmem_int_and_to_all(int *dest, const int *source, int nreduce,</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">                          <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">                          <span class="ex">int</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="ex">void</span> shmem_long_and_to_all(long *dest, const long *source, int nreduce,</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">                           <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">                           <span class="ex">long</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="ex">void</span> shmem_longlong_and_to_all(long long *dest, const long long *source,</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">                               <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">                               <span class="ex">int</span> PE_size, long long *pWrk, long *pSync);</a></code></pre></div>
+<h2 id="deprecated-fortran-synopsis">Deprecated Fortran Synopsis</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">CALL</span> SHMEM_INT4_AND_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">                           <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="ex">CALL</span> SHMEM_INT8_AND_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">                           <span class="ex">PE_size</span>, pWrk, pSync)</a></code></pre></div>
+<p>Performs a maximum-value reduction across a set of PEs. ## C/C++ Synopsis</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="ex">void</span> shmem_short_max_to_all(short *dest, const short *source, int nreduce,</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">                            <span class="ex">short</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="ex">void</span> shmem_int_max_to_all(int *dest, const int *source, int nreduce,</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">                          <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">                          <span class="ex">int</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="ex">void</span> shmem_double_max_to_all(double *dest, const double *source, int nreduce,</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">                            <span class="ex">double</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="ex">void</span> shmem_float_max_to_all(float *dest, const float *source, int nreduce,</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">                            <span class="ex">float</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="ex">void</span> shmem_long_max_to_all(long *dest, const long *source, int nreduce,</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">                           <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">                           <span class="ex">long</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="ex">void</span> shmem_longdouble_max_to_all(long double *dest, const long double *source,</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">                                 <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">                                 <span class="ex">int</span> PE_size, long double *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="ex">void</span> shmem_longlong_max_to_all(long long *dest, const long long *source,</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">                               <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21">                               <span class="ex">int</span> PE_size, long long *pWrk, long *pSync);</a></code></pre></div>
+<h2 id="deprecated-fortran-synopsis-1">Deprecated Fortran Synopsis</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="ex">CALL</span> SHMEM_INT4_MAX_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">                           <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="ex">CALL</span> SHMEM_INT8_MAX_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">                           <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="ex">CALL</span> SHMEM_REAL4_MAX_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">                           <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="ex">CALL</span> SHMEM_REAL8_MAX_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">                           <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="ex">CALL</span> SHMEM_REAL16_MAX_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">                             <span class="ex">PE_size</span>, pWrk, pSync)</a></code></pre></div>
+<p>Performs a minimum-value reduction across a set of PEs. ## C/C++ Synopsis</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="ex">void</span> shmem_short_min_to_all(short *dest, const short *source, int nreduce,</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">                            <span class="ex">short</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="ex">void</span> shmem_int_min_to_all(int *dest, const int *source, int nreduce,</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">                            <span class="ex">int</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="ex">void</span> shmem_double_min_to_all(double *dest, const double *source, int nreduce,</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">                            <span class="ex">double</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="ex">void</span> shmem_float_min_to_all(float *dest, const float *source, int nreduce,</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">                            <span class="ex">float</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="ex">void</span> shmem_long_min_to_all(long *dest, const long *source, int nreduce,</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">                           <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">                           <span class="ex">long</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="ex">void</span> shmem_longdouble_min_to_all(long double *dest, const long double *source,</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">                                 <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">                                 <span class="ex">int</span> PE_size, long double *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="ex">void</span> shmem_longlong_min_to_all(long long *dest, const long long *source,</a>
+<a class="sourceLine" id="cb6-20" data-line-number="20">                               <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb6-21" data-line-number="21">                               <span class="ex">int</span> PE_size, long long *pWrk, long *pSync);</a></code></pre></div>
+<h2 id="deprecated-fortran-synopsis-2">Deprecated Fortran Synopsis</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="ex">CALL</span> SHMEM_INT4_MIN_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">                           <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="ex">CALL</span> SHMEM_INT8_MIN_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">                           <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="ex">CALL</span> SHMEM_REAL4_MIN_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">                           <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="ex">CALL</span> SHMEM_REAL8_MIN_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">                           <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="ex">CALL</span> SHMEM_REAL16_MIN_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">                           <span class="ex">PE_size</span>, pWrk, pSync)</a></code></pre></div>
+<p>Performs a sum reduction across a set of PEs. ## C/C++ Synopsis</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="ex">void</span> shmem_complexd_sum_to_all(double _Complex *dest,</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">                               <span class="ex">const</span> double _Complex *source, int nreduce,</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">                               <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">                               <span class="ex">double</span> _Complex *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="ex">void</span> shmem_complexf_sum_to_all(float _Complex *dest,</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">                               <span class="ex">const</span> float _Complex *source, int nreduce,</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">                               <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">                               <span class="ex">float</span> _Complex *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="ex">void</span> shmem_short_sum_to_all(short *dest, const short *source, int nreduce,</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">                            <span class="ex">short</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="ex">void</span> shmem_int_sum_to_all(int *dest, const int *source, int nreduce,</a>
+<a class="sourceLine" id="cb8-13" data-line-number="13">                          <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb8-14" data-line-number="14">                          <span class="ex">int</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="ex">void</span> shmem_double_sum_to_all(double *dest, const double *source, int nreduce,</a>
+<a class="sourceLine" id="cb8-16" data-line-number="16">                             <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb8-17" data-line-number="17">                             <span class="ex">double</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="ex">void</span> shmem_float_sum_to_all(float *dest, const float *source, int nreduce,</a>
+<a class="sourceLine" id="cb8-19" data-line-number="19">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb8-20" data-line-number="20">                            <span class="ex">float</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb8-21" data-line-number="21"><span class="ex">void</span> shmem_long_sum_to_all(long *dest, const long *source, int nreduce,</a>
+<a class="sourceLine" id="cb8-22" data-line-number="22">                          <span class="ex">int</span> PE_start, int logPE_stride,int PE_size,</a>
+<a class="sourceLine" id="cb8-23" data-line-number="23">                          <span class="ex">long</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb8-24" data-line-number="24"><span class="ex">void</span> shmem_longdouble_sum_to_all(long double *dest, const long double *source,</a>
+<a class="sourceLine" id="cb8-25" data-line-number="25">                                 <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb8-26" data-line-number="26">                                 <span class="ex">int</span> PE_size, long double *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb8-27" data-line-number="27"><span class="ex">void</span> shmem_longlong_sum_to_all(long long *dest, const long long *source,</a>
+<a class="sourceLine" id="cb8-28" data-line-number="28">                               <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb8-29" data-line-number="29">                               <span class="ex">int</span> PE_size, long long *pWrk, long *pSync);</a></code></pre></div>
+<h2 id="deprecated-fortran-synopsis-3">Deprecated Fortran Synopsis</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="ex">CALL</span> SHMEM_COMP4_SUM_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">                            <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="ex">CALL</span> SHMEM_COMP8_SUM_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">                            <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="ex">CALL</span> SHMEM_INT4_SUM_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">                            <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="ex">CALL</span> SHMEM_INT8_SUM_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">                            <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="ex">CALL</span> SHMEM_REAL4_SUM_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">                            <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="ex">CALL</span> SHMEM_REAL8_SUM_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">                            <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="ex">CALL</span> SHMEM_REAL16_SUM_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb9-14" data-line-number="14">                            <span class="ex">PE_size</span>, pWrk, pSync)</a></code></pre></div>
+<p>Performs a product reduction across a set of PEs. ## C/C++ Synopsis</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="ex">void</span> shmem_complexd_prod_to_all(double _Complex *dest,</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">                                <span class="ex">const</span> double _Complex *source, int nreduce,</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">                                <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">                                <span class="ex">double</span> _Complex *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="ex">void</span> shmem_complexf_prod_to_all(float _Complex *dest,</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">                                <span class="ex">const</span> float _Complex *source, int nreduce,</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">                                <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">                                <span class="ex">float</span> _Complex *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="ex">void</span> shmem_short_prod_to_all(short *dest, const short *source, int nreduce,</a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">                             <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">                             <span class="ex">short</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="ex">void</span> shmem_int_prod_to_all(int *dest, const int *source, int nreduce,</a>
+<a class="sourceLine" id="cb10-13" data-line-number="13">                           <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">                           <span class="ex">int</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="ex">void</span> shmem_double_prod_to_all(double *dest, const double *source, int nreduce,</a>
+<a class="sourceLine" id="cb10-16" data-line-number="16">                              <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb10-17" data-line-number="17">                              <span class="ex">double</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="ex">void</span> shmem_float_prod_to_all(float *dest, const float *source, int nreduce,</a>
+<a class="sourceLine" id="cb10-19" data-line-number="19">                             <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb10-20" data-line-number="20">                             <span class="ex">float</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="ex">void</span> shmem_long_prod_to_all(long *dest, const long *source, int nreduce,</a>
+<a class="sourceLine" id="cb10-22" data-line-number="22">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb10-23" data-line-number="23">                            <span class="ex">long</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="ex">void</span> shmem_longdouble_prod_to_all(long double *dest, const long double *source,</a>
+<a class="sourceLine" id="cb10-25" data-line-number="25">                                  <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb10-26" data-line-number="26">                                  <span class="ex">int</span> PE_size, long double *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb10-27" data-line-number="27"><span class="ex">void</span> shmem_longlong_prod_to_all(long long *dest, const long long *source,</a>
+<a class="sourceLine" id="cb10-28" data-line-number="28">                                <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb10-29" data-line-number="29">                                <span class="ex">int</span> PE_size, long long *pWrk, long *pSync);</a></code></pre></div>
+<h2 id="deprecated-fortran-synopsis-4">Deprecated Fortran Synopsis</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="ex">CALL</span> SHMEM_COMP4_PROD_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">                             <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="ex">CALL</span> SHMEM_COMP8_PROD_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">                             <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="ex">CALL</span> SHMEM_INT4_PROD_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">                             <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="ex">CALL</span> SHMEM_INT8_PROD_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">                             <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="ex">CALL</span> SHMEM_REAL4_PROD_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">                             <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="ex">CALL</span> SHMEM_REAL8_PROD_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb11-12" data-line-number="12">                             <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="ex">CALL</span> SHMEM_REAL16_PROD_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb11-14" data-line-number="14">                             <span class="ex">PE_size</span>, pWrk, pSync)</a></code></pre></div>
+<p>Performs a bitwise OR reduction across a set of PEs. ## C/C++ Synopsis</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="ex">void</span> shmem_short_or_to_all(short *dest, const short *source, int nreduce,</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">                           <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">                           <span class="ex">short</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="ex">void</span> shmem_int_or_to_all(int *dest, const int *source, int nreduce,</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">                         <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">                         <span class="ex">int</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="ex">void</span> shmem_long_or_to_all(long *dest, const long *source, int nreduce,</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">                          <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">                          <span class="ex">long</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="ex">void</span> shmem_longlong_or_to_all(long long *dest, const long long *source,</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11">                              <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12">                              <span class="ex">int</span> PE_size, long long *pWrk, long *pSync);</a></code></pre></div>
+<h2 id="deprecated-fortran-synopsis-5">Deprecated Fortran Synopsis</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="ex">CALL</span> SHMEM_INT4_OR_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">                          <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="ex">CALL</span> SHMEM_INT8_OR_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">                          <span class="ex">PE_size</span>, pWrk, pSync)</a></code></pre></div>
+<p>Performs a bitwise exclusive OR (XOR) reduction across a set of PEs. ## C/C++ Synopsis</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="ex">void</span> shmem_short_xor_to_all(short *dest, const short *source, int nreduce,</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">                            <span class="ex">short</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="ex">void</span> shmem_int_xor_to_all(int *dest, const int *source, int nreduce,</a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">                            <span class="ex">int</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="ex">void</span> shmem_long_xor_to_all(long *dest, const long *source, int nreduce,</a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">                            <span class="ex">int</span> PE_start, int logPE_stride, int PE_size,</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">                            <span class="ex">long</span> *pWrk, long *pSync);</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="ex">void</span> shmem_longlong_xor_to_all(long long *dest, const long long *source,</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">                            <span class="ex">int</span> nreduce, int PE_start, int logPE_stride,</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">                            <span class="ex">int</span> PE_size, long long *pWrk, long *pSync);</a></code></pre></div>
+<h2 id="deprecated-fortran-synopsis-6">Deprecated Fortran Synopsis</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="ex">CALL</span> SHMEM_INT4_XOR_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">                           <span class="ex">PE_size</span>, pWrk, pSync)</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="ex">CALL</span> SHMEM_INT8_XOR_TO_ALL(dest, source, nreduce, PE_start, logPE_stride,</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">                           <span class="ex">PE_size</span>, pWrk, pSync)</a></code></pre></div>
+<h1 id="arguments">Arguments</h1>
+<pre><code>dest        A symmetric array, of length nreduce elements, to receive the
+            result of the reduction routines.  The data type of dest varies
+            with the version of the reduction routine being called.  When
+            calling from C/C++, refer to the SYNOPSIS section for data type
+            information.
+source      A symmetric array, of length nreduce elements, that contains one
+            element for each separate reduction routine.  The source
+            argument must have the same data type as dest.
+nreduce     The number of elements in the dest and source arrays. nreduce
+            must be of type integer.  When using Fortran, it must be a
+            default integer value.
+PE_start    The lowest PE number of the active set of PEs.  PE_start must be
+            of type integer.  When using Fortran, it must be a default
+            integer value.
+logPE_stride    The log (base 2) of the stride between consecutive PE
+            numbers in the active set.  logPE_stride must be of type integer.
+            When using Fortran, it must be a default integer value.
+PE_size     The number of PEs in the active set. PE_size must be of type
+            integer.  When using Fortran, it must be a default integer value.
+pWrk        A symmetric work array of size at least
+            max(nreduce/2 + 1, SHMEM_REDUCE_MIN_WRKDATA_SIZE)
+            elements.
+pSync       A symmetric work array of size SHMEM_REDUCE_SYNC_SIZE.
+            In  C/C++, pSync must be an array of elements of type long.
+            In Fortran, pSync must be an array of elements of default integer
+            type. Every element of this array must be initialized with the value
+            SHMEM_SYNC_VALUE before any of the PEs in the active set enter the
+            routine.</code></pre>
+<h1 id="description">Description</h1>
+<pre><code>OpenSHMEM reduction routines compute one or more reductions across symmetric
+arrays on multiple PEs.  A reduction performs an associative binary routine
+across a set of values.
+
+The nreduce argument determines the number of separate reductions to
+perform.  The source array on all PEs in the active set provides one
+element for each reduction.  The results of the reductions are placed in the
+dest array on all PEs in the active set.  The active set is defined
+by the PE_start, logPE_stride, PE_size triplet.
+
+The source and dest arrays may be the same array, but they may not be
+overlapping arrays.
+
+As with all OpenSHMEM collective routines, each of these routines assumes
+that only PEs in the active set call the routine.  If a PE not in
+the active set calls an OpenSHMEM collective routine, the behavior is undefined.
+
+The values of arguments nreduce, PE_start, logPE_stride, and PE_size must be
+equal on all PEs in the active set. The same dest and source arrays, and the
+same pWrk and pSync work arrays, must be passed to all PEs in the active set.
+
+Before any PE calls a reduction routine, the following conditions must be ensured:
+1. The pWrk and pSync arrays on all PEs in the active set are not still in
+use from a prior call to a collective OpenSHMEM routine.
+2. The dest array on all PEs in the active set is ready to accept the results
+of the reduction.
+Otherwise, the behavior is undefined.
+
+Upon return from a reduction routine, the following are true for the local
+PE: The dest array is updated and the &quot;source&quot; array may be safely reused.
+The values in the pSync array are restored to the original values.
+
+The complex-typed interfaces are only provided for sum and product reductions.
+When the C translation environment does not support complex types
+That is, under C language standards prior to C99 or under C11
+when __STDC_NO_COMPLEX__ is defined to 1, an OpenSHMEM implementation is not
+required to provide support for these complex-typed interfaces.
+
+
+
+When calling from Fortran, the dest date types are as follows:
+|        Routine        |                    Data type of dest                         |
+|-----------------------|--------------------------------------------------------------|
+|shmem_int8_and_to_all  |Integer, with an element size of 8 bytes.                     |
+|shmem_int4_and_to_all  |Integer, with an element size of 4 bytes.                     |
+|shmem_comp8_max_to_all |Complex, with an element size equal to two 8-byte real values.|
+|shmem_int4_max_to_all  |Integer, with an element size of 4 bytes.                     |
+|shmem_int8_max_to_all  |Integer, with an element size of 8 bytes.                     |
+|shmem_real4_max_to_all |Real, with an element size of 4 bytes.                        |
+|shmem_real16_max_to_all|Real, with an element size of 16 bytes.                       |
+|shmem_int4_min_to_all  |Integer, with an element size of 4 bytes.                     |
+|shmem_int8_min_to_all  |Integer, with an element size of 8 bytes.                     |
+|shmem_real4_min_to_all |Real, with an element size of 4 bytes.                        |
+|shmem_real8_min_to_all |Real, with an element size of 8 bytes.                        |
+|shmem_real16_min_to_all|Real,with an element size of 16 bytes.                        |
+|shmem_comp4_sum_to_all |Complex, with an element size equal to two 4-byte real values.|
+|shmem_comp8_sum_to_all |Complex, with an element size equal to two 8-byte real values.|
+|shmem_int4_sum_to_all  |Integer, with an element size of 4 bytes.                     |
+|shmem_int8_sum_to_all  |Integer, with an element size of 8 bytes.                     |
+|shmem_real4_sum_to_all |Real, with an element size of 4 bytes.                        |
+|shmem_real8_sum_to_all |Real, with an element size of 8 bytes.                        |
+|shmem_real16_sum_to_all|Real, with an element size of 16 bytes.                       |
+|shmem_comp4_prod_to_all|Complex, with an element size equal to two 4-byte real values.|
+|shmem_comp8_prod_to_all|Complex, with an element size equal to two 8-byte real values.|
+|shmem_int4_prod_to_all |Integer, with an element size of 4 bytes.                     |
+|shmem_int8_prod_to_all |Integer, with an element size of 8 bytes.                     |
+|shmem_real4_prod_to_all|Real, with an element size of 4 bytes.                        |
+|shmem_real8_prod_to_all|Real, with an element size of 8 bytes.                        |
+|shmem_real16_prod_to_al|Real, with an element size of 16 bytes.                       |
+|shmem_int8_or_to_all   |Integer, with an element size of 8 bytes.                     |
+|shmem_int4_or_to_all   |Integer, with an element size of 4 bytes.                     |
+|shmem_int8_xor_to_all  |Integer, with an element size of 8 bytes.                     |
+|shmem_int4_xor_to_all  |Integer, with an element size of 4 bytes.                     |</code></pre>
+<h1 id="return-values">Return Values</h1>
+<pre><code>None.</code></pre>
+<h1 id="notes">Notes</h1>
+<pre><code>All OpenSHMEM reduction routines reset the values in pSync before they
+return, so a particular pSync buffer need only be initialized the first
+time it is used. The user must ensure that the pSync array is not being
+updated on any PE in the active set while any of the PEs participate in
+processing of an OpenSHMEM reduction routine. Be careful to avoid the
+following situations: If the pSync array is initialized at run time, some
+type of synchronization is needed to ensure that all PEs in the working set
+have initialized pSync before any of them enter an OpenSHMEM routine called
+with the pSync synchronization array. A pSync or pWrk array can be
+reused in a subsequent reduction routine call only if none of the PEs in
+the active set are still processing a prior reduction routine call that used
+the same pSync or pWrk arrays. In general, this can be assured only
+by doing some type of synchronization.</code></pre>
+<h1 id="examples">Examples</h1>
+<h2 id="fortran-example">Fortran Example</h2>
+<pre><code>This Fortran reduction example statically initializes the pSync array
+and finds the logical AND of the integer variable FOO across all
+even PEs.</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="ex">INCLUDE</span> <span class="st">&quot;shmem.fh&quot;</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="ex">INTEGER</span> PSYNC(SHMEM_REDUCE_SYNC_SIZE)</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="ex">DATA</span> PSYNC /SHMEM_REDUCE_SYNC_SIZE*SHMEM_SYNC_VALUE/</a>
+<a class="sourceLine" id="cb21-5" data-line-number="5"><span class="ex">PARAMETER</span> (NR=1)</a>
+<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="ex">INTEGER*4</span> PWRK(MAX(NR/2+1,SHMEM_REDUCE_MIN_WRKDATA_SIZE))</a>
+<a class="sourceLine" id="cb21-7" data-line-number="7"><span class="ex">INTEGER</span> FOO, FOOAND</a>
+<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="ex">SAVE</span> FOO, FOOAND, PWRK</a>
+<a class="sourceLine" id="cb21-9" data-line-number="9"><span class="ex">INTRINSIC</span> SHMEM_MY_PE()</a>
+<a class="sourceLine" id="cb21-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb21-11" data-line-number="11"><span class="ex">FOO</span> = SHMEM_MY_PE()</a>
+<a class="sourceLine" id="cb21-12" data-line-number="12"><span class="ex">IF</span> ( MOD(SHMEM_MY_PE() <span class="ex">.EQ.</span> 0) <span class="ex">THEN</span></a>
+<a class="sourceLine" id="cb21-13" data-line-number="13">    <span class="ex">IF</span> ( MOD(SHMEM_N_PES()<span class="kw">()</span>,<span class="ex">2</span>) <span class="ex">.EQ.</span> 0) <span class="ex">THEN</span></a>
+<a class="sourceLine" id="cb21-14" data-line-number="14">       <span class="ex">CALL</span> SHMEM_INT8_AND_TO_ALL(FOOAND, FOO, NR, 0, 1, NPES/2, <span class="kw">&amp;</span></a>
+<a class="sourceLine" id="cb21-15" data-line-number="15">     <span class="ex">PWRK</span>, PSYNC)</a>
+<a class="sourceLine" id="cb21-16" data-line-number="16">    <span class="ex">ELSE</span></a>
+<a class="sourceLine" id="cb21-17" data-line-number="17">       <span class="ex">CALL</span> SHMEM_INT8_AND_TO_ALL(FOOAND, FOO, NR, 0, 1, NPES/2+1, <span class="kw">&amp;</span></a>
+<a class="sourceLine" id="cb21-18" data-line-number="18">     <span class="ex">PWRK</span>, PSYNC)</a>
+<a class="sourceLine" id="cb21-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb21-20" data-line-number="20">    <span class="ex">ENDIF</span></a>
+<a class="sourceLine" id="cb21-21" data-line-number="21">    <span class="ex">PRINT*</span>,<span class="st">&#39;Result on PE &#39;</span>,SHMEM_MY_PE(),<span class="st">&#39; is &#39;</span>,<span class="ex">FOOAND</span></a>
+<a class="sourceLine" id="cb21-22" data-line-number="22"><span class="ex">ENDIF</span></a></code></pre></div>
+<pre><code>This Fortran example statically initializes the pSync array and finds
+the maximum value of real variable FOO across all even PEs.</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="ex">INCLUDE</span> <span class="st">&quot;shmem.fh&quot;</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="ex">INTEGER</span> PSYNC(SHMEM_REDUCE_SYNC_SIZE)</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="ex">DATA</span> PSYNC /SHMEM_REDUCE_SYNC_SIZE*SHMEM_SYNC_VALUE/</a>
+<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="ex">PARAMETER</span> (NR=1)</a>
+<a class="sourceLine" id="cb23-6" data-line-number="6"><span class="ex">REAL</span> FOO, FOOMAX, PWRK(MAX(NR/2+1,SHMEM_REDUCE_MIN_WRKDATA_SIZE))</a>
+<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="ex">COMMON</span> /COM/ FOO, FOOMAX, PWRK</a>
+<a class="sourceLine" id="cb23-8" data-line-number="8"><span class="ex">INTRINSIC</span> SHMEM_MY_PE()</a>
+<a class="sourceLine" id="cb23-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb23-10" data-line-number="10"><span class="ex">IF</span> ( MOD(SHMEM_MY_PE() <span class="ex">.EQ.</span> 0) <span class="ex">THEN</span></a>
+<a class="sourceLine" id="cb23-11" data-line-number="11">       <span class="ex">CALL</span> SHMEM_REAL8_MAX_TO_ALL(FOOMAX, FOO, NR, 0, 1, N<span class="va">$PES</span>/2,</a>
+<a class="sourceLine" id="cb23-12" data-line-number="12"><span class="kw">&amp;</span>    <span class="ex">PWRK</span>, PSYNC)</a>
+<a class="sourceLine" id="cb23-13" data-line-number="13">       <span class="ex">PRINT*</span>,<span class="st">&#39;Result on PE &#39;</span>,SHMEM_MY_PE(),<span class="st">&#39; is &#39;</span>,<span class="ex">FOOMAX</span></a>
+<a class="sourceLine" id="cb23-14" data-line-number="14"><span class="ex">ENDIF</span></a></code></pre></div>
+<pre><code>This Fortran example statically initializes the pSync array and finds
+the minimum value of real variable FOO across all the even PEs.</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="ex">INCLUDE</span> <span class="st">&quot;shmem.fh&quot;</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="ex">INTEGER</span> PSYNC(SHMEM_REDUCE_SYNC_SIZE)</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="ex">DATA</span> PSYNC /SHMEM_REDUCE_SYNC_SIZE*SHMEM_SYNC_VALUE/</a>
+<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="ex">PARAMETER</span> (NR=1)</a>
+<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="ex">REAL</span> FOO, FOOMIN, PWRK(MAX(NR/2+1,SHMEM_REDUCE_MIN_WRKDATA_SIZE))</a>
+<a class="sourceLine" id="cb25-7" data-line-number="7"><span class="ex">COMMON</span> /COM/ FOO, FOOMIN, PWRK</a>
+<a class="sourceLine" id="cb25-8" data-line-number="8"><span class="ex">INTRINSIC</span> SHMEM_MY_PE()</a>
+<a class="sourceLine" id="cb25-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb25-10" data-line-number="10"><span class="ex">IF</span> ( MOD(SHMEM_MY_PE() <span class="ex">.EQ.</span> 0) <span class="ex">THEN</span></a>
+<a class="sourceLine" id="cb25-11" data-line-number="11">       <span class="ex">CALL</span> SHMEM_REAL8_MIN_TO_ALL(FOOMIN, FOO, NR, 0, 1, N<span class="va">$PES</span>/2,</a>
+<a class="sourceLine" id="cb25-12" data-line-number="12"><span class="kw">&amp;</span>    <span class="ex">PWRK</span>, PSYNC)</a>
+<a class="sourceLine" id="cb25-13" data-line-number="13">       <span class="ex">PRINT*</span>,<span class="st">&#39;Result on PE &#39;</span>,SHMEM_MY_PE(),<span class="st">&#39; is &#39;</span>,<span class="ex">FOOMIN</span></a>
+<a class="sourceLine" id="cb25-14" data-line-number="14"><span class="ex">ENDIF</span></a></code></pre></div>
+<pre><code>This Fortran example statically initializes the pSync array and finds
+the sum of the real variable FOO across all even PEs.</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="ex">INCLUDE</span> <span class="st">&quot;shmem.fh&quot;</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="ex">INTEGER</span> PSYNC(SHMEM_REDUCE_SYNC_SIZE)</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="ex">DATA</span> PSYNC /SHMEM_REDUCE_SYNC_SIZE*SHMEM_SYNC_VALUE/</a>
+<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="ex">PARAMETER</span> (NR=1)</a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="ex">REAL</span> FOO, FOOSUM, PWRK(MAX(NR/2+1,SHMEM_REDUCE_MIN_WRKDATA_SIZE))</a>
+<a class="sourceLine" id="cb27-7" data-line-number="7"><span class="ex">COMMON</span> /COM/ FOO, FOOSUM, PWRK</a>
+<a class="sourceLine" id="cb27-8" data-line-number="8"><span class="ex">INTRINSIC</span> SHMEM_MY_PE()</a>
+<a class="sourceLine" id="cb27-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb27-10" data-line-number="10"><span class="ex">IF</span> ( MOD(SHMEM_MY_PE() <span class="ex">.EQ.</span> 0) <span class="ex">THEN</span></a>
+<a class="sourceLine" id="cb27-11" data-line-number="11">       <span class="ex">CALL</span> SHMEM_INT4_SUM_TO_ALL(FOOSUM, FOO, NR, 0, 1, N<span class="va">$PES</span>/2,</a>
+<a class="sourceLine" id="cb27-12" data-line-number="12"><span class="kw">&amp;</span>    <span class="ex">PWRK</span>, PSYNC)</a>
+<a class="sourceLine" id="cb27-13" data-line-number="13">       <span class="ex">PRINT*</span>,<span class="st">&#39;Result on PE &#39;</span>,SHMEM_MY_PE(),<span class="st">&#39; is &#39;</span>,<span class="ex">FOOSUM</span></a>
+<a class="sourceLine" id="cb27-14" data-line-number="14"><span class="ex">ENDIF</span></a></code></pre></div>
+<pre><code>This Fortran example statically initializes the pSync array and finds
+the product of the real variable FOO across all the even PEs.</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="ex">INCLUDE</span> <span class="st">&quot;shmem.fh&quot;</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="ex">INTEGER</span> PSYNC(SHMEM_REDUCE_SYNC_SIZE)</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="ex">DATA</span> PSYNC /SHMEM_REDUCE_SYNC_SIZE*SHMEM_SYNC_VALUE/</a>
+<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="ex">PARAMETER</span> (NR=1)</a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="ex">REAL</span> FOO, FOOPROD, PWRK(MAX(NR/2+1,SHMEM_REDUCE_MIN_WRKDATA_SIZE))</a>
+<a class="sourceLine" id="cb29-7" data-line-number="7"><span class="ex">COMMON</span> /COM/ FOO, FOOPROD, PWRK</a>
+<a class="sourceLine" id="cb29-8" data-line-number="8"><span class="ex">INTRINSIC</span> SHMEM_MY_PE()</a>
+<a class="sourceLine" id="cb29-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb29-10" data-line-number="10"><span class="ex">IF</span> ( MOD(SHMEM_MY_PE() <span class="ex">.EQ.</span> 0) <span class="ex">THEN</span></a>
+<a class="sourceLine" id="cb29-11" data-line-number="11">        <span class="ex">CALL</span> SHMEM_COMP8_PROD_TO_ALL(FOOPROD, FOO, NR, 0, 1, N<span class="va">$PES</span>/2,</a>
+<a class="sourceLine" id="cb29-12" data-line-number="12"><span class="kw">&amp;</span>    <span class="ex">PWRK</span>, PSYNC)</a>
+<a class="sourceLine" id="cb29-13" data-line-number="13">        <span class="ex">PRINT*</span>,<span class="st">&#39;Result on PE &#39;</span>,SHMEM_MY_PE(),<span class="st">&#39; is &#39;</span>,<span class="ex">FOOPROD</span></a>
+<a class="sourceLine" id="cb29-14" data-line-number="14"><span class="ex">ENDIF</span></a></code></pre></div>
+<pre><code>This Fortran example statically initializes the pSync array and finds
+the logical OR of the integer variable FOO across all even PEs.</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="ex">INCLUDE</span> <span class="st">&quot;shmem.fh&quot;</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="ex">INTEGER</span> PSYNC(SHMEM_REDUCE_SYNC_SIZE)</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="ex">DATA</span> PSYNC /SHMEM_REDUCE_SYNC_SIZE*SHMEM_SYNC_VALUE/</a>
+<a class="sourceLine" id="cb31-5" data-line-number="5"><span class="ex">PARAMETER</span> (NR=1)</a>
+<a class="sourceLine" id="cb31-6" data-line-number="6"><span class="ex">REAL</span> PWRK(MAX(NR/2+1,SHMEM_REDUCE_MIN_WRKDATA_SIZE))</a>
+<a class="sourceLine" id="cb31-7" data-line-number="7"><span class="ex">INTEGER</span> FOO, FOOOR</a>
+<a class="sourceLine" id="cb31-8" data-line-number="8"><span class="ex">COMMON</span> /COM/ FOO, FOOOR, PWRK</a>
+<a class="sourceLine" id="cb31-9" data-line-number="9"><span class="ex">INTRINSIC</span> SHMEM_MY_PE()</a>
+<a class="sourceLine" id="cb31-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb31-11" data-line-number="11"><span class="ex">IF</span> ( MOD(SHMEM_MY_PE() <span class="ex">.EQ.</span> 0) <span class="ex">THEN</span></a>
+<a class="sourceLine" id="cb31-12" data-line-number="12">        <span class="ex">CALL</span> SHMEM_INT8_OR_TO_ALL(FOOOR, FOO, NR, 0, 1, N<span class="va">$PES</span>/2,</a>
+<a class="sourceLine" id="cb31-13" data-line-number="13"><span class="kw">&amp;</span>    <span class="ex">PWRK</span>, PSYNC)</a>
+<a class="sourceLine" id="cb31-14" data-line-number="14">        <span class="ex">PRINT*</span>,<span class="st">&#39;Result on PE &#39;</span>,SHMEM_MY_PE(),<span class="st">&#39; is &#39;</span>,<span class="ex">FOOOR</span></a>
+<a class="sourceLine" id="cb31-15" data-line-number="15"><span class="ex">ENDIF</span></a></code></pre></div>
+<pre><code>This Fortran example statically initializes the pSync array and
+computes the exclusive XOR of variable FOO across all even
+PEs.</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="ex">INCLUDE</span> <span class="st">&quot;shmem.fh&quot;</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="ex">INTEGER</span> PSYNC(SHMEM_REDUCE_SYNC_SIZE)</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="ex">DATA</span> PSYNC /SHMEM_REDUCE_SYNC_SIZE*SHMEM_SYNC_VALUE/</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5"><span class="ex">PARAMETER</span> (NR=1)</a>
+<a class="sourceLine" id="cb33-6" data-line-number="6"><span class="ex">REAL</span> FOO, FOOXOR, PWRK(MAX(NR/2+1,SHMEM_REDUCE_MIN_WRKDATA_SIZE))</a>
+<a class="sourceLine" id="cb33-7" data-line-number="7"><span class="ex">COMMON</span> /COM/ FOO, FOOXOR, PWRK</a>
+<a class="sourceLine" id="cb33-8" data-line-number="8"><span class="ex">INTRINSIC</span> SHMEM_MY_PE()</a>
+<a class="sourceLine" id="cb33-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb33-10" data-line-number="10"><span class="ex">IF</span> ( MOD(SHMEM_MY_PE() <span class="ex">.EQ.</span> 0) <span class="ex">THEN</span></a>
+<a class="sourceLine" id="cb33-11" data-line-number="11">       <span class="ex">CALL</span> SHMEM_REAL8_XOR_TO_ALL(FOOXOR, FOO, NR, 0, 1, N<span class="va">$PES</span>/2,</a>
+<a class="sourceLine" id="cb33-12" data-line-number="12"><span class="kw">&amp;</span>    <span class="ex">PWRK</span>, PSYNC)</a>
+<a class="sourceLine" id="cb33-13" data-line-number="13">       <span class="ex">PRINT*</span>,<span class="st">&#39;Result on PE &#39;</span>,SHMEM_MY_PE(),<span class="st">&#39; is &#39;</span>,<span class="ex">FOOXOR</span></a>
+<a class="sourceLine" id="cb33-14" data-line-number="14"><span class="ex">ENDIF</span></a></code></pre></div>
+<h1><a href="../main.html">Index</a></h1></body>
+</html>

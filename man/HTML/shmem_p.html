@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>shmem_p</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body><h1><a href="../main.html">Index</a></h1>
+<h1 id="summary">Summary</h1>
+<pre><code>Copies one data item to a remote PE.</code></pre>
+<h1 id="definitions">Definitions</h1>
+<h2 id="c11-synopsis">C11 Synopsis</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="ex">void</span> shmem_p(TYPE *dest, TYPE value, int pe);</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="ex">void</span> shmem_p(shmem_ctx_t ctx, TYPE *dest, TYPE value, int pe);</a></code></pre></div>
+<p>where TYPE is one of the standard RMA types specified by Table:1</p>
+<h2 id="cc-synopsis">C/C++ Synopsis</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">void</span> shmem_TYPENAME_p(TYPE *dest, TYPE value, int pe);</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="ex">void</span> shmem_ctx_TYPENAME_p(shmem_ctx_t ctx, TYPE *dest, TYPE value, int pe);</a></code></pre></div>
+<p>where TYPE is one of the standard RMA types and has a corresponding TYPENAME specified by Table:1</p>
+<h1 id="datatype-reference-table">Datatype Reference Table</h1>
+<h2 id="table1">Table:1</h2>
+<pre><code>  |           TYPE          |      TYPENAME       |
+  |-------------------------|---------------------|
+  |   float                 |     float           |
+  |   double                |     double          |
+  |   long double           |     longdouble      |
+  |   char                  |     char            |
+  |   signed char           |     schar           |
+  |   short                 |     short           |
+  |   int                   |     int             |
+  |   long                  |     long            |
+  |   long long             |     longlong        |
+  |   unsigned char         |     uchar           |
+  |   unsigned short        |     ushort          |
+  |   unsigned int          |     uint            |
+  |   unsigned long         |     ulong           |
+  |   unsigned long long    |     ulonglong       |
+  |   int8_t                |     int8            |
+  |   int16_t               |     int16           |
+  |   int32_t               |     int32           |
+  |   int64_t               |     int64           |
+  |   uint8_t               |     uint8           |
+  |   uint16_t              |     uint16          |
+  |   uint32_t              |     uint32          |
+  |   uint64_t              |     uint64          |
+  |   size_t                |     size            |
+  |   ptrdiff_t             |     ptrdiff         |</code></pre>
+<h1 id="arguments">Arguments</h1>
+<pre><code>ctx   The context on which to perform the operation. When this argument is
+      not provided, the operation is performed on SHMEM_CTX_DEFAULT.
+dest  The remotely accessible array element or scalar data object
+      which will receive the data on the remote PE.
+value The value to be transferred to dest on the remote PE.
+pe    The number of the remote PE.</code></pre>
+<h1 id="description">Description</h1>
+<pre><code>These routines provide a very low latency put capability for single elements
+of most basic types.
+
+As with shmem_put, these routines start the remote transfer and may return
+before the data is delivered to the remote PE.  Use shmem_quiet to force
+completion of all remote PUT transfers.</code></pre>
+<h1 id="return-values">Return Values</h1>
+<pre><code>None.</code></pre>
+<h1 id="notes">Notes</h1>
+<pre><code>None.</code></pre>
+<h1 id="examples">Examples</h1>
+<h2 id="cc-example">C/C++ Example</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">#include &lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#include &lt;math.h&gt;</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#include &lt;shmem.h&gt;</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="ex">int</span> main(void)</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="kw">{</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">   <span class="ex">const</span> double e = 2.71828182<span class="kw">;</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">   <span class="ex">const</span> double epsilon = 0.00000001<span class="kw">;</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">   <span class="ex">static</span> double f = 3.1415927<span class="kw">;</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">   <span class="fu">shmem_init()</span>;</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11">   <span class="ex">int</span> me = shmem_my_pe();</a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">   <span class="kw">if</span> <span class="kw">(</span><span class="ex">me</span> == 0<span class="kw">)</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13">      <span class="ex">shmem_p</span>(<span class="kw">&amp;</span><span class="ex">f</span>, e, 1);</a>
+<a class="sourceLine" id="cb9-14" data-line-number="14">   <span class="fu">shmem_barrier_all()</span>;</a>
+<a class="sourceLine" id="cb9-15" data-line-number="15">   <span class="kw">if</span> <span class="kw">(</span><span class="ex">me</span> == 1<span class="kw">)</span></a>
+<a class="sourceLine" id="cb9-16" data-line-number="16">      <span class="bu">printf</span>(<span class="st">&quot;%s\n&quot;</span>, (fabs(f - e) <span class="op">&lt;</span> <span class="ex">epsilon</span>) <span class="ex">?</span> <span class="st">&quot;OK&quot;</span> : <span class="st">&quot;FAIL&quot;</span>);</a>
+<a class="sourceLine" id="cb9-17" data-line-number="17">   <span class="fu">shmem_finalize()</span>;</a>
+<a class="sourceLine" id="cb9-18" data-line-number="18">   <span class="bu">return</span> 0<span class="kw">;</span></a>
+<a class="sourceLine" id="cb9-19" data-line-number="19"><span class="kw">}</span></a></code></pre></div>
+<h1><a href="../main.html">Index</a></h1></body>
+</html>
