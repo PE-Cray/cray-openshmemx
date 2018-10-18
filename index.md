@@ -41,19 +41,14 @@ version (version-8.0.0) can be accessed [here](man/main.html).
 
 ## Publications/Reference
 The proper citation of Cray OpenSHMEMX is:
-Naveen Namashivayam, Bob Cernohous, Dan Pou, and Mark Pagel, "OpenSHMEM 2018:
-Fifth Workshop on OpenSHMEM and Related Technologies." Baltimore, MD, August,
-2018. "Introducing Cray OpenSHMEMX - A Modular Multi-Communication Layer
-OpenSHMEM Implementation."
+Naveen Namashivayam, Bob Cernohous, Dan Pou, and Mark Pagel, "OpenSHMEM 2018: Fifth Workshop on OpenSHMEM and Related Technologies." Baltimore, MD, August, 2018. "Introducing Cray OpenSHMEMX - A Modular Multi-Communication Layer OpenSHMEM Implementation."
 
 The corresponding Bibtex is:
 ```
 @inproceedings{Naveen:OpenSHMEM:2018:CrayOpenSHMEMX,
     author = {Naveen Namashivayam and Bob Cernohous and Dan Pou and Mark Pagel},
-    title  = {{Introducing Cray OpenSHMEMX - A Modular Multi-Communication Layer
-             OpenSHMEM Implementation}},
-    booktitle = {OpenSHMEM 2018: Fifth Workshop on OpenSHMEM and Related
-             Technologies},
+    title  = {{Introducing Cray OpenSHMEMX - A Modular Multi-Communication Layer OpenSHMEM Implementation}},
+    booktitle = {OpenSHMEM 2018: Fifth Workshop on OpenSHMEM and Related Technologies},
     month = Aug,
     year = {2018},
     location = {Baltimore, MD, USA},
