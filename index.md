@@ -17,28 +17,48 @@ systems is called Cray OpenSHMEMX.
 
 <p align="justify">
 This repository contains public announcement information about the Cray OpenSHMEMX
-software stack including release information, updated manpages, performance 
-optimization and tuning parameters, supported environments and systems, and general 
+software stack including release information, updated manpages, performance
+optimization and tuning parameters, supported environments and systems, and general
 backward compatibility details.
 </p>
 
 ## Supported Platforms
 Cray OpenSHMEMX is supported on both X86_64 and AARCH64 based Cray XC systems.
 
-1. On X86_64 systems, Cray SHMEM is still the production-ready 
-implementation 
-Cray OpenSHMEMX is released as a separate product from Cray SHMEM with plans 
-to supersede the existing Cray SHMEM library in near future. Early access to 
-Cray OpenSHMEMX library is provided for users to start migrating their existing 
+1. On X86_64 systems, Cray SHMEM is still the production-ready
+implementation
+Cray OpenSHMEMX is released as a separate product from Cray SHMEM with plans
+to supersede the existing Cray SHMEM library in near future. Early access to
+Cray OpenSHMEMX library is provided for users to start migrating their existing
 applications to the new library.
 
-2. On AARCH64 systems, Cray OpenSHMEMX is the only available 
+2. On AARCH64 systems, Cray OpenSHMEMX is the only available
 and supported SHMEM implementation by Cray Inc.
-
 
 ## Manpage
 Recent updated manpage corresponding to the latest released
 version (version-8.0.0) can be accessed [here](man/main.html).
+
+## Publications/Reference
+The proper citation of Cray OpenSHMEMX is:
+Naveen Namashivayam, Bob Cernohous, Dan Pou, and Mark Pagel, "OpenSHMEM 2018:
+Fifth Workshop on OpenSHMEM and Related Technologies." Baltimore, MD, August,
+2018. "Introducing Cray OpenSHMEMX - A Modular Multi-Communication Layer
+OpenSHMEM Implementation."
+
+The corresponding Bibtex is:
+```
+@inproceedings{Naveen:OpenSHMEM:2018:CrayOpenSHMEMX,
+    author = {Naveen Namashivayam and Bob Cernohous and Dan Pou and Mark Pagel},
+    title  = {{Introducing Cray OpenSHMEMX - A Modular Multi-Communication Layer
+             OpenSHMEM Implementation}},
+    booktitle = {OpenSHMEM 2018: Fifth Workshop on OpenSHMEM and Related
+             Technologies},
+    month = Aug,
+    year = {2018},
+    location = {Baltimore, MD, USA},
+}
+```
 
 ## Release Information
 1. [Cray OpenSHMEMX - version 8.0.0](#version-8.0.0)
@@ -88,17 +108,17 @@ The following features are released with Cray OpenSHMEMX 8.0.1:
 
 1. Support for Cray Thread-hot (THS) and OpenSHMEM communication contexts
 (CTX). In Cray OpenSHMEMX version 8.0.0, THS and CTX are two mutually
-exclusive features. From 8.0.1 THS and CTX can be used together in the same 
-OpenSHMEM application. Please refer to "[Updating Cray Thread-Hot Semantics 
-for OpenSHMEM v1.4](https://pe-cray.github.io/whitepapers/)" for 
+exclusive features. From 8.0.1 THS and CTX can be used together in the same
+OpenSHMEM application. Please refer to "[Updating Cray Thread-Hot Semantics
+for OpenSHMEM v1.4](https://pe-cray.github.io/whitepapers/)" for
 more information on using THS and CTX features together.
 
 2. Support for different CLE operating system releases. By default, Cray
 OpenSHMEMX is supported in CLE 6.0 UP05 and above systems. To use Cray
 OpenSHMEMX on older CLE systems adding -cray-openshmemx-ctx compiler flag
 will automatically select the appropriate library. See the intro_shmem(3)
-man page and "[Cray OpenSHMEMX (SMP-DMAPP) on Different CLE 
-Versions](https://pe-cray.github.io/whitepapers/)" whitepaper for more 
+man page and "[Cray OpenSHMEMX (SMP-DMAPP) on Different CLE
+Versions](https://pe-cray.github.io/whitepapers/)" whitepaper for more
 information on usage details.
 
 3. Multiple performance issues are fixed in 8.0.1 from version 8.0.0
