@@ -17,8 +17,8 @@ systems is called Cray OpenSHMEMX.
 
 <p align="justify">
 This repository contains public announcement information about the Cray OpenSHMEMX
-software stack including release information, updated manpages, performance 
-optimization and tuning parameters, supported environments and systems, and general 
+software stack including release information, updated manpages, performance
+optimization and tuning parameters, supported environments and systems, and general
 backward compatibility details.
 </p>
 
@@ -31,13 +31,28 @@ to supersede the existing Cray SHMEM library in near future. Early access to
 Cray OpenSHMEMX library is provided for users to start migrating their existing 
 applications to the new library.
 
-2. On AARCH64 systems, Cray OpenSHMEMX is the only available 
+2. On AARCH64 systems, Cray OpenSHMEMX is the only available
 and supported SHMEM implementation by Cray Inc.
-
 
 ## Manpage
 Recent updated manpage corresponding to the latest released
 version (version-9.0.0) can be accessed [here](man/main.html).
+
+## Publications/Reference
+The proper citation of Cray OpenSHMEMX is:
+Naveen Namashivayam, Bob Cernohous, Dan Pou, and Mark Pagel, "OpenSHMEM 2018: Fifth Workshop on OpenSHMEM and Related Technologies." Baltimore, MD, August, 2018. "Introducing Cray OpenSHMEMX - A Modular Multi-Communication Layer OpenSHMEM Implementation."
+
+The corresponding Bibtex is:
+```
+@inproceedings{naveen:openshmem:2018:crayopenshmemx,
+    author = {Naveen Namashivayam and Bob Cernohous and Dan Pou and Mark Pagel},
+    title  = {Introducing Cray OpenSHMEMX - A Modular Multi-Communication Layer OpenSHMEM Implementation},
+    booktitle = {OpenSHMEM 2018: Fifth Workshop on OpenSHMEM and Related Technologies},
+    month = Aug,
+    year = {2018},
+    location = {Baltimore, MD, USA},
+}
+```
 
 ## Release Information
 1. [Cray OpenSHMEMX - version 8.0.0](#version-8.0.0)
