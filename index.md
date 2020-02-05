@@ -164,8 +164,3 @@ breaking compatibility forms the reason for updating the minor version.
 Release (C): Last integer in the version string, typically denotes a bug-fix
 without end-user obervable change.
 
-Identifier (D): Again a numerical string to denote the build number for internal
-development and test release. Usually this is not released to the users, all
-user visible version identifiers are zero indexed. Any other identifier shared
-with users are temporary releases and should be replaced by the next available
-release.
