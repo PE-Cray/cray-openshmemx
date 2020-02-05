@@ -273,6 +273,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code> Refer to shmem_multithreading(3) man page for more information on the
  interacting with OpenSHMEM multithreading features, communication context
  and Cray-specific thread-hot features</code></pre>
+<h2 id="cray-openshmemx-locality-awareness">Cray OpenSHMEMX Locality Awareness</h2>
+<pre><code> With Cray OpenSHMEMX version 9.0.0, we have support for locality awareness.
+ On previous versions, we initialized both the network transport options 
+ (DMAPP) and on-node transport (XPMEM) options even on a single-node job. 
+ We used environment variables like SHMEM_USE_SMP to toggle the use of 
+ on-node data transfers.
+
+ With Cray OpenSHMEMX version 9.0.0, on single-node jobs only on-node
+ transport (XPMEM) options are initialized. Users can toggle the usage using
+ the following environment variable options: SHMEM_LOCALITY_ONNODE and
+ SHMEM_LOCALITY_OFFNODE. Please refer these environment variables in the
+ the following section, for more information.
+
+ Cray OpenSHMEMX/9.0.0 breaks compatibility with Cray OpenSHMEMX/8.0.1 and
+ other previous versions, as the support for SHMEM_USE_SMP is discontinued.</code></pre>
 <h1 id="environment-variables">Environment Variables</h1>
 <pre><code> The following environment variables affect SHMEM behavior.</code></pre>
 <h2 id="openshmem-standard-specific-environment-variables">OpenSHMEM Standard Specific Environment Variables</h2>
@@ -686,7 +701,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
            per PE in the node. Number of available network resource depends
            on the total number of PEs per node.</code></pre>
 <h2 id="cray-openshmemx---smp-communication-layer-specific-environment-variables">Cray OpenSHMEMX - SMP Communication Layer Specific Environment Variables</h2>
-<pre><code> SHMEM_SMP_SIZE_LIMIT
+<pre><code>SHMEM_LOCALITY_ONNODE
+           Enables or disable on-node SMP copies via XPMEM. This variable
+           is enabled by default if there are more than one PEs per node
+           and the system supports XPMEM transport. 
+
+           Default: 0/1 (enabled/disabled) based on the job configuration
+
+SHMEM_LOCALITY_OFFNODE
+           Enables or disables using off-node network data transfers. This
+           variable is enabled by default, if the PEs span across multiple
+           nodes.
+
+           Default: 0/1 (enabled/disabled) based on the job configuration
+
+ SHMEM_SMP_SIZE_LIMIT
            Sets the maximum size in bytes for on-node SMP copies via
            XPMEM. If set to zero, on-node copy is disabled and all
            traffic is routed through DMAPP (the GNI network). If set to
@@ -701,6 +730,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
            Default: -1 (unlimited)
 
  SHMEM_USE_SMP
+           Support for this environment variable is discontinued. Please
+           refer to SHMEM_LOCALITY_ONNODE and SHMEM_LOCALITY_OFFNODE to
+           achieve similar functionality.
+           
            Enables or disable on-node SMP copies via XPMEM. If disabled,
            on-node copy is disabled and all traffic is routed through the
            network.
