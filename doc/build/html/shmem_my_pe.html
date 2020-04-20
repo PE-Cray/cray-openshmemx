@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>shmem_my_pe &mdash; Cray OpenSHMEMX 10.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="shmem_n_pes" href="shmem_n_pes.html" />
+    <link rel="prev" title="shmem_global_exit" href="shmem_global_exit.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Cray OpenSHMEMX
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#description">Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#openshmem-compliance">OpenSHMEM Compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#different-available-transport-layers">Different Available Transport Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#whitepapers">Whitepapers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#openshmem-c11-generic-interfaces">OpenSHMEM C11-Generic Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#compiling-and-launching-a-shmem-application-on-a-cray-system">Compiling and Launching a SHMEM Application on a Cray System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#general-notes">General Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_mem_manage.html">Managing Memory in Cray OpenSHMEMX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_multithreading.html">Multithreading in Cray OpenSHMEMX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_addr_accessible.html">shmem_addr_accessible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_init.html">shmem_init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_init_thread.html">shmem_init_thread</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_finalize.html">shmem_finalize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_global_exit.html">shmem_global_exit</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">shmem_my_pe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c-c-synopsis">C/C++ Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deprecated-synopsis">Deprecated Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deprecated-fortran-synopsis">Deprecated Fortran Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#return-values">Return Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c-c-example">C/C++ Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_n_pes.html">shmem_n_pes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_info_get_name.html">shmem_info_get_name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_info_get_version.html">shmem_info_get_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_pe_accessible.html">shmem_pe_accessible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_query_thread.html">shmem_query_thread</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_malloc.html">shmem_malloc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_calloc.html">shmem_calloc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_ptr.html">shmem_ptr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_ctx_create.html">shmem_ctx_create</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_ctx_destroy.html">shmem_ctx_destroy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_p.html">shmem_p</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_put.html">shmem_put</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_put_nbi.html">shmem_put_nbi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_iput.html">shmem_iput</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_g.html">shmem_g</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_get.html">shmem_get</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_get_nbi.html">shmem_get_nbi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_iget.html">shmem_iget</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_add.html">shmem_atomic_add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_and.html">shmem_atomic_and</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_compare_swap.html">shmem_atomic_compare_swap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch.html">shmem_atomic_fetch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_add.html">shmem_atomic_fetch_add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_and.html">shmem_atomic_fetch_and</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_inc.html">shmem_atomic_fetch_inc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_or.html">shmem_atomic_fetch_or</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_xor.html">shmem_atomic_fetch_xor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_inc.html">shmem_atomic_inc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_or.html">shmem_atomic_or</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_set.html">shmem_atomic_set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_swap.html">shmem_atomic_swap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_xor.html">shmem_atomic_xor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_fence.html">shmem_fence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_quiet.html">shmem_quiet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_test.html">shmem_test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_wait_until.html">shmem_wait_until</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_lock.html">shmem_lock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_alltoall.html">shmem_alltoall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_alltoalls.html">shmem_alltoalls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_barrier.html">shmem_barrier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_barrier_all.html">shmem_barrier_all</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_broadcast.html">shmem_broadcast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_collect.html">shmem_collect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_reductions.html">shmem_reductions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_sync.html">shmem_sync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_sync_all.html">shmem_sync_all</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem_cache.html">shmem_cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_init_thread.html">shmemx_init_thread</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_kind_align.html">shmemx_kind_align</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_kind_malloc.html">shmemx_kind_malloc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_put_signal.html">shmemx_put_signal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_put_signal_nb.html">shmemx_put_signal_nb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_alltoallv.html">shmemx_alltoallv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_alltoallv_packed.html">shmemx_alltoallv_packed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_alltoall.html">shmemx_team_alltoall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_alltoallv.html">shmemx_team_alltoallv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_alltoallv_packed.html">shmemx_team_alltoallv_packed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_barrier.html">shmemx_team_barrier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_destroy.html">shmemx_team_destroy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_my_pe.html">shmemx_team_my_pe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_n_pes.html">shmemx_team_n_pes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_reductions.html">shmemx_team_reductions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_2d.html">shmemx_team_split_2d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_3d.html">shmemx_team_split_3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_color.html">shmemx_team_split_color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_strided.html">shmemx_team_split_strided</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_team_translate_pe.html">shmemx_team_translate_pe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_fence.html">shmemx_thread_fence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_quiet.html">shmemx_thread_quiet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_register.html">shmemx_thread_register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_unregister.html">shmemx_thread_unregister</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Cray OpenSHMEMX</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>shmem_my_pe</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/shmem_my_pe.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="shmem-my-pe">
+<h1>shmem_my_pe<a class="headerlink" href="#shmem-my-pe" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Returns</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">the</span> <span class="n">calling</span> <span class="n">PE</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="section" id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="c-c-synopsis">
+<h2>C/C++ Synopsis<a class="headerlink" href="#c-c-synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">shmem_my_pe</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deprecated-synopsis">
+<h2>Deprecated Synopsis<a class="headerlink" href="#deprecated-synopsis" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="deprecated-fortran-synopsis">
+<h2>Deprecated Fortran Synopsis<a class="headerlink" href="#deprecated-fortran-synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INTEGER</span> <span class="n">SHMEM_MY_PE</span><span class="p">,</span> <span class="n">ME</span>
+<span class="n">ME</span> <span class="o">-</span> <span class="n">SHMEM_MY_PE</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">None</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">routine</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">PE</span> <span class="n">number</span> <span class="n">of</span> <span class="n">the</span> <span class="n">calling</span> <span class="n">PE</span><span class="o">.</span>  <span class="n">It</span> <span class="n">accepts</span> <span class="n">no</span>
+<span class="n">arguments</span><span class="o">.</span>  <span class="n">The</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">integer</span> <span class="n">between</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">npes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">where</span> <span class="n">npes</span> <span class="ow">is</span>
+<span class="n">the</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">PEs</span> <span class="n">executing</span> <span class="n">the</span> <span class="n">current</span> <span class="n">program</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="return-values">
+<h2>Return Values<a class="headerlink" href="#return-values" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Integer</span> <span class="o">-</span> <span class="n">Between</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">npes</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Each</span> <span class="n">PE</span> <span class="n">has</span> <span class="n">a</span> <span class="n">unique</span> <span class="n">number</span> <span class="ow">or</span> <span class="n">identifier</span><span class="o">.</span> <span class="n">As</span> <span class="n">of</span> <span class="n">OpenSHMEM</span><span class="p">[</span><span class="mf">1.2</span><span class="p">]</span>
+<span class="n">the</span> <span class="n">use</span> <span class="n">of</span> <span class="n">_my_pe</span> <span class="n">has</span> <span class="n">been</span> <span class="n">deprecated</span><span class="o">.</span> <span class="n">Although</span> <span class="n">OpenSHMEM</span> <span class="n">libraries</span> <span class="n">are</span>
+<span class="n">required</span> <span class="n">to</span> <span class="n">support</span> <span class="n">the</span> <span class="n">call</span><span class="p">,</span> <span class="n">users</span> <span class="n">are</span> <span class="n">encouraged</span> <span class="n">to</span> <span class="n">use</span> <span class="n">shmem_my_pe</span>
+<span class="n">instead</span><span class="o">.</span>  <span class="n">The</span> <span class="n">behavior</span> <span class="ow">and</span> <span class="n">signature</span>  <span class="n">of</span> <span class="n">the</span> <span class="n">routine</span> <span class="n">shmem_my_pe</span> <span class="n">remains</span>
+<span class="n">unchanged</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">deprecated</span> <span class="n">_my_pe</span> <span class="n">version</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="c-c-example">
+<h2>C/C++ Example<a class="headerlink" href="#c-c-example" title="Permalink to this headline">¶</a></h2>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
+<span class="c1">#include &lt;shmem.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">shmem_init</span><span class="p">();</span>
+   <span class="nb">int</span> <span class="n">me</span> <span class="o">-</span> <span class="n">shmem_my_pe</span><span class="p">();</span>
+   <span class="nb">int</span> <span class="n">npes</span> <span class="o">-</span> <span class="n">shmem_n_pes</span><span class="p">();</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;I am #</span><span class="si">%d</span><span class="s2"> of </span><span class="si">%d</span><span class="s2"> PEs executing this program</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">me</span><span class="p">,</span> <span class="n">npes</span><span class="p">);</span>
+   <span class="n">shmem_finalize</span><span class="p">();</span>
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="shmem_n_pes.html" class="btn btn-neutral float-right" title="shmem_n_pes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="shmem_global_exit.html" class="btn btn-neutral float-left" title="shmem_global_exit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, HPE
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

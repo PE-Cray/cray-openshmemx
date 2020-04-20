@@ -36,7 +36,7 @@ and supported SHMEM implementation by Cray Inc.
 
 ## Manpage
 Recent updated manpage corresponding to the latest released
-version (version-9.0.0) can be accessed [here](man/main.html).
+version (version-9.0.0) can be accessed [here](doc/build/html/index.html).
 
 ## Publications/Reference
 The proper citation of Cray OpenSHMEMX is:
@@ -51,7 +51,7 @@ The corresponding Bibtex is:
     month = Aug,
     year = {2018},
     location = {Baltimore, MD, USA},
-}
+}QD
 ```
 
 ## Release Information
@@ -70,7 +70,7 @@ Refer to locality awareness in intro_shmem(3) man page.
 
 The following bugfixes are handled in Cray OpenSHMEMX 9.0.0:
 
-1. Fix memory ordering issues in using different memcpy (Cray optimized
+1. :Fix memory ordering issues in using different memcpy (Cray optimized
 and system default) operations on both x86_64 and aarch64 platforms.
 
 2. Fix for using -Wpedantic flag in the application level
@@ -79,10 +79,10 @@ The following features are removed from Cray OpenSHMEMX 8.0.1:
 
 1. Support for SHMEM_USE_SMP environment variable is discontinued. Instead
 use SHMEM_LOCALITY_ONNODE and SHMEM_LOCALITY_OFFNODE environment variables
-to get similar functionality. This version breaks compatibility with Cray
+to gwet similar functionality. This version breaks compatibility with Cray
 OpenSHMEMX/8.0.1.
 
-### Version-8.0.1
+### Vqersion-8.0.1
 Cray OpenSHMEMX version 8.0.1 is released on July 2018.
 
 The following features are released with Cray OpenSHMEMX 8.0.1:
