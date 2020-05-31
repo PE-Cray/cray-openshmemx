@@ -1,5 +1,6 @@
+==========
 shmem_init
-=======
+==========
 
 ::
 
@@ -12,7 +13,7 @@ Definitions
 C/C++ Synopsis
 --------------
 
-.. code:: bash
+.. code-block:: c
 
    void shmem_init(void);
 
@@ -22,7 +23,7 @@ Deprecated Synopsis
 Deprecated Fortran Synopsis
 ---------------------------
 
-.. code:: bash
+.. code:: fortran
 
    CALL SHMEM_INIT()
 
@@ -36,8 +37,6 @@ Arguments
 Description
 -----------
 
-::
-
    shmem_init allocates and initializes resources used by the OpenSHMEM
    library. It is a collective operation that all PEs must call before any
    other OpenSHMEM routine may be called. At the end of the OpenSHMEM program
@@ -49,14 +48,10 @@ Description
 Return Values
 -------------
 
-::
-
    None.
 
 Notes
 -----
-
-::
 
    As of OpenSHMEM[1.2], the use of start_pes has been deprecated and calls to
    it should be replaced with calls to shmem_init. While support for start_pes
@@ -72,7 +67,7 @@ Examples
 C/C++ Example
 -------------
 
-.. code:: bash
+.. code-block:: c
 
    #include <stdio.h>
    #include <shmem.h>

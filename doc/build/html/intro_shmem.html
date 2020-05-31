@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Managing Memory in Cray OpenSHMEMX" href="shmem_mem_manage.html" />
+    <link rel="next" title="Tuning Parameters" href="tuning_parameters.html" />
     <link rel="prev" title="Cray OpenSHMEMX" href="index.html" /> 
 </head>
 
@@ -84,19 +84,21 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#openshmem-compliance">OpenSHMEM Compliance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#different-available-transport-layers">Different Available Transport Layers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#whitepapers">Whitepapers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#openshmem-c11-generic-interfaces">OpenSHMEM C11-Generic Interfaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#compiling-and-launching-a-shmem-application-on-a-cray-system">Compiling and Launching a SHMEM Application on a Cray System</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="#supported-platforms">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#using-cray-openshmemx">Using Cray OpenSHMEMX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#compiling-and-launching-a-shmem-application-on-a-cray-system">Compiling and Launching a SHMEM Application on a Cray System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#support-for-static-and-dynamic-linking">Support for Static and Dynamic linking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#caveats-for-using-cray-openshmemx-on-cray-xc-systems">Caveats for Using Cray OpenSHMEMX on Cray XC systems</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#general-notes">General Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#openshmem-c11-generic-interfaces">OpenSHMEM C11-Generic Interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#zero-length-data-transfer">Zero-length Data Transfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#managing-memory-in-cray-openshmemx">Managing Memory in Cray OpenSHMEMX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#interconnect-specific-informations">Interconnect Specific Informations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cray-thread-hot-and-openshmem-communication-contexts">Cray Thread-hot and OpenSHMEM Communication Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cray-thread-hot-and-openshmem-contexts">Cray Thread-hot and OpenSHMEM Contexts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cray-openshmemx-locality-awareness">Cray OpenSHMEMX Locality Awareness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#whitepapers">Whitepapers</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#environment-variables">Environment Variables</a><ul>
@@ -110,85 +112,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#cray-openshmemx-libfabric-transport-specific-environment-variables">Cray OpenSHMEMX Libfabric Transport Specific Environment Variables</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_mem_manage.html">Managing Memory in Cray OpenSHMEMX</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_multithreading.html">Multithreading in Cray OpenSHMEMX</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_addr_accessible.html">shmem_addr_accessible</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_init.html">shmem_init</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_init_thread.html">shmem_init_thread</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_finalize.html">shmem_finalize</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_global_exit.html">shmem_global_exit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_my_pe.html">shmem_my_pe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_n_pes.html">shmem_n_pes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_info_get_name.html">shmem_info_get_name</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_info_get_version.html">shmem_info_get_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_pe_accessible.html">shmem_pe_accessible</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_query_thread.html">shmem_query_thread</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_malloc.html">shmem_malloc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_calloc.html">shmem_calloc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_ptr.html">shmem_ptr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_ctx_create.html">shmem_ctx_create</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_ctx_destroy.html">shmem_ctx_destroy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_p.html">shmem_p</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_put.html">shmem_put</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_put_nbi.html">shmem_put_nbi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_iput.html">shmem_iput</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_g.html">shmem_g</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_get.html">shmem_get</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_get_nbi.html">shmem_get_nbi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_iget.html">shmem_iget</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_add.html">shmem_atomic_add</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_and.html">shmem_atomic_and</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_compare_swap.html">shmem_atomic_compare_swap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch.html">shmem_atomic_fetch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_add.html">shmem_atomic_fetch_add</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_and.html">shmem_atomic_fetch_and</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_inc.html">shmem_atomic_fetch_inc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_or.html">shmem_atomic_fetch_or</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_xor.html">shmem_atomic_fetch_xor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_inc.html">shmem_atomic_inc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_or.html">shmem_atomic_or</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_set.html">shmem_atomic_set</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_swap.html">shmem_atomic_swap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_xor.html">shmem_atomic_xor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_fence.html">shmem_fence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_quiet.html">shmem_quiet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_test.html">shmem_test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_wait_until.html">shmem_wait_until</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_lock.html">shmem_lock</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_alltoall.html">shmem_alltoall</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_alltoalls.html">shmem_alltoalls</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_barrier.html">shmem_barrier</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_barrier_all.html">shmem_barrier_all</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_broadcast.html">shmem_broadcast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_collect.html">shmem_collect</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_reductions.html">shmem_reductions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_sync.html">shmem_sync</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_sync_all.html">shmem_sync_all</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_cache.html">shmem_cache</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_init_thread.html">shmemx_init_thread</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_kind_align.html">shmemx_kind_align</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_kind_malloc.html">shmemx_kind_malloc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_put_signal.html">shmemx_put_signal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_put_signal_nb.html">shmemx_put_signal_nb</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_alltoallv.html">shmemx_alltoallv</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_alltoallv_packed.html">shmemx_alltoallv_packed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_alltoall.html">shmemx_team_alltoall</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_alltoallv.html">shmemx_team_alltoallv</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_alltoallv_packed.html">shmemx_team_alltoallv_packed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_barrier.html">shmemx_team_barrier</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_destroy.html">shmemx_team_destroy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_my_pe.html">shmemx_team_my_pe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_n_pes.html">shmemx_team_n_pes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_reductions.html">shmemx_team_reductions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_2d.html">shmemx_team_split_2d</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_3d.html">shmemx_team_split_3d</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_color.html">shmemx_team_split_color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_strided.html">shmemx_team_split_strided</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_translate_pe.html">shmemx_team_translate_pe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_fence.html">shmemx_thread_fence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_quiet.html">shmemx_thread_quiet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_register.html">shmemx_thread_register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_unregister.html">shmemx_thread_unregister</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuning_parameters.html">Tuning Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="white_papers.html">Whitepapers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_list.html">API List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_glossary.html">API Glossary</a></li>
 </ul>
 
             
@@ -255,241 +183,206 @@
             
   <div class="section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OpenSHMEM</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">Partitioned</span> <span class="n">Global</span> <span class="n">Address</span> <span class="n">Space</span> <span class="p">(</span><span class="n">PGAS</span><span class="p">)</span> <span class="n">library</span> <span class="n">interface</span>
-<span class="n">specification</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">culmination</span> <span class="n">of</span> <span class="n">a</span> <span class="n">standardization</span> <span class="n">effort</span> <span class="n">among</span>
-<span class="n">many</span> <span class="n">implementers</span> <span class="ow">and</span> <span class="n">users</span> <span class="n">of</span> <span class="n">SHMEM</span> <span class="n">programming</span> <span class="n">model</span><span class="o">.</span> <span class="n">SHMEM</span> <span class="n">has</span> <span class="n">a</span> <span class="n">long</span>
-<span class="n">history</span> <span class="k">as</span> <span class="n">a</span> <span class="n">parallel</span> <span class="n">programming</span> <span class="n">model</span> <span class="n">on</span> <span class="n">Cray</span> <span class="n">systems</span><span class="o">.</span> <span class="n">For</span> <span class="n">the</span> <span class="n">past</span> <span class="n">two</span>
-<span class="n">decades</span> <span class="n">SHMEM</span> <span class="n">library</span> <span class="n">implementation</span> <span class="ow">in</span> <span class="n">Cray</span> <span class="n">systems</span> <span class="n">evolved</span> <span class="n">through</span>
-<span class="n">different</span> <span class="n">generations</span><span class="o">.</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">proprietary</span><span class="p">,</span> <span class="n">OpenSHMEM</span>
-<span class="n">specification</span> <span class="n">compliant</span> <span class="n">SHMEM</span> <span class="n">implementation</span> <span class="k">for</span> <span class="n">current</span> <span class="ow">and</span> <span class="n">future</span>
-<span class="n">generation</span> <span class="n">Cray</span> <span class="n">systems</span><span class="o">.</span>
-
-<span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">release</span> <span class="n">version</span> <span class="mf">8.0</span><span class="o">.</span><span class="mi">0</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">first</span> <span class="n">official</span> <span class="n">release</span> <span class="n">of</span>
-<span class="n">the</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">library</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">proprietary</span> <span class="n">SHMEM</span> <span class="n">implementation</span> <span class="kn">from</span>
-<span class="nn">Cray</span> <span class="n">Inc</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">OpenSHMEM</span> <span class="n">standards</span> <span class="n">compliant</span><span class="o">.</span>
-
-<span class="n">On</span> <span class="n">Cray</span> <span class="n">XC</span> <span class="n">systems</span><span class="p">,</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">released</span> <span class="k">as</span> <span class="n">a</span> <span class="n">replacement</span>
-<span class="n">library</span> <span class="k">for</span> <span class="n">the</span> <span class="n">existing</span> <span class="n">Cray</span> <span class="n">SHMEM</span> <span class="n">library</span><span class="o">.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">released</span> <span class="k">as</span> <span class="n">an</span>
-<span class="n">evaluation</span> <span class="n">product</span><span class="o">.</span>
-
-<span class="n">On</span> <span class="n">Cray</span> <span class="n">Shasta</span> <span class="n">systems</span><span class="p">,</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">default</span> <span class="n">production</span> <span class="n">ready</span>
-<span class="n">propreitary</span> <span class="n">OpenSHMEM</span> <span class="n">implementation</span> <span class="kn">from</span> <span class="nn">Cray</span> <span class="n">Inc</span><span class="o">.</span>
-</pre></div>
-</div>
+<p>OpenSHMEM is a Partitioned Global Address Space (PGAS) library interface
+specification, which is the culmination of a standardization effort among
+many implementers and users of SHMEM programming model. SHMEM has a long
+history as a parallel programming model on Cray systems. For the past two
+decades SHMEM library implementation in Cray systems evolved through
+different generations. Cray OpenSHMEMX is a proprietary, OpenSHMEM
+specification compliant SHMEM implementation for current and future
+generation Cray systems.</p>
+<p>Cray OpenSHMEMX release version 8.0.0 is the first official release of
+the Cray OpenSHMEMX library, it is a proprietary SHMEM implementation from
+Cray Inc which is OpenSHMEM standards compliant.</p>
+<p>On Cray XC systems, Cray OpenSHMEMX is not released as a replacement
+library for the existing Cray SHMEM library. It is released as an
+evaluation product.</p>
+<p>On Cray Shasta systems, Cray OpenSHMEMX is the default production ready
+propreitary OpenSHMEM implementation from Cray Inc.</p>
 </div>
 <div class="section" id="description">
 <h1>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">logically</span> <span class="n">shared</span><span class="p">,</span> <span class="n">distributed</span> <span class="n">memory</span> <span class="n">access</span> <span class="p">(</span><span class="n">SHMEM</span><span class="p">)</span> <span class="n">routines</span>
-<span class="n">provide</span> <span class="n">low</span><span class="o">-</span><span class="n">latency</span><span class="p">,</span> <span class="n">high</span><span class="o">-</span><span class="n">bandwidth</span> <span class="n">communication</span> <span class="k">for</span> <span class="n">use</span> <span class="ow">in</span> <span class="n">highly</span>
-<span class="n">parallelized</span> <span class="n">scalable</span> <span class="n">programs</span><span class="o">.</span>
-
-<span class="n">The</span> <span class="n">SHMEM</span> <span class="n">data</span><span class="o">-</span><span class="n">passing</span> <span class="n">library</span> <span class="n">routines</span> <span class="n">are</span> <span class="n">similar</span> <span class="n">to</span> <span class="n">the</span> <span class="n">message</span>
-<span class="n">passing</span> <span class="n">interface</span> <span class="p">(</span><span class="n">MPI</span><span class="p">)</span> <span class="n">library</span> <span class="n">routines</span><span class="p">:</span> <span class="n">they</span> <span class="k">pass</span> <span class="n">data</span> <span class="n">between</span>
-<span class="n">cooperating</span> <span class="n">parallel</span> <span class="n">processes</span><span class="o">.</span> <span class="n">The</span> <span class="n">SHMEM</span> <span class="n">data</span><span class="o">-</span><span class="n">passing</span> <span class="n">routines</span> <span class="n">can</span> <span class="n">be</span>
-<span class="n">used</span> <span class="ow">in</span> <span class="n">programs</span> <span class="n">that</span> <span class="n">perform</span> <span class="n">computations</span> <span class="ow">in</span> <span class="n">separate</span> <span class="n">address</span> <span class="n">spaces</span>
-<span class="ow">and</span> <span class="n">that</span> <span class="n">explicitly</span> <span class="k">pass</span> <span class="n">data</span> <span class="n">to</span> <span class="ow">and</span> <span class="kn">from</span> <span class="nn">different</span> <span class="n">processing</span>
-<span class="n">elements</span> <span class="p">(</span><span class="n">PEs</span><span class="p">)</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">program</span><span class="o">.</span>
-
-<span class="n">The</span> <span class="n">SHMEM</span> <span class="n">parallel</span> <span class="n">programming</span> <span class="n">model</span> <span class="n">assumes</span> <span class="n">an</span> <span class="n">MPI</span><span class="o">-</span><span class="mi">1</span> <span class="n">like</span> <span class="n">group</span> <span class="n">of</span>
-<span class="n">processes</span> <span class="n">that</span> <span class="n">runs</span> <span class="ow">in</span> <span class="n">parallel</span> <span class="kn">from</span> <span class="nn">job</span> <span class="n">launch</span> <span class="n">to</span> <span class="n">job</span> <span class="n">termination</span><span class="o">.</span> <span class="n">No</span>
-<span class="n">processes</span> <span class="n">can</span> <span class="n">be</span> <span class="n">added</span> <span class="ow">or</span> <span class="n">removed</span> <span class="kn">from</span> <span class="nn">this</span> <span class="n">group</span> <span class="ow">and</span> <span class="nb">all</span> <span class="n">processes</span>
-<span class="n">execute</span> <span class="n">the</span> <span class="n">same</span> <span class="n">application</span><span class="o">.</span> <span class="n">Thus</span><span class="p">,</span> <span class="n">SHMEM</span> <span class="n">applications</span> <span class="n">are</span> <span class="n">of</span> <span class="n">the</span> <span class="n">SPMD</span>
-<span class="p">(</span><span class="n">Single</span> <span class="n">Program</span> <span class="n">Multiple</span> <span class="n">Data</span><span class="p">)</span> <span class="nb">type</span><span class="o">.</span> <span class="n">SHMEM</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">one</span><span class="o">-</span><span class="n">sided</span> <span class="n">message</span>
-<span class="n">passing</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">which</span> <span class="n">memory</span> <span class="ow">is</span> <span class="n">private</span> <span class="n">to</span> <span class="n">each</span> <span class="n">process</span><span class="o">.</span>
-
-<span class="n">The</span> <span class="n">SHMEM</span> <span class="n">routines</span> <span class="n">minimize</span> <span class="n">the</span> <span class="n">overhead</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">data</span> <span class="n">passing</span>
-<span class="n">requests</span><span class="p">,</span> <span class="n">maximize</span> <span class="n">bandwidth</span><span class="p">,</span> <span class="ow">and</span> <span class="n">minimize</span> <span class="n">data</span> <span class="n">latency</span><span class="o">.</span> <span class="n">Data</span> <span class="n">latency</span>
-<span class="ow">is</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="n">time</span> <span class="n">between</span> <span class="n">a</span> <span class="n">PE</span> <span class="n">initiating</span> <span class="n">a</span> <span class="n">transfer</span> <span class="n">of</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">a</span>
-<span class="n">PE</span> <span class="n">being</span> <span class="n">able</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">data</span><span class="o">.</span>
-
-<span class="n">SHMEM</span> <span class="n">routines</span> <span class="n">support</span> <span class="n">remote</span> <span class="n">data</span> <span class="n">transfer</span> <span class="n">through</span> <span class="n">put</span> <span class="n">operations</span>
-<span class="n">that</span> <span class="n">transfer</span> <span class="n">data</span> <span class="n">to</span> <span class="n">a</span> <span class="n">different</span> <span class="n">PE</span> <span class="ow">and</span> <span class="n">get</span> <span class="n">operations</span> <span class="n">that</span> <span class="n">transfer</span>
-<span class="n">data</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">different</span> <span class="n">PE</span><span class="o">.</span> <span class="n">Other</span> <span class="n">supported</span> <span class="n">operations</span> <span class="n">are</span> <span class="n">work</span><span class="o">-</span><span class="n">shared</span>
-<span class="n">broadcast</span> <span class="ow">and</span> <span class="n">reduction</span><span class="p">,</span> <span class="n">barrier</span> <span class="n">synchronization</span><span class="p">,</span> <span class="ow">and</span> <span class="n">atomic</span> <span class="n">memory</span>
-<span class="n">operations</span><span class="o">.</span>
-
-<span class="n">More</span> <span class="n">information</span> <span class="n">on</span> <span class="n">the</span> <span class="n">SHMEM</span> <span class="n">programming</span> <span class="n">model</span> <span class="n">can</span> <span class="n">be</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">the</span>
-<span class="n">OpenSHMEM</span> <span class="n">standard</span> <span class="n">specification</span> <span class="n">documentation</span><span class="o">.</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">openshmem</span><span class="o">.</span><span class="n">org</span>
-</pre></div>
-</div>
+<p>The logically shared, distributed memory access (SHMEM) routines
+provide low-latency, high-bandwidth communication for use in highly
+parallelized scalable programs.</p>
+<p>The SHMEM data-passing library routines are similar to the message
+passing interface (MPI) library routines: they pass data between
+cooperating parallel processes. The SHMEM data-passing routines can be
+used in programs that perform computations in separate address spaces
+and that explicitly pass data to and from different processing
+elements (PEs) in the program.</p>
+<p>The SHMEM parallel programming model assumes an MPI-1 like group of
+processes that runs in parallel from job launch to job termination. No
+processes can be added or removed from this group and all processes
+execute the same application. Thus, SHMEM applications are of the SPMD
+(Single Program Multiple Data) type. SHMEM is a one-sided message
+passing model in which memory is private to each process.</p>
+<p>The SHMEM routines minimize the overhead associated with data passing
+requests, maximize bandwidth, and minimize data latency. Data latency
+is the length of time between a PE initiating a transfer of data and a
+PE being able to use the data.</p>
+<p>SHMEM routines support remote data transfer through put operations
+that transfer data to a different PE and get operations that transfer
+data from a different PE. Other supported operations are work-shared
+broadcast and reduction, barrier synchronization, and atomic memory
+operations.</p>
+<p>More information on the SHMEM programming model can be found in the
+OpenSHMEM standard specification documentation. <a class="reference external" href="http://openshmem.org">http://openshmem.org</a></p>
 </div>
 <div class="section" id="openshmem-compliance">
 <h1>OpenSHMEM Compliance<a class="headerlink" href="#openshmem-compliance" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="ow">is</span> <span class="n">compliant</span> <span class="k">with</span> <span class="n">the</span> <span class="n">OpenSHMEM</span> <span class="n">API</span> <span class="n">Specification</span> <span class="n">Version</span>
-<span class="mf">1.4</span><span class="o">.</span> <span class="n">All</span> <span class="n">Cray</span> <span class="n">specific</span> <span class="n">extensions</span> <span class="n">are</span> <span class="n">prefixed</span> <span class="k">with</span> <span class="n">SHMEMX_</span> <span class="n">nomenclature</span>
-<span class="ow">and</span> <span class="n">placed</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">shmemx</span><span class="o">.</span><span class="n">h</span> <span class="ow">and</span> <span class="n">shmemx</span><span class="o">.</span><span class="n">fh</span> <span class="n">header</span><span class="o">.</span>
-
-<span class="n">The</span> <span class="n">following</span> <span class="n">are</span> <span class="n">the</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">Cray</span><span class="o">-</span><span class="n">specific</span> <span class="n">features</span> <span class="n">available</span> <span class="ow">in</span> <span class="n">Cray</span>
-<span class="n">OpenSHMEMX</span> <span class="n">library</span><span class="p">:</span>
-
-<span class="n">o</span>  <span class="n">alltoallv</span> <span class="ow">and</span> <span class="n">alltoallv_packed</span> <span class="n">collective</span> <span class="n">operation</span>
-
-<span class="n">o</span>  <span class="n">put</span> <span class="k">with</span> <span class="n">signal</span> <span class="n">operation</span>
-
-<span class="n">o</span>  <span class="n">thread</span><span class="o">-</span><span class="n">hot</span> <span class="n">multithreading</span> <span class="n">features</span> <span class="k">with</span> <span class="n">thread</span><span class="o">-</span><span class="n">based</span> <span class="n">memory</span> <span class="n">ordering</span>
-
-<span class="n">o</span>  <span class="n">teams</span> <span class="ow">and</span> <span class="n">team</span><span class="o">-</span><span class="n">based</span> <span class="n">collectives</span>
-
-<span class="n">o</span>  <span class="n">local</span><span class="o">-</span><span class="n">node</span> <span class="n">queries</span>
-</pre></div>
+<p>Cray OpenSHMEMX is compliant with the OpenSHMEM API Specification Version
+1.4. All Cray specific extensions are prefixed with SHMEMX nomenclature
+and placed inside the shmemx.h and shmemx.fh header.</p>
+<p>The following are the list of Cray-specific features available in Cray
+OpenSHMEMX library:</p>
+<ol class="arabic simple">
+<li>alltoallv and alltoallv_packed collective operation</li>
+<li>put with signal operation</li>
+<li>thread-hot multithreading features with thread-based memory ordering</li>
+<li>teams and team-based collectives</li>
+<li>local-node queries</li>
+</ol>
 </div>
+<div class="section" id="supported-platforms">
+<h1>Supported Platforms<a class="headerlink" href="#supported-platforms" title="Permalink to this headline">¶</a></h1>
+<p>Cray OpenSHMEMX is designed to be modular to support different transport
+layers for communication. The current version support the following
+transport layers:</p>
+<p>1. SMP-OFI - OFI for internode and XPMEM for intranode communication
+Support for XPMEM is available only on systems with XPMEM kernel.
+SMP-OFI transport option is available only on Cray Shasta supercomputer
+systems.</p>
+<p>2. SMP-DMAPP - DMAPP for internode and XPMEM for intranode communication
+Support for XPMEM is available only on systems with XPMEM kernel.
+SMP-DMAPP transport option is available only on Cray XC supercomputer systems.</p>
 </div>
-<div class="section" id="different-available-transport-layers">
-<h1>Different Available Transport Layers<a class="headerlink" href="#different-available-transport-layers" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="ow">is</span> <span class="n">designed</span> <span class="n">to</span> <span class="n">be</span> <span class="n">modular</span> <span class="n">to</span> <span class="n">support</span> <span class="n">different</span> <span class="n">transport</span>
-<span class="n">layers</span> <span class="k">for</span> <span class="n">communication</span><span class="o">.</span> <span class="n">The</span> <span class="n">current</span> <span class="n">version</span> <span class="n">support</span> <span class="n">the</span> <span class="n">following</span>
-<span class="n">transport</span> <span class="n">layers</span><span class="p">:</span>
-
-<span class="n">o</span>  <span class="n">SMP</span><span class="o">-</span><span class="n">OFI</span> <span class="o">-</span> <span class="n">OFI</span> <span class="k">for</span> <span class="n">internode</span> <span class="ow">and</span> <span class="n">XPMEM</span> <span class="k">for</span> <span class="n">intranode</span> <span class="n">communication</span>
-<span class="n">Support</span> <span class="k">for</span> <span class="n">XPMEM</span> <span class="ow">is</span> <span class="n">available</span> <span class="n">only</span> <span class="n">on</span> <span class="n">systems</span> <span class="k">with</span> <span class="n">XPMEM</span> <span class="n">kernel</span><span class="o">.</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="whitepapers">
-<h1>Whitepapers<a class="headerlink" href="#whitepapers" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Refer</span> <span class="n">Cray</span> <span class="n">Programming</span> <span class="n">Environment</span> <span class="n">Github</span> <span class="n">page</span><span class="p">:</span>
-<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pe</span><span class="o">-</span><span class="n">cray</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">whitepapers</span><span class="o">/</span> <span class="k">for</span> <span class="n">access</span> <span class="n">to</span> <span class="n">different</span> <span class="n">whitepapers</span>
-<span class="n">related</span> <span class="n">to</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">software</span> <span class="n">stack</span><span class="o">.</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="openshmem-c11-generic-interfaces">
-<h1>OpenSHMEM C11-Generic Interfaces<a class="headerlink" href="#openshmem-c11-generic-interfaces" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">library</span> <span class="n">supports</span> <span class="n">the</span> <span class="n">OpenSHMEM</span> <span class="n">C11</span><span class="o">-</span><span class="n">Generic</span> <span class="n">interface</span><span class="p">,</span>
-<span class="n">which</span> <span class="ow">is</span> <span class="n">new</span> <span class="k">with</span> <span class="n">OpenSHMEM</span> <span class="n">V1</span><span class="o">.</span><span class="mf">3.</span> <span class="n">This</span> <span class="n">interface</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">add</span> <span class="n">new</span>
-<span class="n">functionality</span><span class="p">,</span> <span class="n">but</span> <span class="n">allows</span> <span class="n">existing</span> <span class="n">routines</span> <span class="n">to</span> <span class="n">be</span> <span class="n">called</span> <span class="k">with</span> <span class="n">a</span>
-<span class="n">generic</span> <span class="n">name</span> <span class="n">that</span> <span class="n">maps</span> <span class="n">to</span> <span class="n">a</span> <span class="nb">type</span><span class="o">-</span><span class="n">specific</span> <span class="n">routine</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">of</span>
-<span class="n">the</span> <span class="n">arguments</span><span class="o">.</span> <span class="n">Only</span> <span class="n">certain</span> <span class="n">programming</span> <span class="n">environments</span> <span class="n">support</span> <span class="n">the</span>
-<span class="n">C11</span><span class="o">-</span><span class="n">Generic</span> <span class="n">interface</span><span class="o">.</span> <span class="n">As</span> <span class="n">of</span> <span class="n">the</span> <span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">V8</span><span class="o">.</span><span class="mf">0.0</span>
-<span class="n">release</span><span class="p">,</span> <span class="n">these</span> <span class="n">include</span><span class="p">:</span>
-
-<span class="n">o</span>  <span class="n">CCE</span> <span class="mf">8.5</span> <span class="ow">or</span> <span class="n">later</span><span class="p">;</span> <span class="n">use</span> <span class="n">the</span> <span class="o">-</span><span class="n">hstd</span><span class="o">=</span><span class="n">c11</span> <span class="n">flag</span> <span class="n">during</span> <span class="n">compilation</span>
-
-<span class="n">o</span>  <span class="n">GNU</span> <span class="mf">5.1</span> <span class="ow">or</span> <span class="n">later</span><span class="p">;</span> <span class="n">no</span> <span class="n">additional</span> <span class="n">flags</span> <span class="n">needed</span>
-
-<span class="n">o</span>  <span class="n">Intel</span> <span class="mf">16.0</span> <span class="ow">or</span> <span class="n">later</span><span class="p">;</span> <span class="n">use</span> <span class="n">the</span> <span class="o">-</span><span class="n">std</span><span class="o">=</span><span class="n">c11</span> <span class="ow">or</span> <span class="o">-</span><span class="n">std</span><span class="o">=</span><span class="n">c1x</span> <span class="n">flag</span> <span class="n">during</span>
-   <span class="n">compilation</span>
-
-<span class="n">To</span> <span class="n">use</span> <span class="n">the</span> <span class="n">C11</span><span class="o">-</span><span class="n">Generic</span> <span class="n">interface</span><span class="p">,</span> <span class="n">you</span> <span class="n">must</span> <span class="n">use</span> <span class="n">a</span> <span class="n">compiler</span> <span class="n">that</span>
-<span class="n">supports</span> <span class="n">this</span> <span class="n">feature</span> <span class="ow">and</span> <span class="n">you</span> <span class="n">must</span> <span class="n">be</span> <span class="n">sure</span> <span class="n">that</span> <span class="n">the</span> <span class="n">first</span> <span class="n">argument</span> <span class="n">to</span>
-<span class="n">the</span> <span class="n">generic</span> <span class="n">routine</span> <span class="ow">is</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">types</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">type</span><span class="o">-</span>
-<span class="n">specific</span> <span class="n">routines</span> <span class="k">for</span> <span class="n">that</span> <span class="n">functionality</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span><span class="p">,</span>
-
-  <span class="n">long</span> <span class="n">source</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">dest</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
-  <span class="n">shmem_get</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">31</span><span class="p">);</span>
-
-<span class="ow">is</span> <span class="n">a</span> <span class="n">valid</span> <span class="n">use</span> <span class="n">of</span> <span class="n">C11</span><span class="o">-</span><span class="n">Generic</span> <span class="n">because</span> <span class="n">shmem_long_get</span> <span class="ow">is</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span>
-<span class="nb">type</span><span class="o">-</span><span class="n">specific</span> <span class="n">get</span> <span class="n">routines</span><span class="o">.</span>
-</pre></div>
-</div>
-</div>
+<div class="section" id="using-cray-openshmemx">
+<h1>Using Cray OpenSHMEMX<a class="headerlink" href="#using-cray-openshmemx" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="compiling-and-launching-a-shmem-application-on-a-cray-system">
-<h1>Compiling and Launching a SHMEM Application on a Cray System<a class="headerlink" href="#compiling-and-launching-a-shmem-application-on-a-cray-system" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">invoke</span> <span class="n">the</span> <span class="n">compiler</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">applications</span><span class="p">,</span> <span class="n">including</span> <span class="n">SHMEM</span>
-<span class="n">applications</span><span class="p">,</span> <span class="n">use</span> <span class="n">either</span> <span class="n">the</span> <span class="n">cc</span><span class="p">,</span> <span class="n">CC</span><span class="p">,</span> <span class="ow">or</span> <span class="n">ftn</span> <span class="n">command</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">use</span>
-<span class="n">vendor</span><span class="o">-</span><span class="n">specific</span> <span class="n">compiler</span> <span class="n">commands</span> <span class="n">such</span> <span class="k">as</span> <span class="n">pgcc</span><span class="p">,</span> <span class="k">as</span> <span class="n">this</span> <span class="n">may</span> <span class="n">result</span> <span class="ow">in</span>
-<span class="n">undefined</span> <span class="n">behavior</span><span class="o">.</span>
-
-<span class="n">Example</span><span class="p">:</span>
-
-<span class="n">In</span> <span class="n">the</span> <span class="n">example</span> <span class="n">below</span><span class="p">,</span> <span class="n">an</span> <span class="n">application</span> <span class="ow">is</span> <span class="n">first</span> <span class="n">compiled</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span>
-<span class="n">resulting</span> <span class="n">executable</span> <span class="ow">is</span> <span class="n">then</span> <span class="n">launched</span> <span class="n">using</span> <span class="mi">128</span> <span class="n">processes</span><span class="p">:</span>
-</pre></div>
-</div>
+<h2>Compiling and Launching a SHMEM Application on a Cray System<a class="headerlink" href="#compiling-and-launching-a-shmem-application-on-a-cray-system" title="Permalink to this headline">¶</a></h2>
+<p>To invoke the compiler for all applications, including SHMEM
+applications, use either the cc, CC, or ftn command. Do not use
+vendor-specific compiler commands such as pgcc, as this may result in
+undefined behavior.</p>
+<p>Example:</p>
+<p>In the example below, an application is first compiled, and the
+resulting executable is then launched using 128 processes:</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cc</span> <span class="o">-</span><span class="n">o</span> <span class="n">test_shmem</span> <span class="n">test_shmem</span><span class="o">.</span><span class="n">c</span>
 <span class="n">srun</span> <span class="o">-</span><span class="n">n</span> <span class="mi">128</span> <span class="o">./</span><span class="n">test_shmem</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">See</span> <span class="n">the</span> <span class="n">srun</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">man</span> <span class="n">page</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span>
-</pre></div>
+<p>See the srun(1) man page for more information. We can use other workload
+managers like aprun() on Cray XC systems when available.</p>
 </div>
 <div class="section" id="support-for-static-and-dynamic-linking">
 <h2>Support for Static and Dynamic linking<a class="headerlink" href="#support-for-static-and-dynamic-linking" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">supports</span> <span class="n">both</span> <span class="n">static</span> <span class="ow">and</span> <span class="n">dynamic</span> <span class="n">linking</span><span class="o">.</span> <span class="n">Loading</span>
-<span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">module</span> <span class="n">file</span> <span class="n">automatically</span> <span class="n">retrieves</span> <span class="n">the</span> <span class="n">correct</span> <span class="n">library</span> <span class="n">to</span>
-<span class="n">link</span> <span class="ow">and</span> <span class="nb">compile</span> <span class="n">against</span><span class="o">.</span>
-
-<span class="n">Example</span><span class="p">:</span>
-
-<span class="n">In</span> <span class="n">the</span> <span class="n">example</span> <span class="n">below</span><span class="p">,</span> <span class="n">an</span> <span class="n">application</span> <span class="ow">is</span> <span class="n">first</span> <span class="n">compiled</span> <span class="k">with</span> <span class="n">static</span> <span class="n">linking</span><span class="o">.</span>
-</pre></div>
-</div>
+<p>Cray OpenSHMEMX supports both static and dynamic linking. Loading
+Cray OpenSHMEMX module file automatically retrieves the correct library to
+link and compile against.</p>
+<p>Example:</p>
+<p>In the example below, an application is first compiled with static linking.</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">cray</span><span class="o">-</span><span class="n">openshmemx</span><span class="o">/&lt;</span><span class="n">version</span><span class="o">&gt;</span>
 <span class="n">cc</span> <span class="o">-</span><span class="n">o</span> <span class="n">test_shmem</span> <span class="n">test_shmem</span><span class="o">.</span><span class="n">c</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">For</span> <span class="n">dynamic</span> <span class="n">building</span><span class="p">,</span> <span class="n">users</span> <span class="n">are</span> <span class="n">expected</span> <span class="n">to</span> <span class="n">explicitly</span> <span class="n">load</span> <span class="n">the</span> <span class="n">location</span>
-<span class="n">of</span> <span class="n">the</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">LD_LIBRARY_PATH</span> <span class="k">as</span> <span class="n">shown</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">example</span> <span class="n">below</span><span class="p">:</span>
-</pre></div>
+<p>Once compiled, applications can be directly launched using the available
+workload managers like srun() and aprun() based on the supported workload
+managers on the system.</p>
+<p>NOTE: As of Cray OpenSHMEMX version 10.0.0, static builds are not supported
+in Cray Shasta systems.</p>
 </div>
+<div class="section" id="caveats-for-using-cray-openshmemx-on-cray-xc-systems">
+<h2>Caveats for Using Cray OpenSHMEMX on Cray XC systems<a class="headerlink" href="#caveats-for-using-cray-openshmemx-on-cray-xc-systems" title="Permalink to this headline">¶</a></h2>
+<p>Specifically on Cray XC systems, for dynamic builds, users are expected to
+explicitly load the location of the Cray OpenSHMEMX in the LD_LIBRARY_PATH
+as shown in the example below before running the application:</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>module load cray-openshmemx/&lt;version&gt;
-export LD_LIBRARY_PATH=$CRAY_OPENSHMEMX_DIR/lib64:$LD_LIBRARY_PATH
 cc -o test_shmem test_shmem.c
+export LD_LIBRARY_PATH=$CRAY_OPENSHMEMX_DIR/lib64:$LD_LIBRARY_PATH
+srun -n 128 ./test_shmem
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NOTE</span><span class="p">:</span> <span class="n">As</span> <span class="n">of</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">version</span> <span class="mf">10.0</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">static</span> <span class="n">builds</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">supported</span>
-<span class="ow">in</span> <span class="n">Cray</span> <span class="n">Shasta</span> <span class="n">systems</span><span class="o">.</span>
-</pre></div>
-</div>
+<p>This step is required only on Cray XC systems and Cray Shasta systems will
+automatically select the right library while running the applications. There is
+no requirement for specific LD_LIBRARY_PATH updates.</p>
 </div>
 </div>
 <div class="section" id="general-notes">
 <h1>General Notes<a class="headerlink" href="#general-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="openshmem-c11-generic-interfaces">
+<h2>OpenSHMEM C11-Generic Interfaces<a class="headerlink" href="#openshmem-c11-generic-interfaces" title="Permalink to this headline">¶</a></h2>
+<p>The Cray OpenSHMEMX library supports the OpenSHMEM C11-Generic interface,
+which is new with OpenSHMEM V1.3. This interface does not add new
+functionality, but allows existing routines to be called with a
+generic name that maps to a type-specific routine based on the type of
+the arguments. Only certain programming environments support the
+C11-Generic interface. As of the time of the Cray OpenSHMEMX V8.0.0
+release, these include:</p>
+<ol class="arabic simple">
+<li>CCE 8.5 or later; use the -hstd=c11 flag during compilation</li>
+<li>GNU 5.1 or later; no additional flags needed</li>
+<li>Intel 16.0 or later; use the -std=c11 or -std=c1x flag during compilation</li>
+</ol>
+<p>To use the C11-Generic interface, you must use a compiler that
+supports this feature and you must be sure that the first argument to
+the generic routine is one of the types in the list of the type-
+specific routines for that functionality. For example,</p>
+<blockquote>
+<div>long source[8], dest[8];
+shmem_get(dest, source, 8, 31);</div></blockquote>
+<p>is a valid use of C11-Generic because shmem_long_get is one of the
+type-specific get routines.</p>
+</div>
 <div class="section" id="zero-length-data-transfer">
 <h2>Zero-length Data Transfer<a class="headerlink" href="#zero-length-data-transfer" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Per</span> <span class="n">OpenSHMEM</span> <span class="n">specification</span> <span class="mf">1.2</span> <span class="n">Annex</span> <span class="n">C</span><span class="p">,</span> <span class="n">support</span> <span class="k">for</span> <span class="n">zero</span><span class="o">-</span><span class="n">length</span>
-<span class="n">transfers</span> <span class="ow">is</span> <span class="n">provided</span> <span class="k">for</span> <span class="n">zero</span><span class="o">-</span><span class="n">length</span> <span class="n">get</span> <span class="ow">and</span> <span class="n">put</span><span class="o">.</span> <span class="n">Remote</span> <span class="n">memory</span> <span class="n">transfers</span>
-<span class="k">for</span> <span class="n">zero</span> <span class="n">number</span> <span class="n">of</span> <span class="n">elements</span> <span class="n">are</span> <span class="n">accepted</span><span class="p">,</span> <span class="ow">and</span> <span class="n">this</span> <span class="n">support</span> <span class="ow">is</span> <span class="n">provided</span> <span class="k">for</span>
-<span class="n">both</span> <span class="n">block</span> <span class="ow">and</span> <span class="n">non</span><span class="o">-</span><span class="n">blocking</span> <span class="n">transfers</span><span class="o">.</span> <span class="n">The</span> <span class="n">usage</span> <span class="n">of</span> <span class="n">NULL</span> <span class="n">pointers</span> <span class="k">for</span> <span class="n">data</span>
-<span class="n">transfer</span> <span class="n">usually</span> <span class="n">leads</span> <span class="n">to</span> <span class="n">program</span> <span class="n">abort</span><span class="p">,</span> <span class="n">but</span> <span class="k">for</span> <span class="n">zero</span><span class="o">-</span><span class="n">length</span> <span class="n">transfers</span><span class="p">,</span>
-<span class="n">the</span> <span class="n">usage</span> <span class="n">of</span> <span class="n">NULL</span> <span class="n">pointers</span> <span class="ow">is</span> <span class="n">accepted</span><span class="o">.</span>
-</pre></div>
-</div>
+<p>Per OpenSHMEM specification 1.2 Annex C, support for zero-length
+transfers is provided for zero-length get and put. Remote memory transfers
+for zero number of elements are accepted, and this support is provided for
+both block and non-blocking transfers. The usage of NULL pointers for data
+transfer usually leads to program abort, but for zero-length transfers,
+the usage of NULL pointers is accepted.</p>
 </div>
 <div class="section" id="managing-memory-in-cray-openshmemx">
 <h2>Managing Memory in Cray OpenSHMEMX<a class="headerlink" href="#managing-memory-in-cray-openshmemx" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Refer</span> <span class="n">shmem_mem_manage</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span> <span class="n">on</span> <span class="n">managing</span> <span class="n">memory</span> <span class="ow">in</span>
-<span class="n">Cray</span> <span class="n">OpenSHMEMX</span>
-</pre></div>
-</div>
+<p>Refer shmem_mem_manage(3) for more information on managing memory in
+Cray OpenSHMEMX</p>
 </div>
 <div class="section" id="interconnect-specific-informations">
 <h2>Interconnect Specific Informations<a class="headerlink" href="#interconnect-specific-informations" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">Cray</span> <span class="n">Shasta</span> <span class="n">systems</span><span class="p">,</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">uses</span> <span class="n">libfabric</span> <span class="p">(</span><span class="n">OFI</span><span class="p">)</span> <span class="k">for</span> <span class="n">network</span>
-<span class="n">based</span> <span class="n">communication</span> <span class="ow">and</span> <span class="n">data</span> <span class="n">transfer</span> <span class="n">operations</span><span class="o">.</span>
-</pre></div>
+<p>On Cray Shasta systems, Cray OpenSHMEMX uses libfabric (OFI) for network
+based communication and data transfer operations.</p>
+<p>On Cray XC systems, Cray OpenSHMEMX uses DMAPP for network based communication
+and data transfer operations.</p>
 </div>
-</div>
-<div class="section" id="cray-thread-hot-and-openshmem-communication-contexts">
-<h2>Cray Thread-hot and OpenSHMEM Communication Contexts<a class="headerlink" href="#cray-thread-hot-and-openshmem-communication-contexts" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Refer</span> <span class="n">to</span> <span class="n">shmem_multithreading</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">man</span> <span class="n">page</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span> <span class="n">on</span> <span class="n">the</span>
-<span class="n">interacting</span> <span class="k">with</span> <span class="n">OpenSHMEM</span> <span class="n">multithreading</span> <span class="n">features</span><span class="p">,</span> <span class="n">communication</span> <span class="n">context</span>
-<span class="ow">and</span> <span class="n">Cray</span><span class="o">-</span><span class="n">specific</span> <span class="n">thread</span><span class="o">-</span><span class="n">hot</span> <span class="n">features</span>
-</pre></div>
-</div>
+<div class="section" id="cray-thread-hot-and-openshmem-contexts">
+<h2>Cray Thread-hot and OpenSHMEM Contexts<a class="headerlink" href="#cray-thread-hot-and-openshmem-contexts" title="Permalink to this headline">¶</a></h2>
+<p>Refer to shmem_multithreading(3) man page for more information on the
+interacting with OpenSHMEM multithreading features, communication context
+and Cray-specific thread-hot features</p>
 </div>
 <div class="section" id="cray-openshmemx-locality-awareness">
 <h2>Cray OpenSHMEMX Locality Awareness<a class="headerlink" href="#cray-openshmemx-locality-awareness" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">version</span> <span class="mf">9.0</span><span class="o">.</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">later</span> <span class="n">provides</span> <span class="n">support</span> <span class="k">for</span> <span class="n">locality</span>
-<span class="n">awareness</span><span class="o">.</span> <span class="n">On</span> <span class="n">previous</span> <span class="n">versions</span><span class="p">,</span> <span class="n">we</span> <span class="n">initialized</span> <span class="n">both</span> <span class="n">the</span> <span class="n">network</span> <span class="n">transport</span>
-<span class="n">options</span> <span class="p">(</span><span class="n">OFI</span><span class="p">)</span> <span class="ow">and</span> <span class="n">on</span><span class="o">-</span><span class="n">node</span> <span class="n">transport</span> <span class="p">(</span><span class="n">XPMEM</span><span class="p">)</span> <span class="n">options</span> <span class="n">even</span> <span class="n">on</span> <span class="n">single</span><span class="o">-</span><span class="n">node</span> <span class="n">jobs</span><span class="o">.</span>
-<span class="n">We</span> <span class="n">used</span> <span class="n">environment</span> <span class="n">variables</span> <span class="n">like</span> <span class="n">SHMEM_USE_SMP</span> <span class="n">to</span> <span class="n">toggle</span> <span class="n">the</span> <span class="n">use</span> <span class="n">of</span>
-<span class="n">on</span><span class="o">-</span><span class="n">node</span> <span class="n">data</span> <span class="n">transfers</span><span class="o">.</span>
-
-<span class="n">On</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="n">versions</span> <span class="mf">9.0</span><span class="o">.</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">later</span><span class="p">,</span> <span class="n">only</span> <span class="n">on</span><span class="o">-</span><span class="n">node</span> <span class="n">transport</span> <span class="p">(</span><span class="n">XPMEM</span><span class="p">)</span>
-<span class="n">options</span> <span class="n">are</span> <span class="n">initialized</span> <span class="k">for</span> <span class="n">single</span><span class="o">-</span><span class="n">node</span> <span class="n">jobs</span><span class="o">.</span> <span class="n">Users</span> <span class="n">can</span> <span class="n">toggle</span> <span class="n">the</span> <span class="n">usage</span> <span class="n">using</span>
-<span class="n">the</span> <span class="n">following</span> <span class="n">environment</span> <span class="n">variable</span> <span class="n">options</span><span class="p">:</span> <span class="n">SHMEM_LOCALITY_ONNODE</span> <span class="ow">and</span>
-<span class="n">SHMEM_LOCALITY_OFFNODE</span><span class="o">.</span> <span class="n">Please</span> <span class="n">refer</span> <span class="n">these</span> <span class="n">environment</span> <span class="n">variables</span> <span class="ow">in</span> <span class="n">the</span>
-<span class="n">the</span> <span class="n">following</span> <span class="n">section</span><span class="p">,</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
-</pre></div>
+<p>Cray OpenSHMEMX version 9.0.0 and later provides support for locality
+awareness. On previous versions, we initialized both the network transport
+options (OFI) and on-node transport (XPMEM) options even on single-node jobs.
+We used environment variables like SHMEM_USE_SMP to toggle the use of
+on-node data transfers.</p>
+<p>On Cray OpenSHMEMX versions 9.0.0 and later, only on-node transport (XPMEM)
+options are initialized for single-node jobs. Users can toggle the usage using
+the following environment variable options: SHMEM_LOCALITY_ONNODE and
+SHMEM_LOCALITY_OFFNODE. Please refer these environment variables in the
+the following section, for more information.</p>
 </div>
+<div class="section" id="whitepapers">
+<h2>Whitepapers<a class="headerlink" href="#whitepapers" title="Permalink to this headline">¶</a></h2>
+<p>Whitepapers and other performance tuning related details are available in the
+Cray Programming Environment Github page: <a class="reference external" href="https://pe-cray.github.io/whitepapers/">https://pe-cray.github.io/whitepapers/</a>.</p>
 </div>
 </div>
 <div class="section" id="environment-variables">
 <h1>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">following</span> <span class="n">environment</span> <span class="n">variables</span> <span class="n">affect</span> <span class="n">SHMEM</span> <span class="n">behavior</span><span class="o">.</span>
-</pre></div>
-</div>
+<p>The following environment variables affect SHMEM behavior.</p>
 <div class="section" id="openshmem-standard-specific-environment-variables">
 <h2>OpenSHMEM Standard Specific Environment Variables<a class="headerlink" href="#openshmem-standard-specific-environment-variables" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SHMEM_SYMMETRIC_SIZE</span>
@@ -1008,8 +901,8 @@ cc -o test_shmem test_shmem.c
            <span class="n">protocol</span><span class="o">.</span>  <span class="n">Note</span> <span class="n">FI_OFI_RXM_USE_SRX</span> <span class="n">must</span> <span class="n">also</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">to</span> <span class="mi">1</span> <span class="n">when</span>
            <span class="n">requesting</span> <span class="n">XRC</span><span class="o">.</span>  <span class="n">Using</span> <span class="n">the</span> <span class="n">XRC</span> <span class="n">protocol</span> <span class="n">reduces</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span>
            <span class="n">connections</span><span class="p">,</span> <span class="n">hardware</span> <span class="n">resources</span><span class="p">,</span> <span class="ow">and</span> <span class="n">memory</span> <span class="n">footprint</span> <span class="k">for</span> <span class="n">large</span>
-           <span class="n">scaling</span> <span class="n">jobs</span> <span class="n">that</span> <span class="n">require</span> <span class="n">a</span> <span class="n">demanding</span> <span class="n">communication</span> <span class="n">pattern</span><span class="o">.</span>  <span class="n">This</span>
-           <span class="n">environment</span> <span class="n">variable</span> <span class="ow">is</span> <span class="n">required</span> <span class="n">when</span> <span class="n">scaling</span> <span class="n">jobs</span> <span class="k">with</span> <span class="n">an</span>
+           <span class="n">scaling</span> <span class="n">jobs</span> <span class="n">that</span> <span class="n">require</span> <span class="n">a</span> <span class="n">demanding</span> <span class="n">communication</span> <span class="n">pattern</span><span class="o">.</span>
+           <span class="n">This</span> <span class="n">environment</span> <span class="n">variable</span> <span class="ow">is</span> <span class="n">required</span> <span class="n">when</span> <span class="n">scaling</span> <span class="n">jobs</span> <span class="k">with</span> <span class="n">an</span>
            <span class="nb">all</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="nb">all</span> <span class="n">communication</span> <span class="n">pattern</span><span class="o">.</span>
 
            <span class="n">Default</span><span class="p">:</span> <span class="n">For</span> <span class="n">jobs</span> <span class="n">sizes</span> <span class="n">of</span> <span class="o">&lt;</span> <span class="mi">64</span> <span class="n">ranks</span><span class="p">,</span> <span class="n">default</span> <span class="ow">is</span> <span class="mi">0</span>
@@ -1019,19 +912,20 @@ cc -o test_shmem test_shmem.c
 
            <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">verbs</span><span class="p">;</span><span class="n">ofi_rxm</span> <span class="n">libfabric</span> <span class="n">ENV</span> <span class="n">variable</span><span class="o">.</span> <span class="n">This</span> <span class="n">sets</span> <span class="n">the</span>
            <span class="n">minimum</span> <span class="n">backoff</span> <span class="n">time</span> <span class="n">used</span> <span class="n">when</span> <span class="n">the</span> <span class="n">Mellanox</span> <span class="n">NICs</span> <span class="n">experience</span>
-           <span class="n">congestion</span><span class="o">.</span>  <span class="n">Allowable</span> <span class="n">values</span> <span class="n">are</span> <span class="mi">0</span><span class="o">-</span><span class="mi">31</span><span class="p">,</span> <span class="k">with</span> <span class="n">higher</span> <span class="n">values</span> <span class="n">corresponding</span>
-           <span class="n">to</span> <span class="n">longer</span> <span class="n">backoffs</span><span class="o">.</span>  <span class="n">Setting</span> <span class="n">this</span> <span class="n">to</span> <span class="mi">0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">recommended</span><span class="p">,</span> <span class="n">however</span><span class="p">,</span> <span class="k">as</span>
-           <span class="n">that</span> <span class="n">translates</span> <span class="n">into</span> <span class="n">a</span> <span class="n">very</span> <span class="n">large</span> <span class="n">backoff</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">adversely</span> <span class="n">affect</span>
-           <span class="n">performance</span><span class="o">.</span> <span class="n">Optimal</span> <span class="n">value</span> <span class="k">for</span> <span class="n">Slingshot</span><span class="o">-</span><span class="mi">10</span> <span class="n">systems</span> <span class="n">are</span> <span class="n">likely</span>
-           <span class="n">between</span> <span class="mi">3</span> <span class="ow">and</span> <span class="mf">6.</span>
+           <span class="n">congestion</span><span class="o">.</span>  <span class="n">Allowable</span> <span class="n">values</span> <span class="n">are</span> <span class="mi">0</span><span class="o">-</span><span class="mi">31</span><span class="p">,</span> <span class="k">with</span> <span class="n">higher</span> <span class="n">values</span>
+           <span class="n">corresponding</span> <span class="n">to</span> <span class="n">longer</span> <span class="n">backoffs</span><span class="o">.</span>  <span class="n">Setting</span> <span class="n">this</span> <span class="n">to</span> <span class="mi">0</span> <span class="ow">is</span> <span class="ow">not</span>
+           <span class="n">recommended</span><span class="p">,</span> <span class="n">however</span><span class="p">,</span> <span class="k">as</span> <span class="n">that</span> <span class="n">translates</span> <span class="n">into</span> <span class="n">a</span> <span class="n">very</span> <span class="n">large</span>
+           <span class="n">backoff</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">adversely</span> <span class="n">affect</span> <span class="n">performance</span><span class="o">.</span> <span class="n">Optimal</span> <span class="n">value</span> <span class="k">for</span>
+           <span class="n">Slingshot</span><span class="o">-</span><span class="mi">10</span> <span class="n">systems</span> <span class="n">are</span> <span class="n">likely</span> <span class="n">between</span> <span class="mi">3</span> <span class="ow">and</span> <span class="mf">6.</span>
 
            <span class="n">Default</span><span class="p">:</span> <span class="mi">6</span>
 
 <span class="n">FI_MR_CACHE_MAX_COUNT</span>
-           <span class="n">This</span> <span class="n">defines</span> <span class="n">the</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">memory</span> <span class="n">regions</span> <span class="n">that</span> <span class="n">may</span> <span class="n">be</span> <span class="n">registered</span>
-           <span class="k">with</span> <span class="n">the</span> <span class="n">cache</span><span class="o">.</span> <span class="n">If</span> <span class="ow">not</span> <span class="nb">set</span><span class="p">,</span> <span class="n">a</span> <span class="n">default</span> <span class="n">limit</span> <span class="ow">is</span> <span class="n">chosen</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">this</span> <span class="n">will</span>
-           <span class="n">reduce</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">regions</span> <span class="n">that</span> <span class="n">are</span> <span class="n">registered</span><span class="p">,</span> <span class="n">regardless</span> <span class="n">of</span> <span class="n">their</span> <span class="n">size</span><span class="p">,</span>
-           <span class="n">which</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">actively</span> <span class="n">being</span> <span class="n">used</span> <span class="k">as</span> <span class="n">part</span> <span class="n">of</span> <span class="n">a</span> <span class="n">data</span> <span class="n">transfer</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">this</span>
+           <span class="n">This</span> <span class="n">defines</span> <span class="n">the</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">memory</span> <span class="n">regions</span> <span class="n">that</span> <span class="n">may</span> <span class="n">be</span>
+           <span class="n">registered</span> <span class="k">with</span> <span class="n">the</span> <span class="n">cache</span><span class="o">.</span> <span class="n">If</span> <span class="ow">not</span> <span class="nb">set</span><span class="p">,</span> <span class="n">a</span> <span class="n">default</span> <span class="n">limit</span> <span class="ow">is</span> <span class="n">chosen</span><span class="o">.</span>
+           <span class="n">Setting</span> <span class="n">this</span> <span class="n">will</span> <span class="n">reduce</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">regions</span> <span class="n">that</span> <span class="n">are</span>
+           <span class="n">registered</span><span class="p">,</span> <span class="n">regardless</span> <span class="n">of</span> <span class="n">their</span> <span class="n">size</span><span class="p">,</span> <span class="n">which</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">actively</span>
+           <span class="n">being</span> <span class="n">used</span> <span class="k">as</span> <span class="n">part</span> <span class="n">of</span> <span class="n">a</span> <span class="n">data</span> <span class="n">transfer</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">this</span>
            <span class="n">to</span> <span class="n">zero</span> <span class="n">will</span> <span class="n">disable</span> <span class="n">registration</span> <span class="n">caching</span><span class="o">.</span>
 
            <span class="n">Default</span><span class="p">:</span> <span class="ow">not</span> <span class="nb">set</span>
@@ -1048,7 +942,7 @@ cc -o test_shmem test_shmem.c
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="shmem_mem_manage.html" class="btn btn-neutral float-right" title="Managing Memory in Cray OpenSHMEMX" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tuning_parameters.html" class="btn btn-neutral float-right" title="Tuning Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Cray OpenSHMEMX" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -1,260 +1,252 @@
 Overview
 ========
 
-::
+OpenSHMEM is a Partitioned Global Address Space (PGAS) library interface
+specification, which is the culmination of a standardization effort among
+many implementers and users of SHMEM programming model. SHMEM has a long
+history as a parallel programming model on Cray systems. For the past two
+decades SHMEM library implementation in Cray systems evolved through
+different generations. Cray OpenSHMEMX is a proprietary, OpenSHMEM
+specification compliant SHMEM implementation for current and future
+generation Cray systems.
 
-    OpenSHMEM is a Partitioned Global Address Space (PGAS) library interface
-    specification, which is the culmination of a standardization effort among
-    many implementers and users of SHMEM programming model. SHMEM has a long
-    history as a parallel programming model on Cray systems. For the past two
-    decades SHMEM library implementation in Cray systems evolved through
-    different generations. Cray OpenSHMEMX is a proprietary, OpenSHMEM
-    specification compliant SHMEM implementation for current and future
-    generation Cray systems.
+Cray OpenSHMEMX release version 8.0.0 is the first official release of
+the Cray OpenSHMEMX library, it is a proprietary SHMEM implementation from
+Cray Inc which is OpenSHMEM standards compliant.
 
-    Cray OpenSHMEMX release version 8.0.0 is the first official release of
-    the Cray OpenSHMEMX library, it is a proprietary SHMEM implementation from
-    Cray Inc which is OpenSHMEM standards compliant.
+On Cray XC systems, Cray OpenSHMEMX is not released as a replacement
+library for the existing Cray SHMEM library. It is released as an
+evaluation product.
 
-    On Cray XC systems, Cray OpenSHMEMX is not released as a replacement
-    library for the existing Cray SHMEM library. It is released as an
-    evaluation product.
-
-    On Cray Shasta systems, Cray OpenSHMEMX is the default production ready
-    propreitary OpenSHMEM implementation from Cray Inc.
+On Cray Shasta systems, Cray OpenSHMEMX is the default production ready
+propreitary OpenSHMEM implementation from Cray Inc.
 
 Description
 ===========
 
-::
+The logically shared, distributed memory access (SHMEM) routines
+provide low-latency, high-bandwidth communication for use in highly
+parallelized scalable programs.
 
-    The logically shared, distributed memory access (SHMEM) routines
-    provide low-latency, high-bandwidth communication for use in highly
-    parallelized scalable programs.
+The SHMEM data-passing library routines are similar to the message
+passing interface (MPI) library routines: they pass data between
+cooperating parallel processes. The SHMEM data-passing routines can be
+used in programs that perform computations in separate address spaces
+and that explicitly pass data to and from different processing
+elements (PEs) in the program.
 
-    The SHMEM data-passing library routines are similar to the message
-    passing interface (MPI) library routines: they pass data between
-    cooperating parallel processes. The SHMEM data-passing routines can be
-    used in programs that perform computations in separate address spaces
-    and that explicitly pass data to and from different processing
-    elements (PEs) in the program.
+The SHMEM parallel programming model assumes an MPI-1 like group of
+processes that runs in parallel from job launch to job termination. No
+processes can be added or removed from this group and all processes
+execute the same application. Thus, SHMEM applications are of the SPMD
+(Single Program Multiple Data) type. SHMEM is a one-sided message
+passing model in which memory is private to each process.
 
-    The SHMEM parallel programming model assumes an MPI-1 like group of
-    processes that runs in parallel from job launch to job termination. No
-    processes can be added or removed from this group and all processes
-    execute the same application. Thus, SHMEM applications are of the SPMD
-    (Single Program Multiple Data) type. SHMEM is a one-sided message
-    passing model in which memory is private to each process.
+The SHMEM routines minimize the overhead associated with data passing
+requests, maximize bandwidth, and minimize data latency. Data latency
+is the length of time between a PE initiating a transfer of data and a
+PE being able to use the data.
 
-    The SHMEM routines minimize the overhead associated with data passing
-    requests, maximize bandwidth, and minimize data latency. Data latency
-    is the length of time between a PE initiating a transfer of data and a
-    PE being able to use the data.
+SHMEM routines support remote data transfer through put operations
+that transfer data to a different PE and get operations that transfer
+data from a different PE. Other supported operations are work-shared
+broadcast and reduction, barrier synchronization, and atomic memory
+operations.
 
-    SHMEM routines support remote data transfer through put operations
-    that transfer data to a different PE and get operations that transfer
-    data from a different PE. Other supported operations are work-shared
-    broadcast and reduction, barrier synchronization, and atomic memory
-    operations.
+More information on the SHMEM programming model can be found in the
+OpenSHMEM standard specification documentation. http://openshmem.org
 
-    More information on the SHMEM programming model can be found in the
-    OpenSHMEM standard specification documentation. http://openshmem.org
 
 OpenSHMEM Compliance
 ====================
 
-::
+Cray OpenSHMEMX is compliant with the OpenSHMEM API Specification Version
+1.4. All Cray specific extensions are prefixed with SHMEMX nomenclature
+and placed inside the shmemx.h and shmemx.fh header.
 
-    Cray OpenSHMEMX is compliant with the OpenSHMEM API Specification Version
-    1.4. All Cray specific extensions are prefixed with SHMEMX_ nomenclature
-    and placed inside the shmemx.h and shmemx.fh header.
+The following are the list of Cray-specific features available in Cray
+OpenSHMEMX library:
 
-    The following are the list of Cray-specific features available in Cray
-    OpenSHMEMX library:
+1. alltoallv and alltoallv_packed collective operation
 
-    o  alltoallv and alltoallv_packed collective operation
+2. put with signal operation
 
-    o  put with signal operation
+3. thread-hot multithreading features with thread-based memory ordering
 
-    o  thread-hot multithreading features with thread-based memory ordering
+4. teams and team-based collectives
 
-    o  teams and team-based collectives
+5. local-node queries
 
-    o  local-node queries
+Supported Platforms
+===================
 
-Different Available Transport Layers
-====================================
+Cray OpenSHMEMX is designed to be modular to support different transport
+layers for communication. The current version support the following
+transport layers:
 
-::
+1. SMP-OFI - OFI for internode and XPMEM for intranode communication
+Support for XPMEM is available only on systems with XPMEM kernel.
+SMP-OFI transport option is available only on Cray Shasta supercomputer
+systems.
 
-    Cray OpenSHMEMX is designed to be modular to support different transport
-    layers for communication. The current version support the following
-    transport layers:
+2. SMP-DMAPP - DMAPP for internode and XPMEM for intranode communication
+Support for XPMEM is available only on systems with XPMEM kernel.
+SMP-DMAPP transport option is available only on Cray XC supercomputer systems.
 
-    o  SMP-OFI - OFI for internode and XPMEM for intranode communication
-    Support for XPMEM is available only on systems with XPMEM kernel.
-
-Whitepapers
-===========
-
-::
-
-    Refer Cray Programming Environment Github page:
-    https://pe-cray.github.io/whitepapers/ for access to different whitepapers
-    related to Cray OpenSHMEMX software stack.
-
-OpenSHMEM C11-Generic Interfaces
-================================
-
-::
-
-    The Cray OpenSHMEMX library supports the OpenSHMEM C11-Generic interface,
-    which is new with OpenSHMEM V1.3. This interface does not add new
-    functionality, but allows existing routines to be called with a
-    generic name that maps to a type-specific routine based on the type of
-    the arguments. Only certain programming environments support the
-    C11-Generic interface. As of the time of the Cray OpenSHMEMX V8.0.0
-    release, these include:
-
-    o  CCE 8.5 or later; use the -hstd=c11 flag during compilation
-
-    o  GNU 5.1 or later; no additional flags needed
-
-    o  Intel 16.0 or later; use the -std=c11 or -std=c1x flag during
-       compilation
-
-    To use the C11-Generic interface, you must use a compiler that
-    supports this feature and you must be sure that the first argument to
-    the generic routine is one of the types in the list of the type-
-    specific routines for that functionality. For example,
-
-      long source[8], dest[8];
-      shmem_get(dest, source, 8, 31);
-
-    is a valid use of C11-Generic because shmem_long_get is one of the
-    type-specific get routines.
+Using Cray OpenSHMEMX
+=====================
 
 Compiling and Launching a SHMEM Application on a Cray System
-============================================================
+------------------------------------------------------------
 
-::
+To invoke the compiler for all applications, including SHMEM
+applications, use either the cc, CC, or ftn command. Do not use
+vendor-specific compiler commands such as pgcc, as this may result in
+undefined behavior.
 
-    To invoke the compiler for all applications, including SHMEM
-    applications, use either the cc, CC, or ftn command. Do not use
-    vendor-specific compiler commands such as pgcc, as this may result in
-    undefined behavior.
+Example:
 
-    Example:
-
-    In the example below, an application is first compiled, and the
-    resulting executable is then launched using 128 processes:
+In the example below, an application is first compiled, and the
+resulting executable is then launched using 128 processes:
 
 .. code:: bash
 
         cc -o test_shmem test_shmem.c
         srun -n 128 ./test_shmem
 
-::
 
-    See the srun(1) man page for more information
+See the srun(1) man page for more information. We can use other workload
+managers like aprun() on Cray XC systems when available.
 
 Support for Static and Dynamic linking
 --------------------------------------
 
-::
+Cray OpenSHMEMX supports both static and dynamic linking. Loading
+Cray OpenSHMEMX module file automatically retrieves the correct library to
+link and compile against.
 
-    Cray OpenSHMEMX supports both static and dynamic linking. Loading
-    Cray OpenSHMEMX module file automatically retrieves the correct library to
-    link and compile against.
+Example:
 
-    Example:
-
-    In the example below, an application is first compiled with static linking.
+In the example below, an application is first compiled with static linking.
 
 .. code:: bash
 
         module load cray-openshmemx/<version>
         cc -o test_shmem test_shmem.c
 
-::
+Once compiled, applications can be directly launched using the available
+workload managers like srun() and aprun() based on the supported workload
+managers on the system.
 
-    For dynamic building, users are expected to explicitly load the location
-    of the Cray OpenSHMEMX in the LD_LIBRARY_PATH as shown in the example below:
+NOTE: As of Cray OpenSHMEMX version 10.0.0, static builds are not supported
+in Cray Shasta systems.
+
+Caveats for Using Cray OpenSHMEMX on Cray XC systems
+----------------------------------------------------
+
+Specifically on Cray XC systems, for dynamic builds, users are expected to
+explicitly load the location of the Cray OpenSHMEMX in the LD_LIBRARY_PATH 
+as shown in the example below before running the application:
 
 .. code:: bash
 
         module load cray-openshmemx/<version>
+        cc -o test_shmem test_shmem.c
         export LD_LIBRARY_PATH=$CRAY_OPENSHMEMX_DIR/lib64:$LD_LIBRARY_PATH
-        cc -o test_shmem test_shmem.c
+        srun -n 128 ./test_shmem
 
-::
-
-   NOTE: As of Cray OpenSHMEMX version 10.0.0, static builds are not supported
-   in Cray Shasta systems.
+This step is required only on Cray XC systems and Cray Shasta systems will
+automatically select the right library while running the applications. There is
+no requirement for specific LD_LIBRARY_PATH updates.
 
 General Notes
 =============
 
+OpenSHMEM C11-Generic Interfaces
+--------------------------------
+
+The Cray OpenSHMEMX library supports the OpenSHMEM C11-Generic interface,
+which is new with OpenSHMEM V1.3. This interface does not add new
+functionality, but allows existing routines to be called with a
+generic name that maps to a type-specific routine based on the type of
+the arguments. Only certain programming environments support the
+C11-Generic interface. As of the time of the Cray OpenSHMEMX V8.0.0
+release, these include:
+
+1. CCE 8.5 or later; use the -hstd=c11 flag during compilation
+2. GNU 5.1 or later; no additional flags needed
+3. Intel 16.0 or later; use the -std=c11 or -std=c1x flag during compilation
+
+To use the C11-Generic interface, you must use a compiler that
+supports this feature and you must be sure that the first argument to
+the generic routine is one of the types in the list of the type-
+specific routines for that functionality. For example,
+
+  long source[8], dest[8];
+  shmem_get(dest, source, 8, 31);
+
+is a valid use of C11-Generic because shmem_long_get is one of the
+type-specific get routines.
+
 Zero-length Data Transfer
 -------------------------
 
-::
-
-    Per OpenSHMEM specification 1.2 Annex C, support for zero-length
-    transfers is provided for zero-length get and put. Remote memory transfers
-    for zero number of elements are accepted, and this support is provided for
-    both block and non-blocking transfers. The usage of NULL pointers for data
-    transfer usually leads to program abort, but for zero-length transfers,
-    the usage of NULL pointers is accepted.
+Per OpenSHMEM specification 1.2 Annex C, support for zero-length
+transfers is provided for zero-length get and put. Remote memory transfers
+for zero number of elements are accepted, and this support is provided for
+both block and non-blocking transfers. The usage of NULL pointers for data
+transfer usually leads to program abort, but for zero-length transfers,
+the usage of NULL pointers is accepted.
 
 Managing Memory in Cray OpenSHMEMX
 ----------------------------------
 
-::
-
-    Refer shmem_mem_manage(3) for more information on managing memory in
-    Cray OpenSHMEMX
+Refer shmem_mem_manage(3) for more information on managing memory in
+Cray OpenSHMEMX
 
 Interconnect Specific Informations
 ----------------------------------
 
-::
+On Cray Shasta systems, Cray OpenSHMEMX uses libfabric (OFI) for network
+based communication and data transfer operations.
 
-    On Cray Shasta systems, Cray OpenSHMEMX uses libfabric (OFI) for network
-    based communication and data transfer operations.
+On Cray XC systems, Cray OpenSHMEMX uses DMAPP for network based communication
+and data transfer operations.
 
-Cray Thread-hot and OpenSHMEM Communication Contexts
+
+Cray Thread-hot and OpenSHMEM Contexts
 ----------------------------------------------------
 
-::
-
-    Refer to shmem_multithreading(3) man page for more information on the
-    interacting with OpenSHMEM multithreading features, communication context
-    and Cray-specific thread-hot features
+Refer to shmem_multithreading(3) man page for more information on the
+interacting with OpenSHMEM multithreading features, communication context
+and Cray-specific thread-hot features
 
 Cray OpenSHMEMX Locality Awareness
 ----------------------------------
 
-::
+Cray OpenSHMEMX version 9.0.0 and later provides support for locality
+awareness. On previous versions, we initialized both the network transport
+options (OFI) and on-node transport (XPMEM) options even on single-node jobs.
+We used environment variables like SHMEM_USE_SMP to toggle the use of
+on-node data transfers.
 
-    Cray OpenSHMEMX version 9.0.0 and later provides support for locality
-    awareness. On previous versions, we initialized both the network transport
-    options (OFI) and on-node transport (XPMEM) options even on single-node jobs.
-    We used environment variables like SHMEM_USE_SMP to toggle the use of
-    on-node data transfers.
+On Cray OpenSHMEMX versions 9.0.0 and later, only on-node transport (XPMEM)
+options are initialized for single-node jobs. Users can toggle the usage using
+the following environment variable options: SHMEM_LOCALITY_ONNODE and
+SHMEM_LOCALITY_OFFNODE. Please refer these environment variables in the
+the following section, for more information.
 
-    On Cray OpenSHMEMX versions 9.0.0 and later, only on-node transport (XPMEM)
-    options are initialized for single-node jobs. Users can toggle the usage using
-    the following environment variable options: SHMEM_LOCALITY_ONNODE and
-    SHMEM_LOCALITY_OFFNODE. Please refer these environment variables in the
-    the following section, for more information.
+Whitepapers
+-----------
+
+Whitepapers and other performance tuning related details are available in the
+Cray Programming Environment Github page: https://pe-cray.github.io/whitepapers/.
+
 
 Environment Variables
 =====================
 
-::
-
-    The following environment variables affect SHMEM behavior.
+The following environment variables affect SHMEM behavior.
 
 OpenSHMEM Standard Specific Environment Variables
 -------------------------------------------------
@@ -784,8 +776,8 @@ Cray OpenSHMEMX Libfabric Transport Specific Environment Variables
               protocol.  Note FI_OFI_RXM_USE_SRX must also be set to 1 when
               requesting XRC.  Using the XRC protocol reduces the number of
               connections, hardware resources, and memory footprint for large
-              scaling jobs that require a demanding communication pattern.  This
-              environment variable is required when scaling jobs with an
+              scaling jobs that require a demanding communication pattern.  
+              This environment variable is required when scaling jobs with an
               all-to-all communication pattern.
 
               Default: For jobs sizes of < 64 ranks, default is 0
@@ -795,19 +787,21 @@ Cray OpenSHMEMX Libfabric Transport Specific Environment Variables
 
               This is a verbs;ofi_rxm libfabric ENV variable. This sets the
               minimum backoff time used when the Mellanox NICs experience
-              congestion.  Allowable values are 0-31, with higher values corresponding
-              to longer backoffs.  Setting this to 0 is not recommended, however, as
-              that translates into a very large backoff and will adversely affect
-              performance. Optimal value for Slingshot-10 systems are likely
-              between 3 and 6.
+              congestion.  Allowable values are 0-31, with higher values 
+              corresponding to longer backoffs.  Setting this to 0 is not 
+              recommended, however, as that translates into a very large 
+              backoff and will adversely affect performance. Optimal value for 
+              Slingshot-10 systems are likely between 3 and 6.
 
               Default: 6
 
    FI_MR_CACHE_MAX_COUNT
-              This defines the total number of memory regions that may be registered
-              with the cache. If not set, a default limit is chosen. Setting this will
-              reduce the number of regions that are registered, regardless of their size,
-              which are not actively being used as part of a data transfer. Setting this
+              This defines the total number of memory regions that may be 
+              registered with the cache. If not set, a default limit is chosen.
+              Setting this will reduce the number of regions that are 
+              registered, regardless of their size, which are not actively 
+              being used as part of a data transfer. Setting this
               to zero will disable registration caching.
 
               Default: not set
+

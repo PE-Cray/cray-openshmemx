@@ -83,91 +83,15 @@
 <li class="toctree-l1"><a class="reference internal" href="intro_shmem.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#description">Description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#openshmem-compliance">OpenSHMEM Compliance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#different-available-transport-layers">Different Available Transport Layers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#whitepapers">Whitepapers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#openshmem-c11-generic-interfaces">OpenSHMEM C11-Generic Interfaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#compiling-and-launching-a-shmem-application-on-a-cray-system">Compiling and Launching a SHMEM Application on a Cray System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#supported-platforms">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#using-cray-openshmemx">Using Cray OpenSHMEMX</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#general-notes">General Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_shmem.html#environment-variables">Environment Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_mem_manage.html">Managing Memory in Cray OpenSHMEMX</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_multithreading.html">Multithreading in Cray OpenSHMEMX</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_init.html">shmem_init</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_init_thread.html">shmem_init_thread</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_finalize.html">shmem_finalize</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_global_exit.html">shmem_global_exit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_my_pe.html">shmem_my_pe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_n_pes.html">shmem_n_pes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_info_get_name.html">shmem_info_get_name</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_info_get_version.html">shmem_info_get_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_pe_accessible.html">shmem_pe_accessible</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_addr_accessible.html">shmem_addr_accessible</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_query_thread.html">shmem_query_thread</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_malloc.html">shmem_malloc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_calloc.html">shmem_calloc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_ptr.html">shmem_ptr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_ctx_create.html">shmem_ctx_create</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_ctx_destroy.html">shmem_ctx_destroy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_p.html">shmem_p</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_put.html">shmem_put</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_put_nbi.html">shmem_put_nbi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_iput.html">shmem_iput</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_g.html">shmem_g</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_get.html">shmem_get</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_get_nbi.html">shmem_get_nbi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_iget.html">shmem_iget</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_add.html">shmem_atomic_add</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_and.html">shmem_atomic_and</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_compare_swap.html">shmem_atomic_compare_swap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch.html">shmem_atomic_fetch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_add.html">shmem_atomic_fetch_add</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_and.html">shmem_atomic_fetch_and</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_inc.html">shmem_atomic_fetch_inc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_or.html">shmem_atomic_fetch_or</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_fetch_xor.html">shmem_atomic_fetch_xor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_inc.html">shmem_atomic_inc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_or.html">shmem_atomic_or</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_set.html">shmem_atomic_set</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_swap.html">shmem_atomic_swap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_atomic_xor.html">shmem_atomic_xor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_fence.html">shmem_fence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_quiet.html">shmem_quiet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_test.html">shmem_test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_wait_until.html">shmem_wait_until</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_lock.html">shmem_lock</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_alltoall.html">shmem_alltoall</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_alltoalls.html">shmem_alltoalls</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_barrier.html">shmem_barrier</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_barrier_all.html">shmem_barrier_all</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_broadcast.html">shmem_broadcast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_collect.html">shmem_collect</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_reductions.html">shmem_reductions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_sync.html">shmem_sync</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_sync_all.html">shmem_sync_all</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmem_cache.html">shmem_cache</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_init_thread.html">shmemx_init_thread</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_kind_align.html">shmemx_kind_align</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_kind_malloc.html">shmemx_kind_malloc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_put_signal.html">shmemx_put_signal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_put_signal_nb.html">shmemx_put_signal_nb</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_alltoallv.html">shmemx_alltoallv</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_alltoallv_packed.html">shmemx_alltoallv_packed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_alltoall.html">shmemx_team_alltoall</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_alltoallv.html">shmemx_team_alltoallv</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_alltoallv_packed.html">shmemx_team_alltoallv_packed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_barrier.html">shmemx_team_barrier</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_destroy.html">shmemx_team_destroy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_my_pe.html">shmemx_team_my_pe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_n_pes.html">shmemx_team_n_pes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_reductions.html">shmemx_team_reductions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_2d.html">shmemx_team_split_2d</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_3d.html">shmemx_team_split_3d</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_color.html">shmemx_team_split_color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_split_strided.html">shmemx_team_split_strided</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_team_translate_pe.html">shmemx_team_translate_pe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_fence.html">shmemx_thread_fence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_quiet.html">shmemx_thread_quiet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_register.html">shmemx_thread_register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shmemx_thread_unregister.html">shmemx_thread_unregister</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuning_parameters.html">Tuning Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="white_papers.html">Whitepapers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_list.html">API List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_glossary.html">API Glossary</a></li>
 </ul>
 
             
@@ -234,31 +158,133 @@
             
   <div class="section" id="cray-openshmemx">
 <h1>Cray OpenSHMEMX<a class="headerlink" href="#cray-openshmemx" title="Permalink to this headline">¶</a></h1>
-<p>OpenSHMEM is a Partitioned Global Address Space (PGAS) library interface
-specification, which is the culmination of a standardization effort among many
-implementers and users of SHMEM programming model. SHMEM has a long history as a
-parallel programming model. It is extensively used since 1993, starting from
-Cray T3D systems. For the past two decades SHMEM library implementation in Cray
-systems evolved through different generations. The current generation of the
-SHMEM implementation for Cray XC and XK systems is called Cray SHMEM. Cray SHMEM
-is a proprietary SHMEM implementation from Cray Inc., which is OpenSHMEM
-standards compliant.</p>
-<p>The next evolution of OpenSHMEM implementation for current and future generation
-Cray systems is called Cray OpenSHMEMX.</p>
-<p>This repository contains public announcement information about the Cray
-OpenSHMEMX software stack including release information, updated manpages,
-performance optimization and tuning parameters, supported environments and
-systems, and general backward compatibility details.</p>
-<div class="section" id="supported-platforms">
-<h2>Supported Platforms<a class="headerlink" href="#supported-platforms" title="Permalink to this headline">¶</a></h2>
-<p>Cray OpenSHMEMX is supported on both X86_64 and AARCH64 based Cray XC systems.</p>
-<p>On X86_64 systems, Cray SHMEM is still the production-ready implementation. Cray
-OpenSHMEMX is released as a separate product from Cray SHMEM with plans to
-supersede the existing Cray SHMEM library in near future. Early access to Cray
-OpenSHMEMX library is provided for users to start migrating their existing
-applications to the new library.</p>
-<p>On AARCH64 systems, Cray OpenSHMEMX is the only available and supported SHMEM
-implementation by Cray Inc.</p>
+<p>Cray OpenSHMEMX is a Remote Memory Access (RMA) library and it is a proprietary
+software implementation of the OpenSHMEM standards specification. OpenSHMEM is
+a Partitioned Global Address Space (PGAS) library interface specification,
+which is the culmination of a standardization effort among many implementers
+and users of SHMEM programming model.</p>
+<p>SHMEM has a long history as a parallel programming model. It is extensively
+used since 1993, starting from Cray T3D systems. For the past two decades the
+SHMEM library implementation in Cray supercomputer systems have evolved through
+different generations. The current generation of the SHMEM implementation on
+Cray XC and XK systems is called Cray SHMEM. Cray SHMEM is a proprietary SHMEM
+implementation from Cray Inc., which is OpenSHMEM standards compliant. The next
+evolution of OpenSHMEM implementation for current and future generation
+exascale Cray supercomputer systems is called Cray OpenSHMEMX.</p>
+<p>This document contains public announcement information about the Cray
+OpenSHMEMX software stack including release informations, updated API
+references, information on performance optimization and tuning parameters,
+supported environments and systems, and general backward compatibility details.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/cray-openshmemx-overview.png" src="_images/cray-openshmemx-overview.png" />
+<p>Cray OpenSHMEMX software stack provides support for the OpenSHMEM standard
+specific features as well as Cray-specific features. The examples of the
+supported features includes teams and library management operations, one-sided
+data transfer operations including RMA, AMO, and put-with-signal (PWS),
+collective communication operations, symmetric memory management routines,
+memory ordering and point-to-point synchronization routines, and support for
+distributed locks.</p>
+<p>All the supported features are accessed using standard OpenSHMEM C and Fortran
+interfaces. These features are implemented over different transport options
+like XPMEM, Cross Memory Attach (CMA), Libfabric and DMAPP. While XPMEM and
+CMA are used for moving data across processing elements within the same node,
+Libfabric and DMAPP are used to move data across nodes. The SMP transport
+combines two transports one for inter-node and another for intra-node data
+transfers. Cray OpenSHMEMX software stack is usable across different Cray and
+HPE system architectures.</p>
+</div>
+<div class="section" id="system-architectures">
+<h2>System Architectures<a class="headerlink" href="#system-architectures" title="Permalink to this headline">¶</a></h2>
+<p>Cray OpenSHMEMX is supported on both Cray XC and Cray Shasta systems. The current
+support for Cray OpenSHMEMX on Cray XC systems are in maintenance mode, only
+bugfixes are provided and no new functional additions are planned. Active functional
+additions and performance tuning is done on Cray Shasta systems.</p>
+<p>The following table shows the availability of Cray OpenSHMEMX on different
+Cray systems.</p>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">Availability of Cray OpenSHMEMX on Different Cray Systems</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">System Architecture</th>
+<th class="head">Processor Type</th>
+<th class="head">Availability</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Cray XC</td>
+<td>x86_64</td>
+<td>Available as evaluation library</td>
+</tr>
+<tr class="row-odd"><td>Cray XC</td>
+<td>aarch64</td>
+<td>Available as primary library</td>
+</tr>
+<tr class="row-even"><td>Cray Shasta</td>
+<td>x86_64</td>
+<td>Available as primary library</td>
+</tr>
+</tbody>
+</table>
+<p>On X86_64 based Cray XC systems, Cray SHMEM is still the production-ready
+implementation. Early access to Cray OpenSHMEMX library is provided for users
+to start migrating their existing applications to the new library.</p>
+<p>On AARCH64 based Cray XC systems, Cray OpenSHMEMX is the only available and
+supported SHMEM implementation by Cray Inc.</p>
+</div>
+<div class="section" id="transport-options">
+<h2>Transport Options<a class="headerlink" href="#transport-options" title="Permalink to this headline">¶</a></h2>
+<p>The following table shows the support for different transport options in Cray
+OpenSHMEMX software stack on different system architectures.</p>
+<table border="1" class="docutils" id="id2">
+<caption><span class="caption-text">Supported Transport Options in Cray OpenSHMEMX</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">System Architecture</th>
+<th class="head">Inter-node Transport Option</th>
+<th class="head">Intra-node Transport Option</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Cray XC using Aries-Interconnect</td>
+<td>DMAPP</td>
+<td>XPMEM</td>
+</tr>
+<tr class="row-odd"><td>Cray Shasta using Ethernet</td>
+<td>OFI (verbs;ofi_rxm provider)</td>
+<td>XPMEM (default)/CMA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="publications-reference">
+<h2>Publications/Reference<a class="headerlink" href="#publications-reference" title="Permalink to this headline">¶</a></h2>
+<p>The proper citation of Cray OpenSHMEMX software stack is: Naveen Namashivayam,
+Bob Cernohous, Dan Pou, and Mark Pagel, “OpenSHMEM 2018: Fifth Workshop on
+OpenSHMEM and Related Technologies.” Baltimore, MD, August, 2018. “Introducing
+Cray OpenSHMEMX- A Modular Multi-Communication Layer OpenSHMEM Implementation.”</p>
+<p>The corresponding Bibtex is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@inproceedings</span><span class="p">{</span><span class="n">naveen</span><span class="p">:</span><span class="n">openshmem</span><span class="p">:</span><span class="mi">2018</span><span class="p">:</span><span class="n">crayopenshmemx</span><span class="p">,</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="p">{</span><span class="n">Naveen</span> <span class="n">Namashivayam</span> <span class="ow">and</span> <span class="n">Bob</span> <span class="n">Cernohous</span> <span class="ow">and</span> <span class="n">Dan</span> <span class="n">Pou</span> <span class="ow">and</span> <span class="n">Mark</span>
+              <span class="n">Pagel</span><span class="p">},</span>
+    <span class="n">title</span>  <span class="o">=</span> <span class="p">{</span><span class="n">Introducing</span> <span class="n">Cray</span> <span class="n">OpenSHMEMX</span> <span class="o">-</span> <span class="n">A</span> <span class="n">Modular</span> <span class="n">Multi</span><span class="o">-</span><span class="n">Communication</span>
+              <span class="n">Layer</span> <span class="n">OpenSHMEM</span> <span class="n">Implementation</span><span class="p">},</span>
+    <span class="n">booktitle</span> <span class="o">=</span> <span class="p">{</span><span class="n">OpenSHMEM</span> <span class="mi">2018</span><span class="p">:</span> <span class="n">Fifth</span> <span class="n">Workshop</span> <span class="n">on</span> <span class="n">OpenSHMEM</span> <span class="ow">and</span>
+              <span class="n">Related</span> <span class="n">Technologies</span><span class="p">},</span>
+    <span class="n">month</span> <span class="o">=</span> <span class="n">Aug</span><span class="p">,</span>
+    <span class="n">year</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2018</span><span class="p">},</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="p">{</span><span class="n">Baltimore</span><span class="p">,</span> <span class="n">MD</span><span class="p">,</span> <span class="n">USA</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
