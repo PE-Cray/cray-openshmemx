@@ -36,7 +36,7 @@ and supported SHMEM implementation by Cray Inc.
 
 ## Manpage
 Recent updated manpage corresponding to the latest released
-version (version-9.0.0) can be accessed [here](doc/build/html/index.html).
+version (version-9.0.0) can be accessed [here](man/main.html).
 
 ## Publications/Reference
 The proper citation of Cray OpenSHMEMX is:
