@@ -371,6 +371,10 @@ Cray OpenSHMEMX Setup and Running Specific Environment Variables
 Cray OpenSHMEMX and Cray DSMML Interaction Environment Variables
 ----------------------------------------------------------------
 
+The support for the following environment variables are available only on Cray
+Shasta systems as the DSMML integration for Cray OpenSHMEMX memory management
+operations are available on Shasta system architecture.
+
 ::
 
    SHMEM_USE_DSMML
@@ -697,6 +701,9 @@ Cray OpenSHMEMX - SMP Communication Layer Specific Environment Variables
 Cray OpenSHMEMX Libfabric Transport Specific Environment Variables
 ------------------------------------------------------------------
 
+The support for the following environment variables are available only on
+Cray Shasta systems.
+
 ::
 
    SHMEM_OFI_FABRIC_DISPLAY
@@ -804,4 +811,101 @@ Cray OpenSHMEMX Libfabric Transport Specific Environment Variables
               to zero will disable registration caching.
 
               Default: not set
+
+Cray OpenSHMEMX DMAPP Transport Specific Environment Variables
+--------------------------------------------------------------
+
+The support for the following environment variables are available only on
+Cray XC systems.
+
+::
+
+     SHMEM_DMAPP_BTE_THRESHOLD
+               Specifies the threshold in bytes above which SHMEM switches
+               to using the DMA engine for off-node data transfers. Some
+               applications may perform better if this value is increased.
+               The value is interpreted as bytes, unless the string ends
+               with a K, indicating kilobytes, or M, indicating megabytes.
+
+               Default: DMAPP runtime default, which may be based on the
+               job configuration
+
+     SHMEM_DMAPP_GLOBAL_EXIT
+               If not set or set to 1, enables the OpenSHMEM API Version
+               1.2 routine shmem_global_exit(). If set to 0,
+               shmem_global_exit() is disabled and a call to
+               shmem_global_exit() behaves as a call to exit().
+
+               Default: enabled
+
+     SHMEM_DMAPP_PUT_NBI
+               The SHMEM standard allows users to reuse the local buffer
+               from a shmem_put() request on return from the call. However,
+               the global visibility of the put operation is not guaranteed
+               until a shmem_fence() or shmem_barrier[_all]() call is
+               completed.
+
+               If SHMEM_DMAPP_PUT_NBI is set to 1, non-blocking DMAPP APIs
+               are used. The shmem_put() will be complete when the local
+               buffer is available for reuse but the operation may not have
+               completed remotely.
+
+               If set to 0, blocking DMAPP APIs are used. The shmem_put()
+               will not complete until it is globally visible.
+
+               An application that has concerns or requirements for strict
+               completion ordering should use shmem_fence()/shmem_quiet()
+               or shmem_barrier[_all]() to explicitly guarantee that
+               operations have completed and are globally visible.
+
+               Default: 1
+
+     SHMEM_DMAPP_OPT_CTX_BUILD
+               Output label to determine the library used by the application.
+               On compiling the OpenSHMEM application with -cray-openshmemx-ctx
+               compiler driver option this environment variable will be set to
+               1 to denote an optimized DMAPP build with communication contexts
+               is used.
+
+     SHMEM_GLOBAL_EXIT_QDEPTH
+               Specifies the size of the queue used by shmem_global_exit().
+               The queue needs to be large enough to handle all possible
+               concurrent calls to shmem_global_exit(). If only one PE is
+               expected to call shmem_global_exit(), a value of 2 is
+               sufficient. The value must be a power-of-two.
+
+               Default: closest power-of-two value greater than or equal to
+               the number of PEs in the job
+
+     SHMEM_MAX_OUTSTANDING_NB
+               Specifies the maximum number of outstanding non-blocking
+               requests that a rank can issue. The valid range is from 5 to
+               4096, inclusive. This value does not normally need to be
+               changed, but can be increased if a user application
+               encounters as DMAPP_RC_NO_SPACE error during non-blocking
+               communications.
+
+               Default: DMAPP runtime default, which may be based on the
+               job configuration
+
+     SHMEM_ROUTING_MODE
+               Changes the DMAPP (GNI network) routing mode that is
+               specified to dmapp_init(). The supported values are:
+
+               0         Set the routing mode to DMAPP_ROUTING_IN_ORDER.
+
+               1         Set the routing mode to
+                         DMAPP_ROUTING_DETERMINISTIC.
+
+               2         Set the routing mode to DMAPP_ROUTING_ADAPTIVE.
+
+               Default: 2
+
+     SHMEM_USE_DMAPP_COLL
+               If set, enables the use of DMAPP collectives for barrier,
+               reduction, and broadcast collective operations on Aries
+               systems. If resources permit, the Aries collective engine
+               will be used.
+
+               Default: 1
 

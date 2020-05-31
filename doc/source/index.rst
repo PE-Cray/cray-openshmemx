@@ -1,12 +1,16 @@
 Cray OpenSHMEMX
 ===============
 
-Cray OpenSHMEMX is a Remote Memory Access (RMA) library and it is a proprietary
-software implementation of the OpenSHMEM standards specification. OpenSHMEM is 
-a Partitioned Global Address Space (PGAS) library interface specification, 
-which is the culmination of a standardization effort among many implementers 
-and users of SHMEM programming model. 
+Cray OpenSHMEMX is a Remote Memory Access (RMA) library. It is a proprietary
+software implementation of the OpenSHMEM standards specification and released
+as part of the Cray Programming Environment software package. The Cray
+OpenSHMEMX software stack is available as a standard compliant software package
+on different architectures of Cray and HPE supercomputer systems.
 
+OpenSHMEM is a Partitioned Global Address Space (PGAS) library interface 
+specification, which is the culmination of a standardization effort among many 
+implementers and users of SHMEM programming model. Refer
+http://openshmem.org/ for more details on the OpenSHMEM programming model.
 
 SHMEM has a long history as a parallel programming model. It is extensively 
 used since 1993, starting from Cray T3D systems. For the past two decades the
@@ -44,6 +48,37 @@ Libfabric and DMAPP are used to move data across nodes. The SMP transport
 combines two transports one for inter-node and another for intra-node data
 transfers. Cray OpenSHMEMX software stack is usable across different Cray and 
 HPE system architectures.
+
+Latest News
+-----------
+
+.. list-table:: Latest Release Updates
+    :header-rows: 1
+
+    * - System Architecture
+      - Release Version
+      - Release Date
+    * - Cray Shasta
+      - Cray OpenSHMEMX v11.0.0
+      - June 2020
+    * - Cray XC
+      - Cray OpenSHMEMX v9.1.0
+      - June 2020
+
+The following changes were made in the latest release of Cray OpenSHMEMX
+v11.0.0 on Cray Shasta systems:
+
+1. Enabling auto-progress by default in the OFI verbs;ofi_rxm provider
+2. Increased the size of the SHMEM_SYNC_SIZE constant to fix an existing issue
+   in the active-set based alltoall collective communication operations
+
+The following changes were made in the latest release of Cray OpenSHMEMX v9.1.0
+on Cray XC systems:
+
+1. Added missing pshmem interfaces
+
+For more details on the different released versions of Cray OpenSHMEMX, please
+:doc:`refer the link <release_notes>`.
 
 System Architectures
 --------------------
