@@ -157,6 +157,11 @@ The corresponding Bibtex is:
         location = {Baltimore, MD, USA},
     }
 
+Note
+----
+This website is in construction and updated regularly. There are place-holders
+for various pages and will be completed soon.
+
 .. toctree::
    :maxdepth: 3
    :hidden:
