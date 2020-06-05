@@ -19,5 +19,5 @@ systems is called Cray OpenSHMEMX.
 <p align="justify">
 This webpage is no longer actively maintained - please refer the following
 readthedocs documentation:
-https://cray-openshmemx.readthedocs.io/
+<a href="https://pe-cray.github.io/cray-openshmemx/">https://cray-openshmemx.readthedocs.io/</a>
 </p>
