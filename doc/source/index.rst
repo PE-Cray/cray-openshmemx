@@ -59,23 +59,26 @@ Latest News
       - Release Version
       - Release Date
     * - Cray Shasta
-      - Cray OpenSHMEMX v11.0.0
-      - June 2020
+      - Cray OpenSHMEMX v11.1.0
+      - August 2020
     * - Cray XC
-      - Cray OpenSHMEMX v9.1.0
-      - June 2020
+      - Cray OpenSHMEMX v9.1.1
+      - August 2020
 
 The following changes were made in the latest release of Cray OpenSHMEMX
-v11.0.0 on Cray Shasta systems:
+v11.1.0 on Cray Shasta systems:
 
-1. Enabling auto-progress by default in the OFI verbs;ofi_rxm provider
-2. Increased the size of the SHMEM_SYNC_SIZE constant to fix an existing issue
-   in the active-set based alltoall collective communication operations
+1. Enabling manual-progress by default for OFI "verbs;ofi_rxm" provider
+2. Allow using Cray OpenSHMEMX on HPE Apollo systems as a beta release. The 
+   initial beta release is not performant and it is provided as a functional 
+   test library
+3. Fix padding issues on the symmetric heaps, to avoid internal library usage
+   memory buffers to use the user-allocated symmetric heaps
 
-The following changes were made in the latest release of Cray OpenSHMEMX v9.1.0
+The following changes were made in the latest release of Cray OpenSHMEMX v9.1.1
 on Cray XC systems:
 
-1. Added missing pshmem interfaces
+1. Fix issues in supporting lmod-based cray-openshmemx modules
 
 For more details on the different released versions of Cray OpenSHMEMX, please
 :doc:`refer the link <release_notes>`.
@@ -144,7 +147,6 @@ Cray OpenSHMEMX- A Modular Multi-Communication Layer OpenSHMEM Implementation.â€
 The corresponding Bibtex is:
 
 ::
-
     @inproceedings{naveen:openshmem:2018:crayopenshmemx,
         author = {Naveen Namashivayam and Bob Cernohous and Dan Pou and Mark
                   Pagel},
