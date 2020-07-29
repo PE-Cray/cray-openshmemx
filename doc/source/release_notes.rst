@@ -48,6 +48,9 @@ Release Overview
     * - :ref:`Cray OpenSHMEMX v9.1.0 <cray-openshmemx-v9-1-0>`
       - OpenSHMEM v1.4
       - June 2020
+    * - :ref:`Cray OpenSHMEMX v9.1.1 <cray-openshmemx-v9-1-1>`
+      - OpenSHMEM v1.4
+      - August 2020
 
 .. list-table:: Cray OpenSHMEMX Release Overview on Cray Shasta Systems
     :header-rows: 1
@@ -67,6 +70,9 @@ Release Overview
     * - :ref:`Cray OpenSHMEMX v11.0.0 <cray-openshmemx-v11-0-0>`
       - OpenSHMEM v1.4
       - June 2020
+    * - :ref:`Cray OpenSHMEMX v11.1.0 <cray-openshmemx-v11-1-0>`
+      - OpenSHMEM v1.4
+      - August 2020
 
 
 Release Details
@@ -190,6 +196,19 @@ Cray OpenSHMEMX v9.1.0
     and system default) operations on both x86_64 and aarch64 platforms.
 
     - Fix for using -Wpedantic flag in the application level
+
+:ref:`Jump To Release Overview <release-overview>`
+
+.. _cray-openshmemx-v9-1-1:
+
+Cray OpenSHMEMX v9.1.1
+----------------------
+
+::
+
+    The following bugfixes are handled in Cray OpenSHMEMX v9.1.1:
+
+    - Minor bugfixes in supporting lmod
 
 :ref:`Jump To Release Overview <release-overview>`
 
@@ -341,4 +360,26 @@ Cray OpenSHMEMX v11.0.0
       collective communication operations
 
 :ref:`Jump To Release Overview <release-overview>`
+
+.. _cray-openshmemx-v11-1-0:
+
+Cray OpenSHMEMX v11.1.0
+----------------------
+
+::
+
+    Major differences in Cray OpenSHMEMX v11.1.0 from Cray OpenSHMEMX
+    version 11.0.0 includes the following:
+
+    - Enabling manual-progress by default for OFI "verbs;ofi_rxm" provider
+
+    - Allow using Cray OpenSHMEMX v11.1.0 on HPE Apollo systems as a beta  release. 
+    The initial beta release is not performant and it is provided as a functional 
+    test library
+
+    - Fix padding issues on the symmetric heaps, to avoid internal library usage
+    memory buffers to use the user-allocated symmetric heaps
+
+:ref:`Jump To Release Overview <release-overview>`
+
 
