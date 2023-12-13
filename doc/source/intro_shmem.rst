@@ -1,257 +1,285 @@
-Overview
-========
+Name
+====
 
-OpenSHMEM is a Partitioned Global Address Space (PGAS) library interface
-specification, which is the culmination of a standardization effort among
-many implementers and users of SHMEM programming model. SHMEM has a long
-history as a parallel programming model on Cray systems. For the past two
-decades SHMEM library implementation in Cray systems evolved through
-different generations. Cray OpenSHMEMX is a proprietary, OpenSHMEM
-specification compliant SHMEM implementation for current and future
-generation Cray systems.
+    intro_shmem - introduces routines supporting logically shared distributed
+    memory access operations based on OpenSHMEM programming model
 
-Cray OpenSHMEMX release version 8.0.0 is the first official release of
-the Cray OpenSHMEMX library, it is a proprietary SHMEM implementation from
-Cray Inc which is OpenSHMEM standards compliant.
+Introduction
+============
 
-On Cray XC systems, Cray OpenSHMEMX is not released as a replacement
-library for the existing Cray SHMEM library. It is released as an
-evaluation product.
-
-On Cray Shasta systems, Cray OpenSHMEMX is the default production ready
-propreitary OpenSHMEM implementation from Cray Inc.
+    OpenSHMEM is a Partitioned Global Address Space (PGAS) library interface
+    specification, which is the culmination of a standardization effort among
+    many implementers and users of the SHMEM programming model. SHMEM has a
+    long history as a parallel programming model on HPE Cray systems. For the
+    past two decades SHMEM library implementation in HPE Cray systems evolved
+    through different generations. HPE Cray OpenSHMEMX is a proprietary,
+    OpenSHMEM specification compliant implementation currently supported on
+    HPE Cray EX and HPE Cray Apollo systems.
 
 Description
 ===========
 
-The logically shared, distributed memory access (SHMEM) routines
-provide low-latency, high-bandwidth communication for use in highly
-parallelized scalable programs.
+    The logically shared, distributed memory access routines based on the
+    OpenSHMEM programming model provide low-latency, high-bandwidth
+    communication for use in highly parallelized scalable programs.
 
-The SHMEM data-passing library routines are similar to the message
-passing interface (MPI) library routines: they pass data between
-cooperating parallel processes. The SHMEM data-passing routines can be
-used in programs that perform computations in separate address spaces
-and that explicitly pass data to and from different processing
-elements (PEs) in the program.
+    The SHMEM data-passing library routines are similar to the message
+    passing interface (MPI) library routines: they pass data between
+    cooperating parallel processes. The SHMEM data-passing routines can be
+    used in programs that perform computations in separate address spaces
+    and that explicitly pass data to and from different processing
+    elements (PEs) in the program.
 
-The SHMEM parallel programming model assumes an MPI-1 like group of
-processes that runs in parallel from job launch to job termination. No
-processes can be added or removed from this group and all processes
-execute the same application. Thus, SHMEM applications are of the SPMD
-(Single Program Multiple Data) type. SHMEM is a one-sided message
-passing model in which memory is private to each process.
+    The SHMEM parallel programming model assumes an MPI-1 like group of
+    processes that runs in parallel from job launch to job termination. No
+    processes can be added or removed from this group and all processes
+    execute the same application. Thus, SHMEM applications are of the SPMD
+    (Single Program Multiple Data) type. SHMEM is a one-sided message
+    passing model in which memory is private to each process.
 
-The SHMEM routines minimize the overhead associated with data passing
-requests, maximize bandwidth, and minimize data latency. Data latency
-is the length of time between a PE initiating a transfer of data and a
-PE being able to use the data.
+    The SHMEM routines minimize the overhead associated with data passing
+    requests, maximize bandwidth, and minimize data latency. Data latency
+    is the length of time between a PE initiating a transfer of data and a
+    PE being able to use the data.
 
-SHMEM routines support remote data transfer through put operations
-that transfer data to a different PE and get operations that transfer
-data from a different PE. Other supported operations are work-shared
-broadcast and reduction, barrier synchronization, and atomic memory
-operations.
+    SHMEM routines support remote data transfer through put operations
+    that transfer data to a different PE and get operations that transfer
+    data from a different PE. Other supported operations are work-shared
+    broadcast and reduction, barrier synchronization, and atomic memory
+    operations.
 
-More information on the SHMEM programming model can be found in the
-OpenSHMEM standard specification documentation. http://openshmem.org
-
+    More information on the SHMEM programming model can be found in the
+    OpenSHMEM standard specification documentation. http://openshmem.org
 
 OpenSHMEM Compliance
 ====================
 
-Cray OpenSHMEMX is compliant with the OpenSHMEM API Specification Version
-1.4. All Cray specific extensions are prefixed with SHMEMX nomenclature
-and placed inside the shmemx.h and shmemx.fh header.
+    Cray OpenSHMEMX is compliant with the OpenSHMEM API Specification Version
+    1.5. The following list of operations are supported by the implementation:
 
-The following are the list of Cray-specific features available in Cray
-OpenSHMEMX library:
+    o  library setup, exit, and query routines
 
-1. alltoallv and alltoallv_packed collective operation
+    o  support for multithreading
 
-2. put with signal operation
+    o  memory management operations
 
-3. thread-hot multithreading features with thread-based memory ordering
+    o  team or process subset management routines
 
-4. teams and team-based collectives
+    o  communication management using contexts
 
-5. local-node queries
+    o  remote memory access
 
-Supported Platforms
-===================
+    o  atomic memory operations
 
-Cray OpenSHMEMX is designed to be modular to support different transport
-layers for communication. The current version support the following
-transport layers:
+    o  signaling operations
 
-1. SMP-OFI - OFI for internode and XPMEM for intranode communication
-Support for XPMEM is available only on systems with XPMEM kernel.
-SMP-OFI transport option is available only on Cray Shasta supercomputer
-systems.
+    o  collective routines
 
-2. SMP-DMAPP - DMAPP for internode and XPMEM for intranode communication
-Support for XPMEM is available only on systems with XPMEM kernel.
-SMP-DMAPP transport option is available only on Cray XC supercomputer systems.
+    o  point-to-point synchronization routines
 
-Using Cray OpenSHMEMX
+    o  memory ordering routines
+
+    o  distributed locking
+
+    o  C11-generic interface
+
+Implementation-specific Features
+================================
+
+    All implementation specific extensions are prefixed with SHMEMX_
+    nomenclature and placed inside the shmemx.h and shmemx.fh header.
+
+    The following are the list of implementation-specific features available in
+    Cray OpenSHMEMX library:
+
+    o  sessions with support for different hints
+
+    o  local-node queries
+
+    o  thread-hot multithreading features with thread-based memory ordering
+
+    o  fine-grain memory ordering operations
+
+    o  alltoallv and alltoallv_packed collective operation
+
+    o  AMOs with short data types
+
+    o  legacy put with signal operation
+
+    o  legacy teams and team-based collectives
+
+    o  legacy non-blocking put and get RMA operations
+
+    All the supported legacy routines are deprecated with a more standard
+    operations defined by the OpenSHMEM specifications. The legacy routines are
+    supported for backward compatibility.
+
+Different Available Transport Layers
+====================================
+
+    Cray OpenSHMEMX is designed to be modular to support different transport
+    layers for communication. The current version support the following
+    transport layers:
+
+    o  SMP-OFI - OFI for internode and XPMEM for intranode communication
+    Support for XPMEM is available only on systems with XPMEM kernel.
+
+Whitepapers
+===========
+
+    Refer Cray Programming Environment Github page:
+    https://pe-cray.github.io/whitepapers/ for access to different whitepapers
+    related to Cray OpenSHMEMX software stack.
+
+General Announcements
 =====================
 
+    Announcements, release informations, supported environments, and backward
+    compatibility informations about this product can be viewed in the following
+    location: https://pe-cray.github.io/cray-openshmemx/
+
 Compiling and Launching a SHMEM Application on a Cray System
-------------------------------------------------------------
+============================================================
 
-To invoke the compiler for all applications, including SHMEM
-applications, use either the cc, CC, or ftn command. Do not use
-vendor-specific compiler commands such as pgcc, as this may result in
-undefined behavior.
+    To invoke the compiler for all applications, including SHMEM applications,
+    use either the cc, CC, or ftn command. Do not use vendor-specific compiler
+    commands such as pgcc, as this may result in undefined behavior.
 
-Example:
+    Example:
 
-In the example below, an application is first compiled, and the
-resulting executable is then launched using 128 processes:
+    In the example below, an application is first compiled, and the
+    resulting executable is then launched using 128 processes. On most systems,
+    the dependency libraries (PMI and DSMML) are loaded by default.
 
 .. code:: bash
 
+        module load cray-pmi
+        module load cray-dsmml
+        module load cray-openshmemx/<version>
         cc -o test_shmem test_shmem.c
         srun -n 128 ./test_shmem
 
+    See the srun(1) man page for more information
 
-See the srun(1) man page for more information. We can use other workload
-managers like aprun() on Cray XC systems when available.
+Support for Dynamic linking
+---------------------------
 
-Support for Static and Dynamic linking
---------------------------------------
+    Cray OpenSHMEMX supports just dynamic linking over the Cray EX system. It
+    is also the default build mode. Loading Cray OpenSHMEMX module file
+    automatically retrieves the correct library to link and compile against.
 
-Cray OpenSHMEMX supports both static and dynamic linking. Loading
-Cray OpenSHMEMX module file automatically retrieves the correct library to
-link and compile against.
+    Example:
 
-Example:
-
-In the example below, an application is first compiled with static linking.
+    In the example below, an application is first compiled with dynamic linking.
 
 .. code:: bash
 
+        module load cray-dsmml/<version>
         module load cray-openshmemx/<version>
         cc -o test_shmem test_shmem.c
 
-Once compiled, applications can be directly launched using the available
-workload managers like srun() and aprun() based on the supported workload
-managers on the system.
-
-NOTE: As of Cray OpenSHMEMX version 10.0.0, static builds are not supported
-in Cray Shasta systems.
-
-Caveats for Using Cray OpenSHMEMX on Cray XC systems
-----------------------------------------------------
-
-Specifically on Cray XC systems, for dynamic builds, users are expected to
-explicitly load the location of the Cray OpenSHMEMX in the LD_LIBRARY_PATH 
-as shown in the example below before running the application:
+    For dynamic building, users are expected to explicitly load the location
+    of the Cray OpenSHMEMX in the LD_LIBRARY_PATH as shown in the example below.
+    Without this setting the library will be linked against the default
+    library in the system.
 
 .. code:: bash
 
+        module load cray-dsmml/<version>
         module load cray-openshmemx/<version>
-        cc -o test_shmem test_shmem.c
         export LD_LIBRARY_PATH=$CRAY_OPENSHMEMX_DIR/lib64:$LD_LIBRARY_PATH
-        srun -n 128 ./test_shmem
+        cc -o test_shmem test_shmem.c
 
-This step is required only on Cray XC systems and Cray Shasta systems will
-automatically select the right library while running the applications. There is
-no requirement for specific LD_LIBRARY_PATH updates.
+   NOTE: As of Cray OpenSHMEMX version 10.0.0, static builds are not supported
+   in Cray EX systems.
 
-General Notes
-=============
-
-OpenSHMEM C11-Generic Interfaces
---------------------------------
-
-The Cray OpenSHMEMX library supports the OpenSHMEM C11-Generic interface,
-which is new with OpenSHMEM V1.3. This interface does not add new
-functionality, but allows existing routines to be called with a
-generic name that maps to a type-specific routine based on the type of
-the arguments. Only certain programming environments support the
-C11-Generic interface. As of the time of the Cray OpenSHMEMX V8.0.0
-release, these include:
-
-1. CCE 8.5 or later; use the -hstd=c11 flag during compilation
-2. GNU 5.1 or later; no additional flags needed
-3. Intel 16.0 or later; use the -std=c11 or -std=c1x flag during compilation
-
-To use the C11-Generic interface, you must use a compiler that
-supports this feature and you must be sure that the first argument to
-the generic routine is one of the types in the list of the type-
-specific routines for that functionality. For example,
-
-  long source[8], dest[8];
-  shmem_get(dest, source, 8, 31);
-
-is a valid use of C11-Generic because shmem_long_get is one of the
-type-specific get routines.
-
-Zero-length Data Transfer
--------------------------
-
-Per OpenSHMEM specification 1.2 Annex C, support for zero-length
-transfers is provided for zero-length get and put. Remote memory transfers
-for zero number of elements are accepted, and this support is provided for
-both block and non-blocking transfers. The usage of NULL pointers for data
-transfer usually leads to program abort, but for zero-length transfers,
-the usage of NULL pointers is accepted.
+Implementation Notes
+====================
 
 Managing Memory in Cray OpenSHMEMX
 ----------------------------------
 
-Refer shmem_mem_manage(3) for more information on managing memory in
-Cray OpenSHMEMX
+    Refer shmem_mem_manage(3) for more information on managing memory in
+    Cray OpenSHMEMX
 
 Interconnect Specific Informations
 ----------------------------------
 
-On Cray Shasta systems, Cray OpenSHMEMX uses libfabric (OFI) for network
-based communication and data transfer operations.
+    On Cray Shasta systems, Cray OpenSHMEMX uses libfabric (OFI) for network
+   based communication and data transfer operations.
 
-On Cray XC systems, Cray OpenSHMEMX uses DMAPP for network based communication
-and data transfer operations.
+OpenSHMEM C11-Generic Interfaces
+--------------------------------
 
+    The Cray OpenSHMEMX library supports the OpenSHMEM C11-Generic interface,
+    which is new with OpenSHMEM version 1.3. This interface does not add new
+    functionality, but allows existing routines to be called with a generic
+    name that maps to a type-specific routine based on the type of the
+    arguments. Only certain programming environments support the C11-Generic
+    interface. As of the time of the Cray OpenSHMEMX version 8.0.0 release,
+    these include:
 
-Cray Thread-hot and OpenSHMEM Contexts
-----------------------------------------------------
+    o  CCE 8.5 or later; use the -hstd=c11 flag during compilation
 
-Refer to shmem_multithreading(3) man page for more information on the
-interacting with OpenSHMEM multithreading features, communication context
-and Cray-specific thread-hot features
+    o  GNU 5.1 or later; no additional flags needed
+
+    o  Intel 16.0 or later; use the -std=c11 or -std=c1x flag during
+       compilation
+
+    To use the C11-Generic interface, you must use a compiler that supports
+    this feature and you must be sure that the first argument to the generic
+    routine is one of the types in the list of the type-specific routines for
+    that functionality.
+
+    For example,
+
+    ```bash
+    long source[8], dest[8];
+    shmem_get(dest, source, 8, 31);
+    ```
+
+    is a valid use of C11-Generic because shmem_long_get is one of the
+    type-specific get routines. Refer independent manpages for each routine to
+    understand the supported datatypes.
+
+Zero-length Data Transfer
+-------------------------
+
+    Per OpenSHMEM specification 1.2 Annex C, support for zero-length transfers
+    is provided for zero-length get and put. Remote memory transfers for zero
+    number of elements are accepted, and this support is provided for both
+    block and non-blocking transfers. The usage of NULL pointers for data
+    transfer usually leads to program abort, but for zero-length transfers, the
+    usage of NULL pointers is accepted.
 
 Cray OpenSHMEMX Locality Awareness
 ----------------------------------
 
-Cray OpenSHMEMX version 9.0.0 and later provides support for locality
-awareness. On previous versions, we initialized both the network transport
-options (OFI) and on-node transport (XPMEM) options even on single-node jobs.
-We used environment variables like SHMEM_USE_SMP to toggle the use of
-on-node data transfers.
+    Cray OpenSHMEMX version 9.0.0 and later provides support for locality
+   awareness. On previous versions, we initialized both the network transport
+   options (OFI) and on-node transport (XPMEM) options even on single-node
+    jobs. We used environment variables like SHMEM_USE_SMP to toggle the use of
+    on-node data transfers.
 
-On Cray OpenSHMEMX versions 9.0.0 and later, only on-node transport (XPMEM)
-options are initialized for single-node jobs. Users can toggle the usage using
-the following environment variable options: SHMEM_LOCALITY_ONNODE and
-SHMEM_LOCALITY_OFFNODE. Please refer these environment variables in the
-the following section, for more information.
-
-Whitepapers
------------
-
-Whitepapers and other performance tuning related details are available in the
-Cray Programming Environment Github page: https://pe-cray.github.io/whitepapers/.
-
+    On Cray OpenSHMEMX versions 9.0.0 and later, only on-node transport (XPMEM)
+   options are initialized for single-node jobs. Users can toggle the usage
+    using the following environment variable options: SHMEM_LOCALITY_ONNODE and
+    SHMEM_LOCALITY_OFFNODE. Please refer these environment variables in the
+    the following section, for more information.
 
 Environment Variables
 =====================
 
-The following environment variables affect SHMEM behavior.
+    The following environment variables affect SHMEM behavior.
 
 OpenSHMEM Standard Specific Environment Variables
 -------------------------------------------------
 
-::
+    SHMEM_VERSION_DISPLAY
+              If set, causes SHMEM to display the Cray OpenSHMEMX version
+              number as well as the build date information.
+
+              Default: not enabled
 
     SHMEM_SYMMETRIC_SIZE
               Controls the size (in bytes) per PE of the symmetric heap.
@@ -270,7 +298,6 @@ OpenSHMEM Standard Specific Environment Variables
               The value set in this environment variable is interpreted as
               a number of bytes, unless the number is followed by a char
               that acts as a multiplier, where:
-
 
               g or G multiplies by 2**30 (gigabytes)
 
@@ -291,24 +318,15 @@ OpenSHMEM Standard Specific Environment Variables
 
               Default: not set
 
-    SHMEM_VERSION_DISPLAY
-              If set, causes SHMEM to display the Cray OpenSHMEMX version
-              number as well as the build date information.
+    SHMEM_DEBUG
+              Enables logging debug log in the library. Refer SHMEM_DEBUG_LEVEL,
+              SHMEM_DEBUG_CATEGORIES, and SHMEM_DEBUG_RANKS environment
+              variables for controling the debug log details.
 
-              Default: not enabled
+              Default: not set
 
 Cray OpenSHMEMX Setup and Running Specific Environment Variables
 ----------------------------------------------------------------
-
-::
-
-    SHMEM_ABORT_ON_ERROR
-              If set, causes SHMEM to abort and produce a core dump when
-              SHMEM detects an error. If not set, SHMEM instead calls
-              exit() with a non-zero exit status. Note that the shell
-              coredumpsize must be set appropriately to enable core dumps.
-
-              Default: not enabled
 
     SHMEM_ENV_DISPLAY
               If set, causes SHMEM to display all SHMEM environment
@@ -322,6 +340,75 @@ Cray OpenSHMEMX Setup and Running Specific Environment Variables
               stdout, set this variable to stdout.
 
               Default: stderr
+
+    SHMEM_ABORT_ON_ERROR
+              If set, causes SHMEM to abort and produce a core dump when
+              SHMEM detects an error. If not set, SHMEM instead calls
+              exit() with a non-zero exit status. Note that the shell
+              coredumpsize must be set appropriately to enable core dumps.
+
+              Default: not enabled
+
+    SHMEM_DEBUG_LEVEL
+              If specified, controls the debug log level. With increasing log
+              levels more debug logs are generated.
+
+              Following debug log levels are currently supported:
+
+              1 - display warning and error messages
+
+              2 - display entry and exit message logs on user-facing routines
+                  along with level-1 logs
+
+              3 - display sub-functions details along with level-2 logs
+
+              4 - display overview logs on internal runtime specific metadata
+                  along with level-3 logs
+
+              5 - display detail logs on internal runtime specific metadata
+                  along with level-4 logs
+
+              Default: 5
+
+    SHMEM_DEBUG_CATEGORIES
+              Specifies and controls the categories of the debug log.
+              Comma-separated input is used to support the input with more than
+              one category.
+
+              Following categories are supported:
+
+              init     - library initialization
+              locality - shared memory device selection
+              synch    - synchronization
+              put      - put operations
+              get      - get operations
+              dat      - unknown data transfer operations
+              enter    - enter and exit of functions
+              coll     - collectives
+              mem      - memory statistics
+              fi       - Fabric interface (OFI)
+              timers   - internal timers
+              lock     - internal lock implementation
+              thread   - thread specific implementation
+              amo      - AMO specific logs
+              xpmem    - XPMEM specific logs
+              dmapp    - DMAPP specific logs
+              counters - NIC Counters
+              nic      - NIC misc logs
+
+              Default: all
+              With SHMEM_DEBUG and SHMEM_DEBUG_LEVEL enabled, all processes
+              logs the debug details into the SHMEM_ERROR_FILE for all the
+              available categories in the library.
+
+    SHMEM_DEBUG_RANKS
+              Determines the ranks to report the debug log. Specifies the ranks
+              to report the debug log. Input options are comma-separated values,
+              if more than one rank is provided as input.
+
+              Default: all
+              With SHMEM_DEBUG and SHMEM_DEBUG_LEVEL enabled, all processes
+              logs the debug details into the SHMEM_ERROR_FILE.
 
     SHMEM_FREEMEM_THRESHOLD
               Sets the percentage of huge_page_freemem that SHMEM
@@ -342,8 +429,6 @@ Cray OpenSHMEMX Setup and Running Specific Environment Variables
 
     SHMEM_OPTIMIZED_MEMCPY
               Specified which version of memcpy to use. Valid values are:
-
-
 
               0         Use the system (glibc) version of memcpy.
 
@@ -371,12 +456,6 @@ Cray OpenSHMEMX Setup and Running Specific Environment Variables
 Cray OpenSHMEMX and Cray DSMML Interaction Environment Variables
 ----------------------------------------------------------------
 
-The support for the following environment variables are available only on Cray
-Shasta systems as the DSMML integration for Cray OpenSHMEMX memory management
-operations are available on Shasta system architecture.
-
-::
-
    SHMEM_USE_DSMML
                Specifies the usage of Cray DSMML library as the symmetric
                heap memory management layer. There are two symmetric heap
@@ -399,10 +478,77 @@ operations are available on Shasta system architecture.
 
                Default: 1 (enabled)
 
+Cray OpenSHMEMX Multithreading Specific Environment Variables
+-------------------------------------------------------------
+
+    SHMEM_THREAD_SAFETY
+              Environment variable to display the OpenSHMEM thread safety level
+              This environment variable acts as output to retrieve the
+              application thread-safety level during runtime
+
+Cray OpenSHMEMX Communication Context Environment Variables
+-----------------------------------------------------------
+
+    SHMEM_MAX_CTX
+              Sets the maximum number of contexts required per process, if
+              known. If the programmer does not know how many contexts will be
+              created, the environment variable should not be set. This
+              environment variable should be set to the correct value to get
+              optimal performance from both the single and multithreaded
+              application.
+
+              Default:
+              Application initialized with SHMEM_THREAD_SINGLE - 1
+
+              Application initialized with SHMEM_THREAD_MULTIPLE - Dynamically
+              calculated maximum number of available network resource available
+              per PE in the node. Number of available network resource depends
+              on the total number of PEs per node.
+
+Cray OpenSHMEMX - SMP Communication Layer Specific Environment Variables
+------------------------------------------------------------------------
+
+    SHMEM_LOCALITY_ONNODE
+              Enables or disable on-node SMP copies via XPMEM. This variable
+              is enabled by default if there are more than one PEs per node
+              and the system supports XPMEM transport.
+
+              Default: 0/1 (enabled/disabled) based on the job configuration
+
+    SHMEM_LOCALITY_OFFNODE
+              Enables or disables using off-node network data transfers. This
+              variable is enabled by default, if the PEs span across multiple
+              nodes.
+
+              Default: 0/1 (enabled/disabled) based on the job configuration
+
+    SHMEM_SMP_SIZE_LIMIT
+              Sets the maximum size in bytes for on-node SMP copies via
+              XPMEM. If set to zero, on-node copy is disabled and all
+              traffic is routed through the OFI network. If set to
+              a negative value, the maximum size is unlimited and all on-
+              node traffic is routed through XPMEM. In the case of strided
+              puts and gets, the size limit is compared to the actual
+              number of bytes to be put or gotten. The value is
+              interpreted as bytes, unless the string ends in a k or K,
+              which indicates kilobytes, or an m or M, which indicates
+              megabytes.
+
+              Default: -1 (unlimited)
+
+    SHMEM_USE_SMP
+              Support for this environment variable is discontinued. Please
+              refer to SHMEM_LOCALITY_ONNODE and SHMEM_LOCALITY_OFFNODE to
+              achieve similar functionality.
+
+              Enables or disable on-node SMP copies via XPMEM. If disabled,
+              on-node copy is disabled and all traffic is routed through the
+              network.
+
+              Default: 1 (enabled)
+
 Cray OpenSHMEMX Collectives Specific Environment Variables
 ----------------------------------------------------------
-
-::
 
     SHMEM_ALLTOALL_BLOCK_SIZE
               Specifies the blocksize in bytes for shmem_alltoall and
@@ -512,6 +658,33 @@ Cray OpenSHMEMX Collectives Specific Environment Variables
 
               Default: all available collective optimized algorithms are
               enabled
+
+    SHMEM_NUM_TEAM_PSYNC
+              Determines the total number of active concurrent teams a single
+              process can simultaneaously support. By default, the variable is
+              set to 512, refering to the capability of supporting 512
+              concurrent teams per process. When more teams are created than
+              the specified value, the implementation will run out-of internal
+              memory space to maintain psync arrays required for supporting
+              team-based collective communication operation and undefined
+              behavior is observed.
+
+              Value 512 refers to the total number of explicit and implicit
+              teams supported per process. Implicit teams include
+              SHMEM_TEAM_WORLD and SHMEM_TEAM_SHARED. Explicit teams are
+              user created teams using the shmem_team_split_strided and
+              shmem_team_split_2d operations.
+
+              Default: 512
+
+    SHMEM_USE_TREE_ALLREDUCE
+              Enable using a tree-based algorithm for performing the allreduce
+              collective communication operations. For now, the tree-based
+              allreduce algorithm is enabled only on allreduce operations
+              executed on all participating PEs in the job using the active-set
+              based collective communication operations.
+
+              Default: 0 (disabled)
 
     SHMEM_MASSIVE_BCAST_CUTOFF
               Controls the cutoff size (in bytes) at or above which the
@@ -623,88 +796,8 @@ Cray OpenSHMEMX Collectives Specific Environment Variables
 
               Default: 0 (not enabled)
 
-Cray OpenSHMEMX Multithreading Specific Environment Variables
--------------------------------------------------------------
-
-::
-
-    SHMEM_THREAD_SAFETY
-              Environment variable to display the OpenSHMEM thread safety level
-              This environment variable acts as output to retrieve the
-              application thread-safety level during runtime
-
-Cray OpenSHMEMX Communication Context Environment Variables
------------------------------------------------------------
-
-::
-
-    SHMEM_MAX_CTX
-              Sets the maximum number of contexts required per process, if
-              known. If the programmer does not know how many contexts will be
-              created, the environment variable should not be set. This
-              environment variable should be set to the correct value to get
-              optimal performance from both the single and multithreaded
-              application.
-
-              Default:
-              Application initialized with SHMEM_THREAD_SINGLE - 1
-
-              Application initialized with SHMEM_THREAD_MULTIPLE - Dynamically
-              calculated maximum number of available network resource available
-              per PE in the node. Number of available network resource depends
-              on the total number of PEs per node.
-
-Cray OpenSHMEMX - SMP Communication Layer Specific Environment Variables
-------------------------------------------------------------------------
-
-::
-
-    SHMEM_LOCALITY_ONNODE
-              Enables or disable on-node SMP copies via XPMEM. This variable
-              is enabled by default if there are more than one PEs per node
-              and the system supports XPMEM transport.
-
-              Default: 0/1 (enabled/disabled) based on the job configuration
-
-    SHMEM_LOCALITY_OFFNODE
-              Enables or disables using off-node network data transfers. This
-              variable is enabled by default, if the PEs span across multiple
-              nodes.
-
-              Default: 0/1 (enabled/disabled) based on the job configuration
-
-    SHMEM_SMP_SIZE_LIMIT
-              Sets the maximum size in bytes for on-node SMP copies via
-              XPMEM. If set to zero, on-node copy is disabled and all
-              traffic is routed through the OFI network. If set to
-              a negative value, the maximum size is unlimited and all on-
-              node traffic is routed through XPMEM. In the case of strided
-              puts and gets, the size limit is compared to the actual
-              number of bytes to be put or gotten. The value is
-              interpreted as bytes, unless the string ends in a k or K,
-              which indicates kilobytes, or an m or M, which indicates
-              megabytes.
-
-              Default: -1 (unlimited)
-
-    SHMEM_USE_SMP
-              Support for this environment variable is discontinued. Please
-              refer to SHMEM_LOCALITY_ONNODE and SHMEM_LOCALITY_OFFNODE to
-              achieve similar functionality.
-
-              Enables or disable on-node SMP copies via XPMEM. If disabled,
-              on-node copy is disabled and all traffic is routed through the
-              network.
-
-              Default: 1 (enabled)
-
 Cray OpenSHMEMX Libfabric Transport Specific Environment Variables
 ------------------------------------------------------------------
-
-The support for the following environment variables are available only on
-Cray Shasta systems.
-
-::
 
    SHMEM_OFI_FABRIC_DISPLAY
               If set, detailed fabric information for the selected provider
@@ -715,8 +808,12 @@ Cray Shasta systems.
    SHMEM_OFI_PROVIDER_DISPLAY
               If set, more verbose output will be displayed during shmem_init
               to verify which libfabric provider has been selected, along with
-              the name and address of the NIC being used. This may be helpful
-              for debugging errors encountered during shmem_init.
+              the name and address of the NIC being used. If SHMEM_OFI_NUM_NICS
+              is set to more than one NIC, then SHMEM_OFI_PROVIDER_DISPLAY
+              will show output for enough ranks on the first node to display
+              all NICs on the first node.  From this one can extrapolate NIC
+              assignment on the remaining nodes. This may be helpful for
+              debugging errors encountered during shmem_init.
 
               Default: not set
 
@@ -753,16 +850,59 @@ Cray Shasta systems.
               Default: enabled
 
    SHMEM_OFI_STARTUP_CONNECT
-
-              By default, OFI connections between ranks are set up on demand.
+              By default, OFI connections between PEs are set up on demand.
               This allows for optimal performance while minimizing memory
               requirements.  However, for jobs requiring an all-to-all
               communication pattern, it may be beneficial to
               create all OFI connections in a coordinated manner at startup.
               If set to 1, Cray OpenSHMEMX will create connections between all
-              ranks in the job during shmem_init() or shmem_thread_init().
+              PEs in the job during shmem_init() or shmem_thread_init().
 
               Default: 0
+
+   SHMEM_OFI_PROGRESS
+              This controls the libfabric progress model and how Cray
+              OpenSHMEMX interacts with it.  By default, Cray OpenSHMEMX will
+              request manual (MANUAL) progress from libfabrics and start an
+              asynchronous thread to drive progress.  The alternative is
+              requesting automatic (AUTO) progress from libfabrics which
+              may use its own progress threads independently of Cray
+              OpenSHMEMX which will not start its own asynchronous thread.
+
+              Default: MANUAL
+
+    SHMEM_OFI_USE_SEP
+              Controls the user scalable-endpoint for the setting up
+              connections during the library initialization. Scale endpoint
+              is a NIC capability to allow managing effective network resources
+              when multiple pipelines (threads or OpenSHMEM contexts) are used
+              per process. By default, an independent endpoint is used per
+              thread or context in the implementation. SEP is an experimental
+              feature allowing the use of SEP in SHMEM for managing connection
+              resources.
+
+              Default: 0 (disabled)
+
+    SHMEM_OFI_DEFAULT_TCLASS
+              Determines the default traffic-class setting for the job.
+              Environment variable is used to select the default traffic-class
+              for the application. While the environment variable allows users
+              to select the traffic class option, it is not guranteed that the
+              requested TCLASS option is provided by the implementation.
+              Please check the system settings to figure out the availability
+              of the different TCLASS modes before using with the
+              SHMEM_OFI_DEFAULT_TCLASS setting.
+
+              The following inputs are supported:
+              TC_UNSPEC
+              TC_BEST_EFFORT
+              TC_DEDICATED_ACCESS
+              TC_LOW_LATENCY
+
+              Default: System default TCLASS option
+
+Libfabric Environment Variables That Affect Cray OpenSHMEMX
+-----------------------------------------------------------
 
    FI_OFI_RXM_USE_SRX
 
@@ -773,8 +913,8 @@ Cray Shasta systems.
               Setting this to 1 is highly recommended when running jobs with
               all-to-all communication patterns.
 
-              Default: For jobs sizes of < 64 ranks, default is 0
-                       For job sizes of 64 ranks or larger, default is 1
+              Default: For jobs sizes of < 64 PEs, default is 0
+                       For job sizes of 64 PEs or larger, default is 1
 
    FI_VERBS_PREFER_XRC
 
@@ -783,129 +923,182 @@ Cray Shasta systems.
               protocol.  Note FI_OFI_RXM_USE_SRX must also be set to 1 when
               requesting XRC.  Using the XRC protocol reduces the number of
               connections, hardware resources, and memory footprint for large
-              scaling jobs that require a demanding communication pattern.  
-              This environment variable is required when scaling jobs with an
+              scaling jobs that require a demanding communication pattern. This
+              environment variable is required when scaling jobs with an
               all-to-all communication pattern.
 
-              Default: For jobs sizes of < 64 ranks, default is 0
-                       For job sizes of 64 ranks or larger, default is 1
+              Default: For jobs sizes of < 64 PEs, default is 0
+                       For job sizes of 64 PEs or larger, default is 1
 
    FI_VERBS_MIN_RNR_TIMER
 
               This is a verbs;ofi_rxm libfabric ENV variable. This sets the
               minimum backoff time used when the Mellanox NICs experience
-              congestion.  Allowable values are 0-31, with higher values 
-              corresponding to longer backoffs.  Setting this to 0 is not 
-              recommended, however, as that translates into a very large 
-              backoff and will adversely affect performance. Optimal value for 
+              congestion.  Allowable values are 0-31, with higher values
+              corresponding to longer backoffs.  Setting this to 0 is not
+              recommended, however, as that translates into a very large
+              backoff and will adversely affect performance. Optimal value for
               Slingshot-10 systems are likely between 3 and 6.
 
               Default: 6
 
    FI_MR_CACHE_MAX_COUNT
-              This defines the total number of memory regions that may be 
+              This defines the total number of memory regions that may be
               registered with the cache. If not set, a default limit is chosen.
-              Setting this will reduce the number of regions that are 
-              registered, regardless of their size, which are not actively 
-              being used as part of a data transfer. Setting this
-              to zero will disable registration caching.
+              Setting this will reduce the number of regions that are
+              registered, regardless of their size, which are not actively
+              being used as part of a data transfer. Setting this to zero will
+              disable registration caching.
 
               Default: not set
 
-Cray OpenSHMEMX DMAPP Transport Specific Environment Variables
---------------------------------------------------------------
+Cray OpenSHMEMX NIC Selection on the Libfabric Transport Specific Environment Variables
+---------------------------------------------------------------------------------------
 
-The support for the following environment variables are available only on
-Cray XC systems.
+   SHMEM_OFI_NIC_MAPPING
+              Specifies the precise PE-to-NIC mapping to use on each node. This
+              is evaluated *only* if the *SHMEM_OFI_NIC_POLICY* variable is set
+              to *USER*.  This mapping is based on the zero-based local PE value,
+              not global PE value.  Each local PE must have a NIC mapping
+              assigned by this variable. If there are fewer OpenSHMEMX PEs on
+              any node, that portion of the *SHMEM_OFI_NIC_MAPPING* string will
+              be ignored.  Add quotes around the entire string to prevent the
+              shell from interpreting the value incorrectly.
 
-::
+              "nic_idx:local_pes; nic_idx:local_pes; nic_idx;local_pes"
 
-     SHMEM_DMAPP_BTE_THRESHOLD
-               Specifies the threshold in bytes above which SHMEM switches
-               to using the DMA engine for off-node data transfers. Some
-               applications may perform better if this value is increased.
-               The value is interpreted as bytes, unless the string ends
-               with a K, indicating kilobytes, or M, indicating megabytes.
+              Examples assume 64 PEs placed per node, with each node having 2
+              or 3 NICs.
 
-               Default: DMAPP runtime default, which may be based on the
-               job configuration
+              ----
+              To assign local_pe 0 to NIC 0, and remaining PEs to NIC 1, use:
 
-     SHMEM_DMAPP_GLOBAL_EXIT
-               If not set or set to 1, enables the OpenSHMEM API Version
-               1.2 routine shmem_global_exit(). If set to 0,
-               shmem_global_exit() is disabled and a call to
-               shmem_global_exit() behaves as a call to exit().
+               SHMEM_OFI_NIC_MAPPING="0:0; 1:1-63"
 
-               Default: enabled
+              To assign local PEs 0,16,32,48 to NIC 0, and remaining PEs to
+              NIC 1:
 
-     SHMEM_DMAPP_PUT_NBI
-               The SHMEM standard allows users to reuse the local buffer
-               from a shmem_put() request on return from the call. However,
-               the global visibility of the put operation is not guaranteed
-               until a shmem_fence() or shmem_barrier[_all]() call is
-               completed.
+               SHMEM_OFI_NIC_MAPPING="0:0,16,32,48; 1:1-15,17-31,33-47,49-63"
 
-               If SHMEM_DMAPP_PUT_NBI is set to 1, non-blocking DMAPP APIs
-               are used. The shmem_put() will be complete when the local
-               buffer is available for reuse but the operation may not have
-               completed remotely.
+              To assign local PEs 0-7 to NIC 0, 8-31 to NIC 2, and 32-63 to
+              NIC 1:
 
-               If set to 0, blocking DMAPP APIs are used. The shmem_put()
-               will not complete until it is globally visible.
+               SHMEM_OFI_NIC_MAPPING="0:0-7; 2:8-31; 1:32-63"
+              ----
 
-               An application that has concerns or requirements for strict
-               completion ordering should use shmem_fence()/shmem_quiet()
-               or shmem_barrier[_all]() to explicitly guarantee that
-               operations have completed and are globally visible.
+              Default: not set
 
-               Default: 1
+   SHMEM_OFI_NIC_POLICY
+              Selects the PE-to-NIC assignment policy used by Cray OpenSHMEMX.
+              Each OpenSHMEMX PE will be assigned to exactly one NIC. There are
+              four available options:
+              *[BLOCK | ROUND-ROBIN | NUMA | USER]*.
 
-     SHMEM_DMAPP_OPT_CTX_BUILD
-               Output label to determine the library used by the application.
-               On compiling the OpenSHMEM application with -cray-openshmemx-ctx
-               compiler driver option this environment variable will be set to
-               1 to denote an optimized DMAPP build with communication contexts
-               is used.
+              *BLOCK*;;
+              Selects a block distribution. Consecutive local PEs on a node are
+              equally distributed among the available NICs on the node. The
+              number of PEs on a node are divided by the number of NICs on that
+              node (rounded up), with the first X local PEs assigned to NIC 0,
+              the next X local PEs assigned to NIC 1, etc.
 
-     SHMEM_GLOBAL_EXIT_QDEPTH
-               Specifies the size of the queue used by shmem_global_exit().
-               The queue needs to be large enough to handle all possible
-               concurrent calls to shmem_global_exit(). If only one PE is
-               expected to call shmem_global_exit(), a value of 2 is
-               sufficient. The value must be a power-of-two.
+              For example, with 22 PEs placed per node, and each node having 4
 
-               Default: closest power-of-two value greater than or equal to
-               the number of PEs in the job
+              ----
+                PEs 0-5 are assigned to NIC 0
+                PEs 6-11 are assigned to NIC 1
+                PEs 12-17 are assigned to NIC 2
+                PEs 18-21 are assigned to NIC 3
+              ----
 
-     SHMEM_MAX_OUTSTANDING_NB
-               Specifies the maximum number of outstanding non-blocking
-               requests that a rank can issue. The valid range is from 5 to
-               4096, inclusive. This value does not normally need to be
-               changed, but can be increased if a user application
-               encounters as DMAPP_RC_NO_SPACE error during non-blocking
-               communications.
+              *ROUND-ROBIN*;;
+              Selects a round-robin distribution. The first local PE on a node
+              is assigned to NIC 0, the second PE is assigned NIC 1, the third
+              PE is assigned NIC 2, etc. When all NICs on the node have been
+              assigned once, the next available local PE will be assigned
+              NIC 0, and so on.
 
-               Default: DMAPP runtime default, which may be based on the
-               job configuration
+              For example, with 22 PEs placed per node, and each node having 4
 
-     SHMEM_ROUTING_MODE
-               Changes the DMAPP (GNI network) routing mode that is
-               specified to dmapp_init(). The supported values are:
+              ----
+                PEs 0,4,8,12,16,20 are assigned to NIC 0
+                PEs 1,5,9,13,17,21 are assigned to NIC 1
+                PEs 2,6,10,14,18 are assigned to NIC 2
+                PEs 3,7,11,15,19 are assigned to NIC 3
+              ----
 
-               0         Set the routing mode to DMAPP_ROUTING_IN_ORDER.
+              *NUMA*;;
+              Selects a NUMA-aware distribution.  The local PEs are assigned to
+              the NIC that is closest to the PE's numa node affinity. If a PE
+              is pinned to a core or subset of cores in numa node N, and a NIC
+              is also mapped to numa node N, the PE will use that corresponding
+              NIC.  If a matching numa node between PE and NIC is not found,
+              then the NIC in the closest numa node to the PE is selected. Numa
+              distances are analyzed to select the closest NIC.
 
-               1         Set the routing mode to
-                         DMAPP_ROUTING_DETERMINISTIC.
+              For the *NUMA* policy to be successful when multiple NICs per
+              node are available, the affinity of the PEs must be constrained
+              (pinned) to cores contained within a single numa node. A PE is
+              not allowed to float among cores that span numa nodes when
+              selecting the *NUMA* policy.  If that condition exists, the job
+              will abort with an error message.
 
-               2         Set the routing mode to DMAPP_ROUTING_ADAPTIVE.
+              *USER*;;
+              Supports a custom user-selection for NIC assignment. This
+              selection requires the *SHMEM_OFI_NIC_MAPPING* variable to also
+              be set to indicate the precise PE-to-NIC assignment requested.
+              See *SHMEM_OFI_NIC_MAPPING*.
 
-               Default: 2
+              Default: BLOCK
 
-     SHMEM_USE_DMAPP_COLL
-               If set, enables the use of DMAPP collectives for barrier,
-               reduction, and broadcast collective operations on Aries
-               systems. If resources permit, the Aries collective engine
-               will be used.
+   SHMEM_OFI_NUM_NICS
+              Specifies the number of NICs the job can use on a per-node basis.
+              By default, when multiple NICs per node are available, OpenSHMEMX
+              attempts to use them all. If fewer NICs are desired, this
+              variable can be set to indicate the maximum number of NICs per
+              node OpenSHMEMX will use. By default, OpenSHMEMX uses consecutive
+              NIC indices, starting with index 0.
 
-               Default: 1
+              To request OpenSHMEMX to use alternative NIC index values, an
+              optional segment can be added to this variable by adding a colon
+              followed by the desired nic index values. Add quotes around the
+              entire string to prevent the shell from interpreting the value
+              incorrectly.
 
+              For example:
+
+              ----
+              To use 1 NIC per node, index 0, specify:
+                  export SHMEM_OFI_NUM_NICS=1   (equivalent to SHMEM_OFI_NUM_NICS="1:0")
+
+              To use 1 NIC per node, index 1, specify:
+                  export SHMEM_OFI_NUM_NICS="1:1"
+
+              To use 2 NICs per node, index 0 and 1, specify:
+                 export SHMEM_OFI_NUM_NICS=2    (equivalent to SHMEM_OFI_NUM_NICS="2:0,1")
+
+              To use 2 NICs per node, index 1 and 3, specify
+                 export SHMEM_OFI_NUM_NICS="2:1,3"
+              ----
+
+              Default: not set (OpenSHMEMX uses one NIC by default)
+
+   SHMEM_OFI_SKIP_NIC_SELECTION
+              If set to 1, the Cray OpenSHMEMX NIC selection algorithm is
+              bypassed. In this case, only the first NIC presented via the
+              libfabric interface is used. None of the *SHMEM_OFI_NIC_xxx*
+              environment variables are processed if this variable is set. This
+              mode is for debug purposes.
+
+              Default: 0
+
+   SHMEM_OFI_SKIP_NIC_SYMMETRY_TEST
+              If set to 1, the check for NIC symmetry performed during
+              shmem_init will be bypassed. By default, a symmetry check is run
+              to make sure all the nodes in the job have the same number of
+              NICs available.  An asymmetric NIC layout can pose significant
+              performance implications, especially if the user is unaware of
+              this condition.
+
+              The NIC symmetry test is currently not supported for Cray OpenSHMEMX.
+
+              Default: 1

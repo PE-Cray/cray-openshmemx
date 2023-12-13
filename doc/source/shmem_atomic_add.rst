@@ -1,12 +1,10 @@
 shmem_atomic_add
-=======
-
-::
+================
 
    Performs an atomic add operation on a remote symmetric data object.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -30,7 +28,7 @@ where TYPE is one of the standard AMO types and has a corresponding
 TYPENAME specified by Table:1
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated C11 Synopsis
 -----------------------
@@ -63,12 +61,10 @@ Deprecated Fortran Synopsis
    CALL SHMEM_INT8_ADD(dest, value_i8, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -86,9 +82,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -103,9 +97,7 @@ Arguments
            When using Fortran, it must be a default integer value.
 
 Description
------------
-
-::
+===========
 
    The shmem_atomic_add routine performs an atomic add operation. It adds
    value to dest on PE pe and atomically updates the dest without returning the
@@ -118,21 +110,17 @@ Description
    | SHMEM_INT8_ADD |      8-byte integer        |
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    None.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
@@ -143,13 +131,13 @@ C/C++ Example
    #include <shmem.h>
    int main(void)
    {
-      static int dst - 22;
+      static int dst = 22;
       shmem_init();
-      int me - shmem_my_pe();
-      if (me -- 1)
+      int me = shmem_my_pe();
+      if (me == 1)
          shmem_atomic_add(&dst, 44, 0);
       shmem_barrier_all();
-      printf("%d: dst - %d\n", me, dst);
+      printf("%d: dst = %d\n", me, dst);
       shmem_finalize();
       return 0;
    }

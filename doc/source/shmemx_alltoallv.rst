@@ -1,13 +1,11 @@
 shmemx_alltoallv
-=======
-
-::
+================
 
    shmemx_alltoallv is a cray-specific collective routine, where each PE in the
    defined set exchanges distinct data with all other PEs in the active set.
 
 Definitions
------------
+===========
 
 C or C++ SYNOPSIS
 -----------------
@@ -19,7 +17,7 @@ C or C++ SYNOPSIS
                          int PE_start, int logPE_stride, int PE_size, long *pSync)
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -28,16 +26,14 @@ Deprecated Fortran Synopsis
 
    INTEGER pSync(SHMEM_ALLTOALL_SYNC_SIZE)
    INTEGER PE_start, logPE_stride, PE_size, nelems
-   INTEGER (KIND-8) t_offsets(*), t_sizes(*), s_offsets(*), s_sizes(*)
+   INTEGER (KIND=8) t_offsets(*), t_sizes(*), s_offsets(*), s_sizes(*)
    <TYPE>  target(*), source(*)
 
    CALL SHMEMX_ALLTOALLV(target, t_offsets, t_sizes, source, s_offsets,
                          s_sizes, PE_start, logPE_stride, PE_size, pSync)
 
 Arguments
----------
-
-::
+=========
 
       target    A symmetric array large enough to receive the data being sent
                 from each PE in the active set.
@@ -86,9 +82,7 @@ Arguments
       shmemx_alltoallv data.
 
 Description
------------
-
-::
+===========
 
    The shmemx_alltoallv routine is a collective routine, each PE in the
    defined set exchanges distinct data with all other PEs in the set. Each
@@ -115,9 +109,7 @@ Description
    set calls a Cray OpenSHMEMX collective routine, undefined behavior results.
 
 Notes
------
-
-::
+=====
 
    The shmemx_alltoallv routine sets the values in pSync based on
    PE_start, logPE_stride, and PE_size values; therefore, a
@@ -147,12 +139,10 @@ Notes
    information on these environment variables.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
-
-::
 
    This C example shows shmemx_alltoallv exchanging variable sized data
    amounts among all PEs.
@@ -172,39 +162,39 @@ C/C++ Example
 
        shmem_init();
 
-       maxcount  - shmem_n_pes();
-       target    - (long *) shmem_malloc(maxcount * shmem_n_pes() * sizeof(long));
-       source    - (long *) shmem_malloc(maxcount * shmem_n_pes() * sizeof(long));
-       s_offsets - (size_t *) shmem_malloc(shmem_n_pes() * sizeof(size_t));
-       s_sizes   - (size_t *) shmem_malloc(shmem_n_pes() * sizeof(size_t));
-       t_offsets - (size_t *) shmem_malloc(shmem_n_pes() * sizeof(size_t));
-       t_sizes   - (size_t *) shmem_malloc(shmem_n_pes() * sizeof(size_t));
+       maxcount  = shmem_n_pes();
+       target    = (long *) shmem_malloc(maxcount * shmem_n_pes() * sizeof(long));
+       source    = (long *) shmem_malloc(maxcount * shmem_n_pes() * sizeof(long));
+       s_offsets = (size_t *) shmem_malloc(shmem_n_pes() * sizeof(size_t));
+       s_sizes   = (size_t *) shmem_malloc(shmem_n_pes() * sizeof(size_t));
+       t_offsets = (size_t *) shmem_malloc(shmem_n_pes() * sizeof(size_t));
+       t_sizes   = (size_t *) shmem_malloc(shmem_n_pes() * sizeof(size_t));
 
-       s_offsets[0] - 0;
-       for (pe-0; pe <shmem_n_pes(); pe++) {
+       s_offsets[0] = 0;
+       for (pe=0; pe <shmem_n_pes(); pe++) {
 
            /* set source sizes, no need to set target sizes */
-           s_sizes[pe] - pe * sizeof(long);
-           t_sizes[pe] - 0;
+           s_sizes[pe] = pe * sizeof(long);
+           t_sizes[pe] = 0;
 
            /* calculate source offsets */
            if (pe > 0) {
-              s_offsets[pe] - s_offsets[pe-1] + s_sizes[pe-1];
+              s_offsets[pe] = s_offsets[pe-1] + s_sizes[pe-1];
            }
 
            /* calculate target offsets */
-           t_offsets[pe] - (shmem_my_pe() * sizeof(long)) * pe;
+           t_offsets[pe] = (shmem_my_pe() * sizeof(long)) * pe;
        }
 
        /* assign source values */
-       for (idx-0,pe-0; pe<shmem_n_pes(); pe++) {
-           for (i-0; i<s_sizes[pe]/sizeof(long); i++) {
-               source[idx++] - shmem_my_pe();
+       for (idx=0,pe=0; pe<shmem_n_pes(); pe++) {
+           for (i=0; i<s_sizes[pe]/sizeof(long); i++) {
+               source[idx++] = shmem_my_pe();
            }
        }
 
-       for (i-0; i < _SHMEM_ALLTOALL_SYNC_SIZE; i++) {
-           pSync[i] - _SHMEM_SYNC_VALUE;
+       for (i=0; i < _SHMEM_ALLTOALL_SYNC_SIZE; i++) {
+           pSync[i] = _SHMEM_SYNC_VALUE;
        }
 
        /* wait for all PEs to initialize pSync */
@@ -215,11 +205,11 @@ C/C++ Example
                         s_offsets, s_sizes, 0, 0, shmem_n_pes(), pSync);
 
        /* verify results */
-       for (pe-0; pe<shmem_n_pes(); pe++) {
-           offset - t_offsets[pe] / sizeof(long);
-           for (i-0; i<t_sizes[pe]/sizeof(long); i++) {
-               if (target[offset] !- pe) {
-                   printf("[%d] ERROR: target[%d]-%ld, should be %d\n",
+       for (pe=0; pe<shmem_n_pes(); pe++) {
+           offset = t_offsets[pe] / sizeof(long);
+           for (i=0; i<t_sizes[pe]/sizeof(long); i++) {
+               if (target[offset] != pe) {
+                   printf("[%d] ERROR: target[%d]=%ld, should be %d\n",
                           shmem_my_pe(), offset, target[offset], pe);
                }
                offset++;

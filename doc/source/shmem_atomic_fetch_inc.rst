@@ -1,12 +1,10 @@
 shmem_atomic_fetch_inc
-=======
-
-::
+======================
 
    Performs an atomic fetch-and-increment  operation on a remote data object.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -30,7 +28,7 @@ where TYPE is one of the standard AMO types and has a corresponding
 TYPENAME specified by Table:1
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated C11 Synopsis
 -----------------------
@@ -58,17 +56,15 @@ Deprecated Fortran Synopsis
 
    INTEGER pe
    INTEGER*4 SHMEM_INT4_FINC, ires_i4
-   ires_i4 - SHMEM_INT4_FINC(dest, pe)
+   ires_i4 = SHMEM_INT4_FINC(dest, pe)
    INTEGER*8 SHMEM_INT8_FINC, ires_i8
-   ires_i8 - SHMEM_INT8_FINC(dest, pe)
+   ires_i8 = SHMEM_INT8_FINC(dest, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -86,9 +82,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -99,9 +93,7 @@ Arguments
            updated.  When using Fortran, it must be a default integer value.
 
 Description
------------
-
-::
+===========
 
    These routines perform a fetch-and-increment operation.  The dest on PE pe
    is increased by one and the routine returns the previous contents of dest
@@ -114,27 +106,21 @@ Description
    | SHMEM_INT8_FINC  |      8-byte integer        |
 
 Return Values
--------------
-
-::
+=============
 
    The contents that had been at the dest address on the remote PE prior to
    the increment.  The data type of the return value is the same as the dest
 
 Notes
------
-
-::
+=====
 
    None.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
-
-::
 
    The following shmem_atomic_fetch_inc example is for C11 programs:
 
@@ -145,14 +131,14 @@ C/C++ Example
 
    int main(void)
    {
-      int old - -1;
-      static int dst - 22;
+      int old = -1;
+      static int dst = 22;
       shmem_init();
-      int me - shmem_my_pe();
-      if (me -- 0)
-         old - shmem_atomic_fetch_inc(&dst, 1);
+      int me = shmem_my_pe();
+      if (me == 0)
+         old = shmem_atomic_fetch_inc(&dst, 1);
       shmem_barrier_all();
-      printf("%d: old - %d, dst - %d\n", me, old, dst);
+      printf("%d: old = %d, dst = %d\n", me, old, dst);
       shmem_finalize();
       return 0;
    }

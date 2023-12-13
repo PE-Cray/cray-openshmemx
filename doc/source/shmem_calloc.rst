@@ -1,10 +1,10 @@
 shmem_calloc
-=======
+============
 
 Allocate a zeroed block of symmetric memory.
 
 Definitions
------------
+===========
 
 C/C++ Synopsis
 --------------
@@ -14,17 +14,13 @@ C/C++ Synopsis
    void *shmem_calloc(size_t count, size_t size);
 
 Arguments
----------
-
-::
+=========
 
    count   The number of elements to allocate.
    size    The size in bytes of each element to allocate.
 
 Description
------------
-
-::
+===========
 
    The shmem_calloc routine is a collective operation that allocates a
    region of remotely-accessible memory for an array of count objects of size
@@ -43,14 +39,12 @@ Description
    shmem_barrier_all on exit.
 
 Return Values
--------------
-
-::
+=============
 
    The shmem_calloc routine returns a pointer to the lowest byte address of the
    allocated space; otherwise, it returns a null pointer.
 
 Notes
------
+=====
 
 None.

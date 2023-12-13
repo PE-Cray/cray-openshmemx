@@ -1,13 +1,11 @@
 shmemx_team_translate_pe
-=======
-
-::
+========================
 
     shmemx_team_translate_pe -- Translate a given virtual rank of one team
     to its corresponding virtual rank in another team
 
 Definitions
------------
+===========
 
 C/C++ Synopsis
 --------------
@@ -18,7 +16,7 @@ C/C++ Synopsis
                                 shmem_team_t team2);
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -26,14 +24,12 @@ Deprecated Fortran Synopsis
 .. code:: bash
 
    INTEGER         team1_pe, team2_pe
-   INTEGER(KIND-8) team1, team2
+   INTEGER(KIND=8) team1, team2
 
-   team2_pe - SHMEMX_TEAM_TRANSLATE_PE(team1, team1_pe, team2)
+   team2_pe = SHMEMX_TEAM_TRANSLATE_PE(team1, team1_pe, team2)
 
 Arguments
----------
-
-::
+=========
 
     team1     A valid SHMEM team handle.
 
@@ -42,9 +38,7 @@ Arguments
     team2     A valid SHMEM team handle.
 
 Description
------------
-
-::
+===========
 
     The shmemx_team_translate_pe function will translate a virtual rank of
     one team to its corresponding virtual rank in another team.
@@ -64,9 +58,7 @@ Description
     aborting with an informative error message.
 
 Notes
------
-
-::
+=====
 
     By default, SHMEM creates two predefined teams that will be available
     for use once the routine start_pes has been called. These teams can be

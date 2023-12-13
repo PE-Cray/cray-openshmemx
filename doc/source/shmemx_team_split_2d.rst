@@ -1,13 +1,11 @@
 shmemx_team_split_2d
-=======
+====================
 
-::
-
-   shmemx_team_split_3d - partitions an existing parent team into two subgroups,
+   shmemx_team_split_2d - partitions an existing parent team into two subgroups,
    based on the two-dimensional Cartesian space defined by xrange, and yrange
 
 Definitions
------------
+===========
 
 C/C++ Synopsis
 --------------
@@ -18,9 +16,7 @@ C/C++ Synopsis
                              shmem_team_t *xaxis_team, shmem_team_t *yaxis_team)
 
 Arguments
----------
-
-::
+=========
 
    parent_team
            A valid PE team. A predefined team constant or any team created by a
@@ -41,9 +37,7 @@ Arguments
            PEs that are in the same column in the Y-axis.
 
 Description
------------
-
-::
+===========
 
    The shmemx_team_split_2d routine is a collective routine. It
    partitions an existing parent team into two subgroups, based on the
@@ -65,12 +59,10 @@ Description
    with an informative error message.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
-
-::
 
    The example program shows the shmemx_team_split_2d routine being used
    to create two teams, consisting of PEs which share the same row on the
@@ -93,25 +85,25 @@ C/C++ Example
        shmem_team_t yaxis_team;
 
        shmem_init();
-       rank - shmem_my_pe();
-       npes - shmem_n_pes();
+       rank = shmem_my_pe();
+       npes = shmem_n_pes();
 
-       xrange - (npes !- 1) ? floor(log(npes)/log(2)) : 1;
-       yrange - (npes !- 1) ? floor(log(npes)/log(2)) : 1;
+       xrange = (npes != 1) ? floor(log(npes)/log(2)) : 1;
+       yrange = (npes != 1) ? floor(log(npes)/log(2)) : 1;
        shmemx_team_split_2d(SHMEM_TEAM_WORLD, xrange, yrange,
                             &xaxis_team, &yaxis_team);
 
-       if (xaxis_team !- SHMEM_TEAM_NULL) {
-           t_size - shmemx_team_npes(xaxis_team);
-           t_pe   - shmemx_team_mype(xaxis_team);
+       if (xaxis_team != SHMEM_TEAM_NULL) {
+           t_size = shmemx_team_npes(xaxis_team);
+           t_pe   = shmemx_team_mype(xaxis_team);
 
            printf("Global PE %d has team_pe of %d out of %d in xaxis_team\n",
                    rank, t_pe, t_size);
        }
 
-       if (yaxis_team !- SHMEM_TEAM_NULL) {
-           t_size - shmemx_team_npes(yaxis_team);
-           t_pe   - shmemx_team_mype(yaxis_team);
+       if (yaxis_team != SHMEM_TEAM_NULL) {
+           t_size = shmemx_team_npes(yaxis_team);
+           t_pe   = shmemx_team_mype(yaxis_team);
 
            printf("Global PE %d has team_pe of %d out of %d in yaxis_team\n",
                    rank, t_pe, t_size);

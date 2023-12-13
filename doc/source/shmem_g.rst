@@ -1,12 +1,10 @@
 shmem_g
 =======
 
-::
-
    Copies one data item from a remote PE
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -30,12 +28,10 @@ where TYPE is one of the standard RMA types and has a corresponding
 TYPENAME specified by Table:1
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -65,9 +61,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx   The context on which to perform the operation. When this argument is
          not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -75,32 +69,26 @@ Arguments
    pe    The number of the remote PE on which source resides.
 
 Description
------------
+===========
 
 These routines provide a very low latency get capability for single
 elements of most basic types.
 
 Return Values
--------------
-
-::
+=============
 
    Returns a single element of type specified in the synopsis.
 
 Notes
------
-
-::
+=====
 
    None.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
-
-::
 
    The following shmem_g example is for C11 programs:
 
@@ -111,14 +99,14 @@ C/C++ Example
 
    int main(void)
    {
-      long y - -1;
-      static long x - 10101;
+      long y = -1;
+      static long x = 10101;
       shmem_init();
-      int me - shmem_my_pe();
-      int npes - shmem_n_pes();
-      if (me -- 0)
-         y - shmem_g(&x, npes-1);
-      printf("%d: y - %ld\n", me, y);
+      int me = shmem_my_pe();
+      int npes = shmem_n_pes();
+      if (me == 0)
+         y = shmem_g(&x, npes-1);
+      printf("%d: y = %ld\n", me, y);
       shmem_finalize();
       return 0;
    }

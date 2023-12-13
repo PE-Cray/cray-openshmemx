@@ -1,11 +1,11 @@
 shmem_atomic_or
-=======
+===============
 
 Atomically perform a non-fetching bitwise OR operation on a remote data
 object.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -29,12 +29,10 @@ where TYPE is one of the bitwise AMO types and has a corresponding
 TYPENAME specified by Table:1
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -47,9 +45,7 @@ Table:1
      |   uint64_t              |     uint64          |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -58,18 +54,18 @@ Arguments
    pe      An integer that indicates the PE number upon which is to be updated.
 
 Description
------------
+===========
 
 shmem_atomic_or atomically performs a non-fetching bitwise OR on the
 remotely accessible data object pointed to by dest at PE pe with the
 operand value.
 
 Return Values
--------------
+=============
 
 None.
 
 Notes
------
+=====
 
 None.

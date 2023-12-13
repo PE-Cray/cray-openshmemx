@@ -1,12 +1,10 @@
 shmem_iput
-=======
-
-::
+==========
 
    Copies strided data to a specified PE.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -43,7 +41,7 @@ TYPENAME specified by Table:1
 where SIZE is one of 8, 16, 32, 64, 128.
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -63,12 +61,10 @@ Deprecated Fortran Synopsis
    CALL SHMEM_REAL_IPUT(dest, source, dst, sst, nelems, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -98,9 +94,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -123,9 +117,7 @@ Arguments
            integer type.
 
 Description
------------
-
-::
+===========
 
    The iput routines provide a method  for  copying strided data elements
    (specified by sst) of an array from a source array on the local PE to
@@ -133,7 +125,6 @@ Description
    Both strides, dst and sst, must be greater than or equal to 1. The routines
    return when the data has been copied out of the source array on the local PE
    but not necessarily before the data has been delivered to the remote data object.
-
 
    When using Fortran, dest and source must conform to certain typing
    constraints, which are as follows:
@@ -156,23 +147,19 @@ Description
    |SHMEM_REAL_IPUT    |Elements of type real.                     |
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    When using Fortran, data types must be of default size.  For example, a
    real variable must be declared as  REAL, REAL*4 or
-   REAL(KIND-KIND(1.0)).
+   REAL(KIND=KIND(1.0)).
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
@@ -184,14 +171,14 @@ C/C++ Example
 
    int main(void)
    {
-      short source[10] - { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+      short source[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
       static short dest[10];
       shmem_init();
-      int me - shmem_my_pe();
-      if (me -- 0) /* put 5 elements into dest on PE 1 */
+      int me = shmem_my_pe();
+      if (me == 0) /* put 5 elements into dest on PE 1 */
          shmem_iput(dest, source, 1, 2, 5, 1);
       shmem_barrier_all(); /* sync sender and receiver */
-      if (me -- 1) {
+      if (me == 1) {
          printf("dest on PE %d is %hd %hd %hd %hd %hd\n", me,
             dest[0], dest[1], dest[2], dest[3], dest[4]);
       }

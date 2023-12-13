@@ -1,12 +1,10 @@
 shmem_get
-=======
-
-::
+=========
 
    Copies data from a specified PE.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -45,7 +43,7 @@ where SIZE is one of 8, 16, 32, 64, 128.
                          size_t nelems, int pe);
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -67,12 +65,10 @@ Deprecated Fortran Synopsis
    CALL SHMEM_REAL_GET(dest, source, nelems, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -102,9 +98,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -119,15 +113,12 @@ Arguments
            integer type.
 
 Description
------------
-
-::
+===========
 
    The get routines provide a method for copying a contiguous symmetric data
    object from a different PE to a contiguous data object on the local
    PE.  The routines return after the data has been delivered to the dest
    array on the local PE.
-
 
    When using Fortran, dest and source must conform to certain typing
    constraints, which are as follows:
@@ -160,22 +151,18 @@ Description
    |SHMEM_REAL_GET     |Elements of type real.              |
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    When using Fortran, data types must be of default size.  For example, a real
-   variable must be declared as REAL, REAL4,  or REALKIND-KIND(1.0))}.
+   variable must be declared as REAL, REAL4,  or REALKIND=KIND(1.0))}.
 
 Examples
---------
+========
 
 Fortran Example
 ---------------
@@ -189,13 +176,13 @@ Fortran Example
    COMMON /C/ VALUES
    REAL WORK
    CALL SHMEM_INIT()             ! ALLOW ANY NUMBER OF PES
-   VALUES - SHMEM_MY_PE()              ! INITIALIZE IT TO SOMETHING
+   VALUES = SHMEM_MY_PE()              ! INITIALIZE IT TO SOMETHING
    CALL SHMEM_BARRIER_ALL
-   SUM - 0.0
-   DO I - 0, SHMEM_N_PES()-1
+   SUM = 0.0
+   DO I = 0, SHMEM_N_PES()-1
       CALL SHMEM_REAL_GET(WORK, VALUES, (SHMEM_N_PES()()-1), I)
-      SUM - SUM + WORK
+      SUM = SUM + WORK
    ENDDO
-   PRINT*,'PE ',SHMEM_MY_PE(),' COMPUTED SUM-',SUM
+   PRINT*,'PE ',SHMEM_MY_PE(),' COMPUTED SUM=',SUM
    CALL SHMEM_BARRIER_ALL
    END

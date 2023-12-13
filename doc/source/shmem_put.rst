@@ -1,13 +1,11 @@
 shmem_put
-=======
-
-::
+=========
 
    The  put routines  provide  a method for copying data from a contiguous local
    data object to a data object on a specified PE.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -46,7 +44,7 @@ where SIZE is one of 8, 16, 32, 64, 128.
                          size_t nelems, int pe);
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -67,12 +65,10 @@ Deprecated Fortran Synopsis
    CALL SHMEM_REAL_PUT(dest, source, nelems, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -102,9 +98,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx   The context on which to perform the operation. When this argument is
          not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -119,16 +113,13 @@ Arguments
          integer type.
 
 Description
------------
-
-::
+===========
 
    The routines return after the data has been copied out of the source array
    on the local PE.  The delivery of data words into the data object on the
    destination PE may occur in any order.  Furthermore, two successive put
    routines may deliver data out of order unless a call to shmem_fence is
    introduced between the two calls.
-
 
    When using Fortran, dest and source must conform to certain typing
    constraints, which are as follows:
@@ -161,24 +152,20 @@ Description
    |SHMEM_REAL_PUT     |Elements of type real.              |
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    When using Fortran, data types must be of default size.  For example,
-   a real variable must be declared as REAL,  REAL*4,  or REAL(KIND-KIND(1.0)).
+   a real variable must be declared as REAL,  REAL*4,  or REAL(KIND=KIND(1.0)).
    As of OpenSHMEM[1.2], the Fortran API routine SHMEM_PUT has been deprecated,
    and either SHMEM_PUT8 or SHMEM_PUT64 should be used in its place
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
@@ -190,11 +177,11 @@ C/C++ Example
 
    int main(void)
    {
-      long source[10] - { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+      long source[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
       static long dest[10];
       shmem_init();
-      int me - shmem_my_pe();
-      if (me -- 0) /* put 10 words into dest on PE 1 */
+      int me = shmem_my_pe();
+      if (me == 0) /* put 10 words into dest on PE 1 */
          shmem_put(dest, source, 10, 1);
       shmem_barrier_all(); /* sync sender and receiver */
       printf("dest[0] on PE %d is %ld\n", me, dest[0]);

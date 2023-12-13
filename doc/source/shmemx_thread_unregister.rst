@@ -1,13 +1,11 @@
 shmemx_thread_unregister
-=======
-
-::
+========================
 
    shmem_thread_register - cray specific routine to unregister threads on a
    previously registered thread using shmemx_thread_register routine
 
 Definitions
------------
+===========
 
 C/C++ Synopsis
 --------------
@@ -17,7 +15,7 @@ C/C++ Synopsis
    void shmemx_thread_unregister(void);
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -27,9 +25,7 @@ Deprecated Fortran Synopsis
    CALL SHMEMX_THREAD_UNREGISTER
 
 Description
------------
-
-::
+===========
 
    If the currently provided thread safety level is SHMEM_THREAD_MULTIPLE, any
    thread that calls shmemx_thread_register() must call shmemx_thread_unregister()
@@ -40,9 +36,7 @@ Description
    and aborts.
 
 Notes
------
-
-::
+=====
 
    Most thread-safe SHMEM calls must occur while the calling thread is
    registered; that is, between a shmemx_thread_register() call and a

@@ -1,13 +1,11 @@
 shmem_put_nbi
-=======
-
-::
+=============
 
    The nonblocking put routines provide a method for copying data
    from a contiguous local data object to a data object on a specified PE.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -15,7 +13,8 @@ C11 Synopsis
 .. code:: bash
 
    void shmem_put_nbi(TYPE *dest, const TYPE *source, size_t nelems, int pe);
-   void shmem_put_nbi(shmem_ctx_t ctx, TYPE *dest, const TYPE *source, size_t nelems, int pe);
+   void shmem_put_nbi(shmem_ctx_t ctx, TYPE *dest, const TYPE *source, size_t nelems,
+                      int pe);
 
 where TYPE is one of the standard RMA types specified by Table:1
 
@@ -45,34 +44,11 @@ where SIZE is one of 8, 16, 32, 64, 128.
    void shmem_ctx_putmem_nbi(shmem_ctx_t ctx, void *dest, const void *source,
                              size_t nelems, int pe);
 
-Deprecated Synopsis
--------------------
-
-Deprecated Fortran Synopsis
----------------------------
-
-.. code:: bash
-
-   CALL SHMEM_CHARACTER_PUT_NBI(dest, source, nelems, pe)
-   CALL SHMEM_COMPLEX_PUT_NBI(dest, source, nelems, pe)
-   CALL SHMEM_DOUBLE_PUT_NBI(dest, source, nelems, pe)
-   CALL SHMEM_INTEGER_PUT_NBI(dest, source, nelems, pe)
-   CALL SHMEM_LOGICAL_PUT_NBI(dest, source, nelems, pe)
-   CALL SHMEM_PUT4_NBI(dest, source, nelems, pe)
-   CALL SHMEM_PUT8_NBI(dest, source, nelems, pe)
-   CALL SHMEM_PUT32_NBI(dest, source, nelems, pe)
-   CALL SHMEM_PUT64_NBI(dest, source, nelems, pe)
-   CALL SHMEM_PUT128_NBI(dest, source, nelems, pe)
-   CALL SHMEM_PUTMEM_NBI(dest, source, nelems, pe)
-   CALL SHMEM_REAL_PUT_NBI(dest, source, nelems, pe)
-
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -102,9 +78,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -119,9 +93,7 @@ Arguments
            integer type.
 
 Description
------------
-
-::
+===========
 
    The routines return after posting the operation.  The operation is considered
    complete after a subsequent call to shmem_quiet. At the completion of
@@ -162,15 +134,11 @@ Description
    |SHMEM_REAL_PUT_NBI     |Elements of type real.              |
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    None.

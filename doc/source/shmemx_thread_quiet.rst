@@ -1,13 +1,11 @@
 shmemx_thread_quiet
-=======
-
-::
+===================
 
    shmemx_thread_quiet - cray specific routine to perform thread-specific
    version of the shmem_quiet routine
 
 Definitions
------------
+===========
 
 C/C++ Synopsis
 --------------
@@ -17,7 +15,7 @@ C/C++ Synopsis
    void shmemx_thread_quiet(void);
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -27,9 +25,7 @@ Deprecated Fortran Synopsis
    CALL SHMEMX_THREAD_QUIET
 
 Description
------------
-
-::
+===========
 
    The shmemx_thread_quiet function is the thread-specific version of
    the shmem_quiet routine. It allows an individual thread to wait for
@@ -44,9 +40,7 @@ Description
    abort.
 
 Notes
------
-
-::
+=====
 
    Use the shmemx_thread_quiet function to allow an individual thread
    to wait for completion of the puts and non-blocking gets it previously

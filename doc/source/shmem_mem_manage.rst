@@ -1,8 +1,6 @@
 Managing Memory in Cray OpenSHMEMX
 ==================================
 
-::
-
     A subset of the SHMEM environment variables deal specifically with how
     memory is allocated for use by SHMEM routines. This section describes
     how to use these environment variables.
@@ -25,22 +23,22 @@ Managing Memory in Cray OpenSHMEMX
     initialization to produce a set of messages similar to this example.
 
        LIBSMA INFO:
-        min PEs per node           - 24           on nid 62
-        max PEs per node           - 24           on nid 62
-        min nominal node size      - 32768M - 32G on nid 62
-        max nominal node size      - 32768M - 32G on nid 62
-        min boot_freemem           - 32032M - 31G on nid 65
-        max boot_freemem           - 32035M - 31G on nid 56
-        min initial_freemem        - 31783M - 31G on nid 62
-        max initial_freemem        - 31791M - 31G on nid 7
-        min current_freemem        -  7532M -  7G on nid 62
-        max current_freemem        -  7539M -  7G on nid 7
-        huge page size             -  2048K
-        huge pages reserved -12000 - 24000M - 23G
-        min huge_page_freemem      -  6416M -  6G on nid 62
-        max huge_page_freemem      -  6708M -  6G on nid 6
-        min huge pages alloc-12125 - 24250M - 23G on nid 62
-        max huge pages alloc-12125 - 24250M - 23G on nid 62
+        min PEs per node           = 24           on nid 62
+        max PEs per node           = 24           on nid 62
+        min nominal node size      = 32768M = 32G on nid 62
+        max nominal node size      = 32768M = 32G on nid 62
+        min boot_freemem           = 32032M = 31G on nid 65
+        max boot_freemem           = 32035M = 31G on nid 56
+        min initial_freemem        = 31783M = 31G on nid 62
+        max initial_freemem        = 31791M = 31G on nid 7
+        min current_freemem        =  7532M =  7G on nid 62
+        max current_freemem        =  7539M =  7G on nid 7
+        huge page size             =  2048K
+        huge pages reserved =12000 = 24000M = 23G
+        min huge_page_freemem      =  6416M =  6G on nid 62
+        max huge_page_freemem      =  6708M =  6G on nid 6
+        min huge pages alloc=12125 = 24250M = 23G on nid 62
+        max huge pages alloc=12125 = 24250M = 23G on nid 62
         -----------------------------------------------------------
         memory                                   size (decimal MiB)
         region   virtual address range           per proc  per node
@@ -55,8 +53,7 @@ Managing Memory in Cray OpenSHMEMX
         stack    0x7ffffffe8000..0x7ffffffff000        0M        2M
         --total                                     1005M    24134M
         OS                                                     735M
-        --total                                              24869M - 24G
-
+        --total                                              24869M = 24G
 
    Understanding the LIBSMA INFO
 
@@ -256,8 +253,6 @@ Managing Memory in Cray OpenSHMEMX
 
 Overcommitment of Memory
 
-::
-
      Because Cray XE systems do not have swap space that would allow
      overcommitment of physical memory, SHMEM initialization attempts to
      detect overcommitment. A process cannot request a total amount of
@@ -283,15 +278,12 @@ Overcommitment of Memory
         Or reduce the number of PEs per node.
         Or try a smaller huge page size.
 
-
     The sizes recommended in this message are guidelines, not guarantees,
     but are likely to be safe. You must match the memory demands of the
     program with the physical memory of the node and the sizes of the
     SHMEM memory regions.
 
 Out-of-Range Address Arguments
-
-::
 
      Data objects that are used as arguments to SHMEM routines must lie
      entirely within the SHMEM memory regions. If this is not the case, a
@@ -301,7 +293,6 @@ Out-of-Range Address Arguments
          segment nor symmmetric heap
             remote dataseg [0x000000005bc000 .. 0x0000000063d000] - PE 0
             remote symheap [0x002aaaab210000 .. 0x002aaaac311000] - PE 0
-
 
     In this example the operation failed because the target of a put
     operation must be a remote object, and the address is clearly not in

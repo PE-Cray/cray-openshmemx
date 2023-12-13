@@ -1,14 +1,12 @@
 shmemx_put_signal_nb
-=======
-
-::
+====================
 
    The non-blocking put-with-signal routine provide a method for copying data
    from a contiguous local data obeject to a data object on a specified PE and
    then setting a remote signal flag indicating the data transfer is complete.
 
 Definitions
------------
+===========
 
 C/C++ SYNOPSIS
 --------------
@@ -34,7 +32,7 @@ where SIZE is one of 8, 16, 32, 64, 128.
                      uint64_t *sig_addr, uint64_t signal, int pe)
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -42,8 +40,8 @@ Deprecated Fortran Synopsis
 .. code:: bash
 
    INTEGER len, pe
-   UNSIGNED(KIND-8) sig_addr(*)
-   UNSIGNED(KIND-8) signal
+   UNSIGNED(KIND=8) sig_addr(*)
+   UNSIGNED(KIND=8) signal
 
    <TYPE> target(*), source(*)
    CALL SHMEMX_PUT_SIGNAL(target, source, len, sig_addr, signal, pe)
@@ -51,22 +49,22 @@ Deprecated Fortran Synopsis
    <TYPE> target(*), source(*)
    CALL SHMEMX_PUTMEM_SIGNAL(target, source, len, sig_addr, signal, pe)
 
-   <TYPE>(KIND-4) target(*), source(*)
+   <TYPE>(KIND=4) target(*), source(*)
    CALL SHMEMX_PUT4_SIGNAL(target, source, len, sig_addr, signal, pe)
 
-   <TYPE>(KIND-8) target(*), source(*)
+   <TYPE>(KIND=8) target(*), source(*)
    CALL SHMEMX_PUT8_SIGNAL(target, source, len, sig_addr, signal, pe)
 
-   <TYPE>(KIND-2) target(*), source(*)
+   <TYPE>(KIND=2) target(*), source(*)
    CALL SHMEMX_PUT16_SIGNAL(target, source, len, sig_addr, signal, pe)
 
-   <TYPE>(KIND-4) target(*), source(*)
+   <TYPE>(KIND=4) target(*), source(*)
    CALL SHMEMX_PUT32_SIGNAL(target, source, len, sig_addr, signal, pe)
 
-   <TYPE>(KIND-8) target(*), source(*)
+   <TYPE>(KIND=8) target(*), source(*)
    CALL SHMEMX_PUT64_SIGNAL(target, source, len, sig_addr, signal, pe)
 
-   <TYPE>(KIND-16) target(*), source(*)
+   <TYPE>(KIND=16) target(*), source(*)
    CALL SHMEMX_PUT128_SIGNAL(target, source, len, sig_addr, signal, pe)
 
    CHARACTER*(*) target(*), source(*)
@@ -88,12 +86,10 @@ Deprecated Fortran Synopsis
    CALL SHMEMX_REAL_PUT_SIGNAL(target, source, len, sig_addr, signal, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -106,9 +102,7 @@ Table:1
      |   long long             |     longlong        |
 
 Arguments
----------
-
-::
+=========
 
       target    Data object on the remote PE to be updated. This data object
                 must be remotely accessible.
@@ -126,16 +120,14 @@ Arguments
 
       signal    The unsigned 64-bit value used to set the remote flag. If using
                 Fortran, it must be a constant, variable, or array element of
-                unsigned type (kind-8).
+                unsigned type (kind=8).
 
       pe        PE number of the remote PE. pe must be of type integer. If you
                 are using Fortran, it must be a constant, variable, or array
                 element of default integer type.
 
 Description
------------
-
-::
+===========
 
    The non-blocking put+signal routines provide a high-performance method for
    copying contiguous data from a data object on the local PE to a contiguous
@@ -149,9 +141,7 @@ Description
    flag has been set.
 
 Notes
------
-
-::
+=====
 
    Per OpenSHMEM specification 1.2 Annex C, support for zero-length
    transfers is provided for zero-length get, put, and put with signals.

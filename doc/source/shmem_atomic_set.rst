@@ -1,12 +1,10 @@
 shmem_atomic_set
-=======
-
-::
+================
 
    Atomically sets the value of a remote data object.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -30,7 +28,7 @@ where TYPE is one of the extended AMO types and has a corresponding
 TYPENAME specified by Table:1
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated C11 Synopsis
 -----------------------
@@ -68,12 +66,10 @@ Deprecated Fortran Synopsis
    CALL SHMEM_REAL8_SET(dest, value_r8, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -93,9 +89,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -105,23 +99,17 @@ Arguments
    pe      An integer that indicates the PE number on which dest is to be updated.
 
 Description
------------
-
-::
+===========
 
    shmem_atomic_set performs an atomic set operation. It writes the value into
    dest on pe as an atomic operation.
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    None.
