@@ -1,37 +1,21 @@
 shmem_barrier
-=======
-
-::
+=============
 
    Performs all operations described in the shmem_barrier_all interface
    but with respect to a subset of PEs defined by the active set.
 
-Definitions
------------
+Deprecated Synopsis
+===================
 
-C/C++ Synopsis
---------------
+Deprecated C/C++ Synopsis
+-------------------------
 
 .. code:: bash
 
    void shmem_barrier(int PE_start, int logPE_stride, int PE_size, long *pSync);
 
-Deprecated Synopsis
--------------------
-
-Deprecated Fortran Synopsis
----------------------------
-
-.. code:: bash
-
-   INTEGER PE_start, logPE_stride, PE_size
-   INTEGER pSync(SHMEM_BARRIER_SYNC_SIZE)
-   CALL SHMEM_BARRIER(PE_start, logPE_stride, PE_size, pSync)
-
 Arguments
----------
-
-::
+=========
 
    PE_start    The lowest PE number of the active set of PEs. PE_start must be
                of type integer.  When using Fortran, it must be a default
@@ -49,9 +33,7 @@ Arguments
                shmem_barrier the first time.
 
 Description
------------
-
-::
+===========
 
    shmem_barrier is a collective synchronization routine over an active set.
    Control returns from shmem_barrier after all PEs in the active set
@@ -73,38 +55,30 @@ Description
    if the same active set is used.
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
+=====
 
-::
-
-   If the pSync array is initialized at the run time, all PEs must be synchronized
-   before the first call to shmem_barrier (e.g., by shmem_barrier_all) to ensure
-   the array has been initialized by all PEs before it is used.
-
-   If  the active set does not change, shmem_barrier can  be called repeatedly
-   with the same pSync array.  No additional synchronization beyond that implied
-   by shmem_barrier itself is necessary in this case.
+   As of OpenSHMEM 1.5, shmem_barrier has been deprecated. No team-based
+   barrier is provided by OpenSHMEM, as a team may have any number of
+   communication contexts associated with the team. Applications seeking such
+   an idiom should call shmem_ctx_quiet on the desired communication context,
+   followed by a call to shmem_team_sync on the desired team.
 
    The shmem_barrier routine can be used to portably ensure that memory access
    operations observe remote updates in the order enforced by initiator PEs.
 
-   Calls to shmem_ctx_quiet can be performed prior to calling the barrier routine
-   to ensure completion of operations issued on additional contexts.
+   Calls to shmem_ctx_quiet can be performed prior to calling the barrier
+   routine to ensure completion of operations issued on additional contexts.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
-
-::
 
    The following barrier example is for C11 programs:
 
@@ -115,22 +89,22 @@ C/C++ Example
 
    int main(void)
    {
-      static int x - 10101;
+      static int x = 10101;
       static long pSync[SHMEM_BARRIER_SYNC_SIZE];
-      for (int i - 0; i < SHMEM_BARRIER_SYNC_SIZE; i++)
-         pSync[i] - SHMEM_SYNC_VALUE;
+      for (int i = 0; i < SHMEM_BARRIER_SYNC_SIZE; i++)
+         pSync[i] = SHMEM_SYNC_VALUE;
 
       shmem_init();
-      int me - shmem_my_pe();
-      int npes - shmem_n_pes();
+      int me = shmem_my_pe();
+      int npes = shmem_n_pes();
 
-      if (me % 2 -- 0) {
+      if (me % 2 == 0) {
          /* put to next even PE in a circular fashion */
          shmem_p(&x, 4, (me + 2) % npes);
          /* synchronize all even pes */
          shmem_barrier(0, 1, (npes / 2 + npes % 2), pSync);
       }
-      printf("%d: x - %d\n", me, x);
+      printf("%d: x = %d\n", me, x);
       shmem_finalize();
       return 0;
    }

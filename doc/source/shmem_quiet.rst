@@ -1,14 +1,12 @@
 shmem_quiet
-=======
-
-::
+===========
 
    Waits for completion of all outstanding PUT, AMO, memory store,
    and nonblocking PUT and GET routines to symmetric data
    objects issued by a PE.
 
 Definitions
------------
+===========
 
 C/C++ Synopsis
 --------------
@@ -19,7 +17,7 @@ C/C++ Synopsis
    void shmem_ctx_quiet(shmem_ctx_t ctx);
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -29,17 +27,13 @@ Deprecated Fortran Synopsis
    CALL SHMEM_QUIET
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
 
 Description
------------
-
-::
+===========
 
    The shmem_quiet routine ensures completion of PUT, AMO, memory store, and
    nonblocking PUT and GET routines on symmetric data objects issued by the
@@ -48,16 +42,12 @@ Description
    and visible to all PEs when shmem_quiet returns.
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    shmem_quiet is most useful as a way of ensuring completion of several PUT,
    AMO, memory store, and nonblocking PUT and GET routines to symmetric data
@@ -94,12 +84,10 @@ Notes
    ordering of its memory accesses.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
-
-::
 
    The following example uses shmem_quiet in a C11 program:
 
@@ -111,14 +99,14 @@ C/C++ Example
    int main(void)
    {
       static long dest[3];
-      static long source[3] - { 1, 2, 3 };
+      static long source[3] = { 1, 2, 3 };
       static int targ;
-      static int src - 90;
-      long x[3] - { 0 };
-      int y - 0;
+      static int src = 90;
+      long x[3] = { 0 };
+      int y = 0;
       shmem_init();
-      int me - shmem_my_pe();
-      if (me -- 0) {
+      int me = shmem_my_pe();
+      if (me == 0) {
          shmem_put(dest, source, 3, 1); /* put1 */
          shmem_put(&targ, &src, 1, 2);  /* put2 */
          shmem_quiet();
@@ -132,7 +120,5 @@ C/C++ Example
       shmem_finalize();
       return 0;
    }
-
-::
 
    put1 and put2 will be completed and visible before put3 and put4.

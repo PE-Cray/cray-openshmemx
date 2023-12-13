@@ -1,12 +1,10 @@
 shmem_cache
-=======
-
-::
+===========
 
    Controls data cache utilities.
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated C/C++ Synopsis
 -------------------------
@@ -32,17 +30,13 @@ Deprecated Fortran Synopsis
    CALL SHMEM_UDCFLUSH_LINE(dest)
 
 Arguments
----------
-
-::
+=========
 
    dest        A data object that is local to the PE.  dest can be of any
                noncharacter type. When using Fortran, it can be of any kind.
 
 Description
------------
-
-::
+===========
 
    shmem_set_cache_inv enables automatic cache coherency mode.
 
@@ -59,16 +53,12 @@ Description
    the address specified by dest.
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    These routines have been retained for improved backward compatibility with
    legacy architectures.  They are not required to be supported by implementing
@@ -76,6 +66,6 @@ Notes
    states.
 
 Examples
---------
+========
 
 None.

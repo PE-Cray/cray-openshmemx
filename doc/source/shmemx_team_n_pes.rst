@@ -1,13 +1,11 @@
 shmemx_team_n_pes
-=======
-
-::
+=================
 
    shmemx_team_n_pes - returns the total number of PEs in
    the provided team
 
 Definitions
------------
+===========
 
 C/C++ Synopsis
 --------------
@@ -17,27 +15,23 @@ C/C++ Synopsis
    int shmemx_team_n_pes(shmem_team_t newteam);
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
 
 .. code:: bash
 
-   INTEGER(KIND-8) newteam
+   INTEGER(KIND=8) newteam
    CALL SHMEMX_TEAM_N_PES(newteam)
 
 Arguments
----------
-
-::
+=========
 
    newteam A valid SHMEM team handle.
 
 Description
------------
-
-::
+===========
 
     The shmemx_team_n_pes function returns the number of processes in the
     team. This will always be a value between 1 and the total number of
@@ -50,9 +44,7 @@ Description
     with an informative error message.
 
 Notes
------
-
-::
+=====
 
     By default, SHMEM creates two predefined teams that will be available
     for use once the routine start_pes has been called. These teams can be

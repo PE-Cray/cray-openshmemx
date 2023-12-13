@@ -1,13 +1,11 @@
 shmem_get_nbi
-=======
-
-::
+=============
 
    The nonblocking get routines provide a method for copying data from a
    contiguous remote data object on the specified PE to the local data object.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -15,7 +13,8 @@ C11 Synopsis
 .. code:: bash
 
    void shmem_get_nbi(TYPE *dest, const TYPE *source, size_t nelems, int pe);
-   void shmem_get_nbi(shmem_ctx_t ctx, TYPE *dest, const TYPE *source, size_t nelems, int pe);
+   void shmem_get_nbi(shmem_ctx_t ctx, TYPE *dest, const TYPE *source,
+                   size_t nelems, int pe);
 
 where TYPE is one of the standard RMA types specified by Table:1
 
@@ -34,7 +33,8 @@ TYPENAME specified by Table:1
 .. code:: bash
 
    void shmem_getSIZE_nbi(void *dest, const void *source, size_t  nelems, int pe);
-   void shmem_ctx_getSIZE_nbi(shmem_ctx_t ctx, void *dest, const void *source, size_t  nelems, int pe);
+   void shmem_ctx_getSIZE_nbi(shmem_ctx_t ctx, void *dest, const void *source,
+                   size_t  nelems, int pe);
 
 where SIZE is one of 8, 16, 32, 64, 128.
 
@@ -44,35 +44,11 @@ where SIZE is one of 8, 16, 32, 64, 128.
    void shmem_ctx_getmem_nbi(shmem_ctx_t ctx, void *dest, const void *source,
                              size_t nelems, int pe);
 
-Deprecated Synopsis
--------------------
-
-Deprecated Fortran Synopsis
----------------------------
-
-.. code:: bash
-
-   INTEGER nelems, pe
-   CALL SHMEM_CHARACTER_GET_NBI(dest, source, nelems, pe)
-   CALL SHMEM_COMPLEX_GET_NBI(dest, source, nelems, pe)
-   CALL SHMEM_DOUBLE_GET_NBI(dest, source, nelems, pe)
-   CALL SHMEM_GET4_NBI(dest, source, nelems, pe)
-   CALL SHMEM_GET8_NBI(dest, source, nelems, pe)
-   CALL SHMEM_GET32_NBI(dest, source, nelems, pe)
-   CALL SHMEM_GET64_NBI(dest, source, nelems, pe)
-   CALL SHMEM_GET128_NBI(dest, source, nelems, pe)
-   CALL SHMEM_GETMEM_NBI(dest, source, nelems, pe)
-   CALL SHMEM_INTEGER_GET_NBI(dest, source, nelems, pe)
-   CALL SHMEM_LOGICAL_GET_NBI(dest, source, nelems, pe)
-   CALL SHMEM_REAL_GET_NBI(dest, source, nelems, pe)
-
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -102,9 +78,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -119,16 +93,13 @@ Arguments
            integer type.
 
 Description
------------
-
-::
+===========
 
    The get routines provide a method for copying a contiguous symmetric data
    object from a different PE to a contiguous data object on the local PE. The
    routines return after posting the operation.  The operation is considered
    complete after a subsequent call to shmem_quiet. At the completion of
    shmem_quiet, the data has been delivered to the dest array on the local PE.
-
 
    When using Fortran, dest and source must conform to certain typing
    constraints, which are as follows:
@@ -161,16 +132,12 @@ Description
    |SHMEM_REAL_GET_NBI     |Elements of type real.              |
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    When using Fortran, data types must be of default size.  For example, a real
-   variable must be declared as REAL, REAL*4, or REAL(KIND-KIND(1.0)).
+   variable must be declared as REAL, REAL*4, or REAL(KIND=KIND(1.0)).

@@ -20,13 +20,13 @@
 # -- Project information -----------------------------------------------------
 
 project = u'Cray OpenSHMEMX'
-copyright = u'2020, HPE'
+copyright = u'2023, HPE'
 author = u'HPE'
 
 # The short X.Y version
 version = u''
 # The full version, including alpha/beta/rc tags
-release = u'10.1.0'
+release = u'11.7.0'
 
 
 # -- General configuration ---------------------------------------------------

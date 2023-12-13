@@ -1,6 +1,6 @@
 shmemx_team_barrier
-====================
+===================
 
-::
-
-    This man page is not available. Work in progress.
+   shmemx_team_barrier is deprecated by OpenSHMEM specific routine
+   shmem_team_sync. Please refer to shmem_team_sync(3) manpage
+   for more details.

@@ -1,12 +1,10 @@
 shmem_ptr
-=======
-
-::
+=========
 
    Returns a local pointer to a symmetric data object on the specified PE.
 
 Definitions
------------
+===========
 
 C/C++ Synopsis
 --------------
@@ -16,7 +14,7 @@ C/C++ Synopsis
    void *shmem_ptr(const void *dest, int pe);
 
 Deprecated Synopsos
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -25,12 +23,10 @@ Deprecated Fortran Synopsis
 
    POINTER (PTR, POINTEE)
    INTEGER pe
-   PTR - SHMEM_PTR(dest, pe)
+   PTR = SHMEM_PTR(dest, pe)
 
 Arguments
----------
-
-::
+=========
 
    dest    The symmetric data object to be referenced.
    pe      An integer that indicates the PE number on which dest is to
@@ -38,9 +34,7 @@ Arguments
            value.
 
 Description
------------
-
-::
+===========
 
    shmem_ptr returns an address that may be used to directly reference dest
    on the specified PE.  This address can be assigned to a pointer. After that,
@@ -52,28 +46,22 @@ Description
    OpenSHMEM data transfer routine like shmem_put or shmem_iget.
 
 Return Values
--------------
-
-::
+=============
 
    The address of the dest data object is returned when it is accessible
    using memory loads and stores.  Otherwise, a null pointer is returned.
 
 Notes
------
-
-::
+=====
 
    When calling shmem_ptr, dest is the address of the referenced symmetric data
    object on the calling PE.
 
 Examples
---------
+========
 
 Fortran Example
 ---------------
-
-::
 
    This  Fortran  program calls shmem_ptr and then PE 0 writes to the BIGD
    array on PE 1:
@@ -91,13 +79,12 @@ Fortran Example
 
    CALL SHMEM_INIT()
 
-
    IF (SHMEM_MY_PE() .EQ. 0) THEN
       ! initialize PE 1's BIGD array
-      PTR - SHMEM_PTR(BIGD, 1)     ! get address of PE 1's BIGD
+      PTR = SHMEM_PTR(BIGD, 1)     ! get address of PE 1's BIGD
                                    !   array
-      DO I-1,100
-           POINTEE(I) - I
+      DO I=1,100
+           POINTEE(I) = I
       ENDDO
    ENDIF
 
@@ -112,8 +99,6 @@ Fortran Example
 C/C++ Example
 -------------
 
-::
-
    This is the equivalent program written in C11:
 
 .. code:: bash
@@ -125,17 +110,17 @@ C/C++ Example
    {
       static int dest[4];
       shmem_init();
-      int me - shmem_my_pe();
-      if (me -- 0) { /* initialize PE 1's dest array */
-         int* ptr - shmem_ptr(dest, 1);
-         if (ptr -- NULL)
+      int me = shmem_my_pe();
+      if (me == 0) { /* initialize PE 1's dest array */
+         int* ptr = shmem_ptr(dest, 1);
+         if (ptr == NULL)
             printf("can't use pointer to directly access PE 1's dest array\n");
          else
-            for (int i - 0; i < 4; i++)
-               *ptr++ - i + 1;
+            for (int i = 0; i < 4; i++)
+               *ptr++ = i + 1;
       }
       shmem_barrier_all();
-      if (me -- 1)
+      if (me == 1)
          printf("PE 1 dest: %d, %d, %d, %d\n",
             dest[0], dest[1], dest[2], dest[3]);
       shmem_finalize();

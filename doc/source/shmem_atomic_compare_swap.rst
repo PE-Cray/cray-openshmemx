@@ -1,12 +1,10 @@
 shmem_atomic_compare_swap
-=======
-
-::
+=========================
 
    Performs an atomic conditional swap on a remote data object.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -31,7 +29,7 @@ where TYPE is one of the standard AMO types and has a corresponding
 TYPENAME specified by Table:1
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated C11 Synopsis
 -----------------------
@@ -59,17 +57,15 @@ Deprecated Fortran Synopsis
 
    INTEGER pe
    INTEGER*4 SHMEM_INT4_CSWAP,  cond_i4, value_i4, ires_i4
-   ires_i4 - SHMEM_INT4_CSWAP(dest, cond_i4, value_i4, pe)
+   ires_i4 = SHMEM_INT4_CSWAP(dest, cond_i4, value_i4, pe)
    INTEGER*8 SHMEM_INT8_CSWAP,  cond_i8, value_i8, ires_i8
-   ires_i8 - SHMEM_INT8_CSWAP(dest, cond_i8, value_i8, pe)
+   ires_i8 = SHMEM_INT8_CSWAP(dest, cond_i8, value_i8, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -87,9 +83,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -106,9 +100,7 @@ Arguments
            updated. When using Fortran, it must be a default integer value.
 
 Description
------------
-
-::
+===========
 
    The conditional swap routines conditionally update a dest data object on
    the specified PE and return the prior contents of the data object in one
@@ -121,28 +113,22 @@ Description
    | SHMEM_INT8_CSWAP |      8-byte integer        |
 
 Return Values
--------------
-
-::
+=============
 
    The contents that had been in the dest data object on the remote
    PE prior to the conditional swap. Data type is the same as the
    dest data type.
 
 Notes
------
-
-::
+=====
 
    None.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
-
-::
 
    The following call ensures that the first PE to execute the
    conditional swap will successfully write its PE number to
@@ -155,11 +141,11 @@ C/C++ Example
 
    int main(void)
    {
-      static int race_winner - -1;
+      static int race_winner = -1;
       shmem_init();
-      int me - shmem_my_pe();
-      int oldval - shmem_atomic_compare_swap(&race_winner, -1, me, 0);
-      if (oldval -- -1) printf("PE %d was first\n", me);
+      int me = shmem_my_pe();
+      int oldval = shmem_atomic_compare_swap(&race_winner, -1, me, 0);
+      if (oldval == -1) printf("PE %d was first\n", me);
       shmem_finalize();
       return 0;
    }

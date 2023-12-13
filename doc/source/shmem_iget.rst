@@ -1,12 +1,10 @@
 shmem_iget
-=======
-
-::
+==========
 
    Copies strided data from a specified PE.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -43,7 +41,7 @@ TYPENAME specified by Table:1
 where SIZE is one of 8, 16, 32, 64, 128.
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -63,12 +61,10 @@ Deprecated Fortran Synopsis
    CALL SHMEM_REAL_IGET(dest, source, dst, sst, nelems, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -98,9 +94,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -122,15 +116,12 @@ Arguments
            integer type.
 
 Description
------------
-
-::
+===========
 
    The iget routines provide a method for copying strided data elements from
    a symmetric array from a specified remote PE to strided locations on a
    local array. The routines return when the data has been copied into the local
    dest array.
-
 
    When using Fortran, dest and source must conform to certain typing
    constraints, which are as follows:
@@ -153,28 +144,22 @@ Description
    |SHMEM_REAL_IGET    |Elements of type real.                     |
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    When using Fortran, data types must be of default size. For example, a
    real variable must be declared as REAL, REAL*4, or
-   REAL(KIND-KIND(1.0)).
+   REAL(KIND=KIND(1.0)).
 
 Examples
---------
+========
 
 Fortran Example
 ---------------
-
-::
 
    The following example uses shmem_logical_iget in a Fortran program.
 

@@ -1,12 +1,10 @@
 shmem_wait_until
-=======
-
-::
+================
 
    Wait for a variable on the local PE to change.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -29,7 +27,7 @@ where TYPE is one of the point-to-point synchronization types and has a
 corresponding TYPENAME specified by Table:1
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated C11 Synopsis
 -----------------------
@@ -56,12 +54,10 @@ Deprecated Fortran Synopsis
    CALL SHMEM_WAIT_UNTIL(ivar, cmp, cmp_value)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -81,9 +77,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ivar        A remotely accessible integer variable. When using  C/C++,
                the type of ivar should match that implied in the SYNOPSIS
@@ -97,9 +91,7 @@ Arguments
                and kind as ivar.
 
 Comparision Constants
----------------------
-
-::
+=====================
 
      |     Constant Name    |          Comparison          |
      |----------------------|------------------------------|
@@ -111,9 +103,7 @@ Comparision Constants
      | SHMEM_CMP_LE         |  Less than or equal to       |
 
 Description
------------
-
-::
+===========
 
    shmem_wait and shmem_wait_until wait for ivar to be changed by a write or an
    atomic operation issued by a PE.These  routines can be used for point-to-point
@@ -135,16 +125,12 @@ Description
    |shmem_int8_wait, shmem_int8_wait_until|INTEGER*8            |
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    As of OpenSHMEM[1.4], the shmem_wait routine is deprecated, however, shmem_wait
    is equivalent to shmem_wait_until where cmp is SHMEM_CMP_NE. Implementations
@@ -153,7 +139,7 @@ Notes
    to the memory must not cause shmem_wait or shmem_wait_until to return.
 
 Examples
---------
+========
 
 Fortran Example
 ---------------
@@ -187,12 +173,12 @@ The following Fortran example is in the context of a subroutine:
    INTEGER FLAG_VAR
    COMMON/FLAG/FLAG_VAR
    . . .
-   FLAG_VAR - FLAG_VALUE    !  initialize the event variable
+   FLAG_VAR = FLAG_VALUE    !  initialize the event variable
    . . .
    IF (FLAG_VAR .EQ.  FLAG_VALUE) THEN
             CALL SHMEM_WAIT(FLAG_VAR, FLAG_VALUE)
    ENDIF
-   FLAG_VAR - FLAG_VALUE    !  reset the event variable for next time
+   FLAG_VAR = FLAG_VALUE    !  reset the event variable for next time
    . . .
    END
 

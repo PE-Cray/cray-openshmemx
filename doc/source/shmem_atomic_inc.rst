@@ -1,12 +1,10 @@
 shmem_atomic_inc
-=======
-
-::
+================
 
    Performs an atomic increment operation on a remote data object.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -19,7 +17,7 @@ C11 Synopsis
 where TYPE is one of the standard AMO types specified by Table:1
 
 C/C++ Synopsis
---------------
+==============
 
 .. code:: bash
 
@@ -30,7 +28,7 @@ where TYPE is one of the standard AMO types and has a corresponding
 TYPENAME specified by Table:1
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated C11 Synopsis
 -----------------------
@@ -61,12 +59,10 @@ Deprecated Fortran Synopsis
    CALL SHMEM_INT8_INC(dest, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -84,9 +80,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -97,9 +91,7 @@ Arguments
            updated. When using Fortran, it must be a default integer value.
 
 Description
------------
-
-::
+===========
 
    These  routines perform  an atomic increment operation on the dest data
    object on PE.
@@ -111,26 +103,20 @@ Description
    | SHMEM_INT8_INC |      8-byte integer        |
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    None.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
-
-::
 
    The following shmem_atomic_inc example is for C11 programs:
 
@@ -141,13 +127,13 @@ C/C++ Example
 
    int main(void)
    {
-      static int dst - 74;
+      static int dst = 74;
       shmem_init();
-      int me - shmem_my_pe();
-      if (me -- 0)
+      int me = shmem_my_pe();
+      if (me == 0)
          shmem_atomic_inc(&dst, 1);
       shmem_barrier_all();
-      printf("%d: dst - %d\n", me, dst);
+      printf("%d: dst = %d\n", me, dst);
       shmem_finalize();
       return 0;
    }

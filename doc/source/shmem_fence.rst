@@ -1,13 +1,11 @@
 shmem_fence
-=======
-
-::
+===========
 
    Assures ordering of delivery of PUT, AMO, memory store, and nonblocking PUT
    routines to symmetric data objects.
 
 Definitions
------------
+===========
 
 C/C++ Synopsis
 --------------
@@ -18,7 +16,7 @@ C/C++ Synopsis
    void shmem_ctx_fence(shmem_ctx_t ctx);
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -28,17 +26,13 @@ Deprecated Fortran Synopsis
    CALL SHMEM_FENCE
 
 Arguments
----------
-
-::
+=========
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
 
 Description
------------
-
-::
+===========
 
    This routine assures ordering of delivery of PUT, AMO, memory store, and
    nonblocking PUT routines to symmetric data objects.  All PUT, AMO, memory
@@ -50,16 +44,12 @@ Description
    guarantee order of delivery of nonblocking GET routines.
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    shmem_fence only provides per-PE ordering guarantees and does not guarantee
    completion of delivery. shmem_fence also does not have an effect on the
@@ -85,12 +75,10 @@ Notes
    threading environment.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
-
-::
 
    The following example uses shmem_fence in a C11 program:
 
@@ -101,13 +89,13 @@ C/C++ Example
 
    int main(void)
    {
-      int src - 99;
-      long source[10] - { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+      int src = 99;
+      long source[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
       static long dest[10];
       static int targ;
       shmem_init();
-      int me - shmem_my_pe();
-      if (me -- 0) {
+      int me = shmem_my_pe();
+      if (me == 0) {
          shmem_put(dest, source, 10, 1); /* put1 */
          shmem_put(dest, source, 10, 2); /* put2 */
          shmem_fence();
@@ -119,8 +107,6 @@ C/C++ Example
       shmem_finalize();
       return 0;
    }
-
-::
 
    Put1 will be ordered to be delivered before put3 and put2 will be ordered to
    be delivered before put4.

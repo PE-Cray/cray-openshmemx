@@ -1,12 +1,10 @@
 shmem_atomic_fetch
-=======
-
-::
+==================
 
    Atomically fetches the value of a remote data object.
 
 Definitions
------------
+===========
 
 C11 Synopsis
 ------------
@@ -30,7 +28,7 @@ where TYPE is one of the extended AMO types and has a corresponding
 TYPENAME specified by Table:1
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated C11 Synopsis
 -----------------------
@@ -59,21 +57,19 @@ Deprecated Fortran Synopsis
 
    INTEGER pe
    INTEGER*4 SHMEM_INT4_FETCH, ires_i4
-   ires_i4 - SHMEM_INT4_FETCH(source, pe)
+   ires_i4 = SHMEM_INT4_FETCH(source, pe)
    INTEGER*8 SHMEM_INT8_FETCH, ires_i8
-   ires_i8 - SHMEM_INT8_FETCH(source, pe)
+   ires_i8 = SHMEM_INT8_FETCH(source, pe)
    REAL*4 SHMEM_REAL4_FETCH, res_r4
-   res_r4 - SHMEM_REAL4_FETCH(source, pe)
+   res_r4 = SHMEM_REAL4_FETCH(source, pe)
    REAL*8 SHMEM_REAL8_FETCH, res_r8
-   res_r8 - SHMEM_REAL8_FETCH(source, pe)
+   res_r8 = SHMEM_REAL8_FETCH(source, pe)
 
 Datatype Reference Table
-------------------------
+========================
 
 Table:1
 -------
-
-::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -93,9 +89,7 @@ Table:1
      |   ptrdiff_t             |     ptrdiff         |
 
 Arguments
----------
-
-::
+=========
 
    ctx   The context on which to perform the operation. When this argument is
          not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -104,24 +98,18 @@ Arguments
          fetched.
 
 Description
------------
-
-::
+===========
 
    shmem_atomic_fetch performs an atomic fetch operation. It returns the
    contents of the source as an atomic operation.
 
 Return Values
--------------
-
-::
+=============
 
    The contents at the source address on the remote PE. The data type of the
    return value is the same as the type of the remote data object.
 
 Notes
------
-
-::
+=====
 
    None.

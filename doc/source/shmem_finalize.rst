@@ -1,14 +1,12 @@
 shmem_finalize
-=======
-
-::
+==============
 
    A collective operation that releases all resources used by the OpenSHMEM
    library.  This only terminates the OpenSHMEM portion of a program, not the
    entire program.
 
 Definitions
------------
+===========
 
 C/C++ Synopsis
 --------------
@@ -18,7 +16,7 @@ C/C++ Synopsis
    void shmem_finalize(void);
 
 Deprecated Synopsis
--------------------
+===================
 
 Deprecated Fortran Synopsis
 ---------------------------
@@ -28,16 +26,12 @@ Deprecated Fortran Synopsis
    CALL SHMEM_FINALIZE()
 
 Arguments
----------
-
-::
+=========
 
    None.
 
 Description
------------
-
-::
+===========
 
    shmem_finalize is a collective operation that ends the OpenSHMEM portion of
    a program previously initialized by shmem_init or shmem_init_thread and
@@ -56,16 +50,12 @@ Description
    that have been released.
 
 Return Values
--------------
-
-::
+=============
 
    None.
 
 Notes
------
-
-::
+=====
 
    shmem_finalize releases all resources used by the OpenSHMEM library including
    the symmetric memory heap and pointers initiated by shmem_ptr. This collective
@@ -74,12 +64,10 @@ Notes
    shmem_finalize by all PEs.
 
 Examples
---------
+========
 
 C/C++ Example
 -------------
-
-::
 
    The following finalize example is for C11 programs:
 
@@ -90,17 +78,17 @@ C/C++ Example
 
    int main(void)
    {
-      static long x - 10101;
-      long y - -1;
+      static long x = 10101;
+      long y = -1;
 
       shmem_init();
-      int me - shmem_my_pe();
-      int npes - shmem_n_pes();
+      int me = shmem_my_pe();
+      int npes = shmem_n_pes();
 
-      if (me -- 0)
-         y - shmem_g(&x, npes-1);
+      if (me == 0)
+         y = shmem_g(&x, npes-1);
 
-      printf("%d: y - %ld\n", me, y);
+      printf("%d: y = %ld\n", me, y);
 
       shmem_finalize();
       return 0;

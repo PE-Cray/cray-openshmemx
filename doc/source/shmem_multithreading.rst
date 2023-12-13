@@ -1,8 +1,6 @@
 Multithreading in Cray OpenSHMEMX
 =================================
 
-::
-
    This section specifies the interaction between the OpenSHMEM interfaces
    and user threads. It also describes the routines that can be used for
    initializing and querying the thread environment. There are four levels
@@ -66,18 +64,14 @@ Multithreading in Cray OpenSHMEMX
        ensure the correct ordering of collective calls.
 
 Cray-specific Thread-hot Multithreading Features
-------------------------------------------------
-
-::
+================================================
 
    Cray supports optimized thread-hot features with each thread allowed to
    register a separate resource using Cray-specific thread-hot routines like
    shmemx_thread_register(3) and shmemx_thread_unregister(3).
 
 Interaction between Cray Thread-hot and OpenSHMEM Communication Context
------------------------------------------------------------------------
-
-::
+=======================================================================
 
    From Cray OpenSHMEMX version 8.0.1, Cray thread-hot and OpenSHMEM
    communication context features can be used together.
