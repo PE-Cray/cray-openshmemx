@@ -1,0 +1,4 @@
+sphinx
+sphinxcontrib-jquery
+myst_parser
+sphinx_rtd_theme
