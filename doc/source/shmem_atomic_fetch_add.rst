@@ -1,6 +1,8 @@
 shmem_atomic_fetch_add
 ======================
 
+::
+
    Performs an atomic fetch-and-add operation on a remote data object.
 
 Definitions
@@ -66,6 +68,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -84,6 +88,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    The remotely accessible integer data object to be updated on the
@@ -96,6 +102,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    shmem_atomic_fetch_add routines perform an atomic fetch-and-add operation. An
    atomic fetch-and-add operation fetches the old dest and adds value to dest
@@ -112,12 +120,16 @@ Description
 Return Values
 =============
 
+::
+
    The contents that had been at the dest address on the remote PE prior to the
    atomic addition operation.  The data type of the return value is the same as
    the dest.
 
 Notes
 =====
+
+::
 
    None.
 
@@ -126,6 +138,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
        The following shmem_atomic_fetch_add example is for C11 programs:
 

@@ -1,6 +1,8 @@
 shmem_malloc
 ============
 
+::
+
    Collective symmetric heap memory management routines.
 
 Definitions
@@ -19,6 +21,8 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    size    The size, in bytes, of a block to be allocated from the symmetric
            heap. This argument is of type size_t
    ptr     Points to a block within the symmetric heap.
@@ -26,6 +30,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmem_malloc, shmem_free, shmem_realloc, and shmem_align routines are
    collective operations that require participation by all PEs.
@@ -72,6 +78,8 @@ Description
 Return Values
 =============
 
+::
+
    The shmem_malloc routine returns a pointer to the allocated space;
    otherwise, it returns a null pointer.
 
@@ -85,6 +93,8 @@ Return Values
 
 Notes
 =====
+
+::
 
    As of OpenSHMEM[1.2] the use of shmalloc, shmemalign, shfree, and shrealloc
    has been deprecated. Although OpenSHMEM libraries are required to support the

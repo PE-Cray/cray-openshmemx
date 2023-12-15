@@ -1,6 +1,8 @@
 shmem_broadcast
 ===============
 
+::
+
    Broadcasts a block of data from one PE to one or more destination PEs.
 
 Definitions
@@ -14,6 +16,8 @@ C11 Synopsis
    int shmem_broadcast(shmem_team_t team, TYPE *dest, const TYPE *source,
                        size_t nelems, int PE_root);
 
+::
+
    where TYPE is one of the standard RMA types specified by Table:5.
 
 C/C++ Synopsis
@@ -23,6 +27,8 @@ C/C++ Synopsis
 
    int shmem_TYPENAME_broadcast(shmem_team_t team, TYPE *dest, const TYPE *source,
                                    size_t nelems, int PE_root);
+
+::
 
    where TYPE is one of the standard RMA types and has a corresponding TYPENAME
    specified by Table:5.
@@ -52,6 +58,8 @@ Datatype Reference Table
 
 Table:5
 -------
+
+::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -83,6 +91,8 @@ Table:5
 Arguments
 =========
 
+::
+
    team    A valid OpenSHMEM team handle to a team.
    dest    Symmetric address of destination data object. The type of dest
            should match that implied in the SYNOPSIS section.
@@ -105,6 +115,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    OpenSHMEM broadcast routines are collective routines over an active set or
    valid OpenSHMEM team. They copy the source data object on the PE specified
@@ -155,6 +167,8 @@ Description
 Return Values
 =============
 
+::
+
    For team-based broadcasts, zero on successful local completion;
    otherwise, nonzero.
 
@@ -162,6 +176,8 @@ Return Values
 
 Notes
 =====
+
+::
 
    Team handle error checking and integer return codes are currently undefined.
    Implementations may define these behaviors as needed, but programs should
@@ -173,6 +189,8 @@ Examples
 
 C11 Example
 -----------
+
+::
 
    In the following examples, the call to shmem_broadcast copies source on
    PE 0 to dest on PEs 0...npes−1.

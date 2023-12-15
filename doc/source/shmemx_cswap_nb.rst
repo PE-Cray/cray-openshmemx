@@ -1,6 +1,8 @@
 shmemx_cswap_nb
 ===============
 
+::
+
    The nonblocking atomic routine provides a method for performing an atomic
    conditional swap on a remote data object.
 
@@ -35,6 +37,8 @@ Datatype Reference Table
 Table:6
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -53,6 +57,8 @@ Table:6
 Arguments
 =========
 
+::
+
    fetch  Local address of data object to be updated. The type of fetch should
           match that implied in the SYNOPSIS section.
    target Symmetric address of the destination data object. The type of target
@@ -70,6 +76,8 @@ Arguments
 Description
 ===========
 
+::
+
    The nonblocking conditional swap routines conditionally update a dest data
    object on the specified PE as an atomic operation and fetches the prior
    contents of the dest data object into the fetch local data object.
@@ -82,9 +90,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

@@ -1,6 +1,8 @@
 shmem_atomic_fetch_nbi
 ======================
 
+::
+
    The nonblocking atomic fetch routine provides a method for atomically
    fetching the value of a remote data object.
 
@@ -36,6 +38,8 @@ Datatype Reference Table
 Table:7
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -56,6 +60,8 @@ Table:7
 Arguments
 =========
 
+::
+
    ctx    The context on which to perform the operation. When this argument is
           not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    fetch  Local address of data object to be updated. The type of fetch should
@@ -68,6 +74,8 @@ Arguments
 Description
 ===========
 
+::
+
    The nonblocking atomic fetch routines perform a nonblocking fetch of a value
    atomically from a remote data object. This routine returns after initiating
    the operation. The operation is considered complete after a subsequent call
@@ -77,9 +85,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

@@ -1,6 +1,8 @@
 shmem_n_pes
 ===========
 
+::
+
    Returns the number of PEs running in a program.
 
 Definitions
@@ -27,20 +29,28 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    None.
 
 Description
 ===========
+
+::
 
    The routine returns the number of PEs running in the program.
 
 Return Values
 =============
 
+::
+
    Integer -  Number of PEs running in the OpenSHMEM program.
 
 Notes
 =====
+
+::
 
    As of OpenSHMEM[1.2] the use of _num_pes has been deprecated. Although
    OpenSHMEM libraries are required to support the call, users are encouraged

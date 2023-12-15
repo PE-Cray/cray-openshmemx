@@ -1,6 +1,8 @@
 shmem_atomic_compare_swap
 =========================
 
+::
+
    Performs an atomic conditional swap on a remote data object.
 
 Definitions
@@ -67,6 +69,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -85,6 +89,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    The remotely accessible integer data object to be updated  on the
@@ -102,6 +108,8 @@ Arguments
 Description
 ===========
 
+::
+
    The conditional swap routines conditionally update a dest data object on
    the specified PE and return the prior contents of the data object in one
    atomic operation.
@@ -115,12 +123,16 @@ Description
 Return Values
 =============
 
+::
+
    The contents that had been in the dest data object on the remote
    PE prior to the conditional swap. Data type is the same as the
    dest data type.
 
 Notes
 =====
+
+::
 
    None.
 
@@ -129,6 +141,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following call ensures that the first PE to execute the
    conditional swap will successfully write its PE number to

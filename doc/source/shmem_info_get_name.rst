@@ -1,6 +1,8 @@
 shmem_info_get_name
 ===================
 
+::
+
    This routine returns the vendor defined name string that is consistent
    with the library constant SHMEM_VENDOR_STRING.
 
@@ -28,10 +30,14 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    name    The vendor defined string.
 
 Description
 ===========
+
+::
 
    This routine returns the vendor defined name string of size defined by the
    library constant SHMEM_MAX_NAME_LEN. The program calling this function provides
@@ -47,9 +53,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

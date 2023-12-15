@@ -1,6 +1,8 @@
 shmem_ctx_destroy
 =================
 
+::
+
    Destroy a communication context.
 
 Definitions
@@ -16,10 +18,14 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    ctx     Handle to the context that will be destroyed.
 
 Description
 ===========
+
+::
 
    shmem_ctx_destroy destroys a context that was created by a call to
    shmem_ctx_create.  It is the user's responsibility to ensure that
@@ -30,10 +36,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    It is invalid to pass SHMEM_CTX_DEFAULT to this routine.
 
@@ -51,6 +61,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following example demonstrates the use of contexts in a multithreaded
    C11 program that uses OpenMP for threading.  This example shows the
@@ -120,6 +132,8 @@ C/C++ Example
 
 C/C++ Example
 -------------
+
+::
 
    The following example demonstrates the use of contexts in a
    single-threaded C11 program that performs a summation reduction where

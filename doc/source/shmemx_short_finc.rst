@@ -1,6 +1,8 @@
 shmemx_short_finc
 =================
 
+::
+
    Performs an atomic fetch and increment to a remote short data object.
 
 Definitions
@@ -16,6 +18,8 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    target  The remotely accessible short data object to be updated on the
            remote PE. When using  C/C++, the type of target should match that
            implied in the SYNOPSIS section.
@@ -25,6 +29,8 @@ Arguments
 Description
 ===========
 
+::
+
    shmemx_short_finc performs an atomic fetch and increment. It incrementes the
    value of target on PE and returns the previous contents of target as an
    atomic operation.
@@ -32,10 +38,14 @@ Description
 Return Values
 =============
 
+::
+
    The content that had been at the target address on the remote PE prior to
    the increment is returned.
 
 Notes
 =====
+
+::
 
    None.

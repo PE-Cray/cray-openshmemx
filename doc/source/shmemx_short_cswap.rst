@@ -1,6 +1,8 @@
 shmemx_short_cswap
 ==================
 
+::
+
    Performs an atomic cswap to a remote short data object.
 
 Definitions
@@ -15,6 +17,8 @@ C/C++ Synopsis
 
 Arguments
 =========
+
+::
 
    target  The remotely accessible short data object to be updated on the
            remote PE. When using  C/C++, the type of target should match that
@@ -32,6 +36,8 @@ Arguments
 Description
 ===========
 
+::
+
    shmemx_short_cswap performs an atomic conditional swap operation. It writes
    value into target on PE if the condition is met and returns the previous
    contents of target as an atomic operation.
@@ -39,10 +45,14 @@ Description
 Return Values
 =============
 
+::
+
    The content that had been at the target address on the remote PE prior to
    the swap is returned.
 
 Notes
 =====
+
+::
 
    None.

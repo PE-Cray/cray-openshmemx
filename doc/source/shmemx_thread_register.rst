@@ -1,6 +1,8 @@
 shmemx_thread_register
 ======================
 
+::
+
    shmem_thread_register - cray specific routine to register threads to
    obtain thread specific resource for optimized performance on a multithreaded
    OpenSHMEM application
@@ -28,6 +30,8 @@ Deprecated Fortran Synopsis
 Description
 ===========
 
+::
+
    If the currently provided thread safety level is SHMEM_THREAD_MULTIPLE, any
    thread can perform Cray OpenSHMEMX operation. If the calling thread is
    registered using shmemx_thread_register call, Cray OpenSHMEMX will try to
@@ -45,6 +49,8 @@ Description
 
 Notes
 =====
+
+::
 
    Most thread-safe SHMEM calls must occur while the calling thread is
    registered; that is, between a shmemx_thread_register() call and a

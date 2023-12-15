@@ -1,6 +1,8 @@
 shmem_reductions
 ================
 
+::
+
    The following functions perform reduction operations across all PEs in a
    set of PEs.
 
@@ -9,6 +11,8 @@ Definitions
 
 AND
 ---
+
+::
 
    Performs a bitwise AND reduction across a set of PEs.
 
@@ -20,6 +24,8 @@ C11 Synopsis
    int shmem_and_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                            size_t nreduce);
 
+::
+
    where TYPE is one of the integer types supported for the AND operation as
    specified by Table:10.
 
@@ -30,6 +36,8 @@ C/C++ Synopsis
 
    int shmem_TYPENAME_and_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                                    size_t nreduce);
+
+::
 
    where TYPE is one of the integer types supported for the AND operation and
    has a corresponding TYPENAME as specified by Table:11.
@@ -46,11 +54,15 @@ Deprecated C/C++ Synopsis
                                int PE_start, int logPE_stride, int PE_size,
                                TYPE *pWrk, long *pSync);
 
+::
+
    where TYPE is one of the integer types supported for the AND operation and
    has a corresponding TYPENAME as specified by Table:9.
 
 OR
 --
+
+::
 
    Performs a bitwise OR reduction across a set of PEs.
 
@@ -64,6 +76,8 @@ C11 Synopsis
    int shmem_or_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                            size_t nreduce);
 
+::
+
    where TYPE is one of the integer types supported for the OR operation as
    specified by Table:10.
 
@@ -76,6 +90,8 @@ C/C++ Synopsis
 
    int shmem_TYPENAME_or_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                                    size_t nreduce);
+
+::
 
    where TYPE is one of the integer types supported for the OR operation and
    has a corresponding TYPENAME as specified by Table:11.
@@ -96,11 +112,15 @@ Deprecated C/C++ Synopsis
                                int PE_start, int logPE_stride, int PE_size,
                                TYPE *pWrk, long *pSync);
 
+::
+
    where TYPE is one of the integer types supported for the OR operation and
    has a corresponding TYPENAME as specified by Table:9.
 
 XOR
 ---
+
+::
 
    Performs a bitwise exclusive OR (XOR) reduction across a set of PEs.
 
@@ -114,6 +134,8 @@ C11 Synopsis
    int shmem_xor_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                            size_t nreduce);
 
+::
+
    where TYPE is one of the integer types supported for the XOR operation as
    specified by Table:10.
 
@@ -126,6 +148,8 @@ C/C++ Synopsis
 
    int shmem_TYPENAME_xor_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                                    size_t nreduce);
+
+::
 
    where TYPE is one of the integer types supported for the XOR operation and
    has a corresponding TYPENAME as specified by Table:11.
@@ -146,11 +170,15 @@ Deprecated C/C++ Synopsis
                                int PE_start, int logPE_stride, int PE_size,
                                TYPE *pWrk, long *pSync);
 
+::
+
    where TYPE is one of the integer types supported for the XOR operation and
    has a corresponding TYPENAME as specified by Table:9.
 
 MAX
 ---
+
+::
 
    Performs a maximum-value reduction across a set of PEs.
 
@@ -164,6 +192,8 @@ C11 Synopsis
    int shmem_max_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                            size_t nreduce);
 
+::
+
    where TYPE is one of the integer, or real types supported for the MAX
    operation as specified by Table:10.
 
@@ -176,6 +206,8 @@ C/C++ Synopsis
 
    int shmem_TYPENAME_max_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                                    size_t nreduce);
+
+::
 
    where TYPE is one of the integer, or real types supported for the MAX
    operation and has a corresponding TYPENAME as specified by Table:11.
@@ -196,11 +228,15 @@ Deprecated C/C++ Synopsis
                                int PE_start, int logPE_stride, int PE_size,
                                TYPE *pWrk, long *pSync);
 
+::
+
    where TYPE is one of the integer, or real types supported for the MAX
    operation and has a corresponding TYPENAME as specified by Table:9.
 
 MIN
 ---
+
+::
 
    Performs a minimum-value reduction across a set of PEs.
 
@@ -214,6 +250,8 @@ C11 Synopsis
    int shmem_min_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                            size_t nreduce);
 
+::
+
    where TYPE is one of the integer, or real types supported for the MIN
    operation as specified by Table:10.
 
@@ -226,6 +264,8 @@ C/C++ Synopsis
 
    int shmem_TYPENAME_min_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                                    size_t nreduce);
+
+::
 
    where TYPE is one of the integer, or real types supported for the MIN
    operation and has a corresponding TYPENAME as specified by Table:11.
@@ -246,11 +286,15 @@ Deprecated C/C++ Synopsis
                                int PE_start, int logPE_stride, int PE_size,
                                TYPE *pWrk, long *pSync);
 
+::
+
    where TYPE is one of the integer, or real types supported for the MIN
    operation and has a corresponding TYPENAME as specified by Table:9.
 
 SUM
 ---
+
+::
 
    Performs a sum reduction across a set of PEs.
 
@@ -264,6 +308,8 @@ C11 Synopsis
    int shmem_sum_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                            size_t nreduce);
 
+::
+
    where TYPE is one of the integer, real, or complex types supported for the
    SUM operation as specified by Table:10.
 
@@ -276,6 +322,8 @@ C/C++ Synopsis
 
    int shmem_TYPENAME_sum_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                                    size_t nreduce);
+
+::
 
    where TYPE is one of the integer, real, or complex types supported for the
    SUM operation and has a corresponding TYPENAME as specified by Table:11.
@@ -296,11 +344,15 @@ Deprecated C/C++ Synopsis
                                int PE_start, int logPE_stride, int PE_size,
                                TYPE *pWrk, long *pSync);
 
+::
+
    where TYPE is one of the integer, real, or complex types supported for the
    SUM operation and has a corresponding TYPENAME as specified by Table:9.
 
 PROD
 ----
+
+::
 
    Performs a product reduction across a set of PEs.
 
@@ -314,6 +366,8 @@ C11 Synopsis
    int shmem_prod_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                            size_t nreduce);
 
+::
+
    where TYPE is one of the integer, real, or complex types supported for the
    PROD operation as specified by Table:10.
 
@@ -326,6 +380,8 @@ C/C++ Synopsis
 
    int shmem_TYPENAME_prod_reduce(shmem_team_t team, TYPE *dest, const TYPE *source,
                                    size_t nreduce);
+
+::
 
    where TYPE is one of the integer, real, or complex types supported for the
    PROD operation and has a corresponding TYPENAME as specified by Table:11.
@@ -346,6 +402,8 @@ Deprecated C/C++ Synopsis
                                int PE_start, int logPE_stride, int PE_size,
                                TYPE *pWrk, long *pSync);
 
+::
+
    where TYPE is one of the integer, real, or complex types supported for the
    PROD operation and has a corresponding TYPENAME as specified by Table:9.
 
@@ -354,6 +412,8 @@ Datatype Reference Table
 
 Table:9
 -------
+
+::
 
    |        TYPE        |  TYPENAME  |      Operations Supporting TYPE     |
    |--------------------|------------|-------------------------------------|
@@ -374,6 +434,8 @@ Table:9
 
 Table:10
 --------
+
+::
 
    |        TYPE        |  TYPENAME  |      Operations Supporting TYPE     |
    |--------------------|------------|-------------------------------------|
@@ -409,6 +471,8 @@ Table:10
 Table:9
 -------
 
+::
+
    |        TYPE        |  TYPENAME  |      Operations Supporting TYPE     |
    |--------------------|------------|-------------------------------------|
    | short              | short      | AND, OR, XOR | MAX, MIN | SUM, PROD |
@@ -423,6 +487,8 @@ Table:9
 
 Arguments
 =========
+
+::
 
    team        The team over which to perform the operation.
    dest        Symmetric address of an array, of length nreduce elements,
@@ -449,6 +515,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    OpenSHMEM reduction routines are collective routines over an active set or
    existing OpenSHMEM team that compute one or more reductions across
@@ -505,6 +573,8 @@ Description
 Return Values
 =============
 
+::
+
    Zero on successful local completion. Nonzero otherwise.
 
 Examples
@@ -512,6 +582,8 @@ Examples
 
 C11 Example
 -----------
+
+::
 
    In the following example, each PE intializes an array of random
    integers with values between 0 and npes−1, inclusively. An OR reduction

@@ -1,6 +1,8 @@
 shmem_g
 =======
 
+::
+
    Copies one data item from a remote PE
 
 Definitions
@@ -33,6 +35,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -63,6 +67,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx   The context on which to perform the operation. When this argument is
          not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    source  The remotely accessible array element or scalar data object.
@@ -77,10 +83,14 @@ elements of most basic types.
 Return Values
 =============
 
+::
+
    Returns a single element of type specified in the synopsis.
 
 Notes
 =====
+
+::
 
    None.
 
@@ -89,6 +99,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following shmem_g example is for C11 programs:
 

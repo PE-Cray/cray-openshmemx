@@ -1,6 +1,8 @@
 shmem_barrier
 =============
 
+::
+
    Performs all operations described in the shmem_barrier_all interface
    but with respect to a subset of PEs defined by the active set.
 
@@ -16,6 +18,8 @@ Deprecated C/C++ Synopsis
 
 Arguments
 =========
+
+::
 
    PE_start    The lowest PE number of the active set of PEs. PE_start must be
                of type integer.  When using Fortran, it must be a default
@@ -34,6 +38,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    shmem_barrier is a collective synchronization routine over an active set.
    Control returns from shmem_barrier after all PEs in the active set
@@ -57,10 +63,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    As of OpenSHMEM 1.5, shmem_barrier has been deprecated. No team-based
    barrier is provided by OpenSHMEM, as a team may have any number of
@@ -79,6 +89,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following barrier example is for C11 programs:
 

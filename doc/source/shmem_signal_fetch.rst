@@ -1,6 +1,8 @@
 shmem_signal_fetch
 ==================
 
+::
+
    Fetches the signal update on a local data object.
 
 Definitions
@@ -16,10 +18,14 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    sig_addr    Local address of the remotely accessible signal variable.
 
 Description
 ===========
+
+::
 
    shmem_signal_fetch performs a fetch operation and returns the contents of
    the sig_addr signal data object. Access to sig_addr signal object at the
@@ -29,9 +35,13 @@ Description
 Return Values
 =============
 
+::
+
    Returns the contents of the signal data object, sig_addr, at the calling PE.
 
 Notes
 =====
+
+::
 
    None.

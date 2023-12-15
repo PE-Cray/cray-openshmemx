@@ -1,6 +1,8 @@
 shmemx_alltoallv_packed
 =======================
 
+::
+
    shmemx_alltoallv_packed - Each PE exchanges distinct data with all other PEs
    in the defined set. Each PE may send a different amount of data and provide
    offsets for the source data. The incoming data is deposited in the target
@@ -40,6 +42,8 @@ Deprecated Fortran Synopsis
 
 Arguments
 =========
+
+::
 
       target    A symmetric array large enough to receive the data being sent
                 from each PE in the active set.
@@ -90,6 +94,8 @@ Arguments
 Description
 ===========
 
+::
+
       The shmemx_alltoallv_packed routine is a collective routine; each PE in
       the defined set exchanges distinct data with all other PEs in the set.
       Each PE specifies an array of source offsets and source sizes (in
@@ -114,6 +120,8 @@ Description
 
 Notes
 =====
+
+::
 
       The shmem_alltoallv_packed routine sets the values in pSync based on
       PE_start, logPE_stride, and PE_size values; therefore, a particular pSync
@@ -145,6 +153,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
     This C example shows shmem_alltoallv_packed exchanging 64 integer values
     among all PEs.

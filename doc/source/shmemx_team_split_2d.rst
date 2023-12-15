@@ -1,6 +1,8 @@
 shmemx_team_split_2d
 ====================
 
+::
+
    shmemx_team_split_2d - partitions an existing parent team into two subgroups,
    based on the two-dimensional Cartesian space defined by xrange, and yrange
 
@@ -17,6 +19,8 @@ C/C++ Synopsis
 
 Arguments
 =========
+
+::
 
    parent_team
            A valid PE team. A predefined team constant or any team created by a
@@ -38,6 +42,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmemx_team_split_2d routine is a collective routine. It
    partitions an existing parent team into two subgroups, based on the
@@ -63,6 +69,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The example program shows the shmemx_team_split_2d routine being used
    to create two teams, consisting of PEs which share the same row on the

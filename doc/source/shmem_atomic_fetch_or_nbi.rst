@@ -1,6 +1,8 @@
 shmem_atomic_fetch_or_nbi
 =========================
 
+::
+
    This nonblocking atomic operation performs an atomic fetching bitwise OR
    operation on a remote data object.
 
@@ -37,6 +39,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   unsigned int          |     uint            |
@@ -49,6 +53,8 @@ Table:1
 
 Arguments
 =========
+
+::
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -63,6 +69,8 @@ Arguments
 Description
 ===========
 
+::
+
    The nonblocking shmem_atomic_fetch_or_nbi routines perform an atomic
    fetching bitwise OR on the remotely accessible data object pointed by dest
    at PE pe with the operand value. This routine returns after initiating the
@@ -73,6 +81,8 @@ Description
 
 Return Values
 =============
+
+::
 
    None.
 

@@ -1,6 +1,8 @@
 shmem_team_split_2d
 ===================
 
+::
+
    Create two new teams by splitting an existing parent team into two subsets
    based on a 2D Cartesian space defined by the xrange argument and a y
    dimension that is derived from xrange and the parent team size.
@@ -18,6 +20,8 @@ C/C++ Synopsis
 
 Arguments
 =========
+
+::
 
    IN      parent_team     A valid OpenSHMEM team. Any predefined teams, such
                            as SHMEM_TEAM_WORLD, may be used, or any team
@@ -41,6 +45,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmem_team_split_2d routine is a collective operation. It returns two
    new teams to the calling PE by splitting an existing parent team into
@@ -98,11 +104,15 @@ Description
 Return Values
 =============
 
+::
+
    Zero on successful creation of all xaxis_teams and yaxis_teams; otherwise,
    nonzero.
 
 Notes
 =====
+
+::
 
    Since the split may result in a 2D space with more points than there are
    members of the parent team, there may be a final, incomplete row of the 2D
@@ -130,6 +140,8 @@ Notes
 
 Examples
 ========
+
+::
 
    Example 12. The following example demonstrates the use of 2D Cartesian split
    in a C/C++ program. This example shows how multiple 2D splits can be used to

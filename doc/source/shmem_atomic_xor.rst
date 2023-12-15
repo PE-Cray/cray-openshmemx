@@ -34,6 +34,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   unsigned int          |     uint            |
@@ -46,6 +48,8 @@ Table:1
 
 Arguments
 =========
+
+::
 
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.

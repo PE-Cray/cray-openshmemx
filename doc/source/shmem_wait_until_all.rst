@@ -1,6 +1,8 @@
 shmem_wait_until_all
 ====================
 
+::
+
    Wait on an array of variables on the local PE until all variables meet the
    specified wait condition.
 
@@ -35,6 +37,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   short                 |     short           |
@@ -55,6 +59,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ivars       Local address of an array of remotely accessible data objects.
                The type of ivars should match that implied in the SYNOPSIS
                section.
@@ -69,6 +75,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmem_wait_until_all routine waits until all entries in the wait set
    specified by ivars and status have satisfied the wait condition at the
@@ -96,10 +104,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.
 

@@ -1,6 +1,8 @@
 shmemx_session_start
 ====================
 
+::
+
    Start a communication session.
 
 Definitions
@@ -16,6 +18,8 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    ctx         A context handle specifying the context associated with this
                session.
 
@@ -26,6 +30,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmemx_session_start routine begins a session on communication context
    ctx with hints requested via options. If a session is already started on a
@@ -38,6 +44,8 @@ Description
 
 Return Values
 =============
+
+::
 
    None.
 
@@ -122,6 +130,8 @@ Session Hint Options
 
 Notes
 =====
+
+::
 
    The shmemx_session_start routine is a hint for improving performance, and
    OpenSHMEM implementations are not required to apply any optimization.

@@ -1,6 +1,8 @@
 shmemx_short_fadd
 =================
 
+::
+
    Performs an atomic fetch and add to a remote short data object.
 
 Definitions
@@ -16,6 +18,8 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    target  The remotely accessible short data object to be updated on the
            remote PE. When using  C/C++, the type of target should match that
            implied in the SYNOPSIS section.
@@ -27,16 +31,22 @@ Arguments
 Description
 ===========
 
+::
+
    shmemx_short_fadd performs an atomic fetch and add. It adds value to target
    on PE and returns the previous contents of target as an atomic operation.
 
 Return Values
 =============
 
+::
+
    The content that had been at the target address on the remote PE prior to
    the add is returned.
 
 Notes
 =====
+
+::
 
    None.

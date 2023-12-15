@@ -1,6 +1,8 @@
 shmem_atomic_compare_swap_nbi
 =============================
 
+::
+
    The nonblocking atomic routine provides a method for performing an atomic
    conditional swap on a remote data object.
 
@@ -39,6 +41,8 @@ Datatype Reference Table
 Table:6
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -56,6 +60,8 @@ Table:6
 
 Arguments
 =========
+
+::
 
    ctx    The context on which to perform the operation. When this argument is
           not provided, the operation is performed on SHMEM_CTX_DEFAULT.
@@ -75,6 +81,8 @@ Arguments
 Description
 ===========
 
+::
+
    The nonblocking conditional swap routines conditionally update a dest data
    object on the specified PE as an atomic operation and fetches the prior
    contents of the dest data object into the fetch local data object. This
@@ -87,9 +95,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

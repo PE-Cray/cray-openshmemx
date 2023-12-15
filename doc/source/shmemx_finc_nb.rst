@@ -1,6 +1,8 @@
 shmemx_finc_nb
 ==============
 
+::
+
    This nonblocking atomic routine performs an atomic fetch-and-increment
    operation on a remote data object.
 
@@ -34,6 +36,8 @@ Datatype Reference Table
 Table:6
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -52,6 +56,8 @@ Table:6
 Arguments
 =========
 
+::
+
    fetch  Local address of data object to be updated. The type of fetch should
           match that implied in the SYNOPSIS section.
    target Symmetric address of the destination data object. The type of target
@@ -63,6 +69,8 @@ Arguments
 Description
 ===========
 
+::
+
    The nonblocking shmemx_finc_nb routines perform an atomic
    fetch-and-increment operation. This routine returns after initiating the
    operation. The operation is considered complete after a subsequent call to
@@ -73,9 +81,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

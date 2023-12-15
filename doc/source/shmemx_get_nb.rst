@@ -1,6 +1,8 @@
 shmemx_get_nb
 =============
 
+::
+
    The nonblocking get routines provide a method for copying data from a
    contiguous remote data object on the specified PE to the local data object.
 
@@ -48,6 +50,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -78,6 +82,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    Local data object to be updated.
@@ -93,6 +99,8 @@ Arguments
 Description
 ===========
 
+::
+
    The get routines provide a method for copying a contiguous symmetric data
    object from a different PE to a contiguous data object on the local PE. The
    routines return after posting the operation.  The operation is considered
@@ -102,9 +110,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    See Section 3 for a definition of the term remotely accessible

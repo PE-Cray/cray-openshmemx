@@ -1,6 +1,8 @@
 shmemx_team_my_pe
 =================
 
+::
+
    shmemx_team_my_pe - returns the calling process's virtual rank in
    the provided team
 
@@ -28,10 +30,14 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    newteam A valid SHMEM team handle.
 
 Description
 ===========
+
+::
 
     The shmemx_team_my_pe function returns the calling process's virtual
     rank in the provided team. The rank will be a value between 0 and N-1,
@@ -44,6 +50,8 @@ Description
 
 Notes
 =====
+
+::
 
     By default, SHMEM creates two predefined teams that will be available
     for use once the routine start_pes has been called. These teams can be

@@ -1,6 +1,8 @@
 shmem_test_any
 ==============
 
+::
+
    Indicate whether any one variable within an array of variables on the local
    PE meets a specified test condition.
 
@@ -35,6 +37,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   short                 |     short           |
@@ -55,6 +59,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ivars       Local address of an array of remotely accessible data objects.
                The type of ivars should match that implied in the SYNOPSIS
                section.
@@ -69,6 +75,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmem_test_any routine indicates whether any entry in the test set
    specified by ivars and status has satisfied the test condition at the
@@ -96,12 +104,16 @@ Description
 Return Values
 =============
 
+::
+
    shmem_test_any returns the index of an element in the ivars array that
    satisfies the test condition. If the test set is empty or no conditions in
    the test set are satisfied, this routine returns SIZE_MAX.
 
 Notes
 =====
+
+::
 
    None.
 

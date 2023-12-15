@@ -1,6 +1,8 @@
 Managing Memory in Cray OpenSHMEMX
 ==================================
 
+::
+
     A subset of the SHMEM environment variables deal specifically with how
     memory is allocated for use by SHMEM routines. This section describes
     how to use these environment variables.
@@ -253,6 +255,8 @@ Managing Memory in Cray OpenSHMEMX
 
 Overcommitment of Memory
 
+::
+
      Because Cray XE systems do not have swap space that would allow
      overcommitment of physical memory, SHMEM initialization attempts to
      detect overcommitment. A process cannot request a total amount of
@@ -284,6 +288,8 @@ Overcommitment of Memory
     SHMEM memory regions.
 
 Out-of-Range Address Arguments
+
+::
 
      Data objects that are used as arguments to SHMEM routines must lie
      entirely within the SHMEM memory regions. If this is not the case, a

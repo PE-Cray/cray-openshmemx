@@ -1,6 +1,8 @@
 shmemx_signal_set
 =================
 
+::
+
    Sets the signal value of a remote data object.
 
 Definitions
@@ -26,6 +28,8 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    ctx         A context handle specifying the context associated with this
                session. When this argument is not provided, the operation is
                performed on the default context.
@@ -38,6 +42,8 @@ Arguments
 Description
 ===========
 
+::
+
    shmem_signal_set writes value into the signal data object pointed to by
    sig_addr on target PE. The update to the sig_addr signal object at the
    calling PE is expected to satisfy the atomicity guarantees as provided
@@ -46,5 +52,7 @@ Description
 
 Return Values
 =============
+
+::
 
    None.

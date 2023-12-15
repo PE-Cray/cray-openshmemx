@@ -1,6 +1,8 @@
 shmemx_fadd_nb
 ==============
 
+::
+
    The nonblocking atomic routine performs an atomic fetch-and-add operation
    on a remote data object.
 
@@ -34,6 +36,8 @@ Datatype Reference Table
 Table:6
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -52,6 +56,8 @@ Table:6
 Arguments
 =========
 
+::
+
    fetch   Local address of data object to be updated. The type of fetch should
            match that implied in the SYNOPSIS section.
    target  Symmetric address of the destination data object. The type of target
@@ -64,6 +70,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The nonblocking shmemx_fadd_nb routines perform an atomic fetch-and-add
    operation. This routine returns after initiating the operation. An atomic
@@ -78,9 +86,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

@@ -1,6 +1,8 @@
 shmem_team_destroy
 ==================
 
+::
+
    Destroy an existing team.
 
 C/C++ Synopsis
@@ -13,10 +15,14 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    IN  team     An OpenSHMEM team handle
 
 Description
 ===========
+
+::
 
    The shmem_team_destroy routine is a collective operation that destroys the
    team referenced by the team handle argument team. Upon return, the
@@ -36,14 +42,20 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
 
+::
+
    None.
 
 Examples
 ========
+
+::
 
    None.

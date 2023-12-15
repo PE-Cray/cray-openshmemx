@@ -1,6 +1,8 @@
 Team Managment with Cray OpenSHMEMX
 ===================================
 
+::
+
    There are several enviroment variables and team config options that can be
    used to control how SHMEM handles teams. This section gives details about
    these options and how they impact team based routines.
@@ -26,6 +28,8 @@ Team Managment with Cray OpenSHMEMX
 Enviroment variables
 --------------------
 
+::
+
    SHMEM_ENABLE_TEAM_OPT
        Default: 0
        Description: Enables the use of team memory optimizations
@@ -37,6 +41,8 @@ Enviroment variables
 
 Team config type options
 ------------------------
+
+::
 
    num_contexts
        default: 0

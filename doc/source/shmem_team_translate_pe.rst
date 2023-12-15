@@ -1,6 +1,8 @@
 shmem_team_translate_pe
 =======================
 
+::
+
    Translate a given PE number from one team to the corresponding PE number in
    another team.
 
@@ -14,12 +16,16 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    IN      src_team        An OpenSHMEM team handle.
    IN      src_pe          A PE number in src_team.
    IN      dest_team       An OpenSHMEM team handle.
 
 Description
 ===========
+
+::
 
    The shmem_team_translate_pe routine will translate a given PE number in one
    team into the corresponding PE number in another team. Specifically, given
@@ -32,12 +38,16 @@ Description
 Return Values
 =============
 
+::
+
    The specified PE’s number in the dest_team, or a value of -1 if any team
    handle arguments are invalid or the src_pe is not in both the source and
    destination teams.
 
 Notes
 =====
+
+::
 
    If SHMEM_TEAM_WORLD is provided as the dest_team parameter, this routine
    acts as a global PE number translator and will return the corresponding

@@ -1,6 +1,8 @@
 start_pes
 =========
 
+::
+
    Called at the beginning of an OpenSHMEM program to initialize the execution
    environment. This routine is deprecated and is provided for backwards 
    compatibility. Implementations must include it, and the routine should 
@@ -22,10 +24,14 @@ Deprecated C/C++ Synopsis
 Arguments
 =========
 
+::
+
    npes    Unused  Should be set to 0.
 
 Description
 ===========
+
+::
 
    The start_pes routine initializes the OpenSHMEM execution environment. An
    OpenSHMEM program must call start_pes, shmem_init, or shmem_init_thread 
@@ -39,10 +45,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    If any other OpenSHMEM call occurs before start_pes, the behavior is
    undefined. Although it is recommended to set npes to 0 for start_pes, 

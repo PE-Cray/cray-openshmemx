@@ -1,6 +1,8 @@
 shmem_sync_all
 ==============
 
+::
+
    Registers the arrival of a PE at a synchronization point and suspends
    execution until all other PEs in the world team arrive at the
    synchronization point. For multithreaded programs, execution is suspended
@@ -19,10 +21,14 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    None.
 
 Description
 ===========
+
+::
 
    This routine blocks the calling PE until all PEs in the world team have
    called shmem_sync_all. In a multithreaded OpenSHMEM program, only the
@@ -34,10 +40,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    The shmem_sync_all routine is equivalent to calling shmem_team_sync on
    the world team.

@@ -1,6 +1,8 @@
 shmem_alltoalls
 ===============
 
+::
+
    Exchanges a fixed amount of strided data blocks between all pairs of PEs
    participating in the collective routine.
 
@@ -15,6 +17,8 @@ C11 Synopsis
    int shmem_alltoalls(shmem_team_t team, TYPE *dest, const TYPE *source,
                        ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
 
+::
+
        where TYPE is one of the standard RMA types specified by Table:5.
 
 C/C++ Synopsis
@@ -24,6 +28,8 @@ C/C++ Synopsis
 
    int shmem_TYPENAME_alltoalls(shmem_team_t team, TYPE *dest, const TYPE *source, ptrdiff_t
                                dst, ptrdiff_t sst, size_t nelems);
+
+::
 
    where TYPE is one of the standard RMA types and has a corresponding TYPENAME
    specified by Table:5.
@@ -53,6 +59,8 @@ Datatype Reference Table
 
 Table:5
 -------
+
+::
 
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
@@ -84,6 +92,8 @@ Table:5
 Arguments
 =========
 
+::
+
    team    A valid OpenSHMEM team handle
    dest    Symmetric address of a data object large enough to receive the
            combined total of nelems elements from each PE in the active set.
@@ -114,6 +124,8 @@ Arguments
 Description
 ===========
 
+::
+
    The shmem_alltoalls routines are collective routines. These routines are
    equivalent in functionality to the corresponding shmem_alltoall routines
    except that they add explicit stride values for accessing the source and
@@ -142,6 +154,8 @@ Description
 Return Values
 =============
 
+::
+
    Zero on successful local completion. Nonzero otherwise.
 
 Examples
@@ -149,6 +163,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    This example shows a shmem_int64_alltoalls on two 64-bit integers among
    all PEs.

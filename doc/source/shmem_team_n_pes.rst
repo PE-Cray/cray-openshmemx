@@ -1,6 +1,8 @@
 shmem_team_n_pes
 ================
 
+::
+
    Returns the number of PEs in a specified team.
 
 C/C++ Synopsis
@@ -13,10 +15,14 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    IN team An OpenSHMEM team handle.
 
 Description
 ===========
+
+::
 
    When team specifies a valid team, the shmem_team_n_pes routine returns the
    number of PEs in the team.
@@ -30,15 +36,21 @@ Description
 Return Values
 =============
 
+::
+
    The number of PEs in the specified team, or the value -1 if the team handle
    compares equal to SHMEM_TEAM_INVALID.
 
 Notes
 =====
 
+::
+
    For the world team, this routine will return the same value as shmem_n_pes
 
 Examples
 ========
+
+::
 
    None.

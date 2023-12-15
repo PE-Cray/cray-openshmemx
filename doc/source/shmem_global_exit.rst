@@ -1,6 +1,8 @@
 shmem_global_exit
 =================
 
+::
+
    A routine that allows any PE to force termination of an entire program.
 
 Definitions
@@ -34,10 +36,14 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    status  The exit status from the main program.
 
 Description
 ===========
+
+::
 
    shmem_global_exit is a non-collective routine that allows any one PE to force
    termination of an OpenSHMEM program for all PEs, passing an exit status to
@@ -54,10 +60,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    shmem_global_exit may be used in situations where one or more PEs have
    determined that the program has completed and/or should terminate early.

@@ -1,6 +1,8 @@
 shmemx_alltoallv
 ================
 
+::
+
    shmemx_alltoallv is a cray-specific collective routine, where each PE in the
    defined set exchanges distinct data with all other PEs in the active set.
 
@@ -34,6 +36,8 @@ Deprecated Fortran Synopsis
 
 Arguments
 =========
+
+::
 
       target    A symmetric array large enough to receive the data being sent
                 from each PE in the active set.
@@ -84,6 +88,8 @@ Arguments
 Description
 ===========
 
+::
+
    The shmemx_alltoallv routine is a collective routine, each PE in the
    defined set exchanges distinct data with all other PEs in the set. Each
    PE specifies an array of source offsets and source sizes (in bytes) that
@@ -110,6 +116,8 @@ Description
 
 Notes
 =====
+
+::
 
    The shmemx_alltoallv routine sets the values in pSync based on
    PE_start, logPE_stride, and PE_size values; therefore, a
@@ -143,6 +151,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    This C example shows shmemx_alltoallv exchanging variable sized data
    amounts among all PEs.

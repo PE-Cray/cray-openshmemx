@@ -1,6 +1,8 @@
 shmem_atomic_swap
 =================
 
+::
+
    Performs an atomic swap to a remote data object.
 
 Definitions
@@ -72,6 +74,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -92,6 +96,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    The remotely accessible integer data object to be updated on the
@@ -103,6 +109,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    shmem_atomic_swap performs an atomic swap operation. It writes value into
    dest on PE and returns the previous contents of dest as an atomic operation.
@@ -119,11 +127,15 @@ Description
 Return Values
 =============
 
+::
+
    The content that had been at the dest address on the remote PE prior to the
    swap is returned.
 
 Notes
 =====
+
+::
 
    None.
 
@@ -132,6 +144,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The example below swaps values between odd numbered PEs and their right
    (modulo) neighbor and outputs the result of swap.

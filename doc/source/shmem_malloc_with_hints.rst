@@ -1,6 +1,8 @@
 shmem_malloc_with_hints
 =======================
 
+::
+
    Collective memory allocation routine with support for providing hints.
 
 Definitions
@@ -16,6 +18,8 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    IN      size     The size, in bytes, of a block to be allocated from the
                     symmetric heap. This argument is of type size_t
    IN      hints    A bit array of hints provided by the user to the
@@ -23,6 +27,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmem_malloc_with_hints routine, like shmem_malloc, returns a pointer to
    a block of at least size bytes, which shall be suitably aligned so that it
@@ -59,11 +65,15 @@ Description
 Return Values
 =============
 
+::
+
    The shmem_malloc_with_hints routine returns a pointer to the allocated space;
    otherwise, it returns a null pointer.
 
 Table:1
 =======
+
+::
 
    | Hints                         |  Usage hint                         |
    |-------------------------------|-------------------------------------|
@@ -73,6 +83,8 @@ Table:1
 
 Notes
 =====
+
+::
 
    OpenSHMEM programs should allocate memory with SHMEM_MALLOC_ATOMICS_REMOTE
    when the majority of operations performed on this memory are atomic

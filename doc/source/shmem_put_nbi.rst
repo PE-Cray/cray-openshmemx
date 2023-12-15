@@ -1,6 +1,8 @@
 shmem_put_nbi
 =============
 
+::
+
    The nonblocking put routines provide a method for copying data
    from a contiguous local data object to a data object on a specified PE.
 
@@ -50,6 +52,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -80,6 +84,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    Data object to be updated on the remote PE. This data object must be
@@ -94,6 +100,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The routines return after posting the operation.  The operation is considered
    complete after a subsequent call to shmem_quiet. At the completion of
@@ -136,9 +144,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

@@ -1,6 +1,8 @@
 shmem_team_my_pe
 ================
 
+::
+
    Returns the number of the calling PE within a specified team.
 
 C/C++ Synopsis
@@ -13,10 +15,14 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    IN team An OpenSHMEM team handle.
 
 Description
 ===========
+
+::
 
    When team specifies a valid team, the shmem_team_my_pe routine returns the
    number of the calling PE within the specified team. The number is an integer
@@ -30,15 +36,21 @@ Description
 Return Values
 =============
 
+::
+
    The number of the calling PE within the specified team, or the value -1 if
    the team handle compares equal to SHMEM_TEAM_INVALID.
 
 Notes
 =====
 
+::
+
    For the world team, this routine will return the same value as shmem_my_pe.
 
 Examples
 ========
+
+::
 
    None.

@@ -1,6 +1,8 @@
 shmemx_session_stop
 ===================
 
+::
+
    Stop a communication session.
 
 Definitions
@@ -16,11 +18,15 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    ctx         A context handle specifying the context associated with this
                session.
 
 Description
 ===========
+
+::
 
    The shmemx_session_stop routine ends a session on context ctx. If a session
    is already stopped on a given communication context, another call to
@@ -29,10 +35,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    Users are discouraged from including non-OpenSHMEM code, such as a long
    computation loop, within a sessioin without first calling shmemx_session_stop.

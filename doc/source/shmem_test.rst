@@ -32,6 +32,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   short                 |     short           |
@@ -52,6 +54,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ivar        A pointer to a remotely accessible data object.
    cmp         The comparison operator that compares ivar with cmp_value.
    cmp_value   The value against which the object pointed to by ivar will be
@@ -60,11 +64,15 @@ Arguments
 Description
 ===========
 
+::
+
    shmem_test tests the numeric comparison of the symmetric object pointed to
    by ivar with the value cmp_value according to the comparison operator cmp.
 
 Return Values
 =============
+
+::
 
    shmem_test returns 1 if the comparison of the symmetric object pointed to by
    ivar with the value cmp_value according to the comparison operator cmp
@@ -73,6 +81,8 @@ Return Values
 Notes
 =====
 
+::
+
    None.
 
 Examples
@@ -80,6 +90,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following example demonstrates the use of shmem_test to wait on an array
    of symmetric objects and return the index of an element that satisfies the

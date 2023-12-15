@@ -1,6 +1,8 @@
 shmem_quiet
 ===========
 
+::
+
    Waits for completion of all outstanding PUT, AMO, memory store,
    and nonblocking PUT and GET routines to symmetric data
    objects issued by a PE.
@@ -29,11 +31,15 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
 
 Description
 ===========
+
+::
 
    The shmem_quiet routine ensures completion of PUT, AMO, memory store, and
    nonblocking PUT and GET routines on symmetric data objects issued by the
@@ -44,10 +50,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    shmem_quiet is most useful as a way of ensuring completion of several PUT,
    AMO, memory store, and nonblocking PUT and GET routines to symmetric data
@@ -89,6 +99,8 @@ Examples
 C/C++ Example
 -------------
 
+::
+
    The following example uses shmem_quiet in a C11 program:
 
 .. code:: bash
@@ -120,5 +132,7 @@ C/C++ Example
       shmem_finalize();
       return 0;
    }
+
+::
 
    put1 and put2 will be completed and visible before put3 and put4.

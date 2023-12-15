@@ -1,6 +1,8 @@
 shmem_pe_accessible
 ===================
 
+::
+
    Determines whether a PE is accessible via OpenSHMEM's data transfer
    routines.
 
@@ -29,10 +31,14 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    pe  Specific PE to be checked for accessibility from the local PE.
 
 Description
 ===========
+
+::
 
    shmem_pe_accessible is a query routine that indicates whether a specified PE
    is accessible via OpenSHMEM from the local PE. The shmem_pe_accessible routine
@@ -44,6 +50,8 @@ Description
 Return Values
 =============
 
+::
+
    C/C++: The return value is 1 if the specified PE is a valid remote PE for
    OpenSHMEM routines; otherwise, it is 0.
 
@@ -52,6 +60,8 @@ Return Values
 
 Notes
 =====
+
+::
 
    This routine may be particularly useful for hybrid programming with other
    communication libraries (such as MPI) or parallel languages.  For
