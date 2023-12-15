@@ -7,6 +7,10 @@ programming model. Some of the features which are discussed as part of these
 works are available as part of the Cray OpenSHMEMX software stack. The 
 following are the list of those publications in reverse chronological order.
 
+*  *A Modern Fortran Interface in OpenSHMEM: Need for Interoperability with
+   Parallel Fortran Using Coarrays*. N. Namashivayam, B. Long, D. Eachempati,
+   B. Cernohous, and M. Pagel. ACM Transactions on Parallel Computing, 2020.
+
 *  *Introducing Cray OpenSHMEMX-A Modular Multi-communication Layer OpenSHMEM
    Implementation*. N. Namashivayam, B. Cernohous, D. Pou, and M. Pagel. 
    Workshop on OpenSHMEM and Related Technologies, 2018.

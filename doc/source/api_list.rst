@@ -157,47 +157,47 @@ OpenSHMEM v1.5 Standard Features
     * :doc:`shmem_atomic_swap  <shmem_atomic_swap>`
     * :doc:`shmem_atomic_xor  <shmem_atomic_xor>`
 10. Non-blocking Atomic Memory Operations
-    * :doc:`shmem_atomic_fetch_nbi <shmem_atomic_fetch_nbi>`
-    * :doc:`shmem_atomic_compare_swap_nbi <shmem_atomic_compare_swap_nbi>`
-    * :doc:`shmem_atomic_swap_nbi <shmem_atomic_swap_nbi>`
-    * :doc:`shmem_atomic_fetch_inc_nbi <shmem_atomic_fetch_inc_nbi>`
-    * :doc:`shmem_atomic_fetch_add_nbi <shmem_atomic_fetch_add_nbi>`
-    * :doc:`shmem_atomic_fetch_and_nbi <shmem_atomic_fetch_and_nbi>`
-    * :doc:`shmem_atomic_fetch_or_nbi <shmem_atomic_fetch_or_nbi>`
-    * :doc:`shmem_atomic_fetch_xor_nbi <shmem_atomic_fetch_xor_nbi>`
+     * :doc:`shmem_atomic_fetch_nbi <shmem_atomic_fetch_nbi>`
+     * :doc:`shmem_atomic_compare_swap_nbi <shmem_atomic_compare_swap_nbi>`
+     * :doc:`shmem_atomic_swap_nbi <shmem_atomic_swap_nbi>`
+     * :doc:`shmem_atomic_fetch_inc_nbi <shmem_atomic_fetch_inc_nbi>`
+     * :doc:`shmem_atomic_fetch_add_nbi <shmem_atomic_fetch_add_nbi>`
+     * :doc:`shmem_atomic_fetch_and_nbi <shmem_atomic_fetch_and_nbi>`
+     * :doc:`shmem_atomic_fetch_or_nbi <shmem_atomic_fetch_or_nbi>`
+     * :doc:`shmem_atomic_fetch_xor_nbi <shmem_atomic_fetch_xor_nbi>`
 11. Signaling Operations
-    * :doc:`shmem_put_signal <shmem_put_signal>`
-    * :doc:`shmem_put_signal_nbi <shmem_put_signal_nbi>`
-    * :doc:`shmem_signal_fetch <shmem_signal_fetch>`
+     * :doc:`shmem_put_signal <shmem_put_signal>`
+     * :doc:`shmem_put_signal_nbi <shmem_put_signal_nbi>`
+     * :doc:`shmem_signal_fetch <shmem_signal_fetch>`
 12. Collective Operations
-    * :doc:`shmem_alltoall  <shmem_alltoall>`
-    * :doc:`shmem_alltoalls  <shmem_alltoalls>`
-    * :doc:`shmem_barrier  <shmem_barrier>`
-    * :doc:`shmem_barrier_all  <shmem_barrier_all>`
-    * :doc:`shmem_broadcast  <shmem_broadcast>`
-    * :doc:`shmem_collect  <shmem_collect>`
-    * :doc:`shmem_reductions  <shmem_reductions>`
-    * :doc:`shmem_sync  <shmem_sync>`
-    * :doc:`shmem_sync_all  <shmem_sync_all>`
+     * :doc:`shmem_alltoall  <shmem_alltoall>`
+     * :doc:`shmem_alltoalls  <shmem_alltoalls>`
+     * :doc:`shmem_barrier  <shmem_barrier>`
+     * :doc:`shmem_barrier_all  <shmem_barrier_all>`
+     * :doc:`shmem_broadcast  <shmem_broadcast>`
+     * :doc:`shmem_collect  <shmem_collect>`
+     * :doc:`shmem_reductions  <shmem_reductions>`
+     * :doc:`shmem_sync  <shmem_sync>`
+     * :doc:`shmem_sync_all  <shmem_sync_all>`
 13. Point-to-Point Synchronizations
-    * :doc:`shmem_wait_until <shmem_wait_until>`
-    * :doc:`shmem_wait_until_all <shmem_wait_until_all>`
-    * :doc:`shmem_wait_until_any <shmem_wait_until_any>`
-    * :doc:`shmem_wait_until_some <shmem_wait_until_some>`
-    * :doc:`shmem_wait_until_all_vector <shmem_wait_until_all_vector>`
-    * :doc:`shmem_wait_until_any_vector <shmem_wait_until_any_vector>`
-    * :doc:`shmem_wait_until_some_vector <shmem_wait_until_some_vector>`
-    * :doc:`shmem_test <shmem_test>`
-    * :doc:`shmem_test_all <shmem_test_all>`
-    * :doc:`shmem_test_any <shmem_test_any>`
-    * :doc:`shmem_test_some <shmem_test_some>`
-    * :doc:`shmem_test_all_vector <shmem_test_all_vector>`
-    * :doc:`shmem_test_any_vector <shmem_test_any_vector>`
-    * :doc:`shmem_test_some_vector <shmem_test_some_vector>`
-    * :doc:`shmem_signal_wait_until <shmem_signal_wait_until>`
+     * :doc:`shmem_wait_until <shmem_wait_until>`
+     * :doc:`shmem_wait_until_all <shmem_wait_until_all>`
+     * :doc:`shmem_wait_until_any <shmem_wait_until_any>`
+     * :doc:`shmem_wait_until_some <shmem_wait_until_some>`
+     * :doc:`shmem_wait_until_all_vector <shmem_wait_until_all_vector>`
+     * :doc:`shmem_wait_until_any_vector <shmem_wait_until_any_vector>`
+     * :doc:`shmem_wait_until_some_vector <shmem_wait_until_some_vector>`
+     * :doc:`shmem_test <shmem_test>`
+     * :doc:`shmem_test_all <shmem_test_all>`
+     * :doc:`shmem_test_any <shmem_test_any>`
+     * :doc:`shmem_test_some <shmem_test_some>`
+     * :doc:`shmem_test_all_vector <shmem_test_all_vector>`
+     * :doc:`shmem_test_any_vector <shmem_test_any_vector>`
+     * :doc:`shmem_test_some_vector <shmem_test_some_vector>`
+     * :doc:`shmem_signal_wait_until <shmem_signal_wait_until>`
 14. Memory Ordering
-    * :doc:`shmem_fence  <shmem_fence>`
-    * :doc:`shmem_quiet  <shmem_quiet>`
+     * :doc:`shmem_fence  <shmem_fence>`
+     * :doc:`shmem_quiet  <shmem_quiet>`
 15. Distributed Locks
      * :doc:`shmem_lock  <shmem_lock>`
 16. Deprecated Cache Operations

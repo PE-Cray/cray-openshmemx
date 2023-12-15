@@ -1,15 +1,5 @@
-Name
-====
-
-::
-
-    intro_shmem - introduces routines supporting logically shared distributed
-    memory access operations based on OpenSHMEM programming model
-
 Introduction
 ============
-
-::
 
     OpenSHMEM is a Partitioned Global Address Space (PGAS) library interface
     specification, which is the culmination of a standardization effort among
@@ -22,8 +12,6 @@ Introduction
 
 Description
 ===========
-
-::
 
     The logically shared, distributed memory access routines based on the
     OpenSHMEM programming model provide low-latency, high-bandwidth
@@ -60,41 +48,37 @@ Description
 OpenSHMEM Compliance
 ====================
 
-::
-
     Cray OpenSHMEMX is compliant with the OpenSHMEM API Specification Version
     1.5. The following list of operations are supported by the implementation:
 
-    o  library setup, exit, and query routines
+    *  library setup, exit, and query routines
 
-    o  support for multithreading
+    *  support for multithreading
 
-    o  memory management operations
+    *  memory management operations
 
-    o  team or process subset management routines
+    *  team or process subset management routines
 
-    o  communication management using contexts
+    *  communication management using contexts
 
-    o  remote memory access
+    *  remote memory access
 
-    o  atomic memory operations
+    *  atomic memory operations
 
-    o  signaling operations
+    *  signaling operations
 
-    o  collective routines
+    *  collective routines
 
-    o  point-to-point synchronization routines
+    *  point-to-point synchronization routines
 
-    o  memory ordering routines
+    *  memory ordering routines
 
-    o  distributed locking
+    *  distributed locking
 
-    o  C11-generic interface
+    *  C11-generic interface
 
 Implementation-specific Features
 ================================
-
-::
 
     All implementation specific extensions are prefixed with SHMEMX_
     nomenclature and placed inside the shmemx.h and shmemx.fh header.
@@ -102,23 +86,23 @@ Implementation-specific Features
     The following are the list of implementation-specific features available in
     Cray OpenSHMEMX library:
 
-    o  sessions with support for different hints
+    *  sessions with support for different hints
 
-    o  local-node queries
+    *  local-node queries
 
-    o  thread-hot multithreading features with thread-based memory ordering
+    *  thread-hot multithreading features with thread-based memory ordering
 
-    o  fine-grain memory ordering operations
+    *  fine-grain memory ordering operations
 
-    o  alltoallv and alltoallv_packed collective operation
+    *  alltoallv and alltoallv_packed collective operation
 
-    o  AMOs with short data types
+    *  AMOs with short data types
 
-    o  legacy put with signal operation
+    *  legacy put with signal operation
 
-    o  legacy teams and team-based collectives
+    *  legacy teams and team-based collectives
 
-    o  legacy non-blocking put and get RMA operations
+    *  legacy non-blocking put and get RMA operations
 
     All the supported legacy routines are deprecated with a more standard
     operations defined by the OpenSHMEM specifications. The legacy routines are
@@ -127,19 +111,15 @@ Implementation-specific Features
 Different Available Transport Layers
 ====================================
 
-::
-
     Cray OpenSHMEMX is designed to be modular to support different transport
     layers for communication. The current version support the following
     transport layers:
 
-    o  SMP-OFI - OFI for internode and XPMEM for intranode communication
+    *  SMP-OFI - OFI for internode and XPMEM for intranode communication
     Support for XPMEM is available only on systems with XPMEM kernel.
 
 Whitepapers
 ===========
-
-::
 
     Refer Cray Programming Environment Github page:
     https://pe-cray.github.io/whitepapers/ for access to different whitepapers
@@ -148,16 +128,12 @@ Whitepapers
 General Announcements
 =====================
 
-::
-
     Announcements, release informations, supported environments, and backward
     compatibility informations about this product can be viewed in the following
     location: https://pe-cray.github.io/cray-openshmemx/
 
 Compiling and Launching a SHMEM Application on a Cray System
 ============================================================
-
-::
 
     To invoke the compiler for all applications, including SHMEM applications,
     use either the cc, CC, or ftn command. Do not use vendor-specific compiler
@@ -177,14 +153,10 @@ Compiling and Launching a SHMEM Application on a Cray System
         cc -o test_shmem test_shmem.c
         srun -n 128 ./test_shmem
 
-::
-
     See the srun(1) man page for more information
 
 Support for Dynamic linking
 ---------------------------
-
-::
 
     Cray OpenSHMEMX supports just dynamic linking over the Cray EX system. It
     is also the default build mode. Loading Cray OpenSHMEMX module file
@@ -200,7 +172,6 @@ Support for Dynamic linking
         module load cray-openshmemx/<version>
         cc -o test_shmem test_shmem.c
 
-::
 
     For dynamic building, users are expected to explicitly load the location
     of the Cray OpenSHMEMX in the LD_LIBRARY_PATH as shown in the example below.
@@ -214,7 +185,6 @@ Support for Dynamic linking
         export LD_LIBRARY_PATH=$CRAY_OPENSHMEMX_DIR/lib64:$LD_LIBRARY_PATH
         cc -o test_shmem test_shmem.c
 
-::
 
    NOTE: As of Cray OpenSHMEMX version 10.0.0, static builds are not supported
    in Cray EX systems.
@@ -225,23 +195,17 @@ Implementation Notes
 Managing Memory in Cray OpenSHMEMX
 ----------------------------------
 
-::
-
     Refer shmem_mem_manage(3) for more information on managing memory in
     Cray OpenSHMEMX
 
 Interconnect Specific Informations
 ----------------------------------
 
-::
-
-    On Cray Shasta systems, Cray OpenSHMEMX uses libfabric (OFI) for network
+   On Cray Shasta systems, Cray OpenSHMEMX uses libfabric (OFI) for network
    based communication and data transfer operations.
 
 OpenSHMEM C11-Generic Interfaces
 --------------------------------
-
-::
 
     The Cray OpenSHMEMX library supports the OpenSHMEM C11-Generic interface,
     which is new with OpenSHMEM version 1.3. This interface does not add new
@@ -251,11 +215,11 @@ OpenSHMEM C11-Generic Interfaces
     interface. As of the time of the Cray OpenSHMEMX version 8.0.0 release,
     these include:
 
-    o  CCE 8.5 or later; use the -hstd=c11 flag during compilation
+    *  CCE 8.5 or later; use the -hstd=c11 flag during compilation
 
-    o  GNU 5.1 or later; no additional flags needed
+    *  GNU 5.1 or later; no additional flags needed
 
-    o  Intel 16.0 or later; use the -std=c11 or -std=c1x flag during
+    *  Intel 16.0 or later; use the -std=c11 or -std=c1x flag during
        compilation
 
     To use the C11-Generic interface, you must use a compiler that supports
@@ -277,8 +241,6 @@ OpenSHMEM C11-Generic Interfaces
 Zero-length Data Transfer
 -------------------------
 
-::
-
     Per OpenSHMEM specification 1.2 Annex C, support for zero-length transfers
     is provided for zero-length get and put. Remote memory transfers for zero
     number of elements are accepted, and this support is provided for both
@@ -289,24 +251,20 @@ Zero-length Data Transfer
 Cray OpenSHMEMX Locality Awareness
 ----------------------------------
 
-::
-
     Cray OpenSHMEMX version 9.0.0 and later provides support for locality
-   awareness. On previous versions, we initialized both the network transport
-   options (OFI) and on-node transport (XPMEM) options even on single-node
+    awareness. On previous versions, we initialized both the network transport
+    options (OFI) and on-node transport (XPMEM) options even on single-node
     jobs. We used environment variables like SHMEM_USE_SMP to toggle the use of
     on-node data transfers.
 
     On Cray OpenSHMEMX versions 9.0.0 and later, only on-node transport (XPMEM)
-   options are initialized for single-node jobs. Users can toggle the usage
+    options are initialized for single-node jobs. Users can toggle the usage
     using the following environment variable options: SHMEM_LOCALITY_ONNODE and
     SHMEM_LOCALITY_OFFNODE. Please refer these environment variables in the
     the following section, for more information.
 
 Environment Variables
 =====================
-
-::
 
     The following environment variables affect SHMEM behavior.
 
