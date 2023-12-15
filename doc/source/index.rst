@@ -69,14 +69,16 @@ Latest News
       - August 2020
 
 The following changes were made in the latest release of Cray OpenSHMEMX
-v11.1.0 on Cray EX systems:
+v11.7.0 on HPE Cray EX and HPE Apollo systems:
 
-1. Enabling manual-progress by default for OFI "verbs;ofi_rxm" provider
-2. Allow using Cray OpenSHMEMX on HPE Apollo systems as a beta release. The 
-   initial beta release is not performant and it is provided as a functional 
-   test library
-3. Fix padding issues on the symmetric heaps, to avoid internal library usage
-   memory buffers to use the user-allocated symmetric heaps
+1. Fix SMP and network flush issues in shmem_quiet operation
+2. Add support for performant shmem_quiet
+3. Add support for new SW collective engine (non-default - ready for evaluation)
+4. Fix internal psync maintenance for shmem_team management
+5. Fix return types for team-based allreduce operations
+6. Add support for new tree-based allreduce algorithm
+7. Fix team-based shmem_collect and shmem_collect operations for datatypes of size 1, 2, and 16 bytes
+8. Fix pshmem APIs for put-with-signal operations
 
 The following changes were made in the latest release of Cray OpenSHMEMX v9.1.1
 on Cray XC systems:
