@@ -108,32 +108,8 @@ Implementation-specific Features
     operations defined by the OpenSHMEM specifications. The legacy routines are
     supported for backward compatibility.
 
-Different Available Transport Layers
-====================================
-
-    Cray OpenSHMEMX is designed to be modular to support different transport
-    layers for communication. The current version support the following
-    transport layers:
-
-    *  SMP-OFI - OFI for internode and XPMEM for intranode communication
-    Support for XPMEM is available only on systems with XPMEM kernel.
-
-Whitepapers
-===========
-
-    Refer Cray Programming Environment Github page:
-    https://pe-cray.github.io/whitepapers/ for access to different whitepapers
-    related to Cray OpenSHMEMX software stack.
-
-General Announcements
+Using Cray OpenSHMEMX
 =====================
-
-    Announcements, release informations, supported environments, and backward
-    compatibility informations about this product can be viewed in the following
-    location: https://pe-cray.github.io/cray-openshmemx/
-
-Compiling and Launching a SHMEM Application on a Cray System
-============================================================
 
     To invoke the compiler for all applications, including SHMEM applications,
     use either the cc, CC, or ftn command. Do not use vendor-specific compiler
@@ -191,6 +167,16 @@ Support for Dynamic linking
 
 Implementation Notes
 ====================
+
+Different Available Transport Layers
+------------------------------------
+
+    Cray OpenSHMEMX is designed to be modular to support different transport
+    layers for communication. The current version support the following
+    transport layers:
+
+    *  SMP-OFI - OFI for internode and XPMEM for intranode communication
+    Support for XPMEM is available only on systems with XPMEM kernel.
 
 Managing Memory in Cray OpenSHMEMX
 ----------------------------------
