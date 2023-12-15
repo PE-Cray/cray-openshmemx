@@ -181,9 +181,10 @@ for various pages and will be completed soon.
    :hidden:
 
    intro_shmem
-   tuning_parameters
-   white_papers
    api_list
    release_notes
+   tuning_parameters
+   pubs
+   white_papers
    api_glossary
 
