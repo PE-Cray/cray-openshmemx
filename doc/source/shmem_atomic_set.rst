@@ -1,6 +1,8 @@
 shmem_atomic_set
 ================
 
+::
+
    Atomically sets the value of a remote data object.
 
 Definitions
@@ -71,6 +73,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -91,6 +95,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    The remotely accessible integer data object to be updated on the
@@ -101,15 +107,21 @@ Arguments
 Description
 ===========
 
+::
+
    shmem_atomic_set performs an atomic set operation. It writes the value into
    dest on pe as an atomic operation.
 
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

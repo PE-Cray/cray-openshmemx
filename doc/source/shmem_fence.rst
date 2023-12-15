@@ -1,6 +1,8 @@
 shmem_fence
 ===========
 
+::
+
    Assures ordering of delivery of PUT, AMO, memory store, and nonblocking PUT
    routines to symmetric data objects.
 
@@ -28,11 +30,15 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
 
 Description
 ===========
+
+::
 
    This routine assures ordering of delivery of PUT, AMO, memory store, and
    nonblocking PUT routines to symmetric data objects.  All PUT, AMO, memory
@@ -46,10 +52,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    shmem_fence only provides per-PE ordering guarantees and does not guarantee
    completion of delivery. shmem_fence also does not have an effect on the
@@ -80,6 +90,8 @@ Examples
 C/C++ Example
 -------------
 
+::
+
    The following example uses shmem_fence in a C11 program:
 
 .. code:: bash
@@ -107,6 +119,8 @@ C/C++ Example
       shmem_finalize();
       return 0;
    }
+
+::
 
    Put1 will be ordered to be delivered before put3 and put2 will be ordered to
    be delivered before put4.

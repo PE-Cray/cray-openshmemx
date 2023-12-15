@@ -1,6 +1,8 @@
 shmemx_team_translate_pe
 ========================
 
+::
+
     shmemx_team_translate_pe -- Translate a given virtual rank of one team
     to its corresponding virtual rank in another team
 
@@ -31,6 +33,8 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
     team1     A valid SHMEM team handle.
 
     team1_pe  A virtual team rank in team1.
@@ -39,6 +43,8 @@ Arguments
 
 Description
 ===========
+
+::
 
     The shmemx_team_translate_pe function will translate a virtual rank of
     one team to its corresponding virtual rank in another team.
@@ -59,6 +65,8 @@ Description
 
 Notes
 =====
+
+::
 
     By default, SHMEM creates two predefined teams that will be available
     for use once the routine start_pes has been called. These teams can be

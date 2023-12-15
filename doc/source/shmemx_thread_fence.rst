@@ -1,6 +1,8 @@
 shmemx_thread_fence
 ===================
 
+::
+
    shmemx_thread_fence - cray specific routine to perform thread-specific
    version of the shmem_fence routine
 
@@ -27,6 +29,8 @@ Deprecated Fortran Synopsis
 Description
 ===========
 
+::
+
    This function is the thread-specific version of the shmem_fence
    routine. The function ensures ordering of put (remote write) and
    non-blocking get operations. All such operations, which are issued by
@@ -40,6 +44,8 @@ Description
 
 Notes
 =====
+
+::
 
    Use the shmemx_thread_quiet function to allow an individual thread
    to wait for completion of the puts and non-blocking gets it previously

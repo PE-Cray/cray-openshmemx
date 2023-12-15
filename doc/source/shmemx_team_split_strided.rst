@@ -1,6 +1,8 @@
 shmemx_team_split_strided
 =========================
 
+::
+
    shmemx_team_split_strided - collective routine to partition the existing
    parent team into a new SHMEM team based on the PE triplet (PE_start,
    PE_stride, and PE_size) supplied to the function.
@@ -32,6 +34,8 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    parent_team
        A valid SHMEM team. The predefined teams SHMEM_TEAM_WORLD or
        SHMEM_TEAM_NODE may be used, or any team created by the users.
@@ -52,6 +56,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmemx_team_split_strided function is a collective routine.
    It partitions the existing parent team into a new SHMEM team based on
@@ -80,6 +86,8 @@ Description
 
 Notes
 =====
+
+::
 
    Note that SHMEM team handles have local semantics only. That is, team
    handles should not be stored in shared variables and used across other

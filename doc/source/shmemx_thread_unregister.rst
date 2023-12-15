@@ -1,6 +1,8 @@
 shmemx_thread_unregister
 ========================
 
+::
+
    shmem_thread_register - cray specific routine to unregister threads on a
    previously registered thread using shmemx_thread_register routine
 
@@ -27,6 +29,8 @@ Deprecated Fortran Synopsis
 Description
 ===========
 
+::
+
    If the currently provided thread safety level is SHMEM_THREAD_MULTIPLE, any
    thread that calls shmemx_thread_register() must call shmemx_thread_unregister()
    to unregister the thread before the thread exits. Failure to do this is
@@ -37,6 +41,8 @@ Description
 
 Notes
 =====
+
+::
 
    Most thread-safe SHMEM calls must occur while the calling thread is
    registered; that is, between a shmemx_thread_register() call and a

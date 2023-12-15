@@ -35,6 +35,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   unsigned int          |     uint            |
@@ -48,6 +50,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx   The context on which to perform the operation. When this argument is
          not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest  A pointer to the remotely accessible data object to be updated.
@@ -57,12 +61,16 @@ Arguments
 Description
 ===========
 
+::
+
    shmem_atomic_fetch_and atomically performs a fetching bitwise AND on the
    remotely accessible data object pointed to by dest at PE pe with the operand
    value.
 
 Return Values
 =============
+
+::
 
    The value pointed to by dest on PE pe immediately before the operation is
    performed.

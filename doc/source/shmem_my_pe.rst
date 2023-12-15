@@ -1,6 +1,8 @@
 shmem_my_pe
 ===========
 
+::
+
    Returns the number of the calling PE.
 
 Definitions
@@ -27,10 +29,14 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    None.
 
 Description
 ===========
+
+::
 
    This routine returns the PE number of the calling PE.  It accepts no
    arguments.  The result is an integer between 0 and npes - 1, where npes is
@@ -39,10 +45,14 @@ Description
 Return Values
 =============
 
+::
+
    Integer - Between 0 and npes - 1
 
 Notes
 =====
+
+::
 
    Each PE has a unique number or identifier. As of OpenSHMEM[1.2]
    the use of _my_pe has been deprecated. Although OpenSHMEM libraries are

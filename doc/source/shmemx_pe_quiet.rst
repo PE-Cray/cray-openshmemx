@@ -1,6 +1,8 @@
 shmemx_pe_quiet
 ===============
 
+::
+
    Waits for the completion of all Put, AMO, and memory store routines to
    symmetric data objects to a particular target.
 
@@ -17,10 +19,14 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    target_pe     The pe on which to perform the operation.
 
 Description
 ===========
+
+::
 
    The shmem_pe_quiet routine ensure the completion of all operations
    to a particular process rather than all processes as in the existing
@@ -30,5 +36,7 @@ Description
 
 Return Values
 =============
+
+::
 
    None.

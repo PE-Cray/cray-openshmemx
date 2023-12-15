@@ -1,11 +1,15 @@
 Name
 ====
 
+::
+
     intro_shmem - introduces routines supporting logically shared distributed
     memory access operations based on OpenSHMEM programming model
 
 Introduction
 ============
+
+::
 
     OpenSHMEM is a Partitioned Global Address Space (PGAS) library interface
     specification, which is the culmination of a standardization effort among
@@ -18,6 +22,8 @@ Introduction
 
 Description
 ===========
+
+::
 
     The logically shared, distributed memory access routines based on the
     OpenSHMEM programming model provide low-latency, high-bandwidth
@@ -54,6 +60,8 @@ Description
 OpenSHMEM Compliance
 ====================
 
+::
+
     Cray OpenSHMEMX is compliant with the OpenSHMEM API Specification Version
     1.5. The following list of operations are supported by the implementation:
 
@@ -86,6 +94,8 @@ OpenSHMEM Compliance
 Implementation-specific Features
 ================================
 
+::
+
     All implementation specific extensions are prefixed with SHMEMX_
     nomenclature and placed inside the shmemx.h and shmemx.fh header.
 
@@ -117,6 +127,8 @@ Implementation-specific Features
 Different Available Transport Layers
 ====================================
 
+::
+
     Cray OpenSHMEMX is designed to be modular to support different transport
     layers for communication. The current version support the following
     transport layers:
@@ -127,6 +139,8 @@ Different Available Transport Layers
 Whitepapers
 ===========
 
+::
+
     Refer Cray Programming Environment Github page:
     https://pe-cray.github.io/whitepapers/ for access to different whitepapers
     related to Cray OpenSHMEMX software stack.
@@ -134,12 +148,16 @@ Whitepapers
 General Announcements
 =====================
 
+::
+
     Announcements, release informations, supported environments, and backward
     compatibility informations about this product can be viewed in the following
     location: https://pe-cray.github.io/cray-openshmemx/
 
 Compiling and Launching a SHMEM Application on a Cray System
 ============================================================
+
+::
 
     To invoke the compiler for all applications, including SHMEM applications,
     use either the cc, CC, or ftn command. Do not use vendor-specific compiler
@@ -159,10 +177,14 @@ Compiling and Launching a SHMEM Application on a Cray System
         cc -o test_shmem test_shmem.c
         srun -n 128 ./test_shmem
 
+::
+
     See the srun(1) man page for more information
 
 Support for Dynamic linking
 ---------------------------
+
+::
 
     Cray OpenSHMEMX supports just dynamic linking over the Cray EX system. It
     is also the default build mode. Loading Cray OpenSHMEMX module file
@@ -178,6 +200,8 @@ Support for Dynamic linking
         module load cray-openshmemx/<version>
         cc -o test_shmem test_shmem.c
 
+::
+
     For dynamic building, users are expected to explicitly load the location
     of the Cray OpenSHMEMX in the LD_LIBRARY_PATH as shown in the example below.
     Without this setting the library will be linked against the default
@@ -190,6 +214,8 @@ Support for Dynamic linking
         export LD_LIBRARY_PATH=$CRAY_OPENSHMEMX_DIR/lib64:$LD_LIBRARY_PATH
         cc -o test_shmem test_shmem.c
 
+::
+
    NOTE: As of Cray OpenSHMEMX version 10.0.0, static builds are not supported
    in Cray EX systems.
 
@@ -199,17 +225,23 @@ Implementation Notes
 Managing Memory in Cray OpenSHMEMX
 ----------------------------------
 
+::
+
     Refer shmem_mem_manage(3) for more information on managing memory in
     Cray OpenSHMEMX
 
 Interconnect Specific Informations
 ----------------------------------
 
+::
+
     On Cray Shasta systems, Cray OpenSHMEMX uses libfabric (OFI) for network
    based communication and data transfer operations.
 
 OpenSHMEM C11-Generic Interfaces
 --------------------------------
+
+::
 
     The Cray OpenSHMEMX library supports the OpenSHMEM C11-Generic interface,
     which is new with OpenSHMEM version 1.3. This interface does not add new
@@ -245,6 +277,8 @@ OpenSHMEM C11-Generic Interfaces
 Zero-length Data Transfer
 -------------------------
 
+::
+
     Per OpenSHMEM specification 1.2 Annex C, support for zero-length transfers
     is provided for zero-length get and put. Remote memory transfers for zero
     number of elements are accepted, and this support is provided for both
@@ -254,6 +288,8 @@ Zero-length Data Transfer
 
 Cray OpenSHMEMX Locality Awareness
 ----------------------------------
+
+::
 
     Cray OpenSHMEMX version 9.0.0 and later provides support for locality
    awareness. On previous versions, we initialized both the network transport
@@ -270,10 +306,14 @@ Cray OpenSHMEMX Locality Awareness
 Environment Variables
 =====================
 
+::
+
     The following environment variables affect SHMEM behavior.
 
 OpenSHMEM Standard Specific Environment Variables
 -------------------------------------------------
+
+::
 
     SHMEM_VERSION_DISPLAY
               If set, causes SHMEM to display the Cray OpenSHMEMX version
@@ -327,6 +367,8 @@ OpenSHMEM Standard Specific Environment Variables
 
 Cray OpenSHMEMX Setup and Running Specific Environment Variables
 ----------------------------------------------------------------
+
+::
 
     SHMEM_ENV_DISPLAY
               If set, causes SHMEM to display all SHMEM environment
@@ -456,6 +498,8 @@ Cray OpenSHMEMX Setup and Running Specific Environment Variables
 Cray OpenSHMEMX and Cray DSMML Interaction Environment Variables
 ----------------------------------------------------------------
 
+::
+
    SHMEM_USE_DSMML
                Specifies the usage of Cray DSMML library as the symmetric
                heap memory management layer. There are two symmetric heap
@@ -481,6 +525,8 @@ Cray OpenSHMEMX and Cray DSMML Interaction Environment Variables
 Cray OpenSHMEMX Multithreading Specific Environment Variables
 -------------------------------------------------------------
 
+::
+
     SHMEM_THREAD_SAFETY
               Environment variable to display the OpenSHMEM thread safety level
               This environment variable acts as output to retrieve the
@@ -488,6 +534,8 @@ Cray OpenSHMEMX Multithreading Specific Environment Variables
 
 Cray OpenSHMEMX Communication Context Environment Variables
 -----------------------------------------------------------
+
+::
 
     SHMEM_MAX_CTX
               Sets the maximum number of contexts required per process, if
@@ -507,6 +555,8 @@ Cray OpenSHMEMX Communication Context Environment Variables
 
 Cray OpenSHMEMX - SMP Communication Layer Specific Environment Variables
 ------------------------------------------------------------------------
+
+::
 
     SHMEM_LOCALITY_ONNODE
               Enables or disable on-node SMP copies via XPMEM. This variable
@@ -549,6 +599,8 @@ Cray OpenSHMEMX - SMP Communication Layer Specific Environment Variables
 
 Cray OpenSHMEMX Collectives Specific Environment Variables
 ----------------------------------------------------------
+
+::
 
     SHMEM_ALLTOALL_BLOCK_SIZE
               Specifies the blocksize in bytes for shmem_alltoall and
@@ -799,6 +851,8 @@ Cray OpenSHMEMX Collectives Specific Environment Variables
 Cray OpenSHMEMX Libfabric Transport Specific Environment Variables
 ------------------------------------------------------------------
 
+::
+
    SHMEM_OFI_FABRIC_DISPLAY
               If set, detailed fabric information for the selected provider
               will be displayed during shmem_init.
@@ -904,6 +958,8 @@ Cray OpenSHMEMX Libfabric Transport Specific Environment Variables
 Libfabric Environment Variables That Affect Cray OpenSHMEMX
 -----------------------------------------------------------
 
+::
+
    FI_OFI_RXM_USE_SRX
 
               This is a verbs;ofi_rxm libfabric ENV variable.  Set this to 1
@@ -955,6 +1011,8 @@ Libfabric Environment Variables That Affect Cray OpenSHMEMX
 Cray OpenSHMEMX NIC Selection on the Libfabric Transport Specific Environment Variables
 ---------------------------------------------------------------------------------------
 
+::
+
    SHMEM_OFI_NIC_MAPPING
               Specifies the precise PE-to-NIC mapping to use on each node. This
               is evaluated *only* if the *SHMEM_OFI_NIC_POLICY* variable is set
@@ -964,6 +1022,8 @@ Cray OpenSHMEMX NIC Selection on the Libfabric Transport Specific Environment Va
               any node, that portion of the *SHMEM_OFI_NIC_MAPPING* string will
               be ignored.  Add quotes around the entire string to prevent the
               shell from interpreting the value incorrectly.
+
+              The format is as follows:::
 
               "nic_idx:local_pes; nic_idx:local_pes; nic_idx;local_pes"
 
@@ -1002,6 +1062,7 @@ Cray OpenSHMEMX NIC Selection on the Libfabric Transport Specific Environment Va
               the next X local PEs assigned to NIC 1, etc.
 
               For example, with 22 PEs placed per node, and each node having 4
+              NICs:::
 
               ----
                 PEs 0-5 are assigned to NIC 0
@@ -1018,6 +1079,7 @@ Cray OpenSHMEMX NIC Selection on the Libfabric Transport Specific Environment Va
               NIC 0, and so on.
 
               For example, with 22 PEs placed per node, and each node having 4
+              NICs:::
 
               ----
                 PEs 0,4,8,12,16,20 are assigned to NIC 0

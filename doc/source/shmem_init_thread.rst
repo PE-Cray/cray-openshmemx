@@ -1,6 +1,8 @@
 shmem_init_thread
 =================
 
+::
+
    Initializes the OpenSHMEM library, similar to shmem_init, and performs any
    initialization required for supporting the provided thread level.
 
@@ -17,11 +19,15 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    requested   The thread level support requested by the user.
    provided    The thread level support provided by the OpenSHMEM implementation.
 
 Description
 ===========
+
+::
 
    shmem_init_thread initializes the OpenSHMEM library in the same way as
    shmem_init. In addition, shmem_init_thread also performs the initialization
@@ -41,10 +47,14 @@ Description
 Return Values
 =============
 
+::
+
    shmem_init_thread returns 0 upon success; otherwise, it returns a non-zero value.
 
 Notes
 =====
+
+::
 
    The OpenSHMEM library can be initialized either by shmem_init or
    shmem_init_thread. If the OpenSHMEM library is initialized by shmem_init, the

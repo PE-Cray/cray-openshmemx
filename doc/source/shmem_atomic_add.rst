@@ -1,6 +1,8 @@
 shmem_atomic_add
 ================
 
+::
+
    Performs an atomic add operation on a remote symmetric data object.
 
 Definitions
@@ -66,6 +68,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -84,6 +88,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    The remotely accessible integer data object to be updated  on the
@@ -99,6 +105,8 @@ Arguments
 Description
 ===========
 
+::
+
    The shmem_atomic_add routine performs an atomic add operation. It adds
    value to dest on PE pe and atomically updates the dest without returning the
    value.
@@ -112,10 +120,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.
 

@@ -1,6 +1,8 @@
 shmemx_short_add
 ================
 
+::
+
    Performs an atomic add to a remote short data object.
 
 Definitions
@@ -16,6 +18,8 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    target  The remotely accessible short data object to be updated on the
            remote PE. When using  C/C++, the type of target should match that
            implied in the SYNOPSIS section.
@@ -27,15 +31,21 @@ Arguments
 Description
 ===========
 
+::
+
    shmemx_short_add performs an atomic add. It adds value to target
    on PE.
 
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

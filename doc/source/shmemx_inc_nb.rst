@@ -1,6 +1,8 @@
 shmemx_inc_nb
 =============
 
+::
+
    Performs an atomic increment operation on a remote data object.
 
 Definitions
@@ -31,6 +33,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -49,6 +53,8 @@ Table:1
 Arguments
 =========
 
+::
+
    target  The remotely accessible integer data object to be updated on the
            remote PE. The type of target should match that implied in the
            SYNOPSIS section.
@@ -59,15 +65,21 @@ Arguments
 Description
 ===========
 
+::
+
    These  routines perform  a non-blocking atomic increment operation on the
    target data object on PE.
 
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

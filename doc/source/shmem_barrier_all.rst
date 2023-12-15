@@ -1,6 +1,8 @@
 shmem_barrier_all
 =================
 
+::
+
    Registers the arrival of a PE at a barrier and blocks the PE until all other
    PEs arrive at the barrier and all local updates and remote memory updates on
    the default context are completed.
@@ -18,10 +20,14 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    None
 
 Description
 -----------
+
+::
 
    The shmem_barrier_all routine is a mechanism for synchronizing all PEs in
    the world team at once.This routineblocks the PE until all PEs have called
@@ -36,10 +42,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    The shmem_barrier_all routine is equivalent to calling shmem_ctx_quiet on
    the default context followed by calling shmem_team_sync on the world team.
@@ -56,6 +66,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following shmem_barrier_all example is for C11 programs:
 

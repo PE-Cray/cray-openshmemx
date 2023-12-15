@@ -16,11 +16,15 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    count   The number of elements to allocate.
    size    The size in bytes of each element to allocate.
 
 Description
 ===========
+
+::
 
    The shmem_calloc routine is a collective operation that allocates a
    region of remotely-accessible memory for an array of count objects of size
@@ -40,6 +44,8 @@ Description
 
 Return Values
 =============
+
+::
 
    The shmem_calloc routine returns a pointer to the lowest byte address of the
    allocated space; otherwise, it returns a null pointer.

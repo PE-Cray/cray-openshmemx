@@ -1,6 +1,8 @@
 shmem_get
 =========
 
+::
+
    Copies data from a specified PE.
 
 Definitions
@@ -70,6 +72,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -100,6 +104,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    Local data object to be updated.
@@ -114,6 +120,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The get routines provide a method for copying a contiguous symmetric data
    object from a different PE to a contiguous data object on the local
@@ -153,10 +161,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    When using Fortran, data types must be of default size.  For example, a real
    variable must be declared as REAL, REAL4,  or REALKIND=KIND(1.0))}.

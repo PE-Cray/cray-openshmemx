@@ -1,6 +1,8 @@
 shmem_p
 =======
 
+::
+
    Copies one data item to a remote PE.
 
 Definitions
@@ -33,6 +35,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -63,6 +67,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx   The context on which to perform the operation. When this argument is
          not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest  The remotely accessible array element or scalar data object
@@ -72,6 +78,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    These routines provide a very low latency put capability for single elements
    of most basic types.
@@ -83,10 +91,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.
 

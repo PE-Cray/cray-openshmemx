@@ -1,6 +1,8 @@
 shmemx_put_signal
 =================
 
+::
+
    The put-with-signal routine provide a method for copying data from a
    contiguous local data obeject to a data object on a specified PE and then
    setting a remote signal flag indicating the data transfer is complete.
@@ -91,6 +93,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -103,6 +107,8 @@ Table:1
 
 Arguments
 =========
+
+::
 
       target    Data object on the remote PE to be updated. This data object
                 must be remotely accessible.
@@ -129,6 +135,8 @@ Arguments
 Description
 ===========
 
+::
+
    The block data put+signal routines provide a high-performance method for
    copying contiguous data from a data object on the local PE to a
    contiguous data object on a remote PE and then setting a remote signal
@@ -143,6 +151,8 @@ Description
 
 Notes
 =====
+
+::
 
    Per OpenSHMEM specification 1.2 Annex C, support for zero-length
    transfers is provided for zero-length get, put, and put with signals.

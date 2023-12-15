@@ -1,6 +1,8 @@
 shmem_atomic_fetch
 ==================
 
+::
+
    Atomically fetches the value of a remote data object.
 
 Definitions
@@ -71,6 +73,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -91,6 +95,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx   The context on which to perform the operation. When this argument is
          not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    source  The remotely accessible data object to be fetched from the remote PE.
@@ -100,16 +106,22 @@ Arguments
 Description
 ===========
 
+::
+
    shmem_atomic_fetch performs an atomic fetch operation. It returns the
    contents of the source as an atomic operation.
 
 Return Values
 =============
 
+::
+
    The contents at the source address on the remote PE. The data type of the
    return value is the same as the type of the remote data object.
 
 Notes
 =====
+
+::
 
    None.

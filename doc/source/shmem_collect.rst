@@ -1,6 +1,8 @@
 shmem_collect
 =============
 
+::
+
    Concatenates blocks of data from multiple PEs to an array in every PE
    participating in the collective routine.
 
@@ -26,6 +28,8 @@ C/C++ Synopsis
                                size_t nelems);
    int shmem_TYPENAME_fcollect(shmem_team_t team, TYPE *dest, const TYPE *source,
                                size_t nelems);
+
+::
 
    where TYPE is one of the standard RMA types and has a corresponding TYPENAME
    specified by Table:5.
@@ -64,6 +68,8 @@ Datatype Reference Table
 Table:5
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -94,6 +100,8 @@ Table:5
 Arguments
 =========
 
+::
+
    team        A valid OpenSHMEM team handle
    dest        Symmetric address of an array large enough to accept the
                concatenation of the source arrays on all participating PEs.
@@ -116,6 +124,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    OpenSHMEM collect and fcollect routines perform a collective operation to
    concatenate nelems data items from the source array into the dest array,
@@ -158,10 +168,14 @@ Description
 Return Values
 =============
 
+::
+
    Zero on successful local completion. Nonzero otherwise.
 
 Notes
 =====
+
+::
 
    The collective routines operate on active PE sets that have a
    non-power-of-two PE_size with some performance degradation. They operate
@@ -172,6 +186,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following shmem_collect example is for  C/C++ programs:
 

@@ -1,6 +1,8 @@
 shmem_team_get_config
 =====================
 
+::
+
    Return the configuration parameters of a given team
 
 C/C++ Synopsis
@@ -13,6 +15,8 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    IN      team            An OpenSHMEM team handle
    IN      config_mask     The bitwise mask representing the set of
                            configuration parameters to fetch from the given team.
@@ -21,6 +25,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    shmem_team_get_config returns through the config argument the configuration
    parameters as described by the mask, which were assigned according to input
@@ -32,15 +38,21 @@ Description
 Return Values
 =============
 
+::
+
    If team does not compare equal to SHMEM_TEAM_INVALID, then
    shmem_team_get_config returns 0; otherwise, it returns nonzero.
 
 Notes
 =====
 
+::
+
    None.
 
 Examples
 ========
+
+::
 
    None.

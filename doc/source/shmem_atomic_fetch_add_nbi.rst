@@ -1,6 +1,8 @@
 shmem_atomic_fetch_add_nbi
 ==========================
 
+::
+
    The nonblocking atomic routine performs an atomic fetch-and-add operation on
    a remote data object.
 
@@ -37,6 +39,8 @@ Datatype Reference Table
 Table:6
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -55,6 +59,8 @@ Table:6
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    fetch   Local address of data object to be updated. The type of fetch should
@@ -69,6 +75,8 @@ Arguments
 Description
 ===========
 
+::
+
    The nonblocking shmem_atomic_fetch_add_nbi routines perform an atomic
    fetch-and-add operation. This routine returns after initiating the operation.
    An atomic fetch-and-add operation fetches the old dest and adds value to
@@ -82,9 +90,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

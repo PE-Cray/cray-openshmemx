@@ -1,6 +1,8 @@
 shmem_wait_until_any
 ====================
 
+::
+
    Wait on an array of variables on the local PE until any one variable meets
    the specified wait condition
 
@@ -35,6 +37,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   short                 |     short           |
@@ -55,6 +59,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ivars       Local address of an array of remotely accessible data objects.
                The type of ivars should match that implied in the SYNOPSIS section.
    nelems      The number of elements in the ivars array.
@@ -68,6 +74,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmem_wait_until_any routine waits until any one entry in the wait set
    specified by ivars and status satisfies the wait condition at the calling
@@ -94,12 +102,16 @@ Description
 Return Values
 =============
 
+::
+
    shmem_wait_until_any returns the index of an element in the ivars array that
    satisfies the wait condition. If the wait set is empty, this routine
    returns SIZE_MAX.
 
 Notes
 =====
+
+::
 
    None.
 

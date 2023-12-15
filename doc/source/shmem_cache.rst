@@ -1,6 +1,8 @@
 shmem_cache
 ===========
 
+::
+
    Controls data cache utilities.
 
 Deprecated Synopsis
@@ -32,11 +34,15 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    dest        A data object that is local to the PE.  dest can be of any
                noncharacter type. When using Fortran, it can be of any kind.
 
 Description
 ===========
+
+::
 
    shmem_set_cache_inv enables automatic cache coherency mode.
 
@@ -55,10 +61,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    These routines have been retained for improved backward compatibility with
    legacy architectures.  They are not required to be supported by implementing

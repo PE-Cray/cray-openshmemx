@@ -1,6 +1,8 @@
 shmem_init
 ==========
 
+::
+
    A collective operation that allocates and initializes the resources used by
    the OpenSHMEM library.
 
@@ -27,10 +29,14 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    None.
 
 Description
 ===========
+
+::
 
    shmem_init allocates and initializes resources used by the OpenSHMEM
    library. It is a collective operation that all PEs must call before any
@@ -43,10 +49,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    As of OpenSHMEM[1.2], the use of start_pes has been deprecated and calls to
    it should be replaced with calls to shmem_init. While support for start_pes

@@ -1,6 +1,8 @@
 shmem_sync
 ==========
 
+::
+
    Registers the arrival of a PE at a synchronization point. This routine does
    not return until all other PEs in a given OpenSHMEM team or active set
    arrive at this synchronization point.
@@ -35,6 +37,8 @@ Deprecated C/C++ Synopsis
 Arguments
 =========
 
+::
+
    team    The team over which to perform the operation
 
    ---Deprecated---------------------------------------------------
@@ -48,6 +52,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    shmem_sync is a collective synchronization routine over an existing
    OpenSHMEM team or active set. The routine registers the arrival of a PE at
@@ -84,10 +90,14 @@ Description
 Return Values
 =============
 
+::
+
    Zero on successful local completion. Nonzero otherwise.
 
 Notes
 =====
+
+::
 
    The shmem_sync routine can be used to portably ensure that memory access
    operations observe remote updates in the order enforced by the initiator
@@ -99,6 +109,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following shmem_sync example is for C11 programs:
 

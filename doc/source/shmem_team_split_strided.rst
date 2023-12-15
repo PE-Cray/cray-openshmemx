@@ -1,6 +1,8 @@
 shmem_team_split_strided
 ========================
 
+::
+
    Create a new OpenSHMEM team from a subset of the existing parent team PEs,
    where the subset is defined by the PE triplet (start, stride, and size)
    supplied to the routine.
@@ -16,6 +18,8 @@ C/C++ Synopsis
 
 Arguments
 =========
+
+::
 
    IN      parent_team     An OpenSHMEM team.
    IN      start           The lowest PE number of the subset of PEs from the
@@ -37,6 +41,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmem_team_split_strided routine is a collective routine. It creates a
    new OpenSHMEM team from an existing parent team, where the PE subset of the
@@ -80,10 +86,14 @@ Description
 Return Values
 =============
 
+::
+
    Zero on successful creation of new_team; otherwise, nonzero.
 
 Notes
 =====
+
+::
 
    The shmem_team_split_strided operation uses an arbitrary stride argument,
    whereas the logPE_stride argument to the active set collective operations
@@ -96,6 +106,8 @@ Notes
 
 Examples
 ========
+
+::
 
    Example 11. The following example demonstrates the use of strided split in a
    C11 program. The program creates a new team of all even number PEs from the

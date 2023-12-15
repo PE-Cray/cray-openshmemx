@@ -1,6 +1,8 @@
 shmem_put_signal
 ================
 
+::
+
    The put-with-signal routines provide a method for copying data from a
    contiguous local data object to a data object on a specified PE and
    subsequently updating a remote flag to signal completion.
@@ -54,6 +56,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   short                 |     short           |
@@ -73,6 +77,8 @@ Table:1
 
 Arguments
 =========
+
+::
 
    ctx     A context handle specifying the context on which to perform the
            operation. When this argument is not provided, the operation is
@@ -95,6 +101,8 @@ Arguments
 Description
 ===========
 
+::
+
    The put-with-signal routines provide a method for copying data from a
    contiguous local data object to a data object on a specified PE and
    subsequently updating a remote flag to signal completion. The routines
@@ -115,10 +123,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    The dest and sig_addr data objects must both be remotely accessible. The
    sig_addr and dest could be of different kinds, for example, one could be a
@@ -140,6 +152,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following example demonstrates the usage of shmem_put_signal. It shows
    the implementation of a broadcast operation from PE 0 to itself and all

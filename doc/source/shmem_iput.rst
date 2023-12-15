@@ -1,6 +1,8 @@
 shmem_iput
 ==========
 
+::
+
    Copies strided data to a specified PE.
 
 Definitions
@@ -66,6 +68,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -96,6 +100,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    Array to be updated on the remote PE. This data object  must be
@@ -118,6 +124,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The iput routines provide a method  for  copying strided data elements
    (specified by sst) of an array from a source array on the local PE to
@@ -149,10 +157,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    When using Fortran, data types must be of default size.  For example, a
    real variable must be declared as  REAL, REAL*4 or

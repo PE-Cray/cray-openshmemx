@@ -1,6 +1,8 @@
 shmem_atomic_inc
 ================
 
+::
+
    Performs an atomic increment operation on a remote data object.
 
 Definitions
@@ -64,6 +66,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -82,6 +86,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    The remotely accessible integer data object to be updated on the
@@ -92,6 +98,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    These  routines perform  an atomic increment operation on the dest data
    object on PE.
@@ -105,10 +113,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.
 
@@ -117,6 +129,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following shmem_atomic_inc example is for C11 programs:
 

@@ -1,6 +1,8 @@
 shmem_ctx_get_team
 ==================
 
+::
+
    Retrieve the team associated with the communication context.
 
 Definitions
@@ -16,11 +18,15 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    ctx     A handle to a communication context.
    team    A pointer to a handle to the associated PE team.
 
 Description
 ===========
+
+::
 
    The shmem_ctx_get_team routine returns a handle to the team associated
    with the specified communication context ctx. The team handle is returned
@@ -38,9 +44,13 @@ Description
 Return Values
 =============
 
+::
+
    Zero on success; otherwise, nonzero.
 
 Notes
 =====
+
+::
 
    None.

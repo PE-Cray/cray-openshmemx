@@ -1,6 +1,8 @@
 shmemx_team_destroy
 ===================
 
+::
+
    shmemx_team_destroy - function destroys existing team
 
 Definitions
@@ -27,10 +29,14 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    newteam A valid SHMEM team handle.
 
 Description
 ===========
+
+::
 
    The shmemx_team_destroy function destroys an existing team. This is a
    collective call, in which every member of the team being destroyed needs
@@ -46,6 +52,8 @@ Description
 
 Notes
 =====
+
+::
 
    Note that SHMEM team handles have local semantics only. That is, team
    handles should not be stored in shared variables and used across other

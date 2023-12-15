@@ -1,6 +1,8 @@
 shmem_wait_until
 ================
 
+::
+
    Wait for a variable on the local PE to change.
 
 Definitions
@@ -59,6 +61,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   short                 |     short           |
@@ -79,6 +83,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ivar        A remotely accessible integer variable. When using  C/C++,
                the type of ivar should match that implied in the SYNOPSIS
                section.
@@ -93,6 +99,8 @@ Arguments
 Comparision Constants
 =====================
 
+::
+
      |     Constant Name    |          Comparison          |
      |----------------------|------------------------------|
      | SHMEM_CMP_EQ         |  Equal                       |
@@ -104,6 +112,8 @@ Comparision Constants
 
 Description
 ===========
+
+::
 
    shmem_wait and shmem_wait_until wait for ivar to be changed by a write or an
    atomic operation issued by a PE.These  routines can be used for point-to-point
@@ -127,10 +137,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    As of OpenSHMEM[1.4], the shmem_wait routine is deprecated, however, shmem_wait
    is equivalent to shmem_wait_until where cmp is SHMEM_CMP_NE. Implementations

@@ -1,6 +1,8 @@
 shmem_finalize
 ==============
 
+::
+
    A collective operation that releases all resources used by the OpenSHMEM
    library.  This only terminates the OpenSHMEM portion of a program, not the
    entire program.
@@ -28,10 +30,14 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    None.
 
 Description
 ===========
+
+::
 
    shmem_finalize is a collective operation that ends the OpenSHMEM portion of
    a program previously initialized by shmem_init or shmem_init_thread and
@@ -52,10 +58,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    shmem_finalize releases all resources used by the OpenSHMEM library including
    the symmetric memory heap and pointers initiated by shmem_ptr. This collective
@@ -68,6 +78,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following finalize example is for C11 programs:
 

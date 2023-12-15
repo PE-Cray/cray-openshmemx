@@ -1,6 +1,8 @@
 shmem_iget
 ==========
 
+::
+
    Copies strided data from a specified PE.
 
 Definitions
@@ -66,6 +68,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -96,6 +100,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    Local data object to be updated.
@@ -117,6 +123,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The iget routines provide a method for copying strided data elements from
    a symmetric array from a specified remote PE to strided locations on a
@@ -146,10 +154,14 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    When using Fortran, data types must be of default size. For example, a
    real variable must be declared as REAL, REAL*4, or
@@ -160,6 +172,8 @@ Examples
 
 Fortran Example
 ---------------
+
+::
 
    The following example uses shmem_logical_iget in a Fortran program.
 

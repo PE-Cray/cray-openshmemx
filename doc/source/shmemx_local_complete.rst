@@ -1,6 +1,8 @@
 shmemx_local_complete
 =====================
 
+::
+
    Waits for local completion of all outstanding non-blocking PUT and
    PUT-WITH-SIGNAL routines to symmetric data objects issued by a PE.
 
@@ -17,10 +19,14 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    None.
 
 Description
 ===========
+
+::
 
    The shmemx_local_complete routine ensures local completion of all
    outstanding non-blocking PUT and PUT-WITH-SIGNAL operations. By local
@@ -39,9 +45,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

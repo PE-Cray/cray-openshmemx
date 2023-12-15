@@ -1,6 +1,8 @@
 shmem_ctx_create
 ================
 
+::
+
    Create a communication context.
 
 Definitions
@@ -16,6 +18,8 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    options     The set of options requested for the given context.
                Multiple options may be requested by combining them with a bitwise
                OR operation; otherwise, 0 can be given if no options are
@@ -24,6 +28,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmem_ctx_create routine creates a new communication context
    and returns its handle through the ctx argument.  If the context was
@@ -63,10 +69,14 @@ Description
 Return Values
 =============
 
+::
+
    Zero on success and nonzero otherwise.
 
 Notes
 =====
+
+::
 
    None.
 
@@ -75,6 +85,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following example demonstrates the use of contexts in a multithreaded
    C11 program that uses OpenMP for threading.  This example shows the
@@ -144,6 +156,8 @@ C/C++ Example
 
 C/C++ Example
 -------------
+
+::
 
    The following example demonstrates the use of contexts in a
    single-threaded C11 program that performs a summation reduction where

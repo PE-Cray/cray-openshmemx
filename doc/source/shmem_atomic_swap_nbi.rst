@@ -1,6 +1,8 @@
 shmem_atomic_swap_nbi
 =====================
 
+::
+
    The nonblocking atomic operation performs an atomic swap to a remote data object.
 
 Definitions
@@ -36,6 +38,8 @@ Datatype Reference Table
 Table:7
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   float                 |     float           |
@@ -56,6 +60,8 @@ Table:7
 Arguments
 =========
 
+::
+
    ctx   A context handle specifying the context on which to perform the
          operation. When this argument is not provided, the operation is
          performed on the default context.
@@ -70,6 +76,8 @@ Arguments
 Description
 ===========
 
+::
+
    The nonblocking shmem_atomic_swap_nbi routines perform an atomic swap
    operation. This routine returns after initiating the operation. The
    operation is considered complete after a subsequent call to shmem_quiet. At
@@ -79,9 +87,13 @@ Description
 Return Values
 =============
 
+::
+
    None
 
 Notes
 =====
+
+::
 
    None.

@@ -1,6 +1,8 @@
 shmem_test_some
 ===============
 
+::
+
    Indicate whether at least one variable within an array of variables on the
    local PE meets a specified test condition.
 
@@ -35,6 +37,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   short                 |     short           |
@@ -55,6 +59,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ivars       Local address of an array of remotely accessible data objects. The type
                of ivars should match that implied in the SYNOPSIS section.
    nelems      The number of elements in the ivars array.
@@ -69,6 +75,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmem_test_some routine indicates whether at least one entry in the test set specified by ivars and status
    satisfies the test condition at the calling PE. The ivars objects at the calling PE may be updated by
@@ -97,11 +105,15 @@ Description
 Return Values
 =============
 
+::
+
    shmem_test_some returns the number of indices returned in the indices array. If the test set is empty, this
    routine returns 0.
 
 Notes
 =====
+
+::
 
    None.
 

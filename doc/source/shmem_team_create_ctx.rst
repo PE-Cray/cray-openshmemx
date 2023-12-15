@@ -1,6 +1,8 @@
 shmem_team_create_ctx
 =====================
 
+::
+
    Create a communication context from a team.
 
 Definitions
@@ -16,6 +18,8 @@ C/C++ Synopsis
 Arguments
 =========
 
+::
+
    team    A handle to the specified PE team.
    options     The set of options requested for the given context. Multiple
                options may be requested by combining them with a bitwise OR
@@ -25,6 +29,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    The shmem_team_create_ctx routine creates a new communication context and
    returns its handle through the ctx argument. This context is created from
@@ -56,10 +62,14 @@ Description
 Return Values
 =============
 
+::
+
    Zero on success and nonzero otherwise.
 
 Notes
 =====
+
+::
 
    None.
 
@@ -68,6 +78,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following example demonstrates the use of contexts for multiple teams
    in a C/C++ program. This example shows contexts being used to communicate

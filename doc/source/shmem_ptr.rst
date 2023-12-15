@@ -1,6 +1,8 @@
 shmem_ptr
 =========
 
+::
+
    Returns a local pointer to a symmetric data object on the specified PE.
 
 Definitions
@@ -28,6 +30,8 @@ Deprecated Fortran Synopsis
 Arguments
 =========
 
+::
+
    dest    The symmetric data object to be referenced.
    pe      An integer that indicates the PE number on which dest is to
            be accessed.  When using Fortran, it must be a  default integer
@@ -35,6 +39,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    shmem_ptr returns an address that may be used to directly reference dest
    on the specified PE.  This address can be assigned to a pointer. After that,
@@ -48,11 +54,15 @@ Description
 Return Values
 =============
 
+::
+
    The address of the dest data object is returned when it is accessible
    using memory loads and stores.  Otherwise, a null pointer is returned.
 
 Notes
 =====
+
+::
 
    When calling shmem_ptr, dest is the address of the referenced symmetric data
    object on the calling PE.
@@ -62,6 +72,8 @@ Examples
 
 Fortran Example
 ---------------
+
+::
 
    This  Fortran  program calls shmem_ptr and then PE 0 writes to the BIGD
    array on PE 1:
@@ -98,6 +110,8 @@ Fortran Example
 
 C/C++ Example
 -------------
+
+::
 
    This is the equivalent program written in C11:
 

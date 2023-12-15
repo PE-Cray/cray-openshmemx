@@ -1,6 +1,8 @@
 shmemx_add_nb
 =============
 
+::
+
    Performs a non-blocking atomic add operation on a remote symmetric
    data object.
 
@@ -28,6 +30,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -46,6 +50,8 @@ Table:1
 Arguments
 =========
 
+::
+
    target  The remotely accessible integer data object to be updated  on the
            remote PE. When using  C/C++, the type of target should match that
            implied in the SYNOPSIS section.
@@ -58,6 +64,8 @@ Arguments
 Description
 ===========
 
+::
+
    The shmemx_add_nb routine performs a non-blocking atomic add operation. It
    adds value to target on PE pe and atomically updates the target without
    returning the value.
@@ -65,9 +73,13 @@ Description
 Return Values
 =============
 
+::
+
    None.
 
 Notes
 =====
+
+::
 
    None.

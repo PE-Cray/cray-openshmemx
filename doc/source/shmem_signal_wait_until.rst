@@ -1,6 +1,8 @@
 shmem_signal_wait_until
 =======================
 
+::
+
    Wait for a variable on the local PE to change from a signaling operation.
 
 Definitions
@@ -16,6 +18,8 @@ C11 Synopsis
 Arguments
 =========
 
+::
+
    sig_addr    Local address of the source signal variable.
    cmp         The comparison operator that compares sig_addr with cmp_value.
    cmp_value   The value against which the object pointed to by sig_addr will
@@ -23,6 +27,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    shmem_signal_wait_until operation blocks until the value contained in the
    signal data object, sig_addr, at the calling PE satisfies the wait
@@ -38,11 +44,15 @@ Description
 Return Values
 =============
 
+::
+
    Return the contents of the signal data object, sig_addr, at the calling PE
    that satisfies the wait condition
 
 Notes
 =====
+
+::
 
    Implementations must ensure that shmem_signal_wait_until do not return
    before the update of the memory indicated by sig_addr is fully complete.

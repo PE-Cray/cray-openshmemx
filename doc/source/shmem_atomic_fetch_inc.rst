@@ -1,6 +1,8 @@
 shmem_atomic_fetch_inc
 ======================
 
+::
+
    Performs an atomic fetch-and-increment  operation on a remote data object.
 
 Definitions
@@ -66,6 +68,8 @@ Datatype Reference Table
 Table:1
 -------
 
+::
+
      |           TYPE          |      TYPENAME       |
      |-------------------------|---------------------|
      |   int                   |     int             |
@@ -84,6 +88,8 @@ Table:1
 Arguments
 =========
 
+::
+
    ctx     The context on which to perform the operation. When this argument is
            not provided, the operation is performed on SHMEM_CTX_DEFAULT.
    dest    The remotely accessible integer data object to be updated on the
@@ -94,6 +100,8 @@ Arguments
 
 Description
 ===========
+
+::
 
    These routines perform a fetch-and-increment operation.  The dest on PE pe
    is increased by one and the routine returns the previous contents of dest
@@ -108,11 +116,15 @@ Description
 Return Values
 =============
 
+::
+
    The contents that had been at the dest address on the remote PE prior to
    the increment.  The data type of the return value is the same as the dest
 
 Notes
 =====
+
+::
 
    None.
 
@@ -121,6 +133,8 @@ Examples
 
 C/C++ Example
 -------------
+
+::
 
    The following shmem_atomic_fetch_inc example is for C11 programs:
 
