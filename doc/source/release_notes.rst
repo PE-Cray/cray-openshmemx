@@ -36,6 +36,9 @@ Release Overview
     * - Release
       - OpenSHMEM Compliance
       - Release Date
+    * - :ref:`Cray OpenSHMEMX v11.7.1 <cray-openshmemx-v11-7-1>`
+      - OpenSHMEM v1.5
+      - March 2024
     * - :ref:`Cray OpenSHMEMX v11.7.0 <cray-openshmemx-v11-7-0>`
       - OpenSHMEM v1.5
       - December 2023
@@ -143,10 +146,36 @@ Release Overview
 Release Details
 ---------------
 
+.. _cray-openshmemx-v11-7-1:
+
+Cray OpenSHMEMX v11.7.1
+-----------------------
+
+::
+
+  Major differences in Cray OpenSHMEMX 11.7.1 from 
+  Cray OpenSHMEMX version 11.7.0 includes the following:
+    - Add support for logging HPE Slingshot NIC counter values
+    - Add support for using the library on platforms with AARCH64
+      processors like Nvidia Grace
+    - Improve performance of shmem_quiet memory ordering operation
+    - Improve performance for allreduce collective operations when all 
+      PEs are involved in the communication operations
+
+  The following bugs are fixed as part of the Cray OpenSHMEMX 11.7.1
+  release:
+    - Fix C11 generic APIs for shmem_sync operations - previously C11 generic
+	APIs were not supporte for shmem_sync operations
+    - Fix library usage with GNU and Intel compilers - previously users were
+	expected to link -lstdc++ compiler flag to allow using Cray OpenSHMEMX 
+	with GNU and Intel compilers - fix removes this dependencies
+
+:ref:`Jump To Release Overview <release-overview>`
+
 .. _cray-openshmemx-v11-7-0:
 
 Cray OpenSHMEMX v11.7.0
-----------------------
+-----------------------
 
 ::
 
@@ -174,7 +203,7 @@ Cray OpenSHMEMX v11.7.0
 .. _cray-openshmemx-v11-6-1:
 
 Cray OpenSHMEMX v11.6.1
-----------------------
+-----------------------
 
 ::
 
@@ -189,7 +218,7 @@ Cray OpenSHMEMX v11.6.1
 .. _cray-openshmemx-v11-6-0:
 
 Cray OpenSHMEMX v11.6.0
-----------------------
+-----------------------
 
 ::
 
@@ -226,7 +255,7 @@ Cray OpenSHMEMX v11.6.0
 .. _cray-openshmemx-v11-5-8:
 
 Cray OpenSHMEMX v11.5.8
-----------------------
+-----------------------
 
 ::
 
@@ -240,7 +269,7 @@ Cray OpenSHMEMX v11.5.8
 .. _cray-openshmemx-v11-5-7:
 
 Cray OpenSHMEMX v11.5.7
-----------------------
+-----------------------
 
 ::
 
@@ -262,7 +291,7 @@ Cray OpenSHMEMX v11.5.7
 .. _cray-openshmemx-v11-5-6:
 
 Cray OpenSHMEMX v11.5.6
-----------------------
+-----------------------
 
 ::
 
@@ -278,7 +307,7 @@ Cray OpenSHMEMX v11.5.6
 .. _cray-openshmemx-v11-5-5:
 
 Cray OpenSHMEMX v11.5.5
-----------------------
+-----------------------
 
 ::
 
@@ -292,7 +321,7 @@ Cray OpenSHMEMX v11.5.5
 .. _cray-openshmemx-v11-5-4:
 
 Cray OpenSHMEMX v11.5.4
-----------------------
+-----------------------
 
 ::
 
@@ -307,7 +336,7 @@ Cray OpenSHMEMX v11.5.4
 .. _cray-openshmemx-v11-5-3:
 
 Cray OpenSHMEMX v11.5.3
-----------------------
+-----------------------
 
 ::
 
@@ -321,7 +350,7 @@ Cray OpenSHMEMX v11.5.3
 .. _cray-openshmemx-v11-5-2:
 
 Cray OpenSHMEMX v11.5.2
-----------------------
+-----------------------
 
 ::
 
@@ -337,7 +366,7 @@ Cray OpenSHMEMX v11.5.2
 .. _cray-openshmemx-v11-5-1:
 
 Cray OpenSHMEMX v11.5.1
-----------------------
+-----------------------
 
 ::
 
@@ -352,7 +381,7 @@ Cray OpenSHMEMX v11.5.1
 .. _cray-openshmemx-v11-5-0:
 
 Cray OpenSHMEMX v11.5.0
-----------------------
+-----------------------
 
 ::
 
@@ -369,7 +398,7 @@ Cray OpenSHMEMX v11.5.0
 .. _cray-openshmemx-v11-4-1:
 
 Cray OpenSHMEMX v11.4.1
-----------------------
+-----------------------
 
 ::
 
@@ -383,7 +412,7 @@ Cray OpenSHMEMX v11.4.1
 .. _cray-openshmemx-v11-4-0:
 
 Cray OpenSHMEMX v11.4.0
-----------------------
+-----------------------
 
 ::
 
@@ -399,7 +428,7 @@ Cray OpenSHMEMX v11.4.0
 .. _cray-openshmemx-v11-3-3:
 
 Cray OpenSHMEMX v11.3.3
-----------------------
+-----------------------
 
 ::
 
@@ -413,7 +442,7 @@ Cray OpenSHMEMX v11.3.3
 .. _cray-openshmemx-v11-3-2:
 
 Cray OpenSHMEMX v11.3.2
-----------------------
+-----------------------
 
 ::
 
@@ -427,7 +456,7 @@ Cray OpenSHMEMX v11.3.2
 .. _cray-openshmemx-v11-3-1:
 
 Cray OpenSHMEMX v11.3.1
-----------------------
+-----------------------
 
 ::
 
@@ -441,7 +470,7 @@ Cray OpenSHMEMX v11.3.1
 .. _cray-openshmemx-v11-3-0:
 
 Cray OpenSHMEMX v11.3.0
-----------------------
+-----------------------
 
 ::
 
@@ -468,7 +497,7 @@ Cray OpenSHMEMX v11.3.0
 .. _cray-openshmemx-v11-2-1:
 
 Cray OpenSHMEMX v11.2.1
-----------------------
+-----------------------
 
 ::
 
@@ -482,7 +511,7 @@ Cray OpenSHMEMX v11.2.1
 .. _cray-openshmemx-v11-2-0:
 
 Cray OpenSHMEMX v11.2.0
-----------------------
+-----------------------
 
 ::
 
@@ -502,7 +531,7 @@ Cray OpenSHMEMX v11.2.0
 .. _cray-openshmemx-v11-1-2:
 
 Cray OpenSHMEMX v11.1.2
-----------------------
+-----------------------
 
 ::
 
@@ -518,7 +547,7 @@ Cray OpenSHMEMX v11.1.2
 .. _cray-openshmemx-v11-1-1:
 
 Cray OpenSHMEMX v11.1.1
-----------------------
+-----------------------
 
 ::
 
@@ -538,7 +567,7 @@ Cray OpenSHMEMX v11.1.1
 .. _cray-openshmemx-v11-1-0:
 
 Cray OpenSHMEMX v11.1.0
-----------------------
+-----------------------
 
 ::
 

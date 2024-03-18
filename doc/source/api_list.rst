@@ -98,7 +98,6 @@ OpenSHMEM v1.5 Standard Features
    shmem_cache
 
 1. Library Setup and Initialization
-   start_pes
     * :doc:`shmem_init <shmem_init>`
     * :doc:`shmem_finalize <shmem_finalize>`
     * :doc:`shmem_global_exit <shmem_global_exit>`

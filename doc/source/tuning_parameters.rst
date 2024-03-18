@@ -3,6 +3,7 @@ Tuning Parameters
 
 1. :doc:`Overview of Memory Management Options <shmem_mem_manage>`
 2. :doc:`Overview on support for Multitheading <shmem_multithreading>`
+3. :doc:`Memory Footprint Management in Teams <shmem_team_management>`
 
 .. toctree::
    :maxdepth: 1
@@ -10,3 +11,4 @@ Tuning Parameters
 
    shmem_mem_manage
    shmem_multithreading
+   shmem_team_management
