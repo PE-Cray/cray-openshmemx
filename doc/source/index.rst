@@ -32,7 +32,7 @@ supported environments and systems, and general backward compatibility details.
 Overview
 --------
 
-.. image:: images/cray-openshmemx-overview.png
+.. image:: ../images/cray-openshmemx-overview.png
 
 Cray OpenSHMEMX software stack provides support for the OpenSHMEM standard
 specific features as well as implementation-specific features. The examples of
