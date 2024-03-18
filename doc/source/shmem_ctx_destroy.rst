@@ -59,8 +59,8 @@ Notes
 Examples
 ========
 
-C/C++ Example
--------------
+C/C++ Example:1
+---------------
 
 ::
 
@@ -128,10 +128,9 @@ C/C++ Example
        return result;
    }
 
-.. _cc-example-1:
 
-C/C++ Example
--------------
+C/C++ Example:2
+---------------
 
 ::
 

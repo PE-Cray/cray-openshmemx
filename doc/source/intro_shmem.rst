@@ -80,7 +80,7 @@ OpenSHMEM Compliance
 Implementation-specific Features
 ================================
 
-    All implementation specific extensions are prefixed with SHMEMX_
+    All implementation specific extensions are prefixed with SHMEMX
     nomenclature and placed inside the shmemx.h and shmemx.fh header.
 
     The following are the list of implementation-specific features available in
@@ -177,6 +177,7 @@ Different Available Transport Layers
 
     *  SMP-OFI - OFI for internode and XPMEM for intranode communication
     Support for XPMEM is available only on systems with XPMEM kernel.
+
 
 Managing Memory in Cray OpenSHMEMX
 ----------------------------------
@@ -1108,3 +1109,53 @@ Cray OpenSHMEMX NIC Selection on the Libfabric Transport Specific Environment Va
               The NIC symmetry test is currently not supported for Cray OpenSHMEMX.
 
               Default: 1
+	
+   SHMEM_OFI_CXI_COUNTER_REPORT
+              Specifies the verbosity of the counter data that is reported during
+              finalize. Recognized values are between 0 and 5.
+ 
+              0         No CXI counters are collected. No report is generated.
+ 
+              1         Non-zero CXI counter deltas are printed, 1 per line.
+ 
+              2         A summary of CXI counters is reported with columns for min, max,
+                        mean, min rate, max rate, and mean rate.
+ 
+              3         The summary report and all CXI counter data for counters with non-
+                        zero deltas.
+ 
+              5         All CXI counter data for all nodes.
+ 
+              Default: 0
+ 
+   SHMEM_OFI_CXI_COUNTER_REPORT_FILE
+              Specifies the name of the file to write CXI counter data in. The file
+              is opened for appending.  If no file name is given, CXI counter data is
+              printed to stderr.
+ 
+              Default: stderr
+ 
+   SHMEM_OFI_CXI_COUNTER_FILE
+              If set, this is the name of the file that contains the list of CXI counter
+              names to collect.  Counter names are listed one per line.
+ 
+              Default: none
+ 
+   SHMEM_OFI_CXI_COUNTERS
+              If set, this is the list of CXI counter names to collect. This environment
+              variable is ignored if SHMEM_OFI_CXI_COUNTER_FILE is set.  The string starts
+              with the number of counters, followed by a colon, followed by a comma separated
+              list of counter names.
+ 
+              Example: "3:pct_hrp_responses_received,pct_hrp_rsp_discard_received,hni_hrp_resp"
+ 
+              To collect all available CXI counters, set this variable to "0:ALL".
+ 
+              Other predefined sets of CXI counters include "0:PERFTOOLS", "0:OPS", "0:QPERF",
+              "0:FETCH_LAT", "0:HRP", "0:ODP", "0:ATU"
+ 
+              If this variable is not set and SHMEM_OFI_CXI_COUNTER_FILE is not set, a predefined
+              set of 40 counters is collected.
+ 
+              Default: none
+ 

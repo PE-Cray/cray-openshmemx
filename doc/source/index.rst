@@ -1,3 +1,5 @@
+.. _openshmemx:
+
 Cray OpenSHMEMX
 ===============
 
@@ -59,26 +61,22 @@ Latest News
       - Release Version
       - Release Date
     * - HPE Cray EX
-      - Cray OpenSHMEMX v11.7.0
-      - December 2023
+      - Cray OpenSHMEMX v11.7.1
+      - March 2023
     * - HPE Apollo
-      - Cray OpenSHMEMX v11.7.0
-      - December 2023
+      - Cray OpenSHMEMX v11.7.1
+      - March 2023
     * - HPE Cray XC
       - Cray OpenSHMEMX v9.1.1
       - August 2020
 
 The following changes were made in the latest release of Cray OpenSHMEMX
-v11.7.0 on HPE Cray EX and HPE Apollo systems:
+v11.7.1 on HPE Cray EX and HPE Apollo systems:
 
-1. Fix SMP and network flush issues in shmem_quiet operation
-2. Add support for performant shmem_quiet
-3. Add support for new SW collective engine (non-default - ready for evaluation)
-4. Fix internal psync maintenance for shmem_team management
-5. Fix return types for team-based allreduce operations
-6. Add support for new tree-based allreduce algorithm
-7. Fix team-based shmem_collect and shmem_collect operations for datatypes of size 1, 2, and 16 bytes
-8. Fix pshmem APIs for put-with-signal operations
+1. Add support for logging HPE Slingshot NIC counter values
+2. Add support for using the library on platforms with AARCH64 processors like Nvidia Grace
+3. Improve performance of shmem_quiet memory ordering operation
+4. Improve performance for allreduce collective operations when all PEs are involved in the communication operations
 
 The following changes were made in the latest release of Cray OpenSHMEMX v9.1.1
 on Cray XC systems:
@@ -111,7 +109,7 @@ Cray systems.
       - Available as primary library
     * - HPE Cray EX
       - aarch64
-      - Planned support with Cray OpenSHMEMX v11.7.1
+      - Available as primary library
     * - HPE Apollo
       - x86_64
       - Available as primary library
@@ -178,7 +176,7 @@ for various pages and will be completed soon.
 
 .. toctree::
    :maxdepth: 3
-   :hidden:
+   :caption: Cray OpenSHMEMX Manpage
 
    intro_shmem
    api_list
